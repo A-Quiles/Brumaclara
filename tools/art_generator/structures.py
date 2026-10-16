@@ -1,13 +1,12 @@
 """The cottage and the small garden props. Origins are the bottom-centre of each base."""
 import math
 
-from palette import (c, ROOF, ROOF_OUTLINE, WOOD, WOOD_OUTLINE, TIMBER, PLASTER, GLASS,
+from palette import (c, WOOD, WOOD_OUTLINE, TIMBER, PLASTER, GLASS,
                      STONE, STONE_OUTLINE, LEAF, SOIL, METAL, WATER, MOSS,
                      FLOWER_PINK, FLOWER_RED, FLOWER_YELLOW, GRASS)
 from pixel import Canvas, rng
 
 SHUTTER = [c("#24464c"), c("#33656c"), c("#4a8a8e")]
-LAMP = [c("#c9702a"), c("#ffcf5a"), c("#fff3b8")]
 
 
 # --- cottage ---------------------------------------------------------------
@@ -102,138 +101,6 @@ def _door(cv, x, y, w, h):
     cv.set(x + w - 4, y + h // 2 + 1, FLOWER_YELLOW[0])
 
 
-def _roof_tiles(cv, x0, x1, y0, y1, seed):
-    r = rng(seed)
-    rows = range(y0, y1, 5)
-    for k, ry in enumerate(rows):
-        x = x0 - (3 if k % 2 else 0)
-        while x <= x1:
-            w = 7
-            tone = r.choice((ROOF[2],) * 6 + (ROOF[3], ROOF[1]))
-            body_light = ROOF[3] if tone != ROOF[3] else ROOF[4]
-            for bx in range(w):
-                px = x + bx
-                if not x0 <= px <= x1:
-                    continue
-                for by in range(5):
-                    py = ry + by
-                    if py > y1:
-                        continue
-                    if bx == w - 1:
-                        color = ROOF[1] if by < 4 else ROOF[0]
-                    elif by == 0:
-                        color = body_light if 0 < bx < 4 else tone
-                    elif by == 3:
-                        color = ROOF[1] if bx in (0, w - 2) else tone
-                    elif by == 4:
-                        color = ROOF[0]
-                    else:
-                        color = tone
-                    cv.set(px, py, color)
-            x += w
-
-
-def cottage():
-    W, H = 124, 128
-    cv = Canvas(W, H)
-    cx, base = 62, 121
-    wall_x0, wall_x1 = 10, 113
-    roof_x0, roof_x1 = 3, 120
-    eave = 80
-    ridge = 22
-
-    cv.shadow(cx + 6, base + 1, 60, 5, alpha=80)
-
-    # front wall: plaster panels inside a timber frame, on a stone foundation
-    _plaster(cv, wall_x0, eave, wall_x1, base - 9, 11)
-    _stone_band(cv, wall_x0, wall_x1, base - 8, base, 3)
-    _beam_h(cv, wall_x0, wall_x1, base - 11, 3)       # sill
-    _beam_h(cv, wall_x0, wall_x1, eave + 2, 3)        # top plate
-    for bx in (wall_x0, 42, 79, wall_x1 - 2):
-        _beam_v(cv, bx, eave + 2, base - 9)
-    _beam_h(cv, 45, 78, eave + 14, 2)                 # beam over the door bay
-    _window(cv, 21, eave + 10)
-    _window(cv, 87, eave + 10)
-    _door(cv, cx - 8, eave + 19, 16, base - eave - 19)
-    # lantern beside the door
-    lx = cx + 13
-    cv.rect(lx, eave + 21, 4, 6, METAL[0])
-    cv.rect(lx + 1, eave + 22, 2, 4, LAMP[1])
-    cv.set(lx + 1, eave + 22, LAMP[2])
-    cv.hline(lx - 1, lx + 4, eave + 20, METAL[1])
-    # doorstep
-    cv.rect(cx - 11, base - 1, 22, 3, STONE[3])
-    cv.hline(cx - 11, cx + 10, base - 1, STONE[4])
-    cv.hline(cx - 11, cx + 10, base + 2, STONE_OUTLINE)
-    cv.vline(cx - 12, base - 1, base + 2, STONE_OUTLINE)
-    cv.vline(cx + 11, base - 1, base + 2, STONE_OUTLINE)
-    # the eave casts a shadow on the top of the wall
-    for y in range(eave, eave + 5):
-        for x in range(wall_x0, wall_x1 + 1):
-            px = cv.get(x, y)
-            if px == PLASTER[1] or px == PLASTER[2]:
-                cv.set(x, y, PLASTER[0])
-
-    # roof: tiled front slope between barge boards, ridge cap and fascia
-    _roof_tiles(cv, roof_x0 + 3, roof_x1 - 3, ridge + 3, eave + 1, 21)
-    cv.rect(roof_x0, eave + 1, roof_x1 - roof_x0 + 1, 2, WOOD[1])  # fascia board
-    cv.hline(roof_x0, roof_x1, eave + 1, WOOD[2])
-    for bx, light in ((roof_x0, True), (roof_x1 - 2, False)):
-        cv.rect(bx, ridge, 3, eave - ridge + 3, WOOD[1])
-        cv.vline(bx + (0 if light else 2), ridge, eave + 2, WOOD[2] if light else WOOD[0])
-    cv.rect(roof_x0 + 1, ridge - 3, roof_x1 - roof_x0 - 1, 3, ROOF[0])  # back slope sliver
-    for x in range(roof_x0 + 1, roof_x1, 5):  # rounded ridge caps
-        cv.rect(x, ridge - 1, 5, 4, ROOF[2])
-        cv.hline(x + 1, x + 3, ridge - 1, ROOF[3])
-        cv.vline(x + 4, ridge - 1, ridge + 2, ROOF[0])
-        cv.hline(x, x + 4, ridge + 3, ROOF[0])
-
-    # dormer above the door
-    dx0, dx1, dtop, dbase = cx - 13, cx + 12, 36, 62
-    cv.rect(dx0 + 3, dbase - 14, dx1 - dx0 - 5, 15, PLASTER[1])
-    _beam_v(cv, dx0 + 3, dbase - 14, dbase, 2)
-    _beam_v(cv, dx1 - 3, dbase - 14, dbase, 2)
-    _beam_h(cv, dx0 + 3, dx1 - 2, dbase, 2)
-    cv.rect(cx - 5, dbase - 10, 10, 9, TIMBER[0])
-    cv.rect(cx - 4, dbase - 9, 8, 7, GLASS[1])
-    cv.rect(cx - 4, dbase - 9, 8, 2, GLASS[0])
-    cv.set(cx - 2, dbase - 4, GLASS[3])
-    cv.set(cx - 1, dbase - 5, GLASS[3])
-    cv.vline(cx, dbase - 9, dbase - 3, TIMBER[1])
-    for y in range(dtop, dbase - 13):  # little gable roof facing us
-        half = (y - dtop) * (dx1 - dx0) / 2 / (dbase - 14 - dtop)
-        for x in range(int(cx - half), int(cx + half) + 1):
-            edge = abs(x - cx) > half - 4
-            cv.set(x, y, ROOF[2] if edge else PLASTER[0])
-            if edge and (x + y) % 3 == 0:
-                cv.set(x, y, ROOF[1])
-    for y in range(dtop, dbase - 13):
-        half = (y - dtop) * (dx1 - dx0) / 2 / (dbase - 14 - dtop)
-        cv.set(int(cx - half), y, ROOF[3])
-        cv.set(int(cx + half), y, ROOF[0])
-    cv.vline(cx, dtop + 2, dbase - 15, TIMBER[1])
-    for x in range(dx0 + 2, dx1):  # shadow of the dormer on the roof below
-        if cv.get(x, dbase + 2)[3]:
-            cv.set(x, dbase + 2, ROOF[0])
-            cv.set(x, dbase + 3, ROOF[1])
-
-    # chimney
-    chx0, chx1, chtop, chbot = 90, 101, 4, 34
-    _stone_band(cv, chx0, chx1, chtop + 4, chbot, 8)
-    cv.rect(chx0 - 1, chtop, chx1 - chx0 + 3, 4, STONE[3])
-    cv.hline(chx0 - 1, chx1 + 1, chtop, STONE[4])
-    cv.rect(chx0 + 2, chtop + 1, chx1 - chx0 - 3, 2, STONE_OUTLINE)
-    for x in range(chx0 + 1, chx1 + 4):  # shadow on the roof
-        for y in range(chbot + 1, chbot + 3):
-            if cv.get(x, y) in ROOF:
-                cv.set(x, y, ROOF[0])
-
-    cv.outline(ROOF_OUTLINE)
-    return cv, (cx, base)
-
-
-# --- garden props -----------------------------------------------------------
-
 def _wood_shade(x, x0, x1):
     t = (x - x0) / max(1, x1 - x0)
     return WOOD[4] if t < 0.2 else WOOD[3] if t < 0.65 else WOOD[2]
@@ -256,20 +123,6 @@ def fence_h():
     cv.outline(WOOD_OUTLINE)
     cv.hline(0, 15, 21, (16, 28, 30, 80))
     return cv, (8, 20)
-
-
-def fence_v():
-    """Fence running north-south: a post with the rail going away from the camera."""
-    cv = Canvas(8, 34)
-    cv.rect(3, 2, 2, 22, WOOD[2])
-    cv.vline(3, 2, 23, WOOD[3])
-    for y in range(18, 32):
-        for x in range(2, 6):
-            cv.set(x, y, _wood_shade(x, 2, 5))
-    cv.hline(2, 5, 18, WOOD[4])
-    cv.hline(2, 5, 31, WOOD[1])
-    cv.outline(WOOD_OUTLINE)
-    return cv, (4, 32)
 
 
 def barrel():

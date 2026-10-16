@@ -2,8 +2,7 @@
 import math
 
 import ground
-from palette import (c, ROOF, ROOF_OUTLINE, TIMBER, PLASTER, STONE_OUTLINE, GRASS, LEAF,
-                     PINE, STONE)
+from palette import (c, ROOF, ROOF_OUTLINE, TIMBER, GRASS, LEAF, PINE)
 from pixel import Canvas, rng
 from structures import _beam_h, _beam_v, _door, _plaster, _stone_band, _window
 
