@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/props/signpost.png" id="1_kwls8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8q0mo"]
+size = Vector2(4, 4)
+
+[node name="Signpost" type="StaticBody2D" unique_id=978117499]
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1092641815]
+texture = ExtResource("1_kwls8")
+centered = false
+offset = Vector2(-10, -25)
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=541843734]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_8q0mo")

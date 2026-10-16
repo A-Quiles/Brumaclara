@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/nature/rock_small.png" id="1_vwmer"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdv7e"]
+size = Vector2(10, 4)
+
+[node name="RockSmall" type="StaticBody2D" unique_id=881593782]
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2022575062]
+texture = ExtResource("1_vwmer")
+centered = false
+offset = Vector2(-7, -9)
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=2049443990]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_vdv7e")

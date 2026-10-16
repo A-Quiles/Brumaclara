@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/nature/bush.png" id="1_u465e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ummb"]
+size = Vector2(20, 8)
+
+[node name="Bush" type="StaticBody2D" unique_id=1358372752]
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=474900256]
+texture = ExtResource("1_u465e")
+centered = false
+offset = Vector2(-15, -20)
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1761229823]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_5ummb")

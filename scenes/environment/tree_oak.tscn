@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/nature/tree_oak.png" id="1_g35ao"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqhdr"]
+size = Vector2(10, 6)
+
+[node name="TreeOak" type="StaticBody2D" unique_id=1914412132]
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1115790266]
+texture = ExtResource("1_g35ao")
+centered = false
+offset = Vector2(-26, -55)
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1232914113]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_vqhdr")

@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/props/garden_bed.png" id="1_vpk2t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rvuw"]
+size = Vector2(48, 18)
+
+[node name="GardenBed" type="StaticBody2D" unique_id=1403140981]
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=957358710]
+texture = ExtResource("1_vpk2t")
+centered = false
+offset = Vector2(-26, -27)
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1820353547]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_5rvuw")

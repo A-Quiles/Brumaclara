@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/player.gd" id="1_yewv4"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/hero/hero_frames.tres" id="2_76oj4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyp2m"]
+size = Vector2(10, 6)
+
+[node name="Player" type="CharacterBody2D" unique_id=686297332]
+motion_mode = 1
+script = ExtResource("1_yewv4")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=614485597]
+sprite_frames = ExtResource("2_76oj4")
+animation = &"idle_down"
+offset = Vector2(0, -14)
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1001210134]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_dyp2m")

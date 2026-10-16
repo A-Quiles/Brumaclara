@@ -1,0 +1,10 @@
+# Godot
+.godot/
+/android/
+
+# Builds
+/build/
+*.tmp
+
+# Python
+__pycache__/

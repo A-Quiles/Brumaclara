@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/nature/tree_pine.png" id="1_2pbdj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wapol"]
+size = Vector2(8, 6)
+
+[node name="TreePine" type="StaticBody2D" unique_id=753131466]
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=716448241]
+texture = ExtResource("1_2pbdj")
+centered = false
+offset = Vector2(-19, -62)
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=39444190]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_wapol")
