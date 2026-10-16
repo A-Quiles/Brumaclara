@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://destmaxjoebpw"
-path="res://.godot/imported/cottage.png-6eedca1bef8df7a45309da321febc1bf.ctex"
+uid="uid://qwq6qjl0xog"
+path="res://.godot/imported/grass.png-b51d487e15b3106c822198da19d1b11a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/buildings/cottage.png"
-dest_files=["res://.godot/imported/cottage.png-6eedca1bef8df7a45309da321febc1bf.ctex"]
+source_file="res://assets/environment/textures/grass.png"
+dest_files=["res://.godot/imported/grass.png-b51d487e15b3106c822198da19d1b11a.ctex"]
 
 [params]
 

@@ -1,17 +1,32 @@
 [gd_scene format=3]
 
-[ext_resource type="Texture2D" path="res://assets/environment/nature/rock_large.png" id="1_xrpmk"]
+[ext_resource type="Texture2D" path="res://assets/environment/nature/rock_large.png" id="1_vbulo"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="2_ou8e0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbulo"]
-size = Vector2(30, 12)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kx8j5"]
+height = 1.0
+radius = 0.95
 
-[node name="RockLarge" type="StaticBody2D" unique_id=863128260]
+[node name="RockLarge" type="StaticBody3D" unique_id=88989467]
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=951841860]
-texture = ExtResource("1_xrpmk")
+[node name="Sprite" type="Sprite3D" parent="." unique_id=292820293]
+cast_shadow = 0
 centered = false
-offset = Vector2(-18, -24)
+offset = Vector2(-18, -4)
+pixel_size = 0.0625
+billboard = 1
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_vbulo")
 
-[node name="Collision" type="CollisionShape2D" parent="." unique_id=1857205516]
-position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_vbulo")
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1560195733]
+transform = Transform3D(1.8, 0, 0, 0, 1, 0, 0, 0, 1.8, 0.1, 0.02, 0.05)
+cast_shadow = 0
+pixel_size = 0.0625
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_ou8e0")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=126106358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_kx8j5")

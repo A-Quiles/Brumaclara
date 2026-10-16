@@ -1,17 +1,31 @@
 [gd_scene format=3]
 
-[ext_resource type="Texture2D" path="res://assets/environment/props/crate.png" id="1_iob3o"]
+[ext_resource type="Texture2D" path="res://assets/environment/props/crate.png" id="1_ffjbs"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="2_uyp0v"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffjbs"]
-size = Vector2(16, 8)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mvfdn"]
+height = 1.0
 
-[node name="Crate" type="StaticBody2D" unique_id=2138972841]
+[node name="Crate" type="StaticBody3D" unique_id=1385235234]
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=924346096]
-texture = ExtResource("1_iob3o")
+[node name="Sprite" type="Sprite3D" parent="." unique_id=208909466]
+cast_shadow = 0
 centered = false
-offset = Vector2(-10, -18)
+offset = Vector2(-10, -4)
+pixel_size = 0.0625
+billboard = 1
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_ffjbs")
 
-[node name="Collision" type="CollisionShape2D" parent="." unique_id=702916017]
-position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_ffjbs")
+[node name="Shadow" type="Sprite3D" parent="." unique_id=108371753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.02, 0.05)
+cast_shadow = 0
+pixel_size = 0.0625
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_uyp0v")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1655938856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_mvfdn")

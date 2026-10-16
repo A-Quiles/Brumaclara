@@ -10,14 +10,22 @@ import ground
 import hero
 import nature
 import structures
+import textures3d
 
 ASSETS = Path(__file__).resolve().parents[2] / "assets"
 
 SPRITES = {
     "characters/hero/hero_walk.png": hero.hero_sheet,
-    "environment/ground_tiles.png": ground.ground_atlas,
     "environment/stone_wall.png": ground.stone_wall,
-    "environment/buildings/cottage.png": structures.cottage,
+    "environment/textures/house_front.png": textures3d.house_front,
+    "environment/textures/house_side.png": textures3d.house_side,
+    "environment/textures/house_gable.png": textures3d.house_gable,
+    "environment/textures/roof_tiles.png": textures3d.roof_tiles,
+    "environment/textures/grass.png": textures3d.grass,
+    "environment/textures/paving.png": textures3d.paving,
+    "environment/textures/stone_blocks.png": textures3d.stone_blocks,
+    "environment/textures/blob_shadow.png": textures3d.blob_shadow,
+    "environment/textures/sky_backdrop.png": textures3d.sky_backdrop,
     "environment/nature/tree_oak.png": nature.tree_oak,
     "environment/nature/tree_pine.png": nature.tree_pine,
     "environment/nature/bush.png": nature.bush,
@@ -26,7 +34,6 @@ SPRITES = {
     "environment/nature/rock_medium.png": nature.rock_medium,
     "environment/nature/rock_large.png": nature.rock_large,
     "environment/props/fence_h.png": structures.fence_h,
-    "environment/props/fence_v.png": structures.fence_v,
     "environment/props/barrel.png": structures.barrel,
     "environment/props/crate.png": structures.crate,
     "environment/props/signpost.png": structures.signpost,
@@ -40,6 +47,9 @@ def main():
     for rel_path, build in SPRITES.items():
         result = build()
         canvas, origin = result if isinstance(result, tuple) else (result, None)
+        if rel_path.split("/")[1] in ("hero", "nature", "props"):
+            # standing sprites get a real blob shadow in 3D, so drop the painted one
+            canvas.img.putalpha(canvas.img.getchannel("A").point(lambda a: 255 if a == 255 else 0))
         out = ASSETS / rel_path
         out.parent.mkdir(parents=True, exist_ok=True)
         canvas.save(out)

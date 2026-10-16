@@ -1,17 +1,32 @@
 [gd_scene format=3]
 
-[ext_resource type="Texture2D" path="res://assets/environment/nature/tree_pine.png" id="1_2pbdj"]
+[ext_resource type="Texture2D" path="res://assets/environment/nature/tree_pine.png" id="1_wapol"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="2_d4o4a"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wapol"]
-size = Vector2(8, 6)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1kqh6"]
+height = 1.0
+radius = 0.3
 
-[node name="TreePine" type="StaticBody2D" unique_id=753131466]
+[node name="TreePine" type="StaticBody3D" unique_id=1961373910]
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=716448241]
-texture = ExtResource("1_2pbdj")
+[node name="Sprite" type="Sprite3D" parent="." unique_id=808599880]
+cast_shadow = 0
 centered = false
-offset = Vector2(-19, -62)
+offset = Vector2(-19, -4)
+pixel_size = 0.0625
+billboard = 1
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_wapol")
 
-[node name="Collision" type="CollisionShape2D" parent="." unique_id=39444190]
-position = Vector2(0, -3)
-shape = SubResource("RectangleShape2D_wapol")
+[node name="Shadow" type="Sprite3D" parent="." unique_id=269267242]
+transform = Transform3D(1.9, 0, 0, 0, 1, 0, 0, 0, 1.9, 0.1, 0.02, 0.05)
+cast_shadow = 0
+pixel_size = 0.0625
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_d4o4a")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=924537706]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_1kqh6")

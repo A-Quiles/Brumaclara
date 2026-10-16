@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm8hw2flcs77p"
-path="res://.godot/imported/fence_v.png-f179e55b788658dcae4e943bf25afd31.ctex"
+uid="uid://dpmmo40p0rwbb"
+path="res://.godot/imported/roof_tiles.png-9f4be5b9d828c310b150e248630ba10e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/props/fence_v.png"
-dest_files=["res://.godot/imported/fence_v.png-f179e55b788658dcae4e943bf25afd31.ctex"]
+source_file="res://assets/environment/textures/roof_tiles.png"
+dest_files=["res://.godot/imported/roof_tiles.png-9f4be5b9d828c310b150e248630ba10e.ctex"]
 
 [params]
 
