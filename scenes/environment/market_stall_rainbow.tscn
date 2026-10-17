@@ -1,0 +1,66 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/wood.tres" id="1_2xyhc"]
+[ext_resource type="BoxMesh" path="res://materials/blocks/unit_box.tres" id="2_l07fe"]
+[ext_resource type="Material" path="res://materials/awning_rainbow.tres" id="3_y6yx5"]
+[ext_resource type="Texture2D" path="res://assets/environment/props/produce.png" id="4_o5uch"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_dbc3o"]
+size = Vector2(2.5, 2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_x1lfu"]
+size = Vector2(2.5, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2um7t"]
+size = Vector3(2.2, 1, 1.4)
+
+[node name="MarketStallRainbow" type="StaticBody3D" unique_id=522416985]
+
+[node name="Post" type="MeshInstance3D" parent="." unique_id=389561702]
+transform = Transform3D(0.12, 0, 0, 0, 2.1, 0, 0, 0, 0.12, -1.02, 1.05, -0.62)
+material_override = ExtResource("1_2xyhc")
+mesh = ExtResource("2_l07fe")
+
+[node name="@MeshInstance3D@2" type="MeshInstance3D" parent="." unique_id=951576247]
+transform = Transform3D(0.12, 0, 0, 0, 2.1, 0, 0, 0, 0.12, 1.02, 1.05, -0.62)
+material_override = ExtResource("1_2xyhc")
+mesh = ExtResource("2_l07fe")
+
+[node name="@MeshInstance3D@3" type="MeshInstance3D" parent="." unique_id=1430413985]
+transform = Transform3D(0.12, 0, 0, 0, 1.75, 0, 0, 0, 0.12, -1.02, 0.875, 0.62)
+material_override = ExtResource("1_2xyhc")
+mesh = ExtResource("2_l07fe")
+
+[node name="@MeshInstance3D@4" type="MeshInstance3D" parent="." unique_id=1617336430]
+transform = Transform3D(0.12, 0, 0, 0, 1.75, 0, 0, 0, 0.12, 1.02, 0.875, 0.62)
+material_override = ExtResource("1_2xyhc")
+mesh = ExtResource("2_l07fe")
+
+[node name="Counter" type="MeshInstance3D" parent="." unique_id=1582293661]
+transform = Transform3D(2.1, 0, 0, 0, 0.8, 0, 0, 0, 0.5, 0, 0.4, 0.4)
+material_override = ExtResource("1_2xyhc")
+mesh = ExtResource("2_l07fe")
+
+[node name="Awning" type="MeshInstance3D" parent="." unique_id=845636108]
+transform = Transform3D(1, 0, 0, 0, 0.24253559, 0.9701425, 0, -0.9701425, 0.24253559, 0, 1.95, 0.15)
+material_override = ExtResource("3_y6yx5")
+mesh = SubResource("QuadMesh_dbc3o")
+
+[node name="Valance" type="MeshInstance3D" parent="." unique_id=1243906983]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 1.15)
+material_override = ExtResource("3_y6yx5")
+mesh = SubResource("QuadMesh_x1lfu")
+
+[node name="Produce" type="Sprite3D" parent="." unique_id=2079551641]
+transform = Transform3D(1, 0, 0, 0, 1.25, 0, 0, 0, 1, -0.3, 0.8, 0.4)
+cast_shadow = 0
+centered = false
+offset = Vector2(-8, 0)
+pixel_size = 0.07
+billboard = 2
+texture_filter = 0
+texture = ExtResource("4_o5uch")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1338381075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_2um7t")

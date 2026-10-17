@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://shaders/scrolling_water.gdshader" id="1_4lgl7"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/water.png" id="2_6tan1"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4lgl7")
+shader_parameter/water_texture = ExtResource("2_6tan1")
+shader_parameter/flow = Vector2(0.03, 0.06)
+shader_parameter/tiling = Vector2(2, 2)

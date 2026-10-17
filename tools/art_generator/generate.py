@@ -1,61 +1,80 @@
-"""Regenerates every procedural sprite into res://assets.
+"""Regenerates every procedural texture and sprite into res://assets.
 
 Usage: python3 tools/art_generator/generate.py
-Prints each sprite's origin (bottom-centre of its base) so scenes can align them.
 """
-import json
 from pathlib import Path
 
-import ground
+import backdrop
 import hero
-import nature
-import structures
-import textures3d
+import hud
+import village_houses
+import village_sprites as vs
+import village_textures as vt
 
 ASSETS = Path(__file__).resolve().parents[2] / "assets"
 
-SPRITES = {
+ART = {
     "characters/hero/hero_walk.png": hero.hero_sheet,
-    "environment/stone_wall.png": ground.stone_wall,
-    "environment/textures/house_front.png": textures3d.house_front,
-    "environment/textures/house_side.png": textures3d.house_side,
-    "environment/textures/house_gable.png": textures3d.house_gable,
-    "environment/textures/roof_tiles.png": textures3d.roof_tiles,
-    "environment/textures/grass.png": textures3d.grass,
-    "environment/textures/paving.png": textures3d.paving,
-    "environment/textures/stone_blocks.png": textures3d.stone_blocks,
-    "environment/textures/blob_shadow.png": textures3d.blob_shadow,
-    "environment/textures/sky_backdrop.png": textures3d.sky_backdrop,
-    "environment/nature/tree_oak.png": nature.tree_oak,
-    "environment/nature/tree_pine.png": nature.tree_pine,
-    "environment/nature/bush.png": nature.bush,
-    "environment/nature/bush_flowers.png": lambda: nature.bush(flowers=True, seed=6),
-    "environment/nature/rock_small.png": nature.rock_small,
-    "environment/nature/rock_medium.png": nature.rock_medium,
-    "environment/nature/rock_large.png": nature.rock_large,
-    "environment/props/fence_h.png": structures.fence_h,
-    "environment/props/barrel.png": structures.barrel,
-    "environment/props/crate.png": structures.crate,
-    "environment/props/signpost.png": structures.signpost,
-    "environment/props/garden_bed.png": structures.garden_bed,
-    "environment/props/pond.png": structures.pond,
+    "environment/textures/paving.png": vt.paving,
+    "environment/textures/path.png": vt.path,
+    "environment/textures/grass.png": vt.grass,
+    "environment/textures/grass_dark.png": lambda: vt.grass(seed=7, dark=True),
+    "environment/textures/stone_wall.png": vt.wall_blocks,
+    "environment/textures/stone_top.png": vt.wall_top,
+    "environment/textures/wood_planks.png": vt.wood_planks,
+    "environment/textures/water.png": vt.water,
+    "environment/textures/fountain_stone.png": vt.fountain_stone,
+    "environment/textures/fountain_top.png": vt.fountain_top,
+    "environment/textures/awning_rainbow.png": lambda: vt.awning("rainbow"),
+    "environment/textures/awning_green.png": lambda: vt.awning("green"),
+    "environment/textures/awning_purple.png": lambda: vt.awning("purple"),
+    "environment/textures/dirt.png": vt.dirt_patch,
+    "environment/textures/plaza_border.png": lambda: vt.plaza_border(7.2, 6.4),
+    "environment/textures/blob_shadow.png": vt.blob_shadow,
+    "environment/textures/backdrop.png": backdrop.backdrop,
+    "environment/vegetation/pine_large.png": lambda: vs.pine(38, 64, 5, 1),
+    "environment/vegetation/pine_medium.png": lambda: vs.pine(32, 48, 4, 2),
+    "environment/vegetation/pine_small.png": lambda: vs.pine(16, 26, 3, 3),
+    "environment/vegetation/bush.png": vs.bush,
+    "environment/props/barrel.png": vs.barrel,
+    "environment/props/crate.png": vs.crate,
+    "environment/props/crate_stack.png": lambda: vs.crate(24, 22, stacked=True),
+    "environment/props/barrel_blue.png": vs.barrel_blue,
+    "environment/props/basket.png": vs.basket,
+    "environment/props/signpost.png": vs.signpost,
+    "environment/props/bollard.png": vs.bollard,
+    "environment/props/produce.png": vs.produce,
+    "environment/props/fountain_spray.png": vs.fountain_spray_sheet,
+    "ui/hp_panel.png": hud.hp_panel,
+    "ui/hp_fill.png": lambda: hud.bar_fill(hud.HP),
+    "ui/mp_fill.png": lambda: hud.bar_fill(hud.MP),
+    "ui/minimap_frame.png": hud.minimap_frame,
+    "ui/key_y.png": lambda: hud.key_cap("Y"),
+    "ui/key_x.png": lambda: hud.key_cap("X"),
+    "ui/prompt_arrow.png": hud.prompt_arrow,
+    "ui/player_marker.png": hud.player_marker,
 }
+for _kind in vs.VILLAGERS:
+    ART[f"characters/villagers/{_kind}.png"] = lambda kind=_kind: vs.villager_sheet(kind)
+
+
+def save(rel_path, canvas):
+    out = ASSETS / rel_path
+    out.parent.mkdir(parents=True, exist_ok=True)
+    canvas.save(out)
 
 
 def main():
-    origins = {}
-    for rel_path, build in SPRITES.items():
-        result = build()
-        canvas, origin = result if isinstance(result, tuple) else (result, None)
-        if rel_path.split("/")[1] in ("hero", "nature", "props"):
-            # standing sprites get a real blob shadow in 3D, so drop the painted one
+    for rel_path, build in ART.items():
+        canvas = build()
+        if rel_path.startswith("characters/hero"):
+            # the hero gets a real blob shadow in 3D, so drop the painted one
             canvas.img.putalpha(canvas.img.getchannel("A").point(lambda a: 255 if a == 255 else 0))
-        out = ASSETS / rel_path
-        out.parent.mkdir(parents=True, exist_ok=True)
-        canvas.save(out)
-        if origin:
-            origins[rel_path] = {"origin": origin, "size": [canvas.w, canvas.h]}
-    print(json.dumps(origins, indent=1))
+        save(rel_path, canvas)
+    for name, spec in village_houses.HOUSES.items():
+        for part, canvas in village_houses.house_textures(name, spec).items():
+            save(f"environment/houses/{name}/{part}.png", canvas)
+    print("ok")
 
 
 if __name__ == "__main__":

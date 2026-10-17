@@ -1,0 +1,131 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/blocks/fountain.tres" id="1_vpg6x"]
+[ext_resource type="BoxMesh" path="res://materials/blocks/unit_box.tres" id="2_4l3l7"]
+[ext_resource type="Material" path="res://materials/water.tres" id="3_sgqq1"]
+[ext_resource type="Texture2D" path="res://assets/environment/props/fountain_spray.png" id="4_6vmjc"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_y2lb3"]
+top_radius = 1.7318275
+bottom_radius = 1.7318275
+height = 0.02
+radial_segments = 8
+rings = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j321q"]
+atlas = ExtResource("4_6vmjc")
+region = Rect2(0, 0, 30, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvpd7"]
+atlas = ExtResource("4_6vmjc")
+region = Rect2(30, 0, 30, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cibhy"]
+atlas = ExtResource("4_6vmjc")
+region = Rect2(60, 0, 30, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mgtfm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j321q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvpd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cibhy")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qqj66"]
+height = 1.0
+radius = 1.78
+
+[node name="Fountain" type="StaticBody3D" unique_id=642225952]
+
+[node name="Rim0" type="Node3D" parent="." unique_id=261487117]
+
+[node name="Stone" type="MeshInstance3D" parent="Rim0" unique_id=1919703065]
+transform = Transform3D(1.4746003, 0, 0, 0, 0.6, 0, 0, 0, 0.18, 0, 0.3, 1.69)
+material_override = ExtResource("1_vpg6x")
+mesh = ExtResource("2_4l3l7")
+
+[node name="Rim1" type="Node3D" parent="." unique_id=1065173670]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+
+[node name="Stone" type="MeshInstance3D" parent="Rim1" unique_id=1815249857]
+transform = Transform3D(1.4746003, 0, 0, 0, 0.6, 0, 0, 0, 0.18, 0, 0.3, 1.69)
+material_override = ExtResource("1_vpg6x")
+mesh = ExtResource("2_4l3l7")
+
+[node name="Rim2" type="Node3D" parent="." unique_id=1602050428]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Stone" type="MeshInstance3D" parent="Rim2" unique_id=1127875925]
+transform = Transform3D(1.4746003, 0, 0, 0, 0.6, 0, 0, 0, 0.18, 0, 0.3, 1.69)
+material_override = ExtResource("1_vpg6x")
+mesh = ExtResource("2_4l3l7")
+
+[node name="Rim3" type="Node3D" parent="." unique_id=856226983]
+transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, 0, 0, 0)
+
+[node name="Stone" type="MeshInstance3D" parent="Rim3" unique_id=978981733]
+transform = Transform3D(1.4746003, 0, 0, 0, 0.6, 0, 0, 0, 0.18, 0, 0.3, 1.69)
+material_override = ExtResource("1_vpg6x")
+mesh = ExtResource("2_4l3l7")
+
+[node name="Rim4" type="Node3D" parent="." unique_id=1055328703]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Stone" type="MeshInstance3D" parent="Rim4" unique_id=2139358349]
+transform = Transform3D(1.4746003, 0, 0, 0, 0.6, 0, 0, 0, 0.18, 0, 0.3, 1.69)
+material_override = ExtResource("1_vpg6x")
+mesh = ExtResource("2_4l3l7")
+
+[node name="Rim5" type="Node3D" parent="." unique_id=1371174849]
+transform = Transform3D(-0.7071068, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071068, 0, 0, 0)
+
+[node name="Stone" type="MeshInstance3D" parent="Rim5" unique_id=1743679535]
+transform = Transform3D(1.4746003, 0, 0, 0, 0.6, 0, 0, 0, 0.18, 0, 0.3, 1.69)
+material_override = ExtResource("1_vpg6x")
+mesh = ExtResource("2_4l3l7")
+
+[node name="Rim6" type="Node3D" parent="." unique_id=636396554]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 0)
+
+[node name="Stone" type="MeshInstance3D" parent="Rim6" unique_id=1511624098]
+transform = Transform3D(1.4746003, 0, 0, 0, 0.6, 0, 0, 0, 0.18, 0, 0.3, 1.69)
+material_override = ExtResource("1_vpg6x")
+mesh = ExtResource("2_4l3l7")
+
+[node name="Rim7" type="Node3D" parent="." unique_id=2004610521]
+transform = Transform3D(0.70710665, 0, -0.7071069, 0, 1, 0, 0.7071069, 0, 0.70710665, 0, 0, 0)
+
+[node name="Stone" type="MeshInstance3D" parent="Rim7" unique_id=1214437343]
+transform = Transform3D(1.4746003, 0, 0, 0, 0.6, 0, 0, 0, 0.18, 0, 0.3, 1.69)
+material_override = ExtResource("1_vpg6x")
+mesh = ExtResource("2_4l3l7")
+
+[node name="Water" type="MeshInstance3D" parent="." unique_id=276861777]
+transform = Transform3D(0.9238795, 0, 0.38268346, 0, 1, 0, -0.38268346, 0, 0.9238795, 0, 0.5, 0)
+material_override = ExtResource("3_sgqq1")
+mesh = SubResource("CylinderMesh_y2lb3")
+
+[node name="Spray" type="AnimatedSprite3D" parent="." unique_id=1691382351]
+transform = Transform3D(1, 0, 0, 0, 1.08, 0, 0, 0, 1, 0, 0.335, 0.4)
+cast_shadow = 0
+centered = false
+offset = Vector2(-15, 0)
+pixel_size = 0.0722
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_mgtfm")
+autoplay = "default"
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1870778090]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_qqj66")

@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/vegetation/bush.png" id="1_yosmv"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="2_g6oyg"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sjdfd"]
+height = 1.0
+radius = 0.55
+
+[node name="Bush" type="StaticBody3D" unique_id=264641137]
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=814582853]
+transform = Transform3D(1, 0, 0, 0, 1.25, 0, 0, 0, 1, 0, 0, 0)
+cast_shadow = 0
+centered = false
+offset = Vector2(-12, 0)
+pixel_size = 0.055
+billboard = 2
+texture_filter = 0
+texture = ExtResource("1_yosmv")
+
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1080845166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, 0.02, 0.05)
+cast_shadow = 0
+pixel_size = 0.08125
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_g6oyg")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1467598288]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_sjdfd")

@@ -1,14 +1,13 @@
 extends SceneTree
-## Dev tool: renders the demo level from a few spots and saves PNGs in docs/screenshots.
+## Dev tool: renders the village from a few spots and saves PNGs in docs/screenshots.
 ## Also dumps walk-cycle frames to user://walk_frames (assembled into a GIF outside Godot).
 ## Needs a display; on a server use: xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd
 
-const LEVEL := "res://scenes/levels/demo_cottage.tscn"
+const LEVEL := "res://scenes/levels/village.tscn"
 const OUT := "res://docs/screenshots/"
-const SCALE := 3
+const SCALE := 4  # 480x270 -> 1920x1080
 
 var _player: CharacterBody3D
-var _camera: Camera3D
 
 
 func _initialize() -> void:
@@ -18,19 +17,20 @@ func _initialize() -> void:
 func _run() -> void:
 	var level: Node = load(LEVEL).instantiate()
 	root.add_child(level)
-	_player = level.get_node("World/Player")
-	_camera = _player.get_node("Camera")
-	var default_camera := _camera.position
-
-	await _shot("01_casa_y_jardin", Vector3(19, 0, 17.5), Vector2.DOWN)
-	_camera.position = default_camera * 0.6
-	await _shot("02_detalle_casa", Vector3(19, 0, 15.2), Vector2.UP)
-	await _shot("03_escaleras_y_terraza", Vector3(27.5, 0, 9), Vector2.RIGHT)
-	await _shot("04_huerto_y_estanque", Vector3(29, 0, 23.5), Vector2.UP)
-	_camera.position = default_camera * 1.6
-	await _shot("05_vista_completa", Vector3(22, 0, 16), Vector2.DOWN)
-	_camera.position = default_camera
-	await _walk_frames()
+	_player = level.get_node("Player")
+	var only := OS.get_cmdline_user_args()
+	var shots := [
+		["01_plaza", Vector3(0, 0, 0), Vector2.DOWN],
+		["02_fuente_y_puestos", Vector3(2.5, 0, -3.5), Vector2.UP],
+		["03_casas_del_fondo", Vector3(-1.5, 0, -8.0), Vector2.UP],
+		["04_escaleras_derecha", Vector3(8.4, 2.2, -10.6), Vector2.LEFT],
+		["05_jardin_y_torre", Vector3(-4.0, 0, 5.0), Vector2.DOWN],
+	]
+	for shot in shots:
+		if only.is_empty() or shot[0] in only:
+			await _shot(shot[0], shot[1], shot[2])
+	if only.is_empty() or "walk" in only:
+		await _walk_frames()
 	quit()
 
 
@@ -40,10 +40,10 @@ func _wait_frames(count: int) -> void:
 	await RenderingServer.frame_post_draw
 
 
-func _shot(file_name: String, player_pos: Vector3, facing: Vector2) -> void:
-	_player.position = player_pos
+func _shot(file_name: String, pos: Vector3, facing: Vector2) -> void:
+	_player.global_position = pos
 	_player.set("_facing", facing)
-	await _wait_frames(4)
+	await _wait_frames(8)
 	var image := root.get_texture().get_image()
 	image.resize(image.get_width() * SCALE, image.get_height() * SCALE, Image.INTERPOLATE_NEAREST)
 	image.save_png(OUT + file_name + ".png")
@@ -52,8 +52,8 @@ func _shot(file_name: String, player_pos: Vector3, facing: Vector2) -> void:
 
 func _walk_frames() -> void:
 	DirAccess.make_dir_recursive_absolute("user://walk_frames")
-	_player.position = Vector3(19, 0, 24)
-	var route := [["move_up", 70], ["move_left", 55], ["move_down", 30], ["move_right", 50], ["move_up", 20]]
+	_player.global_position = Vector3(0, 0, 3)
+	var route := [["move_up", 80], ["move_left", 40], ["move_right", 70], ["move_down", 30]]
 	var frame := 0
 	for step in route:
 		Input.action_press(step[0])

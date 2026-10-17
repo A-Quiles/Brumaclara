@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/vegetation/pine_large.png" id="1_u4n78"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="2_r6u85"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_utn7v"]
+height = 1.0
+radius = 0.4
+
+[node name="PineLarge" type="StaticBody3D" unique_id=133731062]
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1440027847]
+transform = Transform3D(1, 0, 0, 0, 1.25, 0, 0, 0, 1, 0, 0, 0)
+cast_shadow = 0
+centered = false
+offset = Vector2(-19, 0)
+pixel_size = 0.058
+billboard = 2
+texture_filter = 0
+texture = ExtResource("1_u4n78")
+
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1167014675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, 0.02, 0.05)
+cast_shadow = 0
+pixel_size = 0.125
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_r6u85")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=835950619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_utn7v")

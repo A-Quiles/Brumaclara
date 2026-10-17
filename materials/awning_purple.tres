@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/textures/awning_purple.png" id="1_cu2t5"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_cu2t5")
+metallic_specular = 0.0
+texture_filter = 0

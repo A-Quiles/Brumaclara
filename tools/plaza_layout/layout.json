@@ -1,0 +1,1185 @@
+[
+ {
+  "type": "block",
+  "name": "Plaza",
+  "pos": [
+   0.2999999999999998,
+   -3.0,
+   -8.45
+  ],
+  "size": [
+   16.6,
+   3.0,
+   8.3
+  ],
+  "yaw": 0.0,
+  "top": "paving",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "PlazaBackLeft",
+  "pos": [
+   -5.5,
+   -3.0,
+   -14.7
+  ],
+  "size": [
+   5.0,
+   3.0,
+   4.200000000000001
+  ],
+  "yaw": 0.0,
+  "top": "paving",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "PlazaBackRight",
+  "pos": [
+   4.975,
+   -3.0,
+   -16.8
+  ],
+  "size": [
+   3.95,
+   3.0,
+   8.4
+  ],
+  "yaw": 0.0,
+  "top": "paving",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "BackPath",
+  "pos": [
+   0.0,
+   -3.0,
+   -14.05
+  ],
+  "size": [
+   3.8,
+   3.0,
+   2.9000000000000004
+  ],
+  "yaw": 0.0,
+  "top": "paving",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "BackGrassLeft",
+  "pos": [
+   -2.45,
+   -3.0,
+   -14.05
+  ],
+  "size": [
+   1.1,
+   3.0,
+   2.9000000000000004
+  ],
+  "yaw": 0.0,
+  "top": "grass",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "BackGrassRight",
+  "pos": [
+   2.45,
+   -3.0,
+   -14.05
+  ],
+  "size": [
+   1.1,
+   3.0,
+   2.9000000000000004
+  ],
+  "yaw": 0.0,
+  "top": "grass",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "Path",
+  "pos": [
+   -0.04999999999999993,
+   -3.0,
+   4.85
+  ],
+  "size": [
+   4.0,
+   3.0,
+   18.3
+  ],
+  "yaw": 0.0,
+  "top": "path",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "PathGrassLeft",
+  "pos": [
+   -2.525,
+   -3.0,
+   4.85
+  ],
+  "size": [
+   0.9500000000000002,
+   3.0,
+   18.3
+  ],
+  "yaw": 0.0,
+  "top": "grass",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "PathGrassRight",
+  "pos": [
+   2.45,
+   -3.0,
+   4.85
+  ],
+  "size": [
+   1.0000000000000002,
+   3.0,
+   18.3
+  ],
+  "yaw": 0.0,
+  "top": "grass",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "GardenLeft",
+  "pos": [
+   -16.5,
+   -3.0,
+   4.85
+  ],
+  "size": [
+   27.0,
+   3.0,
+   18.3
+  ],
+  "yaw": 0.0,
+  "top": "grass_dark",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "GardenLeftBack",
+  "pos": [
+   -19.0,
+   -3.0,
+   -6.449999999999999
+  ],
+  "size": [
+   22.0,
+   3.0,
+   4.3
+  ],
+  "yaw": 0.0,
+  "top": "grass_dark",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "PlazaLeftStrip",
+  "pos": [
+   -5.5,
+   -3.0,
+   -6.449999999999999
+  ],
+  "size": [
+   5.0,
+   3.0,
+   4.3
+  ],
+  "yaw": 0.0,
+  "top": "paving",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "GardenSunken",
+  "pos": [
+   5.975,
+   -3.0,
+   4.85
+  ],
+  "size": [
+   6.05,
+   0.5,
+   18.3
+  ],
+  "yaw": 0.0,
+  "top": "grass",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "RightBase",
+  "pos": [
+   19.5,
+   -3.0,
+   4.85
+  ],
+  "size": [
+   21.0,
+   0.5,
+   18.3
+  ],
+  "yaw": 0.0,
+  "top": "grass",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "WalkwayLeft",
+  "pos": [
+   -18.9,
+   -3.0,
+   -14.8
+  ],
+  "size": [
+   22.2,
+   5.2,
+   12.4
+  ],
+  "yaw": 0.0,
+  "top": "paving",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "TerraceLeft",
+  "pos": [
+   -9.05,
+   -3.0,
+   -17.8
+  ],
+  "size": [
+   6.9,
+   6.8,
+   6.4
+  ],
+  "yaw": 0.0,
+  "top": "paving",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "TerraceLeftBack",
+  "pos": [
+   -4.3,
+   -3.0,
+   -18.9
+  ],
+  "size": [
+   2.5999999999999996,
+   6.8,
+   4.199999999999999
+  ],
+  "yaw": 0.0,
+  "top": "grass",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "WalkwayRight",
+  "pos": [
+   18.839879434216524,
+   -3.0,
+   -10.380433251676994
+  ],
+  "size": [
+   19.8065956143166,
+   5.2,
+   14.0
+  ],
+  "yaw": -41.738321541436825,
+  "top": "paving",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "TerraceRight",
+  "pos": [
+   13.475,
+   -3.0,
+   -17.0
+  ],
+  "size": [
+   13.05,
+   6.8,
+   8.0
+  ],
+  "yaw": 0.0,
+  "top": "paving",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "house",
+  "name": "HouseBlueRoof",
+  "pos": [
+   -4.8,
+   0.0,
+   -13.7
+  ],
+  "size": [
+   3.55,
+   3.99,
+   2.4
+  ],
+  "yaw": 0.0,
+  "roof": "blue",
+  "roof_h": 1.35,
+  "ridge_along_x": false,
+  "overhang": 0.3,
+  "facade": {
+   "style": "b1",
+   "infill": "brick"
+  },
+  "chimney": {
+   "pos": [
+    -1.1,
+    0.0,
+    0.6
+   ],
+   "size": [
+    0.6,
+    1.6,
+    0.6
+   ]
+  },
+  "dormers": []
+ },
+ {
+  "type": "house",
+  "name": "HouseOrangeRoof",
+  "pos": [
+   5.0,
+   0.0,
+   -15.0
+  ],
+  "size": [
+   3.9,
+   3.42,
+   2.6
+  ],
+  "yaw": 0.0,
+  "roof": "orange",
+  "roof_h": 1.64,
+  "ridge_along_x": false,
+  "overhang": 0.3,
+  "facade": {
+   "style": "b2",
+   "infill": "cream"
+  },
+  "chimney": {
+   "pos": [
+    1.25,
+    0.0,
+    0.0
+   ],
+   "size": [
+    0.55,
+    1.4,
+    0.55
+   ]
+  },
+  "dormers": []
+ },
+ {
+  "type": "house",
+  "name": "HouseRedRoof",
+  "pos": [
+   9.1,
+   3.8,
+   -14.7
+  ],
+  "size": [
+   4.2,
+   2.0,
+   3.0
+  ],
+  "yaw": 0.0,
+  "roof": "red",
+  "roof_h": 1.75,
+  "ridge_along_x": true,
+  "overhang": 0.3,
+  "facade": {
+   "style": "b9",
+   "infill": "brick"
+  },
+  "chimney": null,
+  "dormers": [
+   {
+    "x": -1.0
+   },
+   {
+    "x": 1.0
+   }
+  ]
+ },
+ {
+  "type": "house",
+  "name": "HouseLongLeft",
+  "pos": [
+   -15.5,
+   2.2,
+   -11.4
+  ],
+  "size": [
+   8.6,
+   2.0,
+   3.6
+  ],
+  "yaw": 0.0,
+  "roof": "orange",
+  "roof_h": 1.27,
+  "ridge_along_x": true,
+  "overhang": 0.3,
+  "facade": {
+   "style": "b4",
+   "infill": "brick"
+  },
+  "chimney": null,
+  "dormers": [
+   {
+    "x": -2.2
+   },
+   {
+    "x": 0.4
+   }
+  ]
+ },
+ {
+  "type": "house",
+  "name": "HouseTealLeft",
+  "pos": [
+   -14.5,
+   2.2,
+   -17.5
+  ],
+  "size": [
+   7.0,
+   2.6,
+   3.5
+  ],
+  "yaw": 0.0,
+  "roof": "teal",
+  "roof_h": 1.7,
+  "ridge_along_x": true,
+  "overhang": 0.3,
+  "facade": {
+   "style": "b5",
+   "infill": "cream"
+  },
+  "chimney": null,
+  "dormers": []
+ },
+ {
+  "type": "house",
+  "name": "HouseCreamBack",
+  "pos": [
+   -11.1,
+   3.8,
+   -16.2
+  ],
+  "size": [
+   3.3,
+   2.5,
+   3.0
+  ],
+  "yaw": 0.0,
+  "roof": "orange",
+  "roof_h": 1.6,
+  "ridge_along_x": false,
+  "overhang": 0.3,
+  "facade": {
+   "style": "b6",
+   "infill": "cream"
+  },
+  "chimney": null,
+  "dormers": []
+ },
+ {
+  "type": "house",
+  "name": "HouseBrickBack",
+  "pos": [
+   -7.75,
+   3.8,
+   -16.1
+  ],
+  "size": [
+   2.3,
+   2.3,
+   2.8
+  ],
+  "yaw": 0.0,
+  "roof": "blue",
+  "roof_h": 1.3,
+  "ridge_along_x": false,
+  "overhang": 0.3,
+  "facade": {
+   "style": "b7",
+   "infill": "brick"
+  },
+  "chimney": null,
+  "dormers": []
+ },
+ {
+  "type": "house",
+  "name": "HouseFarLeft",
+  "pos": [
+   -22.0,
+   2.2,
+   -14.5
+  ],
+  "size": [
+   5.0,
+   3.0,
+   4.0
+  ],
+  "yaw": 0.0,
+  "roof": "red",
+  "roof_h": 1.6,
+  "ridge_along_x": false,
+  "overhang": 0.3,
+  "facade": {
+   "style": "b3",
+   "infill": "cream"
+  },
+  "chimney": null,
+  "dormers": []
+ },
+ {
+  "type": "house",
+  "name": "HouseTealRight",
+  "pos": [
+   11.6,
+   2.2,
+   -10.3
+  ],
+  "size": [
+   2.6,
+   4.79,
+   2.6
+  ],
+  "yaw": -10.0,
+  "roof": "teal",
+  "roof_h": 1.8,
+  "ridge_along_x": false,
+  "overhang": 0.3,
+  "facade": {
+   "style": "b10",
+   "infill": "brick"
+  },
+  "chimney": null,
+  "dormers": []
+ },
+ {
+  "type": "house",
+  "name": "HouseStoneRight",
+  "pos": [
+   16.56,
+   2.2,
+   -7.47
+  ],
+  "size": [
+   7.0,
+   4.09,
+   5.0
+  ],
+  "yaw": -41.738321541436825,
+  "roof": "orange",
+  "roof_h": 2.4,
+  "ridge_along_x": false,
+  "overhang": 0.3,
+  "facade": {
+   "style": "b11",
+   "infill": "cream"
+  },
+  "chimney": null,
+  "dormers": []
+ },
+ {
+  "type": "house",
+  "name": "HouseBottomRight",
+  "pos": [
+   10.9,
+   -2.5,
+   -1.0
+  ],
+  "size": [
+   6.2,
+   2.5,
+   7.2
+  ],
+  "yaw": 0.0,
+  "roof": "orange",
+  "roof_h": 4.0,
+  "ridge_along_x": true,
+  "overhang": 0.4,
+  "facade": {
+   "style": "b12",
+   "infill": "cream"
+  },
+  "chimney": null,
+  "dormers": [
+   {
+    "x": 1.6,
+    "big": true
+   }
+  ]
+ },
+ {
+  "type": "house",
+  "name": "TowerLeft",
+  "pos": [
+   -9.31,
+   0.0,
+   1.9
+  ],
+  "size": [
+   6.0,
+   7.5,
+   4.7
+  ],
+  "yaw": -10.0,
+  "roof": "flat",
+  "roof_h": 0.0,
+  "ridge_along_x": false,
+  "overhang": 0.3,
+  "facade": {
+   "style": "tower",
+   "infill": "brick_big"
+  },
+  "chimney": null,
+  "dormers": []
+ },
+ {
+  "type": "house",
+  "name": "HouseCornerBlue",
+  "pos": [
+   -13.0,
+   0.0,
+   9.0
+  ],
+  "size": [
+   6.0,
+   3.0,
+   6.0
+  ],
+  "yaw": -30.0,
+  "roof": "blue",
+  "roof_h": 2.4,
+  "ridge_along_x": false,
+  "overhang": 0.3,
+  "facade": {
+   "style": "plain",
+   "infill": "brick"
+  },
+  "chimney": null,
+  "dormers": []
+ },
+ {
+  "type": "fountain",
+  "name": "Fountain",
+  "pos": [
+   0.03,
+   0.0,
+   -8.69
+  ]
+ },
+ {
+  "type": "plaza_border",
+  "name": "PlazaBorder",
+  "pos": [
+   -0.2,
+   0.0,
+   -8.3
+  ],
+  "size": [
+   7.2,
+   6.4
+  ]
+ },
+ {
+  "type": "stall",
+  "name": "StallRainbow",
+  "pos": [
+   4.4,
+   0.0,
+   -11.0
+  ],
+  "awning": "rainbow",
+  "width": 2.2,
+  "depth": 1.4
+ },
+ {
+  "type": "stall",
+  "name": "StallGreen",
+  "pos": [
+   6.3,
+   0.0,
+   -9.2
+  ],
+  "awning": "green",
+  "width": 2.0,
+  "depth": 1.4
+ },
+ {
+  "type": "kiosk",
+  "name": "Kiosk",
+  "pos": [
+   -6.55,
+   0.0,
+   -12.3
+  ],
+  "width": 1.7,
+  "depth": 1.3
+ },
+ {
+  "type": "stairs",
+  "name": "StairsRight",
+  "pos": [
+   7.75,
+   0.0,
+   -7.75
+  ],
+  "yaw": -41.738321541436825,
+  "width": 2.2,
+  "rise": 2.2,
+  "run": 3.0,
+  "steps": 8,
+  "side": "stone"
+ },
+ {
+  "type": "stairs",
+  "name": "StairsRightUpper",
+  "pos": [
+   8.6,
+   2.2,
+   -11.0
+  ],
+  "yaw": 0.0,
+  "width": 1.4,
+  "rise": 1.5999999999999996,
+  "run": 2.0,
+  "steps": 6,
+  "side": "stone"
+ },
+ {
+  "type": "stairs",
+  "name": "StairsLeftUpper",
+  "pos": [
+   -8.95,
+   2.2,
+   -12.6
+  ],
+  "yaw": 0.0,
+  "width": 2.0,
+  "rise": 1.5999999999999996,
+  "run": 2.0,
+  "steps": 6,
+  "side": "stone"
+ },
+ {
+  "type": "block",
+  "name": "ParapetPathLeft",
+  "pos": [
+   -3.225,
+   -3.0,
+   -1.15
+  ],
+  "size": [
+   0.4500000000000002,
+   3.75,
+   6.3
+  ],
+  "yaw": 0.0,
+  "top": "stone_top",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "ParapetPathRight",
+  "pos": [
+   3.175,
+   -3.0,
+   4.85
+  ],
+  "size": [
+   0.44999999999999973,
+   3.3,
+   18.3
+  ],
+  "yaw": 0.0,
+  "top": "stone_top",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "block",
+  "name": "ParapetPlazaRight",
+  "pos": [
+   6.0,
+   -3.0,
+   -4.525
+  ],
+  "size": [
+   5.199999999999999,
+   3.3,
+   0.4500000000000002
+  ],
+  "yaw": 0.0,
+  "top": "stone_top",
+  "side": "stone",
+  "edges": true
+ },
+ {
+  "type": "tree",
+  "name": "Pine",
+  "pos": [
+   -2.2,
+   0,
+   -14.7
+  ],
+  "kind": "pine_small"
+ },
+ {
+  "type": "tree",
+  "name": "Pine",
+  "pos": [
+   2.5,
+   0,
+   -14.5
+  ],
+  "kind": "pine_small"
+ },
+ {
+  "type": "tree",
+  "name": "Pine",
+  "pos": [
+   -4.35,
+   0,
+   -0.5
+  ],
+  "kind": "pine"
+ },
+ {
+  "type": "tree",
+  "name": "Pine",
+  "pos": [
+   4.9,
+   -2.5,
+   -1.9
+  ],
+  "kind": "pine"
+ },
+ {
+  "type": "tree",
+  "name": "Pine",
+  "pos": [
+   -15.9,
+   2.2,
+   -7.2
+  ],
+  "kind": "pine_mid"
+ },
+ {
+  "type": "tree",
+  "name": "Bush",
+  "pos": [
+   -4.0,
+   0,
+   4.4
+  ],
+  "kind": "bush"
+ },
+ {
+  "type": "prop",
+  "name": "Barrel",
+  "pos": [
+   5.1,
+   0,
+   -9.3
+  ],
+  "kind": "barrel"
+ },
+ {
+  "type": "prop",
+  "name": "Barrel",
+  "pos": [
+   6.35,
+   0,
+   -8.6
+  ],
+  "kind": "barrel"
+ },
+ {
+  "type": "prop",
+  "name": "Crate",
+  "pos": [
+   8.6,
+   0,
+   -7.3
+  ],
+  "kind": "crate"
+ },
+ {
+  "type": "prop",
+  "name": "BarrelBlue",
+  "pos": [
+   9.05,
+   0,
+   -6.6
+  ],
+  "kind": "barrel_blue"
+ },
+ {
+  "type": "prop",
+  "name": "Basket",
+  "pos": [
+   8.7,
+   0,
+   -6.4
+  ],
+  "kind": "basket"
+ },
+ {
+  "type": "prop",
+  "name": "Crate",
+  "pos": [
+   5.7,
+   -2.5,
+   -0.1
+  ],
+  "kind": "crate"
+ },
+ {
+  "type": "prop",
+  "name": "CrateStack",
+  "pos": [
+   15.2,
+   2.2,
+   -5.3
+  ],
+  "kind": "crate_stack"
+ },
+ {
+  "type": "prop",
+  "name": "Signpost",
+  "pos": [
+   -1.8,
+   0,
+   -12.6
+  ],
+  "kind": "signpost"
+ },
+ {
+  "type": "prop",
+  "name": "Bollard",
+  "pos": [
+   8.3,
+   0,
+   -10.6
+  ],
+  "kind": "bollard"
+ },
+ {
+  "type": "prop",
+  "name": "Dirt",
+  "pos": [
+   4.4,
+   -2.5,
+   0.4
+  ],
+  "kind": "dirt"
+ },
+ {
+  "type": "prop",
+  "name": "Dirt",
+  "pos": [
+   5.4,
+   -2.5,
+   2.0
+  ],
+  "kind": "dirt"
+ },
+ {
+  "type": "npc",
+  "name": "Boy",
+  "pos": [
+   -2.8,
+   0,
+   -10.5
+  ],
+  "kind": "boy"
+ },
+ {
+  "type": "npc",
+  "name": "Oldman",
+  "pos": [
+   -4.25,
+   0,
+   -8.0
+  ],
+  "kind": "oldman"
+ },
+ {
+  "type": "npc",
+  "name": "WomanPurple",
+  "pos": [
+   -5.75,
+   0,
+   -5.8
+  ],
+  "kind": "woman_purple"
+ },
+ {
+  "type": "npc",
+  "name": "WomanLilac",
+  "pos": [
+   2.85,
+   0,
+   -10.8
+  ],
+  "kind": "woman_lilac"
+ },
+ {
+  "type": "npc",
+  "name": "Merchant",
+  "pos": [
+   4.25,
+   0,
+   -10.1
+  ],
+  "kind": "merchant"
+ },
+ {
+  "type": "npc",
+  "name": "GirlOrange",
+  "pos": [
+   3.55,
+   0,
+   -4.8
+  ],
+  "kind": "girl_orange"
+ },
+ {
+  "type": "npc",
+  "name": "Knight",
+  "pos": [
+   6.6,
+   0,
+   -4.8
+  ],
+  "kind": "knight"
+ },
+ {
+  "type": "npc",
+  "name": "GirlBrown",
+  "pos": [
+   -10.25,
+   2.2,
+   -11.15
+  ],
+  "kind": "girl_brown"
+ },
+ {
+  "type": "npc",
+  "name": "Guard",
+  "pos": [
+   -9.2,
+   2.2,
+   -11.6
+  ],
+  "kind": "guard"
+ },
+ {
+  "type": "npc",
+  "name": "GirlRed",
+  "pos": [
+   8.8,
+   2.2,
+   -10.1
+  ],
+  "kind": "girl_red"
+ },
+ {
+  "type": "npc",
+  "name": "BoyBlue",
+  "pos": [
+   10.2,
+   2.2,
+   -9.4
+  ],
+  "kind": "boy_blue"
+ },
+ {
+  "type": "npc",
+  "name": "KidA",
+  "pos": [
+   -5.45,
+   0,
+   3.75
+  ],
+  "kind": "kid_a"
+ },
+ {
+  "type": "npc",
+  "name": "KidB",
+  "pos": [
+   -4.2,
+   0,
+   3.65
+  ],
+  "kind": "kid_b"
+ },
+ {
+  "type": "npc",
+  "name": "Vendor",
+  "pos": [
+   6.4,
+   0,
+   -9.8
+  ],
+  "kind": "vendor"
+ },
+ {
+  "type": "player",
+  "name": "Player",
+  "pos": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ }
+]

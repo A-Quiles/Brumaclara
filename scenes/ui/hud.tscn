@@ -1,0 +1,179 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_kicr4"]
+[ext_resource type="Texture2D" path="res://assets/ui/hp_panel.png" id="2_mj13f"]
+[ext_resource type="Texture2D" path="res://assets/ui/hp_fill.png" id="3_0h1do"]
+[ext_resource type="Texture2D" path="res://assets/ui/mp_fill.png" id="4_4d46k"]
+[ext_resource type="Texture2D" path="res://assets/ui/player_marker.png" id="5_erw67"]
+[ext_resource type="Texture2D" path="res://assets/ui/minimap_frame.png" id="6_gonto"]
+[ext_resource type="Texture2D" path="res://assets/ui/prompt_arrow.png" id="7_cwdlq"]
+[ext_resource type="FontFile" path="res://assets/fonts/pixelify_sans_medium.woff" id="8_o6xly"]
+[ext_resource type="Texture2D" path="res://assets/ui/key_y.png" id="9_we3sy"]
+[ext_resource type="Texture2D" path="res://assets/ui/key_x.png" id="10_65nxt"]
+
+[sub_resource type="Environment" id="Environment_el1dq"]
+background_mode = 1
+background_color = Color(0.3647059, 0.56078434, 0.29803923, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.7
+adjustment_enabled = true
+adjustment_saturation = 0.8
+
+[sub_resource type="LabelSettings" id="LabelSettings_gmc6u"]
+font = ExtResource("8_o6xly")
+font_size = 13
+font_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+shadow_color = Color(0, 0, 0, 0.8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1e6lo"]
+font = ExtResource("8_o6xly")
+font_size = 13
+font_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+shadow_color = Color(0, 0, 0, 0.8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4mi7y"]
+font = ExtResource("8_o6xly")
+font_size = 13
+font_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+shadow_color = Color(0, 0, 0, 0.8)
+
+[node name="HUD" type="CanvasLayer" unique_id=1235648239]
+script = ExtResource("1_kicr4")
+
+[node name="HealthPanel" type="TextureRect" parent="." unique_id=577464455]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 5.0
+offset_bottom = 5.0
+mouse_filter = 2
+texture = ExtResource("2_mj13f")
+
+[node name="HPBar" type="TextureProgressBar" parent="HealthPanel" unique_id=459226294]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 5.0
+offset_right = 23.0
+offset_bottom = 5.0
+value = 100.0
+texture_progress = ExtResource("3_0h1do")
+
+[node name="MPBar" type="TextureProgressBar" parent="HealthPanel" unique_id=2099739232]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 15.0
+offset_right = 23.0
+offset_bottom = 15.0
+value = 72.0
+texture_progress = ExtResource("4_4d46k")
+
+[node name="Minimap" type="Control" parent="." unique_id=1134707723]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 407.0
+offset_top = 3.0
+offset_right = 475.0
+offset_bottom = 61.0
+mouse_filter = 2
+
+[node name="MapContainer" type="SubViewportContainer" parent="Minimap" unique_id=2038438264]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 65.0
+offset_bottom = 55.0
+stretch = true
+
+[node name="MapViewport" type="SubViewport" parent="Minimap/MapContainer" unique_id=1770514681]
+unique_name_in_owner = true
+size = Vector2i(62, 52)
+render_target_update_mode = 4
+
+[node name="MapCamera" type="Camera3D" parent="Minimap/MapContainer/MapViewport" unique_id=1302762027]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 60, -7)
+cull_mask = 1
+environment = SubResource("Environment_el1dq")
+projection = 1
+current = true
+size = 40.0
+near = 1.0
+far = 120.0
+
+[node name="PlayerMarker" type="TextureRect" parent="Minimap" unique_id=1540153660]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 30.0
+offset_top = 24.0
+offset_right = 30.0
+offset_bottom = 24.0
+mouse_filter = 2
+texture = ExtResource("5_erw67")
+
+[node name="Frame" type="TextureRect" parent="Minimap" unique_id=955684646]
+layout_mode = 0
+mouse_filter = 2
+texture = ExtResource("6_gonto")
+
+[node name="MessageBar" type="ColorRect" parent="." unique_id=1971460262]
+offset_top = 255.0
+offset_right = 480.0
+offset_bottom = 270.0
+mouse_filter = 2
+color = Color(0.02, 0.03, 0.05, 0.62)
+
+[node name="Arrow" type="TextureRect" parent="MessageBar" unique_id=1580352998]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 5.0
+offset_bottom = 4.0
+mouse_filter = 2
+texture = ExtResource("7_cwdlq")
+
+[node name="Message" type="Label" parent="MessageBar" unique_id=55161992]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 13.0
+offset_top = -2.0
+offset_right = 13.0
+offset_bottom = -2.0
+text = "¡Bienvenido a Brumaclara! Explora la plaza del pueblo."
+label_settings = SubResource("LabelSettings_gmc6u")
+
+[node name="KeyY" type="TextureRect" parent="MessageBar" unique_id=1719220968]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 2.0
+offset_right = 362.0
+offset_bottom = 2.0
+mouse_filter = 2
+texture = ExtResource("9_we3sy")
+
+[node name="MenuLabel" type="Label" parent="MessageBar" unique_id=392623483]
+layout_mode = 0
+offset_left = 376.0
+offset_top = -2.0
+offset_right = 376.0
+offset_bottom = -2.0
+text = "Menú"
+label_settings = SubResource("LabelSettings_1e6lo")
+
+[node name="KeyX" type="TextureRect" parent="MessageBar" unique_id=2038594840]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 2.0
+offset_right = 418.0
+offset_bottom = 2.0
+mouse_filter = 2
+texture = ExtResource("10_65nxt")
+
+[node name="MapLabel" type="Label" parent="MessageBar" unique_id=136086146]
+layout_mode = 0
+offset_left = 432.0
+offset_top = -2.0
+offset_right = 432.0
+offset_bottom = -2.0
+text = "Mapa"
+label_settings = SubResource("LabelSettings_4mi7y")

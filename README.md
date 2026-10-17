@@ -3,17 +3,24 @@
 Prototipo de un RPG de acción y aventura en pixel art, en solitario, hecho con **Godot 4.7**.
 El diseño completo está en el GDD del proyecto (título de trabajo: *GUILD ZERO*).
 
-Esta primera versión es una **demo de estilo artístico**: una casa con jardín (árboles, arbustos,
-rocas, huerto, estanque, valla, terraza de piedra con escaleras y un castillo en el horizonte)
-por la que se puede caminar con el protagonista. Estilo: escenario 3D con texturas pixel art y
-personajes 2D, con cámara en perspectiva (como la imagen de referencia del proyecto).
+> **Rama de referencia `prototipo-plaza`.** Guarda el prototipo de la plaza con arte dibujado por código
+> y las herramientas con las que se ajustó a la imagen de referencia, para rehacerla con el arte nuevo.
+> El juego actual está en la rama `main`.
 
-![Casa y jardín](docs/screenshots/01_casa_y_jardin.png)
+Esta versión es una **demo de estilo artístico**: la plaza del pueblo de Brumaclara, reproducida a
+partir de la imagen de referencia del proyecto (`docs/reference/concepto.jpg`). Se puede caminar
+por la plaza, subir las escaleras a las pasarelas y ver a los aldeanos.
+
+![Plaza del pueblo](docs/screenshots/01_plaza.png)
+
+| Referencia | Juego |
+|---|---|
+| ![Referencia](docs/reference/concepto.jpg) | ![Juego](docs/screenshots/01_plaza.png) |
 
 | | |
 |---|---|
-| ![Detalle](docs/screenshots/02_detalle_casa.png) | ![Terraza](docs/screenshots/03_escaleras_y_terraza.png) |
-| ![Huerto](docs/screenshots/04_huerto_y_estanque.png) | ![Paseo](docs/screenshots/06_paseo.gif) |
+| ![Fuente y puestos](docs/screenshots/02_fuente_y_puestos.png) | ![Casas del fondo](docs/screenshots/03_casas_del_fondo.png) |
+| ![Escaleras](docs/screenshots/04_escaleras_derecha.png) | ![Jardín y torre](docs/screenshots/05_jardin_y_torre.png) |
 
 ## Cómo abrirlo
 
@@ -23,42 +30,53 @@ personajes 2D, con cámara en perspectiva (como la imagen de referencia del proy
 
 **Controles:** WASD o flechas para moverse.
 
-## Decisiones técnicas de esta demo
+## Cómo está hecho el estilo
 
 | Tema | Decisión | Por qué |
 |---|---|---|
-| Perspectiva | Escenario 3D + personajes 2D (opción A del GDD), cámara en perspectiva inclinada | Es lo que da la profundidad de la referencia: paredes laterales, desniveles, horizonte |
-| Pixel art | Texturas a 16 texeles por unidad, filtrado *nearest*; render a 640×360 escalado ×3 | Mantiene el aspecto pixelado aunque el mundo sea 3D |
-| Personajes y vegetación | `Sprite3D` en modo *billboard* con sombra circular en el suelo | Siempre miran a la cámara, como en los RPG portátiles de referencia |
-| Casas | `scripts/environment/house_mesh.gd`: genera paredes, hastiales y tejado a partir de tamaño y texturas | Se pueden crear más casas cambiando medidas y texturas en el inspector |
-| Luz | Sol con sombras reales + luz ambiente | Las caras laterales se oscurecen solas y la casa proyecta sombra |
-| Movimiento | Libre en 8 direcciones, sprites en 4 (derecha = izquierda reflejada) | Lo que pide el GDD para el prototipo |
-| Renderizador | Compatibility (OpenGL) | Funciona en PCs modestos |
+| Perspectiva | Escenario 3D + personajes 2D (opción A del GDD) con cámara en perspectiva: 30° de inclinación y 26° de campo de visión | Son los valores medidos en la imagen de referencia (líneas de fuga y ancho del camino a dos profundidades) |
+| Resolución | Render nativo a 480×270, escalado ×4 a 1920×1080 | Es el tamaño de "píxel" de la referencia: los sprites se ven a 1 texel = 1 píxel |
+| Escenario | Bloques con el shader `terrain_block.gdshader`: textura de suelo arriba, de piedra en los lados y contorno oscuro en las aristas | Da los muros y terrazas con borde negro de la referencia con muy poca geometría |
+| Casas | `scripts/environment/house_mesh.gd` monta paredes, hastiales y tejado a partir de su tamaño y de sus texturas | Cada casa de la referencia tiene su fachada propia (vigas, ventanas, puertas) generada en `tools/art_generator/village_houses.py` |
+| Personajes y vegetación | Sprites que miran a la cámara (giran solo en vertical) con sombra circular | No se meten dentro de las paredes al acercarse a ellas |
+| Luz | Sol frontal-izquierdo con sombras nítidas + luz ambiente, calibrados contra los colores de la referencia | Las caras laterales se oscurecen solas como en la imagen |
+| Interfaz | HP/MP, minimapa en vivo (cámara cenital) y barra de mensajes, a 480×270 con fuente pixel *Pixelify Sans* (OFL) | Mismo diseño que la referencia |
 
 ## Estructura
 
 ```
-assets/                 Sprites y recursos (PNG, tileset, animaciones)
-  characters/hero/        Protagonista: hoja de animación y SpriteFrames
-  environment/            Muro, naturaleza, atrezo y textures/ (casa, tejado, suelo, piedra, cielo)
+assets/        Texturas y sprites (generados), fuente y animación del protagonista
+  characters/    Protagonista y aldeanos
+  environment/   Casas (una carpeta por casa), texturas de suelo/muro/agua, vegetación y objetos
+  ui/            Piezas de la interfaz
+materials/     Materiales de bloques, madera, agua, toldos y fondo
 scenes/
-  characters/player.tscn  Protagonista (CharacterBody3D + sprite billboard + cámara en el nivel)
-  environment/            Una escena por objeto: sprite + sombra + colisión; cottage.tscn es la casa 3D
-  levels/demo_cottage.tscn  Escena principal de la demo
-scripts/                Lógica del protagonista y generador de casas
+  levels/village.tscn   Escena principal: el pueblo
+  characters/           Protagonista (con su cámara) y aldeano genérico
+  environment/          Fuente, puestos, quiosco, vegetación y objetos
+  ui/hud.tscn           Interfaz
+scripts/       Protagonista, aldeanos, generador de casas e interfaz
+shaders/       Bloques de terreno y agua animada
 tools/
-  art_generator/          Generador del pixel art (Python + Pillow)
-  capture/                Herramienta que saca las capturas de docs/screenshots
-docs/screenshots/       Capturas reales del juego
+  art_generator/  Generador del pixel art (Python + Pillow)
+  capture/        Herramienta que saca las capturas de docs/screenshots
+docs/          Imagen de referencia y capturas reales del juego
 ```
 
 ## Herramientas
 
-**Regenerar el arte** (todo el pixel art está dibujado por código, con una paleta común):
+**Regenerar el arte** (todo el pixel art está dibujado por código):
 
 ```bash
 pip install pillow
 python3 tools/art_generator/generate.py
+```
+
+**Reconstruir la plaza** a partir de su layout (`tools/plaza_layout/LEEME.md`):
+
+```bash
+python3 tools/plaza_layout/layout.py tools/plaza_layout/layout.json
+godot --headless --path . --script res://tools/plaza_builder/build_plaza.gd -- prefabs level
 ```
 
 **Volver a sacar las capturas** (necesita pantalla; en un servidor, con `xvfb-run`):
@@ -69,8 +87,12 @@ godot --path . --script res://tools/capture/screenshot_tour.gd
 
 ## Estado
 
-- [x] Demo de estilo 2D plana (descartada: demasiado plana)
-- [x] Demo de estilo 3D + sprites, como la imagen de referencia
-- [ ] Validar el estilo y la paleta
-- [ ] Subir escaleras y desniveles caminando
+- [x] Demo de estilo: plaza del pueblo como la imagen de referencia
+- [ ] Validar el estilo
+- [ ] Interiores, diálogos con los aldeanos y menú
 - [ ] Combate básico (semana 2 de la hoja de ruta)
+
+## Licencias
+
+- Código y arte: del autor del proyecto.
+- Fuente *Pixelify Sans*: SIL Open Font License 1.1 (`assets/fonts/PIXELIFY_SANS_OFL.txt`).
