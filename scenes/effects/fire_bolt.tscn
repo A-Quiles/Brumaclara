@@ -1,0 +1,62 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/effects/fire_bolt.gd" id="1_3j6u4"]
+[ext_resource type="PackedScene" path="res://scenes/effects/spark.tscn" id="2_i7jqi"]
+[ext_resource type="Texture2D" path="res://assets/effects/bolt.png" id="3_d620i"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ywuoh"]
+radius = 0.3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juv82"]
+atlas = ExtResource("3_d620i")
+region = Rect2(0, 0, 19, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsser"]
+atlas = ExtResource("3_d620i")
+region = Rect2(19, 0, 19, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsb48"]
+atlas = ExtResource("3_d620i")
+region = Rect2(38, 0, 19, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjnfq"]
+atlas = ExtResource("3_d620i")
+region = Rect2(57, 0, 19, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nfct0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juv82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsser")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsb48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjnfq")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 14.0
+}]
+
+[node name="FireBolt" type="Area3D" unique_id=1951540982]
+collision_layer = 0
+collision_mask = 17
+script = ExtResource("1_3j6u4")
+impact = ExtResource("2_i7jqi")
+damage = 18
+push = 5.0
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1579321769]
+shape = SubResource("SphereShape3D_ywuoh")
+
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=158029039]
+cast_shadow = 0
+pixel_size = 0.0449
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_nfct0")
+animation = &"fly"

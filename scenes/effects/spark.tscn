@@ -1,0 +1,40 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/effects/spark.png" id="1_7ffoo"]
+[ext_resource type="Script" path="res://scripts/effects/one_shot_effect.gd" id="2_3kk6r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmkhk"]
+atlas = ExtResource("1_7ffoo")
+region = Rect2(0, 0, 29, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar1p6"]
+atlas = ExtResource("1_7ffoo")
+region = Rect2(29, 0, 29, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlaxi"]
+atlas = ExtResource("1_7ffoo")
+region = Rect2(58, 0, 29, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bu0is"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmkhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar1p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlaxi")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="Spark" type="AnimatedSprite3D" unique_id=1570774922]
+cast_shadow = 0
+pixel_size = 0.0449
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_bu0is")
+script = ExtResource("2_3kk6r")

@@ -1,0 +1,100 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/enemies/wolf.gd" id="1_qit5a"]
+[ext_resource type="PackedScene" path="res://scenes/effects/xp_orb.tscn" id="2_ntsix"]
+[ext_resource type="PackedScene" path="res://scenes/effects/rift_burst.tscn" id="3_noo6t"]
+[ext_resource type="PackedScene" path="res://scenes/effects/floating_text.tscn" id="4_7p2iv"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/enemies/wolf_frames.tres" id="5_6rde1"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="6_ma4a6"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="7_ki52t"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="8_43edc"]
+[ext_resource type="Script" path="res://scripts/components/hitbox.gd" id="9_f658f"]
+[ext_resource type="Texture2D" path="res://assets/ui/trough.png" id="10_isl6o"]
+[ext_resource type="Texture2D" path="res://assets/ui/bar_hp.png" id="11_g8p2i"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wlpxb"]
+height = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x1j5n"]
+size = Vector3(1.9, 1.3, 0.9)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b7tu1"]
+radius = 0.8
+
+[node name="Wolf" type="CharacterBody3D" unique_id=1532996654]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_qit5a")
+orb_scene = ExtResource("2_ntsix")
+death_effect = ExtResource("3_noo6t")
+text_scene = ExtResource("4_7p2iv")
+
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=187267945]
+cast_shadow = 0
+centered = false
+offset = Vector2(-30, -3)
+pixel_size = 0.0449
+texture_filter = 0
+sprite_frames = ExtResource("5_6rde1")
+animation = &"dead"
+
+[node name="Shadow" type="Sprite3D" parent="." unique_id=571487135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.02, 0.05)
+cast_shadow = 0
+pixel_size = 0.10625
+axis = 1
+texture_filter = 0
+texture = ExtResource("6_ma4a6")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1989026228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_wlpxb")
+
+[node name="Health" type="Node" parent="." unique_id=532566903]
+script = ExtResource("7_ki52t")
+maximum = 40
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=7357148]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("8_43edc")
+
+[node name="Collision" type="CollisionShape3D" parent="Hurtbox" unique_id=2467518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+shape = SubResource("BoxShape3D_x1j5n")
+
+[node name="Bite" type="Area3D" parent="." unique_id=50000031]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("9_f658f")
+damage = 14
+push = 8.0
+
+[node name="Collision" type="CollisionShape3D" parent="Bite" unique_id=1308446852]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("SphereShape3D_b7tu1")
+
+[node name="Bar" type="Node3D" parent="." unique_id=1668994030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85, 0.05)
+
+[node name="Trough" type="Sprite3D" parent="Bar" unique_id=670875385]
+cast_shadow = 0
+centered = false
+offset = Vector2(-28, 0)
+pixel_size = 0.02694
+no_depth_test = true
+texture_filter = 0
+texture = ExtResource("10_isl6o")
+
+[node name="Fill" type="Sprite3D" parent="Bar" unique_id=1437724343]
+cast_shadow = 0
+centered = false
+offset = Vector2(-28, 0)
+pixel_size = 0.02694
+no_depth_test = true
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("11_g8p2i")
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 9)

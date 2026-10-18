@@ -1,0 +1,33 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/effects/dust.png" id="1_7gik8"]
+[ext_resource type="Script" path="res://scripts/effects/one_shot_effect.gd" id="2_mfih6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bq8lt"]
+atlas = ExtResource("1_7gik8")
+region = Rect2(0, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgd6r"]
+atlas = ExtResource("1_7gik8")
+region = Rect2(18, 0, 18, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tq7k2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bq8lt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgd6r")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Dust" type="AnimatedSprite3D" unique_id=1108723086]
+cast_shadow = 0
+pixel_size = 0.0449
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_tq7k2")
+script = ExtResource("2_mfih6")

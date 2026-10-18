@@ -1,0 +1,37 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/props/lantern.png" id="1_dho8y"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="2_5db5v"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e0e3v"]
+height = 1.6
+radius = 0.12
+
+[node name="Lantern" type="StaticBody3D" unique_id=2018248031]
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=877928486]
+cast_shadow = 0
+centered = false
+offset = Vector2(-11.5, 0)
+pixel_size = 0.0449
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_dho8y")
+
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1222588976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.02, 0.05)
+cast_shadow = 0
+pixel_size = 0.0375
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_5db5v")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=179723534]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CylinderShape3D_e0e3v")
+
+[node name="Glow" type="OmniLight3D" parent="." unique_id=1087938507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0.3)
+light_color = Color(1, 0.78039217, 0.41568628, 1)
+light_energy = 0.9
+omni_range = 3.2

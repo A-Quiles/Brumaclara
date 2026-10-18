@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/nature/flowers.png" id="1_yk58b"]
+
+[node name="Flowers" type="Node3D" unique_id=1800777914]
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1141961023]
+cast_shadow = 0
+centered = false
+offset = Vector2(-15, 0)
+pixel_size = 0.0449
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_yk58b")

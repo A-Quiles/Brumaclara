@@ -1,0 +1,37 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/props/crystal.png" id="1_shnug"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="2_0bcsn"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sh3cr"]
+height = 1.6
+radius = 0.45
+
+[node name="Crystal" type="StaticBody3D" unique_id=362569902]
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=435263965]
+cast_shadow = 0
+centered = false
+offset = Vector2(-12.5, 0)
+pixel_size = 0.0449
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_shnug")
+
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1103500502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.02, 0.05)
+cast_shadow = 0
+pixel_size = 0.075
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_0bcsn")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1422600965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CylinderShape3D_sh3cr")
+
+[node name="Glow" type="OmniLight3D" parent="." unique_id=1209659181]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0.4)
+light_color = Color(0.7254902, 0.54901963, 1, 1)
+light_energy = 1.4
+omni_range = 3.6

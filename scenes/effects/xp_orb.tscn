@@ -1,0 +1,54 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/effects/xp_orb.gd" id="1_tbb1b"]
+[ext_resource type="Texture2D" path="res://assets/effects/orb.png" id="2_0ptll"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="3_8e6gq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vd0fm"]
+radius = 0.6
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuqdc"]
+atlas = ExtResource("2_0ptll")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1aml6"]
+atlas = ExtResource("2_0ptll")
+region = Rect2(18, 0, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cnf35"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuqdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1aml6")
+}],
+"loop": 1,
+"name": &"shine",
+"speed": 4.0
+}]
+
+[node name="XpOrb" type="Area3D" unique_id=1743465358]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_tbb1b")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1588681383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("SphereShape3D_vd0fm")
+
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=1998610228]
+cast_shadow = 0
+pixel_size = 0.0449
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_cnf35")
+animation = &"shine"
+
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1511717069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.02, 0.05)
+cast_shadow = 0
+pixel_size = 0.0375
+axis = 1
+texture_filter = 0
+texture = ExtResource("3_8e6gq")

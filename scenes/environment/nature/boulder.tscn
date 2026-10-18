@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/nature/boulder.png" id="1_3a4lj"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="2_6pv4u"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uaa5f"]
+height = 1.6
+radius = 0.8
+
+[node name="Boulder" type="StaticBody3D" unique_id=1462480327]
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1919813175]
+cast_shadow = 0
+centered = false
+offset = Vector2(-19.5, 0)
+pixel_size = 0.0449
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_3a4lj")
+
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1342953302]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.02, 0.05)
+cast_shadow = 0
+pixel_size = 0.1125
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_6pv4u")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1140606263]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CylinderShape3D_uaa5f")

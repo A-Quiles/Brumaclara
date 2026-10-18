@@ -1,76 +1,107 @@
 # Proyecto Brumaclara *(nombre provisional)*
 
-Prototipo de un RPG de acción y aventura en pixel art, en solitario, hecho con **Godot 4.7**.
+RPG de acción y aventura de fantasía anime en píxel art, desarrollado en solitario con **Godot 4.7**.
 El diseño completo está en el GDD del proyecto (título de trabajo: *GUILD ZERO*).
 
-Esta primera versión es una **demo de estilo artístico**: una casa con jardín (árboles, arbustos,
-rocas, huerto, estanque, valla, terraza de piedra con escaleras y un castillo en el horizonte)
-por la que se puede caminar con el protagonista. Estilo: escenario 3D con texturas pixel art y
-personajes 2D, con cámara en perspectiva (como la imagen de referencia del proyecto).
+Esta versión es la **zona de demostración** que fija el modelo artístico definitivo del juego: las
+afueras de Brumaclara, con el protagonista, un enemigo (el lobo de la Fractura) y el combate en tiempo
+real completo. Todo el contenido nuevo debe mantener este nivel visual (ver la
+[guía de arte](docs/guia_de_arte.md)).
 
-![Casa y jardín](docs/screenshots/01_casa_y_jardin.png)
+![Las afueras de Brumaclara](docs/screenshots/01_afueras.png)
 
 | | |
 |---|---|
-| ![Detalle](docs/screenshots/02_detalle_casa.png) | ![Terraza](docs/screenshots/03_escaleras_y_terraza.png) |
-| ![Huerto](docs/screenshots/04_huerto_y_estanque.png) | ![Paseo](docs/screenshots/06_paseo.gif) |
+| ![La aldea](docs/screenshots/02_aldea.png) | ![La guarida de los lobos](docs/screenshots/03_guarida.png) |
 
-## Cómo abrirlo
+![Combate](docs/screenshots/04_combate.gif)
+
+## Cómo jugar
 
 1. Instala [Godot 4.7](https://godotengine.org/download) (versión estándar, no hace falta .NET).
 2. Abre Godot → *Importar* → selecciona `project.godot`.
 3. Pulsa **F5**.
 
-**Controles:** WASD o flechas para moverse.
+| Acción | Teclas |
+|---|---|
+| Moverse | WASD o flechas |
+| Espada (encadena golpes) | J o clic izquierdo |
+| Esquivar (invulnerable un instante) | Espacio o K |
+| Chispa: proyectil de fuego (8 PM) | Q o U |
+| Estallido: anillo de fuego alrededor del héroe (25 PM) | E o I |
+| Abrir un cofre | F |
 
-## Decisiones técnicas de esta demo
+## Qué hay en la demo
 
-| Tema | Decisión | Por qué |
-|---|---|---|
-| Perspectiva | Escenario 3D + personajes 2D (opción A del GDD), cámara en perspectiva inclinada | Es lo que da la profundidad de la referencia: paredes laterales, desniveles, horizonte |
-| Pixel art | Texturas a 16 texeles por unidad, filtrado *nearest*; render a 640×360 escalado ×3 | Mantiene el aspecto pixelado aunque el mundo sea 3D |
-| Personajes y vegetación | `Sprite3D` en modo *billboard* con sombra circular en el suelo | Siempre miran a la cámara, como en los RPG portátiles de referencia |
-| Casas | `scripts/environment/house_mesh.gd`: genera paredes, hastiales y tejado a partir de tamaño y texturas | Se pueden crear más casas cambiando medidas y texturas en el inspector |
-| Luz | Sol con sombras reales + luz ambiente | Las caras laterales se oscurecen solas y la casa proyecta sombra |
-| Movimiento | Libre en 8 direcciones, sprites en 4 (derecha = izquierda reflejada) | Lo que pide el GDD para el prototipo |
-| Renderizador | Compatibility (OpenGL) | Funciona en PCs modestos |
+- **Protagonista** en cuatro direcciones: reposo, caminar, combo de espada, esquiva con estela, daño,
+  hechizos y derrota.
+- **Lobo de la Fractura**: vigila su guarida, persigue, avisa con un brillo violeta antes de saltar,
+  muerde, cae y se disuelve; suelta un orbe de experiencia y reaparece al rato.
+- **Combate**: golpes con retroceso, invulnerabilidad tras recibir daño, congelación breve en cada
+  impacto, temblor de cámara, destellos y números de daño.
+- **Progresión mínima**: experiencia, subida de nivel (más vida y maná), maná que se regenera y
+  recargas visibles en la interfaz.
+- **Escenario**: la terraza de la aldea con sus casas, pozo, huerto y faroles; la pradera con sus
+  caminos; el bosque con su sombra; el claro de la Fractura con su suelo agrietado, la grieta luminosa,
+  el menhir con runas y los cristales; montañas y nubes al fondo. Detrás de una roca hay un cofre que se
+  abre y suelta experiencia.
+
+## Cómo está hecho el arte
+
+Los sprites, texturas, efectos e interfaz son imágenes generadas con IA a partir de prompts con un
+estilo fijo (`art/ai/`, registradas en `art/FUENTES.md`) y revisadas a mano. El pipeline de
+`tools/art_pipeline/` las convierte en recursos del juego: recorta el fondo, reduce cada bloque de
+píxeles de la imagen a un píxel del juego, ajusta la paleta de cada familia de recursos, coloca los
+fotogramas sobre su ancla y escribe las animaciones de Godot. El código solo carga, anima e integra
+esos recursos.
 
 ## Estructura
 
 ```
-assets/                 Sprites y recursos (PNG, tileset, animaciones)
-  characters/hero/        Protagonista: hoja de animación y SpriteFrames
-  environment/            Muro, naturaleza, atrezo y textures/ (casa, tejado, suelo, piedra, cielo)
+art/            Imágenes de origen generadas con IA (Godot no las importa) y su registro
+assets/         Recursos del juego producidos por el pipeline: personajes, escenario, efectos, interfaz
+docs/           Guía de arte y capturas
 scenes/
-  characters/player.tscn  Protagonista (CharacterBody3D + sprite billboard + cámara en el nivel)
-  environment/            Una escena por objeto: sprite + sombra + colisión; cottage.tscn es la casa 3D
-  levels/demo_cottage.tscn  Escena principal de la demo
-scripts/                Lógica del protagonista y generador de casas
+  levels/demo_zone.tscn   Escena principal: las afueras de Brumaclara
+  characters/             Protagonista y lobo
+  effects/                Hechizos, impactos, polvo, orbe de experiencia y números de daño
+  environment/            Árboles, plantas, objetos y fondo lejano
+  ui/hud.tscn             Interfaz
+scripts/
+  components/   Vida, hitbox y hurtbox, reutilizables por cualquier personaje
+  characters/   Protagonista y enemigos
+  effects/      Comportamiento de los efectos
+  environment/  Casas, cofre y fondo lejano
+  systems/      Sensación de impacto
+  ui/           Interfaz
+shaders/        Bloques de terreno, franjas de suelo y contorno
 tools/
-  art_generator/          Generador del pixel art (Python + Pillow)
-  capture/                Herramienta que saca las capturas de docs/screenshots
-docs/screenshots/       Capturas reales del juego
+  art_pipeline/   Convierte art/ai en recursos (Python)
+  capture/        Capturas y grabación del combate
+  tests/          Pruebas del combate sin pantalla
 ```
 
 ## Herramientas
 
-**Regenerar el arte** (todo el pixel art está dibujado por código, con una paleta común):
-
 ```bash
-pip install pillow
-python3 tools/art_generator/generate.py
-```
-
-**Volver a sacar las capturas** (necesita pantalla; en un servidor, con `xvfb-run`):
-
-```bash
-godot --path . --script res://tools/capture/screenshot_tour.gd
+pip install pillow numpy scipy
+python3 tools/art_pipeline/build.py            # todos los recursos (o solo: hero wolf nature …)
+godot --headless --path . --script res://tools/tests/test_combat.gd
+xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capturas (necesita pantalla)
 ```
 
 ## Estado
 
-- [x] Demo de estilo 2D plana (descartada: demasiado plana)
-- [x] Demo de estilo 3D + sprites, como la imagen de referencia
-- [ ] Validar el estilo y la paleta
-- [ ] Subir escaleras y desniveles caminando
-- [ ] Combate básico (semana 2 de la hoja de ruta)
+- [x] Zona de demostración con el modelo artístico definitivo y combate funcional
+- [ ] Validar el estilo y la sensación del combate
+- [ ] Reconstruir la plaza del pueblo con el nuevo pipeline
+- [ ] Árbol de habilidades, equipo, diálogos y misiones
+
+El prototipo anterior de la plaza del pueblo (arte dibujado por código) se conserva como referencia en la
+rama `prototipo-plaza`.
+
+## Licencias
+
+- Código y arte: del autor del proyecto. El arte se generó con IA a petición del autor (ver
+  `art/FUENTES.md`).
+- Fuente *Pixelify Sans*: SIL Open Font License 1.1 (`assets/fonts/PIXELIFY_SANS_OFL.txt`).

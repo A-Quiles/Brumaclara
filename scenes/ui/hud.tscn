@@ -1,0 +1,223 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_mj13f"]
+[ext_resource type="Texture2D" path="res://assets/ui/panel.png" id="2_0h1do"]
+[ext_resource type="FontFile" path="res://assets/fonts/pixelify_sans_medium.woff" id="3_4d46k"]
+[ext_resource type="Texture2D" path="res://assets/ui/trough.png" id="4_erw67"]
+[ext_resource type="Texture2D" path="res://assets/ui/bar_hp.png" id="5_gonto"]
+[ext_resource type="Texture2D" path="res://assets/ui/bar_mp.png" id="6_cwdlq"]
+[ext_resource type="Texture2D" path="res://assets/ui/bar_xp.png" id="7_o6xly"]
+[ext_resource type="Texture2D" path="res://assets/ui/icon_sword.png" id="8_we3sy"]
+[ext_resource type="Texture2D" path="res://assets/ui/icon_bolt.png" id="9_65nxt"]
+[ext_resource type="Texture2D" path="res://assets/ui/icon_burst.png" id="10_el1dq"]
+[ext_resource type="Texture2D" path="res://assets/ui/icon_dash.png" id="11_gmc6u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1e6lo"]
+font = ExtResource("3_4d46k")
+font_size = 11
+font_color = Color(1, 0.827451, 0.2901961, 1)
+shadow_color = Color(0, 0, 0, 0.85)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4mi7y"]
+font = ExtResource("3_4d46k")
+font_size = 11
+font_color = Color(0.95686275, 0.9137255, 0.78431374, 1)
+shadow_color = Color(0, 0, 0, 0.85)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pkwgd"]
+font = ExtResource("3_4d46k")
+font_size = 11
+font_color = Color(0.95686275, 0.9137255, 0.78431374, 1)
+shadow_color = Color(0, 0, 0, 0.85)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d5po8"]
+font = ExtResource("3_4d46k")
+font_size = 11
+font_color = Color(0.95686275, 0.9137255, 0.78431374, 1)
+shadow_color = Color(0, 0, 0, 0.85)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7yoph"]
+font = ExtResource("3_4d46k")
+font_size = 11
+font_color = Color(0.95686275, 0.9137255, 0.78431374, 1)
+shadow_color = Color(0, 0, 0, 0.85)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qmm8d"]
+font = ExtResource("3_4d46k")
+font_size = 11
+font_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+shadow_color = Color(0, 0, 0, 0.85)
+
+[node name="HUD" type="CanvasLayer" unique_id=1300802257 groups=["hud"]]
+script = ExtResource("1_mj13f")
+
+[node name="Panel" type="NinePatchRect" parent="." unique_id=1348902340]
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 117.0
+offset_bottom = 44.0
+texture = ExtResource("2_0h1do")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 5
+
+[node name="Level" type="Label" parent="Panel" unique_id=1729705786]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 4.0
+offset_right = 46.0
+offset_bottom = 38.0
+text = "Nv. 1"
+label_settings = SubResource("LabelSettings_1e6lo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HPBar" type="TextureProgressBar" parent="Panel" unique_id=1581644577]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 48.0
+offset_top = 5.0
+offset_right = 48.0
+offset_bottom = 5.0
+mouse_filter = 2
+value = 100.0
+texture_under = ExtResource("4_erw67")
+texture_progress = ExtResource("5_gonto")
+
+[node name="MPBar" type="TextureProgressBar" parent="Panel" unique_id=873235438]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 48.0
+offset_top = 14.0
+offset_right = 48.0
+offset_bottom = 14.0
+mouse_filter = 2
+value = 100.0
+texture_under = ExtResource("4_erw67")
+texture_progress = ExtResource("6_cwdlq")
+
+[node name="XPBar" type="TextureProgressBar" parent="Panel" unique_id=1808438683]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 48.0
+offset_top = 23.0
+offset_right = 48.0
+offset_bottom = 23.0
+mouse_filter = 2
+value = 100.0
+texture_under = ExtResource("4_erw67")
+texture_progress = ExtResource("7_o6xly")
+
+[node name="SlotSword" type="TextureRect" parent="." unique_id=1966577724]
+unique_name_in_owner = true
+offset_left = 526.0
+offset_top = 302.0
+offset_right = 526.0
+offset_bottom = 302.0
+mouse_filter = 2
+texture = ExtResource("8_we3sy")
+
+[node name="Cooldown" type="ColorRect" parent="SlotSword" unique_id=674007835]
+layout_mode = 0
+offset_right = 22.0
+mouse_filter = 2
+color = Color(0.02, 0.02, 0.06, 0.68)
+
+[node name="Key" type="Label" parent="SlotSword" unique_id=917459878]
+layout_mode = 0
+offset_top = 21.0
+offset_right = 22.0
+offset_bottom = 36.0
+text = "J"
+label_settings = SubResource("LabelSettings_4mi7y")
+horizontal_alignment = 1
+
+[node name="SlotBolt" type="TextureRect" parent="." unique_id=1193434580]
+unique_name_in_owner = true
+offset_left = 553.0
+offset_top = 302.0
+offset_right = 553.0
+offset_bottom = 302.0
+mouse_filter = 2
+texture = ExtResource("9_65nxt")
+
+[node name="Cooldown" type="ColorRect" parent="SlotBolt" unique_id=63927285]
+layout_mode = 0
+offset_right = 22.0
+mouse_filter = 2
+color = Color(0.02, 0.02, 0.06, 0.68)
+
+[node name="Key" type="Label" parent="SlotBolt" unique_id=863875156]
+layout_mode = 0
+offset_top = 21.0
+offset_right = 22.0
+offset_bottom = 36.0
+text = "Q"
+label_settings = SubResource("LabelSettings_pkwgd")
+horizontal_alignment = 1
+
+[node name="SlotBurst" type="TextureRect" parent="." unique_id=869107732]
+unique_name_in_owner = true
+offset_left = 580.0
+offset_top = 302.0
+offset_right = 580.0
+offset_bottom = 302.0
+mouse_filter = 2
+texture = ExtResource("10_el1dq")
+
+[node name="Cooldown" type="ColorRect" parent="SlotBurst" unique_id=836808785]
+layout_mode = 0
+offset_right = 21.0
+mouse_filter = 2
+color = Color(0.02, 0.02, 0.06, 0.68)
+
+[node name="Key" type="Label" parent="SlotBurst" unique_id=1264934960]
+layout_mode = 0
+offset_top = 21.0
+offset_right = 21.0
+offset_bottom = 36.0
+text = "E"
+label_settings = SubResource("LabelSettings_d5po8")
+horizontal_alignment = 1
+
+[node name="SlotDash" type="TextureRect" parent="." unique_id=1854960395]
+unique_name_in_owner = true
+offset_left = 607.0
+offset_top = 302.0
+offset_right = 607.0
+offset_bottom = 302.0
+mouse_filter = 2
+texture = ExtResource("11_gmc6u")
+
+[node name="Cooldown" type="ColorRect" parent="SlotDash" unique_id=182135583]
+layout_mode = 0
+offset_right = 22.0
+mouse_filter = 2
+color = Color(0.02, 0.02, 0.06, 0.68)
+
+[node name="Key" type="Label" parent="SlotDash" unique_id=1723178572]
+layout_mode = 0
+offset_top = 21.0
+offset_right = 22.0
+offset_bottom = 36.0
+text = "Esp"
+label_settings = SubResource("LabelSettings_7yoph")
+horizontal_alignment = 1
+
+[node name="MessageBar" type="ColorRect" parent="." unique_id=448314178]
+offset_top = 342.0
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+color = Color(0.02, 0.03, 0.06, 0.62)
+
+[node name="Message" type="Label" parent="MessageBar" unique_id=409853132]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_right = 632.0
+offset_bottom = 18.0
+text = "WASD: moverse  ·  J: espada  ·  Espacio: esquivar  ·  Q: Chispa  ·  E: Estallido"
+label_settings = SubResource("LabelSettings_qmm8d")
+vertical_alignment = 1

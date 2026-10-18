@@ -1,0 +1,61 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/environment/chest.gd" id="1_7bphc"]
+[ext_resource type="PackedScene" path="res://scenes/effects/xp_orb.tscn" id="2_j76la"]
+[ext_resource type="SpriteFrames" path="res://assets/environment/props/chest_frames.tres" id="3_lws0m"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="4_7awgp"]
+[ext_resource type="FontFile" path="res://assets/fonts/pixelify_sans_medium.woff" id="5_doq61"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x2qj0"]
+height = 1.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2xcqs"]
+radius = 1.5
+
+[node name="Chest" type="StaticBody3D" unique_id=1791227772]
+script = ExtResource("1_7bphc")
+orb_scene = ExtResource("2_j76la")
+
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=320870850]
+cast_shadow = 0
+centered = false
+offset = Vector2(-19, -1)
+pixel_size = 0.0449
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = ExtResource("3_lws0m")
+animation = &"closed"
+
+[node name="Shadow" type="Sprite3D" parent="." unique_id=748791652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.02, 0.05)
+cast_shadow = 0
+pixel_size = 0.075
+axis = 1
+texture_filter = 0
+texture = ExtResource("4_7awgp")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1020327183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CylinderShape3D_x2qj0")
+
+[node name="Reach" type="Area3D" parent="." unique_id=655375537]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Collision" type="CollisionShape3D" parent="Reach" unique_id=1922105353]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_2xcqs")
+
+[node name="Prompt" type="Label3D" parent="." unique_id=984547862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+pixel_size = 0.0449
+no_depth_test = true
+texture_filter = 0
+render_priority = 10
+outline_render_priority = 9
+modulate = Color(1, 0.90588236, 0.627451, 1)
+outline_modulate = Color(0.101960786, 0.078431375, 0.1254902, 1)
+text = "F: abrir"
+font = ExtResource("5_doq61")
+font_size = 11
+outline_size = 4

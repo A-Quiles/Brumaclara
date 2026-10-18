@@ -1,0 +1,41 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/effects/spark.png" id="1_8ykad"]
+[ext_resource type="Script" path="res://scripts/effects/one_shot_effect.gd" id="2_mm61s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20o6n"]
+atlas = ExtResource("1_8ykad")
+region = Rect2(0, 0, 29, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5bx1"]
+atlas = ExtResource("1_8ykad")
+region = Rect2(29, 0, 29, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocjji"]
+atlas = ExtResource("1_8ykad")
+region = Rect2(58, 0, 29, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jo8ny"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20o6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5bx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocjji")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 9.0
+}]
+
+[node name="RiftBurst" type="AnimatedSprite3D" unique_id=1137927503]
+cast_shadow = 0
+modulate = Color(0.85, 0.55, 1.6, 1)
+pixel_size = 0.0449
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_jo8ny")
+script = ExtResource("2_mm61s")

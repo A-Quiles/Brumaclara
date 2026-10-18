@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/nature/tree_young.png" id="1_hc7bo"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="2_wiqwt"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_foaak"]
+height = 1.6
+radius = 0.25
+
+[node name="TreeYoung" type="StaticBody3D" unique_id=988053599]
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=573922897]
+cast_shadow = 0
+centered = false
+offset = Vector2(-22, 0)
+pixel_size = 0.0449
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_hc7bo")
+
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1103966311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.02, 0.05)
+cast_shadow = 0
+pixel_size = 0.0875
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_wiqwt")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1681265996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CylinderShape3D_foaak")
