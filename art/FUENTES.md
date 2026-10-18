@@ -100,3 +100,13 @@ Todas las hojas repiten las mismas piezas para que el estilo no cambie entre im�
 > open with a golden glow; lid fully open showing gold coins inside; lid fully open and empty. Crisp
 > hard-edged pixels, clean dark outline, limited palette, soft cel shading lit from the top left, no
 > anti-aliasing, no ground shadow, no text, no grid lines.
+
+## Tanda de la plaza (18 de octubre de 2026)
+
+Referencias del autor para el pueblo: `docs/reference/pueblo_1.jpg` … `pueblo_6.jpg` (y `docs/diseno_pueblo.md`).
+
+| Archivo | Contenido | Notas de revisión |
+|---|---|---|
+| `facades.png` | Fachadas de la posada, la tienda, la herrería y la sede del gremio. | Todo aprovechable; el hastial se separa como en `house.png`. |
+| `plaza_props.png` | Fuente (3 fotogramas), parterre, tres puestos, tablón de encargos, farola, estandarte, carro de flores, barriles y cajas, muro bajo, pilar, árbol en maceta y pizarra. | Todo aprovechable. |
+| `townsfolk.png` | Mara Venn, Elia, el carretero y el guardia, caminando de frente (4 fotogramas). | Faltan las demás direcciones: se piden en la siguiente tanda. |
