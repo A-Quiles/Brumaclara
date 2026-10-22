@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/props/cypress_pot.png" id="1_52lgn"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="2_ealle"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5qcdq"]
+height = 1.6
+radius = 0.3
+
+[node name="CypressPot" type="StaticBody3D" unique_id=2063155765]
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1656644410]
+cast_shadow = 0
+centered = false
+offset = Vector2(-11.5, 0)
+pixel_size = 0.0449
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_52lgn")
+
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1421796150]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.144)
+cast_shadow = 0
+pixel_size = 0.05
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_ealle")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1318601341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CylinderShape3D_5qcdq")

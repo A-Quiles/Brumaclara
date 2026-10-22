@@ -7,9 +7,9 @@
 height = 1.6
 radius = 0.2
 
-[node name="Chalkboard" type="StaticBody3D" unique_id=485409687]
+[node name="Chalkboard" type="StaticBody3D" unique_id=276747330]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=1612402928]
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1950091178]
 cast_shadow = 0
 centered = false
 offset = Vector2(-11, 0)
@@ -18,7 +18,7 @@ alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("1_ob4o8")
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=1720586828]
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1766437942]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.162)
 cast_shadow = 0
 pixel_size = 0.05625
@@ -26,6 +26,6 @@ axis = 1
 texture_filter = 0
 texture = ExtResource("2_2e5gq")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=543923422]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1614773969]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CylinderShape3D_gbojs")

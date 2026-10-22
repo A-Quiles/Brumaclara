@@ -54,6 +54,9 @@ var _spawn_point := Vector3.ZERO
 
 func _ready() -> void:
 	add_to_group("player")
+	if Exit.pending_arrival != Vector3.INF:  # arriving through another map's exit
+		global_position = Exit.pending_arrival
+		Exit.pending_arrival = Vector3.INF
 	_spawn_point = global_position
 	mp = max_mp
 	_hurtbox.struck.connect(_on_struck)

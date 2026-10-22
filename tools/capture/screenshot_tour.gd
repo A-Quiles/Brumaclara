@@ -1,10 +1,11 @@
 extends SceneTree
-## Dev tool: renders the demo zone from a few spots into docs/screenshots and records a fight
+## Dev tool: renders the outskirts and the town from a few spots into docs/screenshots and records a fight
 ## (frames in user://combat_frames; tools/capture/make_gif.py turns them into the README's GIF).
 ## Needs a display; on a server use:
 ##   xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd -- [shot names | combat]
 
 const LEVEL := "res://scenes/levels/demo_zone.tscn"
+const TOWN := "res://scenes/levels/brumaclara.tscn"
 const OUT := "res://docs/screenshots/"
 const SCALE := 3  # 640x360 -> 1920x1080
 
@@ -16,19 +17,35 @@ func _initialize() -> void:
 
 
 func _run() -> void:
-	var level: Node = load(LEVEL).instantiate()
-	root.add_child(level)
-	_player = level.get_node("Player")
 	var only := OS.get_cmdline_user_args()
-	var shots := [
-		["01_afueras", Vector3(-3.0, 0, -4.5), Vector2.RIGHT],
-		["02_aldea", Vector3(-7.0, 1.8, -17.8), Vector2.DOWN],
-		["03_guarida", Vector3(6.5, 0, -1.5), Vector2.UP],
+	var shots := [  # [file, level, hero position, facing]
+		["01_afueras", LEVEL, Vector3(-3.0, 0, -4.5), Vector2.RIGHT],
+		["02_aldea", LEVEL, Vector3(-7.0, 1.8, -17.8), Vector2.DOWN],
+		["03_guarida", LEVEL, Vector3(6.5, 0, -1.5), Vector2.UP],
+		["05_plaza", TOWN, Vector3(0, 0, 8.0), Vector2.UP],
+		["06_sede_del_faro", TOWN, Vector3(0, 2.4, -15.0), Vector2.UP],
+		["07_calle_del_mercado", TOWN, Vector3(24.0, 0, 1.0), Vector2.UP],
+		["08_barrio_oeste", TOWN, Vector3(-28.0, 0, 1.0), Vector2.UP],
+		["09_establos", TOWN, Vector3(-18.0, 0, 32.0), Vector2.UP],
 	]
+	var level: Node = null
 	for shot in shots:
-		if only.is_empty() or shot[0] in only:
-			await _shot(shot[0], shot[1], shot[2])
+		if not (only.is_empty() or shot[0] in only):
+			continue
+		if level == null or level.scene_file_path != shot[1]:
+			if level:
+				level.free()
+			level = load(shot[1]).instantiate()
+			root.add_child(level)
+			_player = level.get_node("Player")
+		await _shot(shot[0], shot[2], shot[3])
 	if only.is_empty() or "combat" in only:
+		if level == null or level.scene_file_path != LEVEL:
+			if level:
+				level.free()
+			level = load(LEVEL).instantiate()
+			root.add_child(level)
+			_player = level.get_node("Player")
 		await _combat()
 	quit()
 

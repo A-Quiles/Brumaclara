@@ -307,27 +307,88 @@ def house():
     return OUT / "environment" / "buildings"
 
 
-FACADES = {(0, 0): "inn", (0, 1): "shop", (1, 0): "smithy", (1, 1): "guild"}
+FACADES = {  # sheet -> cell -> building; each sheet keeps its own palette
+    "facades": {(0, 0): "inn", (0, 1): "shop", (1, 0): "smithy", (1, 1): "guild"},
+    "guild_facades": {(0, 0): "brasa", (0, 1): "archive", (1, 0): "league", (1, 1): "stable"},
+    "home_facades": {(0, 0): "home_green", (0, 1): "home_blue", (1, 0): "home_red", (1, 1): "home_yellow"},
+}
 
 
 def facades():
-    """Front walls and gables of the town's named buildings. Each drawing is split at its eave
-    (its widest row in the upper part) and both halves are cropped to the wall's width."""
-    g = grid("facades", 2, 2, 8)
+    """Front walls and gables of the town's buildings. Each drawing is split at its eave (its
+    widest row in the upper part) and both halves are cropped to the wall's width."""
     magenta = np.array([255.0, 0.0, 255.0])  # the bottom corners are wall, so the cell corners can't key it
-    parts = {}
-    for (r, c), name in FACADES.items():
-        cell = g[r][c]
-        solid = ~px.background_mask(cell, magenta, 110)
-        eave = int(np.argmax(solid.sum(1)[: int(len(cell) * 0.6)]))
-        xs = np.nonzero(solid[int(len(cell) * 0.9)])[0]
-        cell = cell[:, xs[0]:xs[-1] + 1]
-        parts[name + "_gable"] = px.pixelate(cell[:eave], magenta, 4)
-        parts[name + "_wall"] = px.pixelate(cell[eave:], magenta, 4, tol=1.0)  # the wall is opaque throughout
-    palette = palette_for(list(parts.values()), 40, FIRE)
-    for name, im in parts.items():
-        save(sheets.snap_all([im], palette)[0], "environment", "buildings", "facade_" + name + ".png")
+    for sheet, cells in FACADES.items():
+        g = grid(sheet, 2, 2, 8)
+        parts = {}
+        for (r, c), name in cells.items():
+            cell = g[r][c]
+            solid = ~px.background_mask(cell, magenta, 110)
+            eave = int(np.argmax(solid.sum(1)[: int(len(cell) * 0.6)]))
+            xs = np.nonzero(solid[int(len(cell) * 0.9)])[0]
+            cell = cell[:, xs[0]:xs[-1] + 1]
+            parts[name + "_gable"] = px.pixelate(cell[:eave], magenta, 4)
+            parts[name + "_wall"] = px.pixelate(cell[eave:], magenta, 4, tol=1.0)  # the wall is opaque throughout
+        palette = palette_for(list(parts.values()), 40, FIRE)
+        for name, im in parts.items():
+            save(sheets.snap_all([im], palette)[0], "environment", "buildings", "facade_" + name + ".png")
     return OUT / "environment" / "buildings"
+
+
+def walls_roofs():
+    """Side wall of the town houses, the stone of the retaining walls and two more roofs."""
+    g = grid("walls_roofs", 2, 2, 8)
+    save(texture(g[0][0], 4, 24, band=12, vertical=False), "environment", "buildings", "side_timber.png")
+    save(texture(g[0][1], 4, 16, band=12), "environment", "textures", "stone_wall.png")
+    save(texture(g[1][0], 4, 12, band=12), "environment", "buildings", "roof_red.png")
+    save(texture(g[1][1], 4, 12, band=12), "environment", "buildings", "roof_shingle.png")
+    return OUT / "environment"
+
+
+TOWN_PROPS = {  # cell -> (name, source pixels per game pixel)
+    (0, 0): ("town_gate", 3), (0, 1): ("chimney", 5), (0, 3): ("wall_lantern", 6),
+    (1, 0): ("training_dummy", 5), (1, 1): ("weapon_rack", 5), (1, 2): ("archery_target", 6), (1, 3): ("wagon", 4),
+    (2, 0): ("horse", 4), (2, 1): ("trough", 5), (2, 2): ("hay_pile", 5), (2, 3): ("fence_gate", 5),
+    (3, 1): ("rose_bush", 6), (3, 2): ("cypress_pot", 5), (3, 3): ("bread_stool", 7),
+}
+
+
+def town_props():
+    g = grid("town_props")
+    images = {name: cropped(sheets.pixelate_cell(g[r][c], f)) for (r, c), (name, f) in TOWN_PROPS.items()}
+    palette = palette_for(list(images.values()), 40, FIRE)
+    for name, im in images.items():
+        save(sheets.snap_all([im], palette)[0], "environment", "props", name + ".png")
+    return OUT / "environment" / "props"
+
+
+# townsfolk: (sheet, row) of each walk; side walks face right, the game mirrors them for left
+TOWNSFOLK = {
+    "mara": {"down": ("townsfolk", 0), "side": ("townsfolk_b", 0), "up": ("townsfolk_b", 1)},
+    "elia": {"down": ("townsfolk", 1), "side": ("townsfolk_b", 2), "up": ("townsfolk_b", 3)},
+    "carter": {"down": ("townsfolk", 2)},
+    "guard": {"down": ("townsfolk", 3)},
+}
+FOLK_HEIGHT = {"mara": 44, "elia": 43, "carter": 45, "guard": 52}  # the guard's spear stands above him
+
+
+def townsfolk():
+    sheets_ = {name: grid(name) for name in ("townsfolk", "townsfolk_b")}
+    for who, walks in TOWNSFOLK.items():
+        rows = {}
+        for facing, (sheet, r) in walks.items():
+            row = sheets_[sheet][r]
+            scale = FOLK_HEIGHT[who] * HERO_F / raw_height(row[0])
+            rows[facing] = [sheets.pixelate_cell(cell, HERO_F, scale) for cell in row]
+        palette = palette_for([im for row in rows.values() for im in row], 32)
+        placed = baseline_rows([sheets.snap_all(row, palette) for row in rows.values()], HERO_FRAME, HERO_ANCHOR)
+        path = save(sheets.assemble(placed, *HERO_FRAME), "characters", "townsfolk", who + ".png")
+        animations = []
+        for i, facing in enumerate(rows):
+            animations += [("idle_" + facing, [(0, i)], 1, True), ("walk_" + facing, [(c, i) for c in range(4)], 7, True)]
+        sheets.write_sprite_frames(path.with_name(who + "_frames.tres"),
+                                   f"res://assets/characters/townsfolk/{who}.png", *HERO_FRAME, animations)
+    return OUT / "characters" / "townsfolk"
 
 
 # --- interface -------------------------------------------------------------------------------
@@ -411,7 +472,8 @@ def shadow():
 
 
 RECIPES = {"hero": hero, "wolf": wolf, "nature": nature, "props_b": props_b, "terrain": terrain,
-           "terrain_b": terrain_b, "house": house, "facades": facades, "plaza": plaza, "ui": ui, "vfx": vfx, "backdrop": backdrop, "shadow": shadow}
+           "terrain_b": terrain_b, "house": house, "facades": facades, "plaza": plaza, "walls_roofs": walls_roofs,
+           "town_props": town_props, "townsfolk": townsfolk, "ui": ui, "vfx": vfx, "backdrop": backdrop, "shadow": shadow}
 
 if __name__ == "__main__":
     for key in sys.argv[1:] or RECIPES:

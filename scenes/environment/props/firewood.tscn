@@ -7,9 +7,9 @@
 height = 1.6
 radius = 0.6
 
-[node name="Firewood" type="StaticBody3D" unique_id=611855608]
+[node name="Firewood" type="StaticBody3D" unique_id=887278467]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=1687128042]
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1971316670]
 cast_shadow = 0
 centered = false
 offset = Vector2(-15.5, 0)
@@ -18,7 +18,7 @@ alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("1_li07a")
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=1442074229]
+[node name="Shadow" type="Sprite3D" parent="." unique_id=728128507]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.252)
 cast_shadow = 0
 pixel_size = 0.0875
@@ -26,6 +26,6 @@ axis = 1
 texture_filter = 0
 texture = ExtResource("2_qqkp7")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=1356065211]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=134561285]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CylinderShape3D_5u0o0")

@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/props/fence_gate.png" id="1_qyken"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chqyk"]
+size = Vector3(1.9, 1, 0.5)
+
+[node name="FenceGate" type="StaticBody3D" unique_id=1084148924]
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=628702602]
+cast_shadow = 0
+centered = false
+offset = Vector2(-24, 0)
+pixel_size = 0.0449
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_qyken")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1479360758]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.3)
+shape = SubResource("BoxShape3D_chqyk")

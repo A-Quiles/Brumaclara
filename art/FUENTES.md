@@ -110,3 +110,8 @@ Referencias del autor para el pueblo: `docs/reference/pueblo_1.jpg` … `pueblo_
 | `facades.png` | Fachadas de la posada, la tienda, la herrería y la sede del gremio. | Todo aprovechable; el hastial se separa como en `house.png`. |
 | `plaza_props.png` | Fuente (3 fotogramas), parterre, tres puestos, tablón de encargos, farola, estandarte, carro de flores, barriles y cajas, muro bajo, pilar, árbol en maceta y pizarra. | Todo aprovechable. |
 | `townsfolk.png` | Mara Venn, Elia, el carretero y el guardia, caminando de frente (4 fotogramas). | Faltan las demás direcciones: se piden en la siguiente tanda. |
+| `walls_roofs.png` | Lateral de casa con ventanas centradas, muro de sillares, tejas rojas y tejas de madera. | El lateral solo se repite en horizontal. |
+| `guild_facades.png` | Casa de la Brasa, Archivo del Umbral, oficina de la Liga y establo. | Todo aprovechable. |
+| `home_facades.png` | Cuatro viviendas (puerta verde, azul, roja y amarilla). | Todo aprovechable. |
+| `townsfolk_b.png` | Mara y Elia caminando de lado y de espaldas. | El carretero y el guardia solo tienen la vista de frente: están quietos en su puesto hasta tener las demás. |
+| `town_props.png` | Puerta del pueblo, chimenea, buhardilla, farol de pared, muñeco de entrenamiento, armero, diana, carromato, caballo, abrevadero, heno, cancela, hiedra, rosal, ciprés en maceta y taburete con pan. | La buhardilla, el farol de pared y la hiedra no se usan todavía. |

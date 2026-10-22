@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" path="res://assets/environment/props/rift_crack.png" id="1_vb34c"]
 
-[node name="RiftCrack" type="Node3D" unique_id=1550621224]
+[node name="RiftCrack" type="Node3D" unique_id=9684323]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=2018604389]
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1008154094]
 cast_shadow = 0
 centered = false
 offset = Vector2(-22.5, 0)
@@ -13,7 +13,7 @@ texture_filter = 0
 render_priority = -1
 texture = ExtResource("1_vb34c")
 
-[node name="Glow" type="OmniLight3D" parent="." unique_id=2092430041]
+[node name="Glow" type="OmniLight3D" parent="." unique_id=140846110]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0.4)
 light_color = Color(0.7254902, 0.54901963, 1, 1)
 light_energy = 2.2

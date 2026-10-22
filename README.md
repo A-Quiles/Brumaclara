@@ -3,9 +3,10 @@
 RPG de acción y aventura de fantasía anime en píxel art, desarrollado en solitario con **Godot 4.7**.
 El diseño completo está en el GDD del proyecto (título de trabajo: *GUILD ZERO*).
 
-Esta versión es la **zona de demostración** que fija el modelo artístico definitivo del juego: las
-afueras de Brumaclara, con el protagonista, un enemigo (el lobo de la Fractura) y el combate en tiempo
-real completo. Todo el contenido nuevo debe mantener este nivel visual (ver la
+El juego empieza en **el pueblo de Brumaclara** (plaza de la Fuente, terraza de los gremios, calle del
+Mercado, barrio de viviendas, establos y puerta sur; ver `docs/diseno_pueblo.md`) con sus primeros
+habitantes. Por el camino del oeste se sale a **las afueras**, la zona de demostración del combate: el
+lobo de la Fractura y su guarida. Todo el contenido nuevo debe mantener este nivel visual (ver la
 [guía de arte](docs/guia_de_arte.md)).
 
 ![Las afueras de Brumaclara](docs/screenshots/01_afueras.png)
@@ -15,6 +16,11 @@ real completo. Todo el contenido nuevo debe mantener este nivel visual (ver la
 | ![La aldea](docs/screenshots/02_aldea.png) | ![La guarida de los lobos](docs/screenshots/03_guarida.png) |
 
 ![Combate](docs/screenshots/04_combate.gif)
+
+| | |
+|---|---|
+| ![Plaza de la Fuente](docs/screenshots/05_plaza.png) | ![Sede del Faro](docs/screenshots/06_sede_del_faro.png) |
+| ![Calle del Mercado](docs/screenshots/07_calle_del_mercado.png) | ![Establos](docs/screenshots/09_establos.png) |
 
 ## Cómo jugar
 
@@ -29,7 +35,7 @@ real completo. Todo el contenido nuevo debe mantener este nivel visual (ver la
 | Esquivar (invulnerable un instante) | Espacio o K |
 | Chispa: proyectil de fuego (8 PM) | Q o U |
 | Estallido: anillo de fuego alrededor del héroe (25 PM) | E o I |
-| Abrir un cofre | F |
+| Hablar / abrir un cofre | F |
 
 ## Qué hay en la demo
 
@@ -62,8 +68,9 @@ art/            Imágenes de origen generadas con IA (Godot no las importa) y su
 assets/         Recursos del juego producidos por el pipeline: personajes, escenario, efectos, interfaz
 docs/           Guía de arte y capturas
 scenes/
-  levels/demo_zone.tscn   Escena principal: las afueras de Brumaclara
-  characters/             Protagonista y lobo
+  levels/brumaclara.tscn  Escena principal: el pueblo
+  levels/demo_zone.tscn   Las afueras de Brumaclara (combate)
+  characters/             Protagonista, lobo y habitantes
   effects/                Hechizos, impactos, polvo, orbe de experiencia y números de daño
   environment/            Árboles, plantas, objetos y fondo lejano
   ui/hud.tscn             Interfaz
@@ -87,6 +94,7 @@ tools/
 pip install pillow numpy scipy
 python3 tools/art_pipeline/build.py            # todos los recursos (o solo: hero wolf nature …)
 godot --headless --path . --script res://tools/tests/test_combat.gd
+godot --headless --path . --script res://tools/tests/test_town.gd
 xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capturas (necesita pantalla)
 ```
 
@@ -94,7 +102,8 @@ xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capt
 
 - [x] Zona de demostración con el modelo artístico definitivo y combate funcional
 - [ ] Validar el estilo y la sensación del combate
-- [ ] Reconstruir la plaza del pueblo con el nuevo pipeline
+- [x] Pueblo de Brumaclara: barrios, edificios de los gremios y primeros habitantes
+- [ ] Interiores, caja de diálogo y minimapa
 - [ ] Árbol de habilidades, equipo, diálogos y misiones
 
 El prototipo anterior de la plaza del pueblo (arte dibujado por código) se conserva como referencia en la
