@@ -223,6 +223,32 @@ def props_b():
     return OUT / "environment"
 
 
+# town square: the fountain in three frames, market stalls, lamps, banners and street furniture
+PLAZA = {  # cell -> (name, source pixels per game pixel); the fountain row (0, 0..2) is animated
+    (0, 3): ("flower_bed", 5), (1, 0): ("stall_red", 4), (1, 1): ("stall_green", 4), (1, 2): ("stall_blue", 4),
+    (2, 0): ("street_lamp", 4), (2, 1): ("banner", 4), (2, 2): ("flower_cart", 5), (2, 3): ("barrel_stack", 6),
+    (3, 0): ("low_wall", 5), (3, 1): ("pillar", 5), (3, 2): ("tree_planter", 4), (3, 3): ("chalkboard", 6),
+}
+
+
+def plaza():
+    g = grid("plaza_props")
+    images = {name: cropped(sheets.pixelate_cell(g[r][c], f)) for (r, c), (name, f) in PLAZA.items()}
+    water = [sheets.pixelate_cell(g[0][c], 4) for c in range(3)]
+    palette = palette_for(list(images.values()) + water, 40, FIRE)
+    for name, im in images.items():
+        save(sheets.snap_all([im], palette)[0], "environment", "props", name + ".png")
+    water = sheets.snap_all(water, palette)  # frames share the basin's base line and centre
+    boxes = [sheets.solid_box(im) for im in water]
+    w = max(b[2] - b[0] for b in boxes) + 2
+    h = max(b[3] - b[1] for b in boxes) + 2
+    frames = [sheets.place(im, w, h, w // 2, h - 1, x_centre=(b[0] + b[2]) / 2) for im, b in zip(water, boxes)]
+    path = save(sheets.assemble([frames], w, h), "environment", "props", "fountain.png")
+    sheets.write_sprite_frames(path.with_name("fountain_frames.tres"), "res://assets/environment/props/fountain.png",
+                               w, h, [("flow", [(0, 0), (1, 0), (2, 0)], 6, True)])
+    return OUT / "environment" / "props"
+
+
 # --- ground and building textures ------------------------------------------------------------
 
 def texture(cell, f, colours, band=None, flatten=0.0, vertical=True):
@@ -278,6 +304,29 @@ def house():
         save(sheets.snap_all([im], palette)[0], "environment", "buildings", "house_" + name + ".png")
     save(texture(g[1][0], 4, 12, band=12), "environment", "buildings", "roof_orange.png")
     save(texture(g[1][1], 4, 12, band=12), "environment", "buildings", "roof_slate.png")
+    return OUT / "environment" / "buildings"
+
+
+FACADES = {(0, 0): "inn", (0, 1): "shop", (1, 0): "smithy", (1, 1): "guild"}
+
+
+def facades():
+    """Front walls and gables of the town's named buildings. Each drawing is split at its eave
+    (its widest row in the upper part) and both halves are cropped to the wall's width."""
+    g = grid("facades", 2, 2, 8)
+    magenta = np.array([255.0, 0.0, 255.0])  # the bottom corners are wall, so the cell corners can't key it
+    parts = {}
+    for (r, c), name in FACADES.items():
+        cell = g[r][c]
+        solid = ~px.background_mask(cell, magenta, 110)
+        eave = int(np.argmax(solid.sum(1)[: int(len(cell) * 0.6)]))
+        xs = np.nonzero(solid[int(len(cell) * 0.9)])[0]
+        cell = cell[:, xs[0]:xs[-1] + 1]
+        parts[name + "_gable"] = px.pixelate(cell[:eave], magenta, 4)
+        parts[name + "_wall"] = px.pixelate(cell[eave:], magenta, 4, tol=1.0)  # the wall is opaque throughout
+    palette = palette_for(list(parts.values()), 40, FIRE)
+    for name, im in parts.items():
+        save(sheets.snap_all([im], palette)[0], "environment", "buildings", "facade_" + name + ".png")
     return OUT / "environment" / "buildings"
 
 
@@ -357,12 +406,12 @@ def shadow():
     pipeline draws instead of taking it from a source."""
     y, x = np.mgrid[0:8, 0:16] + 0.5
     rgba = np.zeros((8, 16, 4), np.uint8)
-    rgba[((x - 8) / 7.5) ** 2 + ((y - 4) / 3.6) ** 2 <= 1] = (16, 28, 30, 105)
+    rgba[((x - 8) / 7.5) ** 2 + ((y - 4) / 3.6) ** 2 <= 1] = (16, 28, 30, 140)
     return save(Image.fromarray(rgba, "RGBA"), "environment", "textures", "blob_shadow.png")
 
 
 RECIPES = {"hero": hero, "wolf": wolf, "nature": nature, "props_b": props_b, "terrain": terrain,
-           "terrain_b": terrain_b, "house": house, "ui": ui, "vfx": vfx, "backdrop": backdrop, "shadow": shadow}
+           "terrain_b": terrain_b, "house": house, "facades": facades, "plaza": plaza, "ui": ui, "vfx": vfx, "backdrop": backdrop, "shadow": shadow}
 
 if __name__ == "__main__":
     for key in sys.argv[1:] or RECIPES:

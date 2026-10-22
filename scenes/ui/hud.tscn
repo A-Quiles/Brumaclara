@@ -48,10 +48,10 @@ font_size = 11
 font_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
 shadow_color = Color(0, 0, 0, 0.85)
 
-[node name="HUD" type="CanvasLayer" unique_id=1300802257 groups=["hud"]]
+[node name="HUD" type="CanvasLayer" unique_id=1314490278 groups=["hud"]]
 script = ExtResource("1_mj13f")
 
-[node name="Panel" type="NinePatchRect" parent="." unique_id=1348902340]
+[node name="Panel" type="NinePatchRect" parent="." unique_id=2134438959]
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 117.0
@@ -62,7 +62,7 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 5
 
-[node name="Level" type="Label" parent="Panel" unique_id=1729705786]
+[node name="Level" type="Label" parent="Panel" unique_id=265109435]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 4.0
@@ -73,7 +73,7 @@ label_settings = SubResource("LabelSettings_1e6lo")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HPBar" type="TextureProgressBar" parent="Panel" unique_id=1581644577]
+[node name="HPBar" type="TextureProgressBar" parent="Panel" unique_id=256201552]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 48.0
@@ -85,7 +85,7 @@ value = 100.0
 texture_under = ExtResource("4_erw67")
 texture_progress = ExtResource("5_gonto")
 
-[node name="MPBar" type="TextureProgressBar" parent="Panel" unique_id=873235438]
+[node name="MPBar" type="TextureProgressBar" parent="Panel" unique_id=1049095263]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 48.0
@@ -97,7 +97,7 @@ value = 100.0
 texture_under = ExtResource("4_erw67")
 texture_progress = ExtResource("6_cwdlq")
 
-[node name="XPBar" type="TextureProgressBar" parent="Panel" unique_id=1808438683]
+[node name="XPBar" type="TextureProgressBar" parent="Panel" unique_id=411058529]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 48.0
@@ -109,7 +109,7 @@ value = 100.0
 texture_under = ExtResource("4_erw67")
 texture_progress = ExtResource("7_o6xly")
 
-[node name="SlotSword" type="TextureRect" parent="." unique_id=1966577724]
+[node name="SlotSword" type="TextureRect" parent="." unique_id=1646721151]
 unique_name_in_owner = true
 offset_left = 526.0
 offset_top = 302.0
@@ -118,13 +118,13 @@ offset_bottom = 302.0
 mouse_filter = 2
 texture = ExtResource("8_we3sy")
 
-[node name="Cooldown" type="ColorRect" parent="SlotSword" unique_id=674007835]
+[node name="Cooldown" type="ColorRect" parent="SlotSword" unique_id=1360868903]
 layout_mode = 0
 offset_right = 22.0
 mouse_filter = 2
 color = Color(0.02, 0.02, 0.06, 0.68)
 
-[node name="Key" type="Label" parent="SlotSword" unique_id=917459878]
+[node name="Key" type="Label" parent="SlotSword" unique_id=2125659424]
 layout_mode = 0
 offset_top = 21.0
 offset_right = 22.0
@@ -133,7 +133,7 @@ text = "J"
 label_settings = SubResource("LabelSettings_4mi7y")
 horizontal_alignment = 1
 
-[node name="SlotBolt" type="TextureRect" parent="." unique_id=1193434580]
+[node name="SlotBolt" type="TextureRect" parent="." unique_id=1959042037]
 unique_name_in_owner = true
 offset_left = 553.0
 offset_top = 302.0
@@ -142,13 +142,13 @@ offset_bottom = 302.0
 mouse_filter = 2
 texture = ExtResource("9_65nxt")
 
-[node name="Cooldown" type="ColorRect" parent="SlotBolt" unique_id=63927285]
+[node name="Cooldown" type="ColorRect" parent="SlotBolt" unique_id=336530077]
 layout_mode = 0
 offset_right = 22.0
 mouse_filter = 2
 color = Color(0.02, 0.02, 0.06, 0.68)
 
-[node name="Key" type="Label" parent="SlotBolt" unique_id=863875156]
+[node name="Key" type="Label" parent="SlotBolt" unique_id=477023391]
 layout_mode = 0
 offset_top = 21.0
 offset_right = 22.0
@@ -157,7 +157,7 @@ text = "Q"
 label_settings = SubResource("LabelSettings_pkwgd")
 horizontal_alignment = 1
 
-[node name="SlotBurst" type="TextureRect" parent="." unique_id=869107732]
+[node name="SlotBurst" type="TextureRect" parent="." unique_id=1091628842]
 unique_name_in_owner = true
 offset_left = 580.0
 offset_top = 302.0
@@ -166,13 +166,13 @@ offset_bottom = 302.0
 mouse_filter = 2
 texture = ExtResource("10_el1dq")
 
-[node name="Cooldown" type="ColorRect" parent="SlotBurst" unique_id=836808785]
+[node name="Cooldown" type="ColorRect" parent="SlotBurst" unique_id=942282922]
 layout_mode = 0
 offset_right = 21.0
 mouse_filter = 2
 color = Color(0.02, 0.02, 0.06, 0.68)
 
-[node name="Key" type="Label" parent="SlotBurst" unique_id=1264934960]
+[node name="Key" type="Label" parent="SlotBurst" unique_id=1168313218]
 layout_mode = 0
 offset_top = 21.0
 offset_right = 21.0
@@ -181,7 +181,7 @@ text = "E"
 label_settings = SubResource("LabelSettings_d5po8")
 horizontal_alignment = 1
 
-[node name="SlotDash" type="TextureRect" parent="." unique_id=1854960395]
+[node name="SlotDash" type="TextureRect" parent="." unique_id=2003666741]
 unique_name_in_owner = true
 offset_left = 607.0
 offset_top = 302.0
@@ -190,13 +190,13 @@ offset_bottom = 302.0
 mouse_filter = 2
 texture = ExtResource("11_gmc6u")
 
-[node name="Cooldown" type="ColorRect" parent="SlotDash" unique_id=182135583]
+[node name="Cooldown" type="ColorRect" parent="SlotDash" unique_id=791908827]
 layout_mode = 0
 offset_right = 22.0
 mouse_filter = 2
 color = Color(0.02, 0.02, 0.06, 0.68)
 
-[node name="Key" type="Label" parent="SlotDash" unique_id=1723178572]
+[node name="Key" type="Label" parent="SlotDash" unique_id=1456315493]
 layout_mode = 0
 offset_top = 21.0
 offset_right = 22.0
@@ -205,14 +205,14 @@ text = "Esp"
 label_settings = SubResource("LabelSettings_7yoph")
 horizontal_alignment = 1
 
-[node name="MessageBar" type="ColorRect" parent="." unique_id=448314178]
+[node name="MessageBar" type="ColorRect" parent="." unique_id=1362529467]
 offset_top = 342.0
 offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2
 color = Color(0.02, 0.03, 0.06, 0.62)
 
-[node name="Message" type="Label" parent="MessageBar" unique_id=409853132]
+[node name="Message" type="Label" parent="MessageBar" unique_id=1005180330]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 8.0

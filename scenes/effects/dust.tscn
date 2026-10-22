@@ -25,7 +25,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Dust" type="AnimatedSprite3D" unique_id=1108723086]
+[node name="Dust" type="AnimatedSprite3D" unique_id=936625066]
 cast_shadow = 0
 pixel_size = 0.0449
 texture_filter = 0
