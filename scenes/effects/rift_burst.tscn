@@ -32,7 +32,7 @@ animations = [{
 "speed": 9.0
 }]
 
-[node name="RiftBurst" type="AnimatedSprite3D" unique_id=285812398]
+[node name="RiftBurst" type="AnimatedSprite3D" unique_id=1575046875]
 cast_shadow = 0
 modulate = Color(0.85, 0.55, 1.6, 1)
 pixel_size = 0.0449

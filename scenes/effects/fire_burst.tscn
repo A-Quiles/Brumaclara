@@ -42,18 +42,18 @@ animations = [{
 "speed": 11.0
 }]
 
-[node name="FireBurst" type="Area3D" unique_id=338930559]
+[node name="FireBurst" type="Area3D" unique_id=854299931]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("1_o2fc1")
 damage = 30
 push = 11.0
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=960361374]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1357107648]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("SphereShape3D_p46ki")
 
-[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=383184928]
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=146450727]
 cast_shadow = 0
 offset = Vector2(0, 16)
 pixel_size = 0.0449
@@ -61,7 +61,7 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_hw72t")
 animation = &"burst"
 
-[node name="Ring0" type="AnimatedSprite3D" parent="." unique_id=797494579]
+[node name="Ring0" type="AnimatedSprite3D" parent="." unique_id=1503737097]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 0, 0)
 cast_shadow = 0
 offset = Vector2(0, 16)
@@ -71,7 +71,7 @@ sprite_frames = SubResource("SpriteFrames_hw72t")
 animation = &"burst"
 autoplay = "burst"
 
-[node name="Ring1" type="AnimatedSprite3D" parent="." unique_id=829224898]
+[node name="Ring1" type="AnimatedSprite3D" parent="." unique_id=1464313897]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.85, 0, 1.0392305)
 cast_shadow = 0
 offset = Vector2(0, 16)
@@ -81,7 +81,7 @@ sprite_frames = SubResource("SpriteFrames_hw72t")
 animation = &"burst"
 autoplay = "burst"
 
-[node name="Ring2" type="AnimatedSprite3D" parent="." unique_id=1108214794]
+[node name="Ring2" type="AnimatedSprite3D" parent="." unique_id=1801908117]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 0, 1.0392305)
 cast_shadow = 0
 offset = Vector2(0, 16)
@@ -91,7 +91,7 @@ sprite_frames = SubResource("SpriteFrames_hw72t")
 animation = &"burst"
 autoplay = "burst"
 
-[node name="Ring3" type="AnimatedSprite3D" parent="." unique_id=1261560312]
+[node name="Ring3" type="AnimatedSprite3D" parent="." unique_id=360314974]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0, 1.4695762e-16)
 cast_shadow = 0
 offset = Vector2(0, 16)
@@ -101,7 +101,7 @@ sprite_frames = SubResource("SpriteFrames_hw72t")
 animation = &"burst"
 autoplay = "burst"
 
-[node name="Ring4" type="AnimatedSprite3D" parent="." unique_id=2140441483]
+[node name="Ring4" type="AnimatedSprite3D" parent="." unique_id=926625606]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 0, -1.0392305)
 cast_shadow = 0
 offset = Vector2(0, 16)
@@ -111,7 +111,7 @@ sprite_frames = SubResource("SpriteFrames_hw72t")
 animation = &"burst"
 autoplay = "burst"
 
-[node name="Ring5" type="AnimatedSprite3D" parent="." unique_id=1344649557]
+[node name="Ring5" type="AnimatedSprite3D" parent="." unique_id=581101894]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.85, 0, -1.0392305)
 cast_shadow = 0
 offset = Vector2(0, 16)

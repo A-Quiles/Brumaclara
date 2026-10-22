@@ -32,7 +32,7 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="Spark" type="AnimatedSprite3D" unique_id=1690320666]
+[node name="Spark" type="AnimatedSprite3D" unique_id=138354174]
 cast_shadow = 0
 pixel_size = 0.0449
 texture_filter = 0

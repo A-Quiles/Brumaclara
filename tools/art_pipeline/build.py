@@ -314,6 +314,18 @@ FACADES = {  # sheet -> cell -> building; each sheet keeps its own palette
 }
 
 
+def add_storey(wall):
+    """The same wall one floor taller: its timber upper floor is repeated above itself. The floor
+    line is where the grey stone of the ground floor starts."""
+    a = np.asarray(wall.convert("RGBA"))
+    rgb = a[..., :3].astype(np.float64)
+    grey = (rgb.max(-1) - rgb.min(-1) < 28) & (rgb.mean(-1) > 60) & (rgb.mean(-1) < 200)
+    rows = grey.mean(1)
+    start = int(len(rows) * 0.3)
+    floor = start + int(np.argmax(rows[start:] > 0.45))
+    return Image.fromarray(np.concatenate([a[:floor], a[:floor], a[floor:]]), "RGBA")
+
+
 def facades():
     """Front walls and gables of the town's buildings. Each drawing is split at its eave (its
     widest row in the upper part) and both halves are cropped to the wall's width."""
@@ -331,14 +343,20 @@ def facades():
             parts[name + "_wall"] = px.pixelate(cell[eave:], magenta, 4, tol=1.0)  # the wall is opaque throughout
         palette = palette_for(list(parts.values()), 40, FIRE)
         for name, im in parts.items():
-            save(sheets.snap_all([im], palette)[0], "environment", "buildings", "facade_" + name + ".png")
+            im = sheets.snap_all([im], palette)[0]
+            save(im, "environment", "buildings", "facade_" + name + ".png")
+            if name.endswith("_wall"):
+                save(add_storey(im), "environment", "buildings", "facade_" + name + "_tall.png")
     return OUT / "environment" / "buildings"
 
 
 def walls_roofs():
     """Side wall of the town houses, the stone of the retaining walls and two more roofs."""
     g = grid("walls_roofs", 2, 2, 8)
-    save(texture(g[0][0], 4, 24, band=12, vertical=False), "environment", "buildings", "side_timber.png")
+    # not wrapped: the wall is symmetric (windows centred between posts) and covers a wall once
+    side = texture(g[0][0], 4, 24)
+    save(side, "environment", "buildings", "side_timber.png")
+    save(add_storey(side), "environment", "buildings", "side_timber_tall.png")
     save(texture(g[0][1], 4, 16, band=12), "environment", "textures", "stone_wall.png")
     save(texture(g[1][0], 4, 12, band=12), "environment", "buildings", "roof_red.png")
     save(texture(g[1][1], 4, 12, band=12), "environment", "buildings", "roof_shingle.png")

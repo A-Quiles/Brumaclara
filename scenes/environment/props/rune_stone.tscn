@@ -6,10 +6,9 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ibsnd"]
 height = 1.6
 
-[node name="RuneStone" type="StaticBody3D" unique_id=44675557]
+[node name="RuneStone" type="StaticBody3D" unique_id=1809456568]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=1603062094]
-cast_shadow = 0
+[node name="Sprite" type="Sprite3D" parent="." unique_id=309873578]
 centered = false
 offset = Vector2(-18, 0)
 pixel_size = 0.0449
@@ -17,7 +16,7 @@ alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("1_tl3gs")
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=1826838779]
+[node name="Shadow" type="Sprite3D" parent="." unique_id=715236104]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.252)
 cast_shadow = 0
 pixel_size = 0.0875
@@ -25,6 +24,6 @@ axis = 1
 texture_filter = 0
 texture = ExtResource("2_r0p4u")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=1220437368]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=958026976]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CylinderShape3D_ibsnd")

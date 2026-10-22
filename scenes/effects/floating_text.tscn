@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" path="res://assets/fonts/pixelify_sans_medium.woff" id="1_llnos"]
 [ext_resource type="Script" path="res://scripts/effects/floating_text.gd" id="2_2ceor"]
 
-[node name="FloatingText" type="Label3D" unique_id=769988338]
+[node name="FloatingText" type="Label3D" unique_id=689555104]
 pixel_size = 0.0449
 no_depth_test = true
 texture_filter = 0
