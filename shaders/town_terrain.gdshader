@@ -46,15 +46,17 @@ void fragment() {
 	if (mask.g > edge) colour = texture(dirt, uv).rgb;
 	if (mask.r > edge) colour = texture(cobble, uv).rgb;
 	float steep = 1.0 - world_normal.y;
-	bool paved = max(mask.r, mask.g) > edge;
-	if (!paved && steep > 0.13 + wobble * 0.08) {  // worn earth where the slope gets steeper
-		colour = texture(dirt, uv).rgb;
+	bool paved = max(mask.r, mask.g) > edge;  // streets keep their look on a gentle climb
+	if (!paved) {
+		if (steep > 0.16 + wobble * 0.08) {  // worn earth where the hillside gets steeper
+			colour = texture(dirt, uv).rgb;
+		}
+		if (steep > 0.32 + wobble * 0.1) {  // rock only where it is really steep
+			vec2 side = abs(world_normal.x) > abs(world_normal.z) ? world_pos.zy : world_pos.xy;
+			colour = texture(rock, side * vec2(1.0, -1.0) / tile).rgb;
+		}
+		colour *= 1.0 - steep * 0.5;  // the hillside in shade reads as relief
 	}
-	if (steep > 0.24 + wobble * 0.1) {  // bare rock on the steep parts, seen from the side
-		vec2 side = abs(world_normal.x) > abs(world_normal.z) ? world_pos.zy : world_pos.xy;
-		colour = texture(rock, side * vec2(1.0, -1.0) / tile).rgb;
-	}
-	colour *= 1.0 - steep * 0.8;  // slopes in shade read as relief
 	ALBEDO = colour;
 	ROUGHNESS = 1.0;
 }

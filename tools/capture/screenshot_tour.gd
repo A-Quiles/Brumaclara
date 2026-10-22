@@ -22,13 +22,13 @@ func _run() -> void:
 		["01_afueras", LEVEL, Vector3(-3.0, 0, -4.5), Vector2.RIGHT],
 		["02_aldea", LEVEL, Vector3(-7.0, 1.8, -17.8), Vector2.DOWN],
 		["03_guarida", LEVEL, Vector3(6.5, 0, -1.5), Vector2.UP],
-		["05_plaza", TOWN, Vector3(-1.0, 2.6, 6.5), Vector2.UP],
-		["06_sede_del_faro", TOWN, Vector3(0, 6.2, -26.5), Vector2.UP],
-		["07_calle_del_mercado", TOWN, Vector3(25.0, 2.6, 1.5), Vector2.UP],
-		["08_barrio_oeste", TOWN, Vector3(-26.0, 2.6, 4.5), Vector2.UP],
-		["09_establos", TOWN, Vector3(-6.0, 0.8, 26.0), Vector2.UP],
-		["10_puerta_sur", TOWN, Vector3(-1.0, 0.8, 31.0), Vector2.UP],
-		["11_archivo", TOWN, Vector3(18.5, 6.2, -31.0), Vector2.UP],
+		["05_plaza", TOWN, Vector3(-1.0, 0.5, 6.5), Vector2.UP],
+		["06_sede_del_faro", TOWN, Vector3(0, 3.0, -30.5), Vector2.UP],
+		["07_calle_del_mercado", TOWN, Vector3(25.0, 0.5, 1.5), Vector2.UP],
+		["08_barrio_oeste", TOWN, Vector3(-30.0, 0.5, 2.5), Vector2.UP],
+		["09_establos", TOWN, Vector3(-14.0, 0.5, 22.0), Vector2.UP],
+		["10_puerta_sur", TOWN, Vector3(14.0, 0.5, 24.0), Vector2.UP],
+		["11_archivo", TOWN, Vector3(18.5, 3.0, -36.0), Vector2.UP],
 	]
 	var level: Node = null
 	for shot in shots:

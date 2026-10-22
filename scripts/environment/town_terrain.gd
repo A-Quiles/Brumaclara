@@ -6,7 +6,7 @@ extends StaticBody3D
 ## texture (grass, rock on steep parts, streets painted from a mask) comes from town_terrain.gdshader.
 ## The same height function places houses, props and people (see height()).
 
-## [x0, x1, z0, z1, level] of each shelf, lowest first; each one rises from the ground below it
+## [x0, x1, z0, z1, level, slope width] of each shelf, lowest first; each one rises from the ground below it
 @export var shelves: Array = []
 ## [x, z, radius] where streets climb between shelves: the slope there is wide and walkable
 @export var ramps: Array = []
@@ -31,9 +31,10 @@ func height(x: float, z: float) -> float:
 		var dx := maxf(maxf(s[0] - x, x - s[1]), 0.0)
 		var dz := maxf(maxf(s[2] - z, z - s[3]), 0.0)
 		var outside := Vector2(dx, dz).length() + _noise.get_noise_2d(x, z) * 2.2  # the edge wanders
-		var width := 2.6 + 1.8 * _noise.get_noise_2d(z * 1.7 + 50.0, x * 1.7)  # and so does the slope
+		var base: float = s[5] if s.size() > 5 else 4.0
+		var width := base * (1.0 + 0.4 * _noise.get_noise_2d(z * 1.7 + 50.0, x * 1.7))  # and so does the slope
 		for r in ramps:
-			width = lerpf(width, 5.5, clampf(1.0 - Vector2(x - r[0], z - r[1]).length() / r[2], 0.0, 1.0))
+			width = lerpf(width, maxf(width, 9.0), clampf(1.0 - Vector2(x - r[0], z - r[1]).length() / r[2], 0.0, 1.0))
 		var t := clampf(1.0 - outside / width, 0.0, 1.0)
 		h = lerpf(h, s[4], t * t * (3.0 - 2.0 * t))
 	return h
