@@ -97,7 +97,7 @@ func _chase(to_hero: Vector3) -> void:
 		return
 	if to_hero.length() < attack_range:
 		_pounce_dir = to_hero.normalized()
-		_face(_pounce_dir.x)
+		_face(View.to_screen(_pounce_dir).x)
 		_set_state(State.WINDUP, windup_seconds, "windup")
 		return
 	_move(to_hero.normalized() * speed, "run")
@@ -170,7 +170,7 @@ func _move(motion: Vector3, animation: String) -> void:
 	velocity.x = motion.x
 	velocity.z = motion.z
 	if absf(motion.x) > 0.05:
-		_face(motion.x)
+		_face(View.to_screen(motion).x)
 	_sprite.play(animation)
 
 

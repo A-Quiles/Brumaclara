@@ -25,9 +25,10 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Dust" type="AnimatedSprite3D" unique_id=351086353]
+[node name="Dust" type="AnimatedSprite3D" unique_id=2108937052]
 cast_shadow = 0
 pixel_size = 0.0449
+billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_tq7k2")
 script = ExtResource("2_mfih6")

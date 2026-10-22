@@ -32,11 +32,11 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector3.ZERO
 		_wait -= delta
 		if _wait <= 0.0 and wander > 0.0 and not _hero_near:
-			_target = _home + Vector3(randf_range(-wander, wander), 0, randf_range(-wander, wander) * 0.6)
+			_target = _home + Vector3(randf_range(-wander, wander), 0, randf_range(-wander, wander))
 			_wait = randf_range(2.0, 5.0)
 	else:
 		velocity = step.normalized() * speed
-		_face(Vector2(step.x, step.z))
+		_face(View.to_screen(step))
 	move_and_slide()
 	_play("walk" if velocity.length() > 0.1 else "idle")
 
@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 func _talk() -> void:
 	var hero := get_tree().get_first_node_in_group("player") as Node3D
 	if hero:
-		_face(Vector2(hero.global_position.x - global_position.x, hero.global_position.z - global_position.z))
+		_face(View.to_screen(hero.global_position - global_position))
 	get_tree().call_group("hud", "say", lines[_line], 5.0)
 	_line = (_line + 1) % lines.size()
 

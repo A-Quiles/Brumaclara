@@ -7,30 +7,32 @@
 height = 1.6
 radius = 0.45
 
-[node name="Crystal" type="StaticBody3D" unique_id=1851335835]
+[node name="Crystal" type="StaticBody3D" unique_id=562014350]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=394684443]
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1598622942]
+transform = Transform3D(1, 0, 0, 0, 1.4142135, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 0
 centered = false
 offset = Vector2(-12.5, 0)
 pixel_size = 0.0449
+billboard = 2
 alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("1_shnug")
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=1240671668]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.216)
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1384623450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15273507, 0.02, -0.15273507)
 cast_shadow = 0
 pixel_size = 0.075
 axis = 1
 texture_filter = 0
 texture = ExtResource("2_0bcsn")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=1003830972]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1194568346]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CylinderShape3D_sh3cr")
 
-[node name="Glow" type="OmniLight3D" parent="." unique_id=2012592401]
+[node name="Glow" type="OmniLight3D" parent="." unique_id=1992796696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0.4)
 light_color = Color(0.7254902, 0.54901963, 1, 1)
 light_energy = 1.4

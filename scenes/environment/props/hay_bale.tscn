@@ -7,25 +7,27 @@
 height = 1.6
 radius = 0.6
 
-[node name="HayBale" type="StaticBody3D" unique_id=279544256]
+[node name="HayBale" type="StaticBody3D" unique_id=756330542]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=450559352]
+[node name="Sprite" type="Sprite3D" parent="." unique_id=2115761492]
+transform = Transform3D(1, 0, 0, 0, 1.4142135, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 0
 centered = false
 offset = Vector2(-15, 0)
 pixel_size = 0.0449
+billboard = 2
 alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("1_wvq0y")
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=955778914]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.234)
+[node name="Shadow" type="Sprite3D" parent="." unique_id=276294052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16546299, 0.02, -0.16546299)
 cast_shadow = 0
 pixel_size = 0.08125
 axis = 1
 texture_filter = 0
 texture = ExtResource("2_rxaww")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=1755511484]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1960337426]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CylinderShape3D_xff0t")

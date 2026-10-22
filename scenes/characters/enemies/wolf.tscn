@@ -21,7 +21,7 @@ size = Vector3(1.9, 1.3, 0.9)
 [sub_resource type="SphereShape3D" id="SphereShape3D_b7tu1"]
 radius = 0.8
 
-[node name="Wolf" type="CharacterBody3D" unique_id=427598999]
+[node name="Wolf" type="CharacterBody3D" unique_id=1616150058]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_qit5a")
@@ -29,16 +29,18 @@ orb_scene = ExtResource("2_ntsix")
 death_effect = ExtResource("3_noo6t")
 text_scene = ExtResource("4_7p2iv")
 
-[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=688706411]
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=1768397837]
+transform = Transform3D(1, 0, 0, 0, 1.4142135, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 0
 centered = false
 offset = Vector2(-30, -3)
 pixel_size = 0.0449
+billboard = 2
 texture_filter = 0
 sprite_frames = ExtResource("5_6rde1")
 animation = &"dead"
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=784146721]
+[node name="Shadow" type="Sprite3D" parent="." unique_id=474635311]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.02, 0.05)
 cast_shadow = 0
 pixel_size = 0.10625
@@ -46,52 +48,54 @@ axis = 1
 texture_filter = 0
 texture = ExtResource("6_ma4a6")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=1979192754]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=788891290]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_wlpxb")
 
-[node name="Health" type="Node" parent="." unique_id=1059118306]
+[node name="Health" type="Node" parent="." unique_id=1156882525]
 script = ExtResource("7_ki52t")
 maximum = 40
 
-[node name="Hurtbox" type="Area3D" parent="." unique_id=1073019768]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1825106649]
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("8_43edc")
 
-[node name="Collision" type="CollisionShape3D" parent="Hurtbox" unique_id=646224078]
+[node name="Collision" type="CollisionShape3D" parent="Hurtbox" unique_id=271974030]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
 shape = SubResource("BoxShape3D_x1j5n")
 
-[node name="Bite" type="Area3D" parent="." unique_id=1888521412]
+[node name="Bite" type="Area3D" parent="." unique_id=1709837194]
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("9_f658f")
 damage = 14
 push = 8.0
 
-[node name="Collision" type="CollisionShape3D" parent="Bite" unique_id=1261929570]
+[node name="Collision" type="CollisionShape3D" parent="Bite" unique_id=1282464288]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("SphereShape3D_b7tu1")
 
-[node name="Bar" type="Node3D" parent="." unique_id=1372853491]
+[node name="Bar" type="Node3D" parent="." unique_id=678024188]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85, 0.05)
 
-[node name="Trough" type="Sprite3D" parent="Bar" unique_id=723778896]
+[node name="Trough" type="Sprite3D" parent="Bar" unique_id=132978074]
 cast_shadow = 0
 centered = false
 offset = Vector2(-28, 0)
 pixel_size = 0.02694
+billboard = 1
 no_depth_test = true
 texture_filter = 0
 texture = ExtResource("10_isl6o")
 
-[node name="Fill" type="Sprite3D" parent="Bar" unique_id=336459872]
+[node name="Fill" type="Sprite3D" parent="Bar" unique_id=1534685750]
 cast_shadow = 0
 centered = false
 offset = Vector2(-28, 0)
 pixel_size = 0.02694
+billboard = 1
 no_depth_test = true
 texture_filter = 0
 render_priority = 1

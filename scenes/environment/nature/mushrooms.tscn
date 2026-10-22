@@ -2,13 +2,15 @@
 
 [ext_resource type="Texture2D" path="res://assets/environment/nature/mushrooms.png" id="1_oc1kp"]
 
-[node name="Mushrooms" type="Node3D" unique_id=175596368]
+[node name="Mushrooms" type="Node3D" unique_id=1563923622]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=1914109366]
+[node name="Sprite" type="Sprite3D" parent="." unique_id=969655065]
+transform = Transform3D(1, 0, 0, 0, 1.4142135, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 0
 centered = false
 offset = Vector2(-12.5, 0)
 pixel_size = 0.0449
+billboard = 2
 alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("1_oc1kp")

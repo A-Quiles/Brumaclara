@@ -7,25 +7,27 @@
 height = 1.6
 radius = 0.8
 
-[node name="Boulder" type="StaticBody3D" unique_id=781461082]
+[node name="Boulder" type="StaticBody3D" unique_id=127684931]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=2004241337]
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1978698141]
+transform = Transform3D(1, 0, 0, 0, 1.4142135, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 0
 centered = false
 offset = Vector2(-19.5, 0)
 pixel_size = 0.0449
+billboard = 2
 alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("1_3a4lj")
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=482439122]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.324)
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1298403239]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22910258, 0.02, -0.22910258)
 cast_shadow = 0
 pixel_size = 0.1125
 axis = 1
 texture_filter = 0
 texture = ExtResource("2_6pv4u")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=1736298030]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=733648606]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CylinderShape3D_uaa5f")

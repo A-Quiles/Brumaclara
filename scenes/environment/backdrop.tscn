@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://scripts/environment/backdrop.gd" id="1_pjom1"]
 [ext_resource type="Texture2D" path="res://assets/environment/backdrop/far_scenery.png" id="2_71bd2"]
 
-[node name="Backdrop" type="CanvasLayer" unique_id=923610051]
+[node name="Backdrop" type="CanvasLayer" unique_id=1654788553]
 layer = -1
 script = ExtResource("1_pjom1")
 
-[node name="Scenery" type="Sprite2D" parent="." unique_id=933018567]
+[node name="Scenery" type="Sprite2D" parent="." unique_id=249103308]
 texture_repeat = 2
 texture = ExtResource("2_71bd2")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 640, 335)
+region_rect = Rect2(0, 0, 960, 335)

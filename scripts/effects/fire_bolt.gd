@@ -14,7 +14,7 @@ func _ready() -> void:
 	landed.connect(_burst.unbind(1))
 	body_entered.connect(_burst.unbind(1))
 	get_tree().create_timer(lifetime).timeout.connect(_burst)
-	$Sprite.flip_h = direction.x < 0.0
+	$Sprite.flip_h = View.to_screen(direction).x < 0.0
 	$Sprite.play()
 
 

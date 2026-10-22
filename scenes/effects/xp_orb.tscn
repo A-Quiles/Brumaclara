@@ -29,23 +29,25 @@ animations = [{
 "speed": 4.0
 }]
 
-[node name="XpOrb" type="Area3D" unique_id=385166823]
+[node name="XpOrb" type="Area3D" unique_id=1615507163]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_tbb1b")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=1780862954]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1873864853]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 shape = SubResource("SphereShape3D_vd0fm")
 
-[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=2060601001]
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=1206572612]
+transform = Transform3D(1, 0, 0, 0, 1.4142135, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 0
 pixel_size = 0.0449
+billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_cnf35")
 animation = &"shine"
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=455965749]
+[node name="Shadow" type="Sprite3D" parent="." unique_id=100583011]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.02, 0.05)
 cast_shadow = 0
 pixel_size = 0.0375

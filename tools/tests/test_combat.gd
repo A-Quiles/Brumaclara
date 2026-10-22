@@ -87,7 +87,9 @@ func _run() -> void:
 	quit(1 if _failures else 0)
 
 
+## the wolf goes `wolf_at.x - hero_at.x` units to the screen-right of the hero (controls are screen-relative)
 func _place(hero_at: Vector3, wolf_at: Vector3) -> void:
+	wolf_at = hero_at + View.RIGHT * (wolf_at.x - hero_at.x)
 	_hero.global_position = hero_at
 	_hero.velocity = Vector3.ZERO
 	_wolf.global_position = wolf_at

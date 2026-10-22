@@ -14,12 +14,14 @@ Debe leerse en una captura pequeña: héroe reconocible, profundidad, enemigos d
 
 | Elemento | Valor |
 |---|---|
-| Resolución interna | 640 × 360, escalado entero ×3 a 1920 × 1080, filtrado *nearest* |
-| Cámara | lente desplazada: plano de imagen vertical (las verticales se dibujan verticales, como en un píxel art pintado) y ventana desplazada hacia abajo; equivale a mirar unos 27–30° hacia abajo |
-| Encuadre | el héroe a ~78 % de la altura de la pantalla, mirando hacia el fondo del escenario |
-| Escala | 1 unidad del mundo = 22,3 px a la distancia del héroe; 1 píxel de sprite = 0,0449 unidades |
+| Resolución interna | 960 × 540, escalado entero ×2 a 1920 × 1080, filtrado *nearest* |
+| Cámara | ortográfica, 45° de elevación y en diagonal (45° de giro): se ven fachada, lateral y tejado de cada casa (`scripts/systems/view.gd`) |
+| Controles | relativos a la pantalla: arriba es arriba en la imagen, aunque en el mundo sea la diagonal |
+| Escala | 1 píxel de sprite = 0,0449 unidades |
+| Edificios en primer plano | se vuelven translúcidos mientras tapan al héroe (`occlusion_fader.gd`) |
 
-Todos los sprites están orientados hacia la cámara sin rotar, así sus píxeles salen 1:1 en pantalla.
+Los sprites giran para mirar siempre a la cámara y se estiran ×1,414 en vertical para compensar la
+inclinación: así sus píxeles salen cuadrados y 1:1 en pantalla.
 
 ## 3. Tamaños
 
@@ -87,7 +89,17 @@ comparte dos rampas de acento definidas en `tools/art_pipeline/build.py`:
 - El código anima recursos (parpadeo de invulnerabilidad, destello al recibir daño, estelas de la
   esquiva, temblor de cámara, congelación breve en los impactos); no dibuja su aspecto.
 
-## 7. Escenario
+## 7. Arquitectura
+
+- Un edificio no es una caja: `_building` compone una nave con tejado a dos aguas paralelo a la calle y
+  un cuerpo con hastial que sobresale un metro y lleva la fachada. Así hay cumbrera, hastial, faldones
+  y aleros en varios lados, como en `docs/reference/arquitectura_casa.jpg`.
+- Buhardillas en el faldón delantero de la nave y chimeneas en el trasero, según el edificio.
+- Las viviendas pequeñas y los almacenes usan un único bloque con hastial (`plain`).
+- Cada edificio orienta su fachada hacia la calle o plaza que sirve (giro de 0° o 90°).
+- Seis tejados: naranja, rojo, pizarra, madera; nunca dos vecinos iguales.
+
+## 8. Escenario
 
 - Suelo: bloques 3D con textura arriba y roca en los lados, con contorno oscuro en las aristas; los
   caminos y las manchas (suelo de bosque bajo los árboles, huerto, cicatriz de la Fractura) son franjas
@@ -99,7 +111,7 @@ comparte dos rampas de acento definidas en `tools/art_pipeline/build.py`:
   abajo al ir al norte, de modo que las montañas asoman por encima del bosque. La cámara nunca ve el
   horizonte real, así que el fondo solo se ve por encima de los árboles.
 
-## 8. Interfaz
+## 9. Interfaz
 
 Kit generado con el mismo estilo: panel azul noche con borde dorado (se estira por su centro liso,
 nunca por el borde) con las barras de vida, maná y experiencia, iconos de habilidades con su tecla y una
@@ -107,7 +119,7 @@ sombra que baja mientras se recargan. Texto con Pixelify Sans a 11 px sin antial
 píxel de la fuente es un píxel de pantalla (a 12 o 13 px las letras se deforman). La pantalla no se
 llena de números: solo daño recibido y causado.
 
-## 9. Cómo se produce un recurso nuevo
+## 10. Cómo se produce un recurso nuevo
 
 1. **Generar** con IA usando la plantilla de prompts de `art/FUENTES.md`: misma frase de estilo, la
    descripción fija del personaje u objeto, rejilla exacta sobre magenta puro y el cierre técnico.
@@ -119,7 +131,7 @@ llena de números: solo daño recibido y causado.
 4. **Comprobar** en la escena de referencia junto al héroe (`tools/capture/screenshot_tour.gd`): tamaño,
    contraste, paleta y que no haya píxeles de otro tamaño.
 
-## 10. Lista de control
+## 11. Lista de control
 
 - [ ] ¿Se distingue del fondo y del resto de personajes en una captura pequeña?
 - [ ] ¿Su píxel mide lo mismo que el del héroe?

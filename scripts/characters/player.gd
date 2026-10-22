@@ -113,8 +113,9 @@ func _process(delta: float) -> void:
 # --- actions --------------------------------------------------------------------------------
 
 func _walk(input: Vector2) -> void:
-	velocity.x = input.x * SPEED
-	velocity.z = input.y * SPEED
+	var move := View.to_world(input) * SPEED  # the controls follow the screen
+	velocity.x = move.x
+	velocity.z = move.z
 	if input != Vector2.ZERO:
 		_facing = input
 	_play("walk" if input != Vector2.ZERO else "idle")
@@ -173,7 +174,7 @@ func _swing() -> void:
 func _start_dodge(input: Vector2) -> void:
 	var dir := input.normalized() if input != Vector2.ZERO else _facing.normalized()
 	_facing = dir
-	_dodge_dir = Vector3(dir.x, 0.0, dir.y)
+	_dodge_dir = View.to_world(dir)
 	_sword.set_active(false)
 	_begin(State.DODGE, 0.3, "dodge")
 	_invulnerable = maxf(_invulnerable, 0.28)
@@ -301,8 +302,8 @@ func _brake(delta: float, rate: float) -> void:
 func _facing_3d() -> Vector3:
 	var dir := _dir_name()
 	if dir == "side":
-		return Vector3(signf(_facing.x), 0, 0)
-	return Vector3(0, 0, -1 if dir == "up" else 1)
+		return View.to_world(Vector2(signf(_facing.x), 0))
+	return View.to_world(Vector2(0, -1 if dir == "up" else 1))
 
 
 func _dir_name() -> String:

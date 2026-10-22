@@ -234,7 +234,7 @@ PLAZA = {  # cell -> (name, source pixels per game pixel); the fountain row (0, 
 def plaza():
     g = grid("plaza_props")
     images = {name: cropped(sheets.pixelate_cell(g[r][c], f)) for (r, c), (name, f) in PLAZA.items()}
-    water = [sheets.pixelate_cell(g[0][c], 4) for c in range(3)]
+    water = [sheets.pixelate_cell(g[0][c], 3) for c in range(3)]  # finer: the square's centrepiece
     palette = palette_for(list(images.values()) + water, 40, FIRE)
     for name, im in images.items():
         save(sheets.snap_all([im], palette)[0], "environment", "props", name + ".png")
@@ -346,7 +346,7 @@ def walls_roofs():
 
 
 TOWN_PROPS = {  # cell -> (name, source pixels per game pixel)
-    (0, 0): ("town_gate", 3), (0, 1): ("chimney", 5), (0, 3): ("wall_lantern", 6),
+    (0, 0): ("town_gate", 3), (0, 1): ("chimney", 5), (0, 2): ("dormer", 5), (0, 3): ("wall_lantern", 6),
     (1, 0): ("training_dummy", 5), (1, 1): ("weapon_rack", 5), (1, 2): ("archery_target", 6), (1, 3): ("wagon", 4),
     (2, 0): ("horse", 4), (2, 1): ("trough", 5), (2, 2): ("hay_pile", 5), (2, 3): ("fence_gate", 5),
     (3, 1): ("rose_bush", 6), (3, 2): ("cypress_pot", 5), (3, 3): ("bread_stool", 7),

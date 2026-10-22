@@ -1,115 +1,120 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/characters/player.gd" id="1_2l4js"]
-[ext_resource type="PackedScene" path="res://scenes/effects/fire_bolt.tscn" id="2_jk2m4"]
-[ext_resource type="PackedScene" path="res://scenes/effects/fire_burst.tscn" id="3_xhtjm"]
-[ext_resource type="PackedScene" path="res://scenes/effects/dust.tscn" id="4_k4v7y"]
-[ext_resource type="PackedScene" path="res://scenes/effects/floating_text.tscn" id="5_xrqxk"]
-[ext_resource type="SpriteFrames" path="res://assets/characters/hero/hero_frames.tres" id="6_g66nw"]
-[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="7_rpnd8"]
-[ext_resource type="Script" path="res://scripts/components/health.gd" id="8_d6tgn"]
-[ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="9_3wg1y"]
-[ext_resource type="Script" path="res://scripts/components/hitbox.gd" id="10_kmyvj"]
-[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="11_a2luo"]
+[ext_resource type="Script" path="res://scripts/characters/player.gd" id="1_jk2m4"]
+[ext_resource type="PackedScene" path="res://scenes/effects/fire_bolt.tscn" id="2_xhtjm"]
+[ext_resource type="PackedScene" path="res://scenes/effects/fire_burst.tscn" id="3_k4v7y"]
+[ext_resource type="PackedScene" path="res://scenes/effects/dust.tscn" id="4_xrqxk"]
+[ext_resource type="PackedScene" path="res://scenes/effects/floating_text.tscn" id="5_g66nw"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/hero/hero_frames.tres" id="6_rpnd8"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="7_d6tgn"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="8_3wg1y"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="9_kmyvj"]
+[ext_resource type="Script" path="res://scripts/components/hitbox.gd" id="10_a2luo"]
+[ext_resource type="Script" path="res://scripts/systems/occlusion_fader.gd" id="11_eir2k"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="12_inhyd"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eir2k"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wqk1x"]
 radius = 0.32
 height = 1.5
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_inhyd"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dm10o"]
 height = 1.7
 radius = 0.45
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_wqk1x"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_o6auj"]
 radius = 0.95
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dm10o"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j8g38"]
 render_priority = -10
-shader = ExtResource("11_a2luo")
+shader = ExtResource("12_inhyd")
 shader_parameter/line_color = null
 shader_parameter/threshold = null
 
-[sub_resource type="QuadMesh" id="QuadMesh_o6auj"]
+[sub_resource type="QuadMesh" id="QuadMesh_tswxa"]
 
-[node name="Player" type="CharacterBody3D" unique_id=150814937]
+[node name="Player" type="CharacterBody3D" unique_id=98226669]
 collision_layer = 2
 collision_mask = 5
 floor_max_angle = 0.87266463
 floor_snap_length = 0.4
-script = ExtResource("1_2l4js")
-bolt_scene = ExtResource("2_jk2m4")
-burst_scene = ExtResource("3_xhtjm")
-dust_scene = ExtResource("4_k4v7y")
-text_scene = ExtResource("5_xrqxk")
+script = ExtResource("1_jk2m4")
+bolt_scene = ExtResource("2_xhtjm")
+burst_scene = ExtResource("3_k4v7y")
+dust_scene = ExtResource("4_xrqxk")
+text_scene = ExtResource("5_g66nw")
 
-[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=2050170761]
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=772884700]
+transform = Transform3D(1, 0, 0, 0, 1.4142135, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 0
 centered = false
 offset = Vector2(-28, -3)
 pixel_size = 0.0449
+billboard = 2
 texture_filter = 0
-sprite_frames = ExtResource("6_g66nw")
+sprite_frames = ExtResource("6_rpnd8")
 animation = &"idle_down"
 
-[node name="Silhouette" type="AnimatedSprite3D" parent="." unique_id=844993809]
+[node name="Silhouette" type="AnimatedSprite3D" parent="." unique_id=1362571440]
+transform = Transform3D(1, 0, 0, 0, 1.4142135, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 0
 centered = false
 offset = Vector2(-28, -3)
 modulate = Color(0.35, 0.55, 1, 0.45)
 pixel_size = 0.0449
+billboard = 2
 no_depth_test = true
 texture_filter = 0
 render_priority = -1
-sprite_frames = ExtResource("6_g66nw")
+sprite_frames = ExtResource("6_rpnd8")
 animation = &"idle_down"
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=978307920]
+[node name="Shadow" type="Sprite3D" parent="." unique_id=716924776]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.02, 0.05)
 cast_shadow = 0
 pixel_size = 0.06875
 axis = 1
 texture_filter = 0
-texture = ExtResource("7_rpnd8")
+texture = ExtResource("7_d6tgn")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=265310485]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1689326152]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
-shape = SubResource("CapsuleShape3D_eir2k")
+shape = SubResource("CapsuleShape3D_wqk1x")
 
-[node name="Health" type="Node" parent="." unique_id=1390729823]
-script = ExtResource("8_d6tgn")
+[node name="Health" type="Node" parent="." unique_id=1105283307]
+script = ExtResource("8_3wg1y")
 
-[node name="Hurtbox" type="Area3D" parent="." unique_id=2025819955]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1553085494]
 collision_layer = 8
 collision_mask = 0
 monitoring = false
-script = ExtResource("9_3wg1y")
+script = ExtResource("9_kmyvj")
 
-[node name="Collision" type="CollisionShape3D" parent="Hurtbox" unique_id=293357456]
+[node name="Collision" type="CollisionShape3D" parent="Hurtbox" unique_id=406169690]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
-shape = SubResource("CylinderShape3D_inhyd")
+shape = SubResource("CylinderShape3D_dm10o")
 
-[node name="Sword" type="Area3D" parent="." unique_id=585164259]
+[node name="Sword" type="Area3D" parent="." unique_id=206821036]
 collision_layer = 0
 collision_mask = 16
-script = ExtResource("10_kmyvj")
+script = ExtResource("10_a2luo")
 damage = 12
 push = 7.0
 
-[node name="Collision" type="CollisionShape3D" parent="Sword" unique_id=1172394500]
-shape = SubResource("SphereShape3D_wqk1x")
+[node name="Collision" type="CollisionShape3D" parent="Sword" unique_id=1204139664]
+shape = SubResource("SphereShape3D_o6auj")
 
-[node name="Camera" type="Camera3D" parent="." unique_id=1009885890]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.764, 40.434)
-projection = 2
-size = 0.39987
-frustum_offset = Vector2(0, -0.5)
-near = 1.0
-far = 160.0
+[node name="Camera" type="Camera3D" parent="." unique_id=1331964532]
+transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 19.999998, 29.284271, 19.999998)
+projection = 1
+size = 24.246
+near = 0.5
+far = 120.0
+script = ExtResource("11_eir2k")
 
-[node name="Outline" type="MeshInstance3D" parent="Camera" unique_id=1831274337]
+[node name="Outline" type="MeshInstance3D" parent="Camera" unique_id=1258502494]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 layers = 2
-material_override = SubResource("ShaderMaterial_dm10o")
+material_override = SubResource("ShaderMaterial_j8g38")
 cast_shadow = 0
 extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_o6auj")
+mesh = SubResource("QuadMesh_tswxa")
