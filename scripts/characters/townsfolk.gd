@@ -24,6 +24,13 @@ func _ready() -> void:
 	$Reach.body_exited.connect(func(_body: Node3D) -> void: _hero_near = false)
 
 
+## Moves it somewhere else for good (the edit mode): that becomes the spot it stays around.
+func place(pos: Vector3) -> void:
+	global_position = pos
+	_home = pos
+	_target = pos
+
+
 func _physics_process(delta: float) -> void:
 	if _hero_near and not lines.is_empty() and Input.is_action_just_pressed("interact"):
 		_talk()

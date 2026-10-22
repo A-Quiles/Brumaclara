@@ -135,6 +135,18 @@ llena de números: solo daño recibido y causado.
 4. **Comprobar** en la escena de referencia junto al héroe (`tools/capture/screenshot_tour.gd`): tamaño,
    contraste, paleta y que no haya píxeles de otro tamaño.
 
+**Vistas y modelos de un objeto.** Con la cámara fija, un objeto solo se ve bien desde el lado para el
+que se dibujó. Para orientarlo según la calle, se dibuja también desde otras direcciones y cada vista
+se nombra así: `<objeto>__<dirección>.png`. La dirección es hacia donde mira el objeto en pantalla:
+`s` (hacia la cámara), `sw`, `w`, `nw`, `n` (de espaldas), `ne`, `e` o `se`. Otro modelo del mismo
+objeto se nombra `<objeto>__<modelo>.png`. Las direcciones que faltan se sacan en espejo de su
+contraria. Con eso, el modo edición gira cualquier objeto pasando por las vistas dibujadas
+(`docs/modo_edicion.md`).
+
+**Prueba rápida.** Una imagen sin procesar dejada en `assets/nuevos` se puede colocar en el mundo
+desde el modo edición: se recorta y se reduce al píxel del juego sola. Sirve para probar un objeto
+antes de integrarlo en el pipeline.
+
 ## 11. Lista de control
 
 - [ ] ¿Se distingue del fondo y del resto de personajes en una captura pequeña?
@@ -143,4 +155,5 @@ llena de números: solo daño recibido y causado.
 - [ ] ¿La luz viene de arriba a la izquierda?
 - [ ] ¿Tiene contorno oscuro de 1 px?
 - [ ] ¿Sus fotogramas están alineados por los pies y a la velocidad de la tabla?
+- [ ] ¿Sus vistas y modelos siguen el convenio de nombres (`__s`, `__e`, `__grazing`…)?
 - [ ] ¿Está registrado en `art/FUENTES.md`?

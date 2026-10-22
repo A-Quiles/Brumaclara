@@ -1,0 +1,14 @@
+Carpeta de imágenes nuevas para el modo edición (F1 en el juego).
+
+Deja aquí cualquier imagen (PNG o JPG) de un objeto suelto: puede venir directamente de una IA, de
+cualquier tamaño y con un fondo de un solo color (magenta, blanco, verde...). El juego le quita el
+fondo, la recorta y la reduce al tamaño de píxel del juego. Aparece en la pestaña «Nuevos» del
+panel; si el juego ya estaba abierto, pulsa Ctrl+R en el modo edición para releer las carpetas.
+
+Nombres:
+  farol.png              el objeto tal como está dibujado (mirando a la cámara)
+  farol__e.png           el mismo objeto mirando a la derecha (s, sw, w, nw, n, ne, e, se)
+  farol__apagado.png     otro modelo del mismo objeto (se cambia con V)
+Las vistas que falten se sacan en espejo de la contraria (w de e, ne de nw...).
+
+Cuando un objeto te guste, pásamelo y lo integro en el pipeline de arte con su paleta.

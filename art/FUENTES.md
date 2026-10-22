@@ -117,7 +117,36 @@ Referencias del autor para el pueblo: `docs/reference/pueblo_1.jpg` … `pueblo_
 | `town_props.png` | Puerta del pueblo, chimenea, buhardilla, farol de pared, muñeco de entrenamiento, armero, diana, carromato, caballo, abrevadero, heno, cancela, hiedra, rosal, ciprés en maceta y taburete con pan. | La buhardilla, el farol de pared y la hiedra no se usan todavía. |
 
 ## Vistas extra de objetos (art/ai/variants)
-Hojas hechas por el autor con Gemini (18 objetos, varias perspectivas sobre magenta). `tools/art_pipeline/variants.py`
-segmenta las piezas; la receta `variants` de `build.py` elige las útiles (`VARIANTS`), las escala al mismo
-píxel que el sprite original y las guarda como `<objeto>__<vista>.png`. La versión espejada se usa con el sufijo `_m`.
-Descartadas: vistas cenitales/planos, desde abajo, con etiquetas o marcos, y duplicados.
+
+Hojas hechas por el autor con Gemini el 22 de octubre de 2026: 18 objetos dibujados desde varios
+ángulos sobre magenta. `tools/art_pipeline/variants.py` separa las piezas, y la receta `variants` de
+`build.py` elige las útiles (tabla `VARIANTS`), las escala al píxel del sprite original y las guarda
+como `<objeto>__<vista>.png`. Las vistas llevan el nombre de la dirección a la que mira el objeto en
+pantalla: `s` es hacia la cámara, y después `sw`, `w`, `nw`, `n`, `ne`, `e` y `se`. Cualquier otro
+nombre es otro modelo del mismo objeto. Las direcciones que faltan se sacan en espejo
+(`scripts/systems/sprite_catalog.gd`), y `assets/environment/vistas.json` dice hacia dónde mira el
+dibujo base cuando no es hacia la cámara.
+
+| Hoja | Vistas usadas | Descartado |
+|---|---|---|
+| `bench` | s, n, w, e, se, nw (base: sw) | Vista cenital, «upright» duplicada y con restos de etiquetas |
+| `hay_cart` | s, n, w, nw, ne (base: sw) | Vistas desde arriba y repetidas |
+| `banner` | n, sw, se, nw, ne, e | Vistas desde arriba y desde abajo |
+| `notice_board` | n, sw, se, nw, e | Planos, vistas cenitales y piezas sueltas |
+| `chalkboard` | n, sw, se, ne, e | Repetidas |
+| `horse` | s, n, se, ne; modelos pastando y tumbado (base: w) | Encabritado, al galope y vistas desde arriba |
+| `fence` | sw; modelo poste | Piezas repetidas |
+| `hay_bale` | e; modelos en rollos y de pie | Repetidas |
+| `target` | e, n, sw, se | Repetidas |
+| `crate` | se; modelo alta | Repetidas |
+| `barrel_crates` | modelos b y c | Repetidas |
+| `barrel` | modelos tumbado y volcado | Repetidas |
+| `rock` | modelos b, c y d | Repetidas |
+| `lamp` | e, sw | Pieza doble (dos faroles en un recorte), vistas desde arriba y detalles sueltos |
+| `low_wall`, `chimney`, `bread_stool`, `bucket` | — | Pendientes: el muro bajo en diagonal no encaja con la cámara fija; los demás no aportan vistas nuevas útiles |
+
+## Imágenes nuevas (assets/nuevos)
+
+Las imágenes que el autor deje en `assets/nuevos` no pasan por el pipeline: el modo edición les quita
+el fondo, mide el tamaño de sus bloques de píxeles y las reduce al píxel del juego al cargarlas
+(`docs/modo_edicion.md`). Cuando una se dé por buena, se registra aquí y se integra en una receta.

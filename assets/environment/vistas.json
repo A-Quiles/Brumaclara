@@ -1,0 +1,7 @@
+{
+	"props/bench": "sw",
+	"props/hay_cart": "sw",
+	"props/horse": "w",
+	"props/horse__grazing": "e",
+	"props/horse__lying": "e"
+}

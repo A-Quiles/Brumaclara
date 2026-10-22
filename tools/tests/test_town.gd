@@ -11,6 +11,7 @@ func _initialize() -> void:
 
 func _run() -> void:
 	change_scene_to_file("res://scenes/levels/brumaclara.tscn")
+	await _scene("brumaclara.tscn")
 	await _frames(3)
 	var town := current_scene
 	var hero: Node3D = town.get_node("Player")
@@ -25,13 +26,22 @@ func _run() -> void:
 	_check(message.text.begins_with("Soy Mara Venn"), "Mara answers the interact key (%s)" % message.text)
 
 	hero.global_position = Vector3(-37.8, 0, 29.0)
-	await _frames(20)
+	await _scene("demo_zone.tscn")
+	await _frames(3)
 	_check(current_scene and current_scene.scene_file_path.ends_with("demo_zone.tscn"), "the west exit leads to the outskirts")
 	if current_scene:
 		var arrived: Node3D = current_scene.get_node("Player")
 		_check(arrived.global_position.distance_to(Vector3(-21.0, 0, -0.4)) < 1.0, "the hero arrives by the west road")
 	print("town checks: %s" % ("all passed" if _failures == 0 else "%d FAILED" % _failures))
 	quit(1 if _failures else 0)
+
+
+## Waits (up to a few seconds) until the current scene is `file_name`.
+func _scene(file_name: String) -> void:
+	for i in 600:
+		if current_scene and current_scene.scene_file_path.ends_with(file_name):
+			return
+		await process_frame
 
 
 func _frames(count: int) -> void:

@@ -46,6 +46,13 @@ func _ready() -> void:
 	_sprite.play("idle")
 
 
+## Moves it somewhere else for good (the edit mode): that becomes the spot it stays around.
+func place(pos: Vector3) -> void:
+	global_position = pos
+	_home = pos
+	_wander_to = pos
+
+
 func _physics_process(delta: float) -> void:
 	if _hero == null:
 		_hero = get_tree().get_first_node_in_group("player")

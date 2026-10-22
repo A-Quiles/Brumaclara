@@ -15,6 +15,15 @@ config/description="Prototipo de RPG de acción en pixel art. Demo: las afueras 
 run/main_scene="res://scenes/levels/brumaclara.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
+[autoload]
+
+EditMode="*res://scripts/tools/edit_mode/edit_mode.gd"
+
+[brumaclara]
+
+; developer edit mode (F1): false switches it off; exported release builds never have it
+modo_edicion=true
+
 [display]
 
 window/size/viewport_width=640

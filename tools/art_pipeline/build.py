@@ -490,37 +490,54 @@ def shadow():
 
 
 # --- extra angles of existing props (art/ai/variants, drawn by the author with Gemini) -------------
-# sheet: (piece that matches the existing sprite, that sprite, {piece: view name}); views are named by
-# where the object faces on screen. Every piece is scaled like the reference one, so sizes match.
+# sheet: (piece that matches the existing sprite, that sprite, {piece: view}). A view named after a
+# direction (s, sw, w, nw, n, ne, e, se: where the object faces on screen, s towards the camera) is
+# the same object turned that way; any other name is another model of it. Missing directions are the
+# mirror of their opposite (scripts/systems/sprite_catalog.gd). Every piece is scaled like the
+# reference one, so sizes match the existing sprite.
 VARIANTS = {
-    "bench": (0, "bench", {1: "back", 5: "left", 7: "right", 8: "downright", 10: "upleft", 12: "upright"}),
-    "hay_cart": (22, "hay_cart", {13: "side", 24: "downright", 26: "right", 25: "front"}),
-    "banner": (0, "banner", {4: "diag_r", 5: "diag_l", 2: "side"}),
-    "notice_board": (6, "notice_board", {18: "diag_l", 19: "diag_r", 20: "back_l", 8: "side"}),
-    "chalkboard": (0, "chalkboard", {4: "diag", 2: "side", 1: "back"}),
-    "horse": (3, "horse", {0: "front", 2: "back", 19: "grazing", 21: "lying"}),
-    "fence": (3, "fence_diag", {3: "a", 4: "b", 1: "post"}),
-    "hay_bale": (4, "hay_bale", {7: "rolled", 8: "upright", 1: "side"}),
-    "target": (0, "archery_target", {1: "side", 8: "diag", 2: "back"}),
-    "crate": (0, "crate", {12: "angled", 17: "tall"}),
+    "bench": (0, "bench", {0: "s", 1: "n", 5: "w", 7: "e", 8: "se", 10: "nw"}),
+    "hay_cart": (22, "hay_cart", {25: "s", 33: "n", 13: "w", 24: "nw", 26: "ne"}),
+    "banner": (0, "banner", {1: "n", 5: "sw", 4: "se", 6: "nw", 7: "ne", 2: "e"}),
+    "notice_board": (6, "notice_board", {10: "n", 18: "sw", 25: "se", 20: "nw", 8: "e"}),
+    "chalkboard": (0, "chalkboard", {1: "n", 8: "sw", 4: "se", 5: "ne", 2: "e"}),
+    "horse": (3, "horse", {0: "s", 2: "n", 20: "se", 14: "ne", 19: "grazing", 21: "lying"}),
+    "fence": (3, "fence", {3: "sw", 1: "post"}),
+    "hay_bale": (4, "hay_bale", {1: "e", 7: "rolled", 8: "upright"}),
+    "target": (0, "archery_target", {1: "e", 3: "sw", 8: "se", 2: "n"}),
+    "crate": (0, "crate", {12: "se", 17: "tall"}),
     "barrel_crates": (0, "barrel_stack", {1: "b", 2: "c"}),
     "barrel": (12, "barrel", {16: "lying", 0: "tipped"}),
     "rock": (1, "boulder", {2: "b", 3: "c", 8: "d"}),
-    "lamp": (0, "lantern", {0: "post", 7: "post_b"}),
+    "lamp": (2, "lantern", {1: "e", 8: "sw"}),
 }
+# where the sprites without a direction in their name face, when it is not the camera (s)
+FACING = {"props/bench": "sw", "props/hay_cart": "sw", "props/horse": "w", "props/horse__grazing": "e",
+          "props/horse__lying": "e"}
+
+
+def _main_parts(mask):
+    """Drops the specks a cut-out drags along (bits of labels or of the next drawing)."""
+    from scipy import ndimage
+    labels, n = ndimage.label(mask, structure=np.ones((3, 3)))
+    if n <= 1:
+        return mask
+    sizes = ndimage.sum(mask, labels, range(1, n + 1))
+    keep = [i + 1 for i, size in enumerate(sizes) if size >= sizes.max() * 0.03]
+    return np.isin(labels, keep)
 
 
 def variants():
+    import json
     import variants as vr
     images = {}
     for sheet, (ref, base, views) in VARIANTS.items():
         rgb = np.asarray(Image.open(SRC / "variants" / f"{sheet}.jpg").convert("RGB")).astype(np.int32)
         boxes = vr.pieces(rgb)
         folder = "nature" if base == "boulder" else "props"
-        ref_file = OUT / "environment" / folder / f"{base}.png"
-        target_h = Image.open(ref_file).height if ref_file.exists() else 30  # fence_diag: as tall as the fence
-        if base == "fence_diag":
-            target_h = Image.open(OUT / "environment" / "props" / "fence.png").height
+        for old in (OUT / "environment" / folder).glob(f"{base}__*.png*"):  # views renamed or dropped
+            old.unlink()
+        target_h = Image.open(OUT / "environment" / folder / f"{base}.png").height
         scale = target_h / (boxes[ref][3] - boxes[ref][1])
         for idx, view in views.items():
             cut = vr.cut(rgb, boxes[idx]).astype(np.float64)
@@ -531,13 +548,14 @@ def variants():
             small = np.asarray(pre.resize((w, h), Image.BOX)).astype(np.float64)
             alpha = small[..., 3] / 255.0
             colour = small[..., :3] / np.maximum(alpha, 1e-3)[..., None]
-            solid = (alpha > 0.5).astype(np.float64)
+            solid = _main_parts(alpha > 0.5).astype(np.float64)
             fringe = (colour[..., 0] > colour[..., 1] * 1.25) & (colour[..., 2] > colour[..., 1] * 1.25)
             colour[fringe] = (38, 26, 24)  # magenta backdrop spill on the outline becomes outline
             images[(folder, f"{base}__{view}")] = px.to_image(np.clip(colour, 0, 255), solid)
     palette = palette_for(list(images.values()), 48, FIRE)
     for (folder, name), im in images.items():
         save(cropped(sheets.snap_all([im], palette)[0]), "environment", folder, name + ".png")
+    (OUT / "environment" / "vistas.json").write_text(json.dumps(FACING, indent="\t", sort_keys=True) + "\n")
     return OUT / "environment"
 
 

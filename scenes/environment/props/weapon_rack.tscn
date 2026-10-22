@@ -6,9 +6,9 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kl540"]
 height = 1.6
 
-[node name="WeaponRack" type="StaticBody3D" unique_id=800600319]
+[node name="WeaponRack" type="StaticBody3D" unique_id=330760785]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=2068634985]
+[node name="Sprite" type="Sprite3D" parent="." unique_id=790679447]
 centered = false
 offset = Vector2(-20.5, 0)
 pixel_size = 0.0449
@@ -16,7 +16,7 @@ alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("1_6jwcf")
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=808029530]
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1325106465]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.288)
 cast_shadow = 0
 pixel_size = 0.1
@@ -24,6 +24,6 @@ axis = 1
 texture_filter = 0
 texture = ExtResource("2_himia")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=582047679]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1580837606]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CylinderShape3D_kl540")

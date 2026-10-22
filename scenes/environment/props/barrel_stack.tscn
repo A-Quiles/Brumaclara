@@ -7,9 +7,9 @@
 height = 1.6
 radius = 0.6
 
-[node name="BarrelStack" type="StaticBody3D" unique_id=1745846887]
+[node name="BarrelStack" type="StaticBody3D" unique_id=618488376]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=1469958623]
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1552962458]
 centered = false
 offset = Vector2(-17, 0)
 pixel_size = 0.0449
@@ -17,7 +17,7 @@ alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("1_24sab")
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=1742925628]
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1607180830]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.306)
 cast_shadow = 0
 pixel_size = 0.10625
@@ -25,6 +25,6 @@ axis = 1
 texture_filter = 0
 texture = ExtResource("2_sccpf")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=1995605062]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=783774067]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CylinderShape3D_xrc5q")

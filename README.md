@@ -34,6 +34,18 @@ lobo de la Fractura y su guarida. Todo el contenido nuevo debe mantener este niv
 | Estallido: anillo de fuego alrededor del héroe (25 PM) | E o I |
 | Hablar / abrir un cofre | F |
 
+## Modo edición (desarrollo)
+
+Pulsando **F1** mientras juegas, el juego se pausa y se abre un editor para decorar el nivel: una
+paleta con todos los sprites (incluidas imágenes nuevas sin procesar, que se recortan y se escalan
+solas), colocar, mover, girar (cambia a la vista dibujada para cada dirección), espejo, tamaño, borrar,
+duplicar, deshacer y pincel de caminos. Los cambios se guardan solos en `data/edits/` y se juegan al
+volver a pulsar F1. Ver [docs/modo_edicion.md](docs/modo_edicion.md).
+
+| | |
+|---|---|
+| ![Colocando objetos](docs/screenshots/12_edicion_colocar.png) | ![Selección](docs/screenshots/13_edicion_seleccion.png) |
+
 ## Qué hay en la demo
 
 - **Protagonista** en cuatro direcciones: reposo, caminar, combo de espada, esquiva con estela, daño,
@@ -63,7 +75,9 @@ esos recursos.
 ```
 art/            Imágenes de origen generadas con IA (Godot no las importa) y su registro
 assets/         Recursos del juego producidos por el pipeline: personajes, escenario, efectos, interfaz
-docs/           Guía de arte y capturas
+  nuevos/       Imágenes nuevas sin procesar para el modo edición
+data/edits/     Cambios hechos con el modo edición, uno por nivel
+docs/           Guía de arte, diseño del pueblo, modo edición y capturas
 scenes/
   levels/brumaclara.tscn  Escena principal: el pueblo
   levels/demo_zone.tscn   Las afueras de Brumaclara (combate)
@@ -76,13 +90,14 @@ scripts/
   characters/   Protagonista y enemigos
   effects/      Comportamiento de los efectos
   environment/  Casas, cofre y fondo lejano
-  systems/      Sensación de impacto
+  systems/      Sensación de impacto, salidas, catálogo de sprites y cambios de cada nivel
+  tools/        Modo edición (F1)
   ui/           Interfaz
 shaders/        Bloques de terreno, franjas de suelo y contorno
 tools/
   art_pipeline/   Convierte art/ai en recursos (Python)
   capture/        Capturas y grabación del combate
-  tests/          Pruebas del combate sin pantalla
+  tests/          Pruebas sin pantalla: combate, pueblo y modo edición
 ```
 
 ## Herramientas
@@ -92,6 +107,7 @@ pip install pillow numpy scipy
 python3 tools/art_pipeline/build.py            # todos los recursos (o solo: hero wolf nature …)
 godot --headless --path . --script res://tools/tests/test_combat.gd
 godot --headless --path . --script res://tools/tests/test_town.gd
+godot --headless --path . --script res://tools/tests/test_edit_mode.gd
 xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capturas (necesita pantalla)
 ```
 
@@ -100,6 +116,7 @@ xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capt
 - [x] Zona de demostración con el modelo artístico definitivo y combate funcional
 - [ ] Validar el estilo y la sensación del combate
 - [x] Pueblo de Brumaclara: barrios, edificios de los gremios y primeros habitantes
+- [x] Modo edición para decorar los niveles dentro del juego
 - [ ] Interiores, caja de diálogo y minimapa
 - [ ] Árbol de habilidades, equipo, diálogos y misiones
 

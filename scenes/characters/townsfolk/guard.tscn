@@ -11,11 +11,11 @@ radius = 0.35
 [sub_resource type="SphereShape3D" id="SphereShape3D_og8fh"]
 radius = 1.6
 
-[node name="Guard" type="CharacterBody3D" unique_id=142820134]
+[node name="Guard" type="CharacterBody3D" unique_id=788472051]
 script = ExtResource("1_ifhfg")
 lines = PackedStringArray()
 
-[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=1749335170]
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=1126122493]
 cast_shadow = 0
 centered = false
 offset = Vector2(-28, -3)
@@ -24,7 +24,7 @@ texture_filter = 0
 sprite_frames = ExtResource("2_t38w1")
 animation = &"idle_down"
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=222449082]
+[node name="Shadow" type="Sprite3D" parent="." unique_id=507740199]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.02, 0.05)
 cast_shadow = 0
 pixel_size = 0.06875
@@ -32,14 +32,14 @@ axis = 1
 texture_filter = 0
 texture = ExtResource("3_x1h5t")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=1905046610]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1983643125]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("CylinderShape3D_nw8hd")
 
-[node name="Reach" type="Area3D" parent="." unique_id=1305080062]
+[node name="Reach" type="Area3D" parent="." unique_id=253077066]
 collision_layer = 0
 collision_mask = 2
 
-[node name="Collision" type="CollisionShape3D" parent="Reach" unique_id=1127752220]
+[node name="Collision" type="CollisionShape3D" parent="Reach" unique_id=1247842732]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("SphereShape3D_og8fh")

@@ -7,9 +7,9 @@
 height = 1.6
 radius = 0.12
 
-[node name="Banner" type="StaticBody3D" unique_id=1930732972]
+[node name="Banner" type="StaticBody3D" unique_id=372279250]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=1843266766]
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1728610090]
 centered = false
 offset = Vector2(-16, 0)
 pixel_size = 0.0449
@@ -17,7 +17,7 @@ alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("1_owvsh")
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=339938976]
+[node name="Shadow" type="Sprite3D" parent="." unique_id=672979259]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.108)
 cast_shadow = 0
 pixel_size = 0.0375
@@ -25,6 +25,6 @@ axis = 1
 texture_filter = 0
 texture = ExtResource("2_h5wd2")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=1473584224]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1204858332]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CylinderShape3D_5g26b")

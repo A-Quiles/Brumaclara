@@ -6,9 +6,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_a5mkf"]
 size = Vector3(1.5, 1.6, 0.3)
 
-[node name="NoticeBoard" type="StaticBody3D" unique_id=1794904226]
+[node name="NoticeBoard" type="StaticBody3D" unique_id=1287453595]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=1868220986]
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1377444483]
 centered = false
 offset = Vector2(-17.5, 0)
 pixel_size = 0.0449
@@ -16,7 +16,7 @@ alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("1_njlw8")
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=1403039520]
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1126155255]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.252)
 cast_shadow = 0
 pixel_size = 0.0875
@@ -24,6 +24,6 @@ axis = 1
 texture_filter = 0
 texture = ExtResource("2_muby5")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=912679547]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=22454462]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("BoxShape3D_a5mkf")
