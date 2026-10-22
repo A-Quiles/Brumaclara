@@ -7,27 +7,25 @@
 height = 1.6
 radius = 0.3
 
-[node name="CypressPot" type="StaticBody3D" unique_id=649288691]
+[node name="CypressPot" type="StaticBody3D" unique_id=460963928]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=230102423]
-transform = Transform3D(1, 0, 0, 0, 1.4142135, 0, 0, 0, 1, 0, 0, 0)
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1769491249]
 cast_shadow = 0
 centered = false
 offset = Vector2(-11.5, 0)
 pixel_size = 0.0449
-billboard = 2
 alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("1_52lgn")
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=371921823]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10182338, 0.02, -0.10182338)
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1822698109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.144)
 cast_shadow = 0
 pixel_size = 0.05
 axis = 1
 texture_filter = 0
 texture = ExtResource("2_ealle")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=586803572]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1091940229]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CylinderShape3D_5qcdq")

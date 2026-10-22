@@ -12,23 +12,21 @@ height = 1.6
 [sub_resource type="SphereShape3D" id="SphereShape3D_2xcqs"]
 radius = 1.5
 
-[node name="Chest" type="StaticBody3D" unique_id=1349094547]
+[node name="Chest" type="StaticBody3D" unique_id=1291852016]
 script = ExtResource("1_7bphc")
 orb_scene = ExtResource("2_j76la")
 
-[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=972655726]
-transform = Transform3D(1, 0, 0, 0, 1.4142135, 0, 0, 0, 1, 0, 0, 0)
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=1494501554]
 cast_shadow = 0
 centered = false
 offset = Vector2(-19, -1)
 pixel_size = 0.0449
-billboard = 2
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = ExtResource("3_lws0m")
 animation = &"closed"
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=293381131]
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1546931518]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.02, 0.05)
 cast_shadow = 0
 pixel_size = 0.075
@@ -36,22 +34,21 @@ axis = 1
 texture_filter = 0
 texture = ExtResource("4_7awgp")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=123784142]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1315458203]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CylinderShape3D_x2qj0")
 
-[node name="Reach" type="Area3D" parent="." unique_id=6407005]
+[node name="Reach" type="Area3D" parent="." unique_id=210558435]
 collision_layer = 0
 collision_mask = 2
 
-[node name="Collision" type="CollisionShape3D" parent="Reach" unique_id=2113984724]
+[node name="Collision" type="CollisionShape3D" parent="Reach" unique_id=516784435]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_2xcqs")
 
-[node name="Prompt" type="Label3D" parent="." unique_id=1650636863]
+[node name="Prompt" type="Label3D" parent="." unique_id=1058781654]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 pixel_size = 0.0449
-billboard = 1
 no_depth_test = true
 texture_filter = 0
 render_priority = 10

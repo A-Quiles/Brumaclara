@@ -13,7 +13,7 @@ func _physics_process(_delta: float) -> void:
 	var hit := {}
 	for height in [0.2, 1.0, 2.0]:
 		var target := hero.global_position + Vector3(0, height, 0)
-		var query := PhysicsRayQueryParameters3D.create(target + global_basis.z * 60.0, target, 1)
+		var query := PhysicsRayQueryParameters3D.create(global_position, target, 1)
 		for i in 4:  # see through up to four layers of buildings
 			var result := space.intersect_ray(query)
 			if result.is_empty():

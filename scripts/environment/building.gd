@@ -13,7 +13,9 @@ func set_faded(faded: bool) -> void:
 	for node in find_children("*", "GeometryInstance3D", true, false):
 		if node is MeshInstance3D and node.mesh:
 			for i in node.mesh.get_surface_count():
-				var mat: BaseMaterial3D = node.mesh.surface_get_material(i)
+				var mat := node.mesh.surface_get_material(i) as BaseMaterial3D
+				if mat == null:  # stone plinths and steps keep their shader
+					continue
 				mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA if faded else BaseMaterial3D.TRANSPARENCY_DISABLED
 				mat.albedo_color.a = FADED_ALPHA if faded else 1.0
 		elif node is SpriteBase3D:

@@ -8,23 +8,21 @@ size = Vector3(0.7, 3, 0.9)
 [sub_resource type="BoxShape3D" id="BoxShape3D_qehsh"]
 size = Vector3(0.7, 3, 0.9)
 
-[node name="TownGate" type="StaticBody3D" unique_id=169671137]
+[node name="TownGate" type="StaticBody3D" unique_id=1358650230]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=1187098030]
-transform = Transform3D(1, 0, 0, 0, 1.4142135, 0, 0, 0, 1, 0, 0, 0)
+[node name="Sprite" type="Sprite3D" parent="." unique_id=733654658]
 cast_shadow = 0
 centered = false
 offset = Vector2(-36, 0)
 pixel_size = 0.0449
-billboard = 2
 alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("1_c6fpq")
 
-[node name="Pier" type="CollisionShape3D" parent="." unique_id=1801175201]
+[node name="Pier" type="CollisionShape3D" parent="." unique_id=1055718686]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 1.5, -0.4)
 shape = SubResource("BoxShape3D_c7sg1")
 
-[node name="@CollisionShape3D@2" type="CollisionShape3D" parent="." unique_id=1942734761]
+[node name="@CollisionShape3D@2" type="CollisionShape3D" parent="." unique_id=2042707922]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.5, -0.4)
 shape = SubResource("BoxShape3D_qehsh")

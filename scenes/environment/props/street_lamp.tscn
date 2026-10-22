@@ -7,32 +7,30 @@
 height = 1.6
 radius = 0.12
 
-[node name="StreetLamp" type="StaticBody3D" unique_id=824041269]
+[node name="StreetLamp" type="StaticBody3D" unique_id=1182161018]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=748669422]
-transform = Transform3D(1, 0, 0, 0, 1.4142135, 0, 0, 0, 1, 0, 0, 0)
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1115289223]
 cast_shadow = 0
 centered = false
 offset = Vector2(-10, 0)
 pixel_size = 0.0449
-billboard = 2
 alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("1_quqc0")
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=1741852479]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08909546, 0.02, -0.08909546)
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1981198815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.126)
 cast_shadow = 0
 pixel_size = 0.04375
 axis = 1
 texture_filter = 0
 texture = ExtResource("2_c5sag")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=538146886]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=297038780]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CylinderShape3D_5pu5t")
 
-[node name="Glow" type="OmniLight3D" parent="." unique_id=1162215297]
+[node name="Glow" type="OmniLight3D" parent="." unique_id=940439899]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0.3)
 light_color = Color(1, 0.78039217, 0.41568628, 1)
 light_energy = 0.9

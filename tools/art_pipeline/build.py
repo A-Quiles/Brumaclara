@@ -234,7 +234,7 @@ PLAZA = {  # cell -> (name, source pixels per game pixel); the fountain row (0, 
 def plaza():
     g = grid("plaza_props")
     images = {name: cropped(sheets.pixelate_cell(g[r][c], f)) for (r, c), (name, f) in PLAZA.items()}
-    water = [sheets.pixelate_cell(g[0][c], 3) for c in range(3)]  # finer: the square's centrepiece
+    water = [sheets.pixelate_cell(g[0][c], 4) for c in range(3)]
     palette = palette_for(list(images.values()) + water, 40, FIRE)
     for name, im in images.items():
         save(sheets.snap_all([im], palette)[0], "environment", "props", name + ".png")

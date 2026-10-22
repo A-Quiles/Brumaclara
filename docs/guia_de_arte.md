@@ -14,14 +14,11 @@ Debe leerse en una captura pequeña: héroe reconocible, profundidad, enemigos d
 
 | Elemento | Valor |
 |---|---|
-| Resolución interna | 960 × 540, escalado entero ×2 a 1920 × 1080, filtrado *nearest* |
-| Cámara | ortográfica, 45° de elevación y en diagonal (45° de giro): se ven fachada, lateral y tejado de cada casa (`scripts/systems/view.gd`) |
-| Controles | relativos a la pantalla: arriba es arriba en la imagen, aunque en el mundo sea la diagonal |
-| Escala | 1 píxel de sprite = 0,0449 unidades |
+| Resolución interna | 640 × 360, escalado entero ×3 a 1920 × 1080, filtrado *nearest* |
+| Cámara | lente desplazada: plano de imagen vertical (las verticales se dibujan verticales, como en un píxel art pintado) y ventana desplazada hacia abajo; equivale a mirar unos 27–30° hacia abajo, hacia el norte |
+| Encuadre | el héroe a ~78 % de la altura de la pantalla; el pueblo sube por niveles hacia el fondo |
+| Escala | 1 unidad del mundo = 22,3 px a la distancia del héroe; 1 píxel de sprite = 0,0449 unidades |
 | Edificios en primer plano | se vuelven translúcidos mientras tapan al héroe (`occlusion_fader.gd`) |
-
-Los sprites giran para mirar siempre a la cámara y se estiran ×1,414 en vertical para compensar la
-inclinación: así sus píxeles salen cuadrados y 1:1 en pantalla.
 
 ## 3. Tamaños
 
@@ -89,15 +86,18 @@ comparte dos rampas de acento definidas en `tools/art_pipeline/build.py`:
 - El código anima recursos (parpadeo de invulnerabilidad, destello al recibir daño, estelas de la
   esquiva, temblor de cámara, congelación breve en los impactos); no dibuja su aspecto.
 
-## 7. Arquitectura
+## 7. Arquitectura y trazado
 
-- Un edificio no es una caja: `_building` compone una nave con tejado a dos aguas paralelo a la calle y
-  un cuerpo con hastial que sobresale un metro y lleva la fachada. Así hay cumbrera, hastial, faldones
-  y aleros en varios lados, como en `docs/reference/arquitectura_casa.jpg`.
-- Buhardillas en el faldón delantero de la nave y chimeneas en el trasero, según el edificio.
-- Las viviendas pequeñas y los almacenes usan un único bloque con hastial (`plain`).
-- Cada edificio orienta su fachada hacia la calle o plaza que sirve (giro de 0° o 90°).
-- Seis tejados: naranja, rojo, pizarra, madera; nunca dos vecinos iguales.
+- Un edificio no es una caja: `_building` compone una nave con tejado paralelo a la calle y un cuerpo
+  con hastial que sobresale y lleva la fachada (`docs/reference/arquitectura_casa.jpg`). Buhardillas en
+  el faldón delantero, chimeneas en el trasero. Viviendas pequeñas y almacenes: un bloque (`plain`).
+- Alturas reales: el pueblo se escalona en cinco niveles (puerta, plaza y calles, casas sobre las calles,
+  terraza de los gremios, colina del Archivo) separados por muros de contención con albardilla y
+  unidos por escaleras. Además cada casa puede ir sobre un zócalo de piedra (`plinth`) con su escalinata.
+- Calles que serpentean (`_path`): tramos solapados con la textura en coordenadas del mundo, sin costuras.
+- Pueblo pequeño y denso: casas pegadas a las calles, cada hueco con una función (huerto, patio,
+  abrevadero, banco, leña) y la vegetación en grupos.
+- Nunca dos vecinos con el mismo tejado.
 
 ## 8. Escenario
 

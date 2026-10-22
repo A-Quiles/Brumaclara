@@ -32,11 +32,10 @@ animations = [{
 "speed": 9.0
 }]
 
-[node name="RiftBurst" type="AnimatedSprite3D" unique_id=1953218458]
+[node name="RiftBurst" type="AnimatedSprite3D" unique_id=285812398]
 cast_shadow = 0
 modulate = Color(0.85, 0.55, 1.6, 1)
 pixel_size = 0.0449
-billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_jo8ny")
 script = ExtResource("2_mm61s")

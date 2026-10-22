@@ -7,27 +7,25 @@
 height = 1.6
 radius = 0.2
 
-[node name="BreadStool" type="StaticBody3D" unique_id=546338754]
+[node name="BreadStool" type="StaticBody3D" unique_id=1600133801]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=1821844227]
-transform = Transform3D(1, 0, 0, 0, 1.4142135, 0, 0, 0, 1, 0, 0, 0)
+[node name="Sprite" type="Sprite3D" parent="." unique_id=654386487]
 cast_shadow = 0
 centered = false
 offset = Vector2(-8.5, 0)
 pixel_size = 0.0449
-billboard = 2
 alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("1_d3qbm")
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=448185042]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.076367535, 0.02, -0.076367535)
+[node name="Shadow" type="Sprite3D" parent="." unique_id=701079577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.108)
 cast_shadow = 0
 pixel_size = 0.0375
 axis = 1
 texture_filter = 0
 texture = ExtResource("2_6130d")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=1893749032]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=999619036]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CylinderShape3D_7tdp3")

@@ -7,7 +7,7 @@ extends SceneTree
 const LEVEL := "res://scenes/levels/demo_zone.tscn"
 const TOWN := "res://scenes/levels/brumaclara.tscn"
 const OUT := "res://docs/screenshots/"
-const SCALE := 2  # 960x540 -> 1920x1080
+const SCALE := 3  # 640x360 -> 1920x1080
 
 var _player: CharacterBody3D
 
@@ -22,11 +22,13 @@ func _run() -> void:
 		["01_afueras", LEVEL, Vector3(-3.0, 0, -4.5), Vector2.RIGHT],
 		["02_aldea", LEVEL, Vector3(-7.0, 1.8, -17.8), Vector2.DOWN],
 		["03_guarida", LEVEL, Vector3(6.5, 0, -1.5), Vector2.UP],
-		["05_plaza", TOWN, Vector3(0, 0, 8.0), Vector2.UP],
-		["06_sede_del_faro", TOWN, Vector3(0, 2.4, -15.0), Vector2.UP],
-		["07_calle_del_mercado", TOWN, Vector3(29.0, 0, 1.0), Vector2.UP],
-		["08_barrio_oeste", TOWN, Vector3(-27.0, 0, 2.0), Vector2.UP],
-		["09_establos", TOWN, Vector3(-4.0, 0, 26.0), Vector2.UP],
+		["05_plaza", TOWN, Vector3(-1.0, 1.2, 6.5), Vector2.UP],
+		["06_sede_del_faro", TOWN, Vector3(0, 3.6, -19.5), Vector2.UP],
+		["07_calle_del_mercado", TOWN, Vector3(25.0, 1.2, 1.5), Vector2.UP],
+		["08_barrio_oeste", TOWN, Vector3(-26.0, 1.2, 4.5), Vector2.UP],
+		["09_establos", TOWN, Vector3(-6.0, 0, 26.0), Vector2.UP],
+		["10_puerta_sur", TOWN, Vector3(-1.0, 0, 31.0), Vector2.UP],
+		["11_archivo", TOWN, Vector3(18.5, 3.6, -26.0), Vector2.UP],
 	]
 	var level: Node = null
 	for shot in shots:

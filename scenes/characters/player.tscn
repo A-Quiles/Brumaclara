@@ -32,7 +32,7 @@ shader_parameter/threshold = null
 
 [sub_resource type="QuadMesh" id="QuadMesh_tswxa"]
 
-[node name="Player" type="CharacterBody3D" unique_id=98226669]
+[node name="Player" type="CharacterBody3D" unique_id=1778603116]
 collision_layer = 2
 collision_mask = 5
 floor_max_angle = 0.87266463
@@ -43,32 +43,28 @@ burst_scene = ExtResource("3_k4v7y")
 dust_scene = ExtResource("4_xrqxk")
 text_scene = ExtResource("5_g66nw")
 
-[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=772884700]
-transform = Transform3D(1, 0, 0, 0, 1.4142135, 0, 0, 0, 1, 0, 0, 0)
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=1212378225]
 cast_shadow = 0
 centered = false
 offset = Vector2(-28, -3)
 pixel_size = 0.0449
-billboard = 2
 texture_filter = 0
 sprite_frames = ExtResource("6_rpnd8")
 animation = &"idle_down"
 
-[node name="Silhouette" type="AnimatedSprite3D" parent="." unique_id=1362571440]
-transform = Transform3D(1, 0, 0, 0, 1.4142135, 0, 0, 0, 1, 0, 0, 0)
+[node name="Silhouette" type="AnimatedSprite3D" parent="." unique_id=589884405]
 cast_shadow = 0
 centered = false
 offset = Vector2(-28, -3)
 modulate = Color(0.35, 0.55, 1, 0.45)
 pixel_size = 0.0449
-billboard = 2
 no_depth_test = true
 texture_filter = 0
 render_priority = -1
 sprite_frames = ExtResource("6_rpnd8")
 animation = &"idle_down"
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=716924776]
+[node name="Shadow" type="Sprite3D" parent="." unique_id=681258001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.02, 0.05)
 cast_shadow = 0
 pixel_size = 0.06875
@@ -76,42 +72,43 @@ axis = 1
 texture_filter = 0
 texture = ExtResource("7_d6tgn")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=1689326152]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1652540977]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("CapsuleShape3D_wqk1x")
 
-[node name="Health" type="Node" parent="." unique_id=1105283307]
+[node name="Health" type="Node" parent="." unique_id=852480875]
 script = ExtResource("8_3wg1y")
 
-[node name="Hurtbox" type="Area3D" parent="." unique_id=1553085494]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=563326432]
 collision_layer = 8
 collision_mask = 0
 monitoring = false
 script = ExtResource("9_kmyvj")
 
-[node name="Collision" type="CollisionShape3D" parent="Hurtbox" unique_id=406169690]
+[node name="Collision" type="CollisionShape3D" parent="Hurtbox" unique_id=520631738]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
 shape = SubResource("CylinderShape3D_dm10o")
 
-[node name="Sword" type="Area3D" parent="." unique_id=206821036]
+[node name="Sword" type="Area3D" parent="." unique_id=76614981]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("10_a2luo")
 damage = 12
 push = 7.0
 
-[node name="Collision" type="CollisionShape3D" parent="Sword" unique_id=1204139664]
+[node name="Collision" type="CollisionShape3D" parent="Sword" unique_id=475004062]
 shape = SubResource("SphereShape3D_o6auj")
 
-[node name="Camera" type="Camera3D" parent="." unique_id=1331964532]
-transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 19.999998, 29.284271, 19.999998)
-projection = 1
-size = 24.246
-near = 0.5
-far = 120.0
+[node name="Camera" type="Camera3D" parent="." unique_id=1082514327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.764, 40.434)
+projection = 2
+size = 0.39987
+frustum_offset = Vector2(0, -0.5)
+near = 1.0
+far = 160.0
 script = ExtResource("11_eir2k")
 
-[node name="Outline" type="MeshInstance3D" parent="Camera" unique_id=1258502494]
+[node name="Outline" type="MeshInstance3D" parent="Camera" unique_id=40856163]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 layers = 2
 material_override = SubResource("ShaderMaterial_j8g38")

@@ -32,10 +32,9 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="Spark" type="AnimatedSprite3D" unique_id=1863489746]
+[node name="Spark" type="AnimatedSprite3D" unique_id=1690320666]
 cast_shadow = 0
 pixel_size = 0.0449
-billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_bu0is")
 script = ExtResource("2_3kk6r")

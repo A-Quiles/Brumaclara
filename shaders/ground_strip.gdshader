@@ -10,6 +10,7 @@ uniform float texels = 20.0;         // texels per world unit
 uniform float ragged = 0.4;          // how far inward the border wanders, in world units
 uniform bool across = false;         // rotate the texture 90 degrees (ruts running along x)
 uniform bool oval = false;           // an oval patch instead of a strip
+uniform bool world_uv = false;       // texture laid in world space, so overlapping pieces join seamlessly
 
 varying vec2 local_pos;
 varying vec3 world_pos;
@@ -40,7 +41,7 @@ void fragment() {
 	if (inside < noise(cell * 1.7) * ragged) {
 		discard;
 	}
-	vec2 uv = (local_pos + size * 0.5) / tile;
+	vec2 uv = world_uv ? world_pos.xz / tile : (local_pos + size * 0.5) / tile;
 	ALBEDO = texture(surface, across ? uv.yx : uv).rgb;
 	ROUGHNESS = 1.0;
 }

@@ -24,7 +24,7 @@ func _run() -> void:
 	await _frames(2)
 	_check(message.text.begins_with("Soy Mara Venn"), "Mara answers the interact key (%s)" % message.text)
 
-	hero.global_position = Vector3(-48.8, 0, 0.5)
+	hero.global_position = Vector3(-37.8, 0, 29.0)
 	await _frames(20)
 	_check(current_scene and current_scene.scene_file_path.ends_with("demo_zone.tscn"), "the west exit leads to the outskirts")
 	if current_scene:
