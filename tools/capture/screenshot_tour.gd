@@ -19,9 +19,6 @@ func _initialize() -> void:
 func _run() -> void:
 	var only := OS.get_cmdline_user_args()
 	var shots := [  # [file, level, hero position, facing]
-		["01_afueras", LEVEL, Vector3(-3.0, 0, -4.5), Vector2.RIGHT],
-		["02_aldea", LEVEL, Vector3(-7.0, 1.8, -17.8), Vector2.DOWN],
-		["03_guarida", LEVEL, Vector3(6.5, 0, -1.5), Vector2.UP],
 		["05_plaza", TOWN, Vector3(-1.0, 0.5, 6.5), Vector2.UP],
 		["06_sede_del_faro", TOWN, Vector3(0, 3.0, -30.5), Vector2.UP],
 		["07_calle_del_mercado", TOWN, Vector3(25.0, 0.5, 1.5), Vector2.UP],

@@ -9,18 +9,15 @@ habitantes. Por el camino del oeste se sale a **las afueras**, la zona de demost
 lobo de la Fractura y su guarida. Todo el contenido nuevo debe mantener este nivel visual (ver la
 [guía de arte](docs/guia_de_arte.md)).
 
-![Las afueras de Brumaclara](docs/screenshots/01_afueras.png)
+![Plaza de la Fuente](docs/screenshots/05_plaza.png)
 
 | | |
 |---|---|
-| ![La aldea](docs/screenshots/02_aldea.png) | ![La guarida de los lobos](docs/screenshots/03_guarida.png) |
+| ![Sede del Faro](docs/screenshots/06_sede_del_faro.png) | ![Archivo del Umbral](docs/screenshots/11_archivo.png) |
+| ![Calle del Mercado](docs/screenshots/07_calle_del_mercado.png) | ![Barrio oeste](docs/screenshots/08_barrio_oeste.png) |
+| ![Establos](docs/screenshots/09_establos.png) | ![Puerta sur](docs/screenshots/10_puerta_sur.png) |
 
-![Combate](docs/screenshots/04_combate.gif)
-
-| | |
-|---|---|
-| ![Plaza de la Fuente](docs/screenshots/05_plaza.png) | ![Sede del Faro](docs/screenshots/06_sede_del_faro.png) |
-| ![Calle del Mercado](docs/screenshots/07_calle_del_mercado.png) | ![Establos](docs/screenshots/09_establos.png) |
+![Combate en las afueras](docs/screenshots/04_combate.gif)
 
 ## Cómo jugar
 
