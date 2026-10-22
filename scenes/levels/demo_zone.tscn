@@ -331,12 +331,12 @@ size = Vector3(7.133333, 4.8, 5.4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_700xa"]
 size = Vector3(0.6, 3, 3.4)
 
-[node name="AfuerasDeBrumaclara" type="Node3D" unique_id=362315523]
+[node name="AfuerasDeBrumaclara" type="Node3D" unique_id=88278980]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=825387118]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=940496563]
 environment = SubResource("Environment_o7wky")
 
-[node name="Sun" type="DirectionalLight3D" parent="." unique_id=655403972]
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=433758828]
 transform = Transform3D(0.8433914, 0.40550515, -0.35250026, 0, 0.656059, 0.75470954, 0.53729963, -0.63651556, 0.55331457, 0, 0, 0)
 light_energy = 0.105
 shadow_enabled = true
@@ -345,180 +345,180 @@ shadow_normal_bias = 1.0
 directional_shadow_mode = 0
 directional_shadow_max_distance = 80.0
 
-[node name="Terrain" type="Node3D" parent="." unique_id=305927022]
+[node name="Terrain" type="Node3D" parent="." unique_id=1219036847]
 
-[node name="Meadow" type="StaticBody3D" parent="Terrain" unique_id=2144535560]
+[node name="Meadow" type="StaticBody3D" parent="Terrain" unique_id=1810257770]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 1)
 
-[node name="Mesh" type="MeshInstance3D" parent="Terrain/Meadow" unique_id=1957335472]
+[node name="Mesh" type="MeshInstance3D" parent="Terrain/Meadow" unique_id=1541861541]
 transform = Transform3D(104, 0, 0, 0, 3, 0, 0, 0, 70, 0, 1.5, 0)
 material_override = SubResource("ShaderMaterial_8x18h")
 mesh = ExtResource("4_i5lyy")
 
-[node name="Collision" type="CollisionShape3D" parent="Terrain/Meadow" unique_id=2113702358]
+[node name="Collision" type="CollisionShape3D" parent="Terrain/Meadow" unique_id=1178183144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_hlfps")
 
-[node name="Terrace" type="StaticBody3D" parent="Terrain" unique_id=876888044]
+[node name="Terrace" type="StaticBody3D" parent="Terrain" unique_id=1326310507]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -3, -25)
 
-[node name="Mesh" type="MeshInstance3D" parent="Terrain/Terrace" unique_id=1955452283]
+[node name="Mesh" type="MeshInstance3D" parent="Terrain/Terrace" unique_id=833327000]
 transform = Transform3D(54, 0, 0, 0, 4.8, 0, 0, 0, 18, 0, 2.4, 0)
 material_override = SubResource("ShaderMaterial_8x18h")
 mesh = ExtResource("4_i5lyy")
 
-[node name="Collision" type="CollisionShape3D" parent="Terrain/Terrace" unique_id=1155157837]
+[node name="Collision" type="CollisionShape3D" parent="Terrain/Terrace" unique_id=2077037307]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
 shape = SubResource("BoxShape3D_a2urt")
 
-[node name="Stairs" type="Node3D" parent="Terrain" unique_id=375366919]
+[node name="Stairs" type="Node3D" parent="Terrain" unique_id=1504199940]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -13)
 
-[node name="Step0" type="StaticBody3D" parent="Terrain/Stairs" unique_id=228114787]
+[node name="Step0" type="StaticBody3D" parent="Terrain/Stairs" unique_id=121282726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
 
-[node name="Mesh" type="MeshInstance3D" parent="Terrain/Stairs/Step0" unique_id=1117696290]
+[node name="Mesh" type="MeshInstance3D" parent="Terrain/Stairs/Step0" unique_id=673314499]
 transform = Transform3D(3, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 0, 0.15, 0)
 material_override = SubResource("ShaderMaterial_uy74a")
 mesh = ExtResource("4_i5lyy")
 
-[node name="Step1" type="StaticBody3D" parent="Terrain/Stairs" unique_id=714836358]
+[node name="Step1" type="StaticBody3D" parent="Terrain/Stairs" unique_id=247670044]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
 
-[node name="Mesh" type="MeshInstance3D" parent="Terrain/Stairs/Step1" unique_id=1768802450]
+[node name="Mesh" type="MeshInstance3D" parent="Terrain/Stairs/Step1" unique_id=1655825007]
 transform = Transform3D(3, 0, 0, 0, 0.6, 0, 0, 0, 0.5, 0, 0.3, 0)
 material_override = SubResource("ShaderMaterial_uy74a")
 mesh = ExtResource("4_i5lyy")
 
-[node name="Step2" type="StaticBody3D" parent="Terrain/Stairs" unique_id=1534062656]
+[node name="Step2" type="StaticBody3D" parent="Terrain/Stairs" unique_id=1357498457]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.25)
 
-[node name="Mesh" type="MeshInstance3D" parent="Terrain/Stairs/Step2" unique_id=1465211239]
+[node name="Mesh" type="MeshInstance3D" parent="Terrain/Stairs/Step2" unique_id=1051754313]
 transform = Transform3D(3, 0, 0, 0, 0.9, 0, 0, 0, 0.5, 0, 0.45, 0)
 material_override = SubResource("ShaderMaterial_uy74a")
 mesh = ExtResource("4_i5lyy")
 
-[node name="Step3" type="StaticBody3D" parent="Terrain/Stairs" unique_id=85479222]
+[node name="Step3" type="StaticBody3D" parent="Terrain/Stairs" unique_id=1884657244]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.75)
 
-[node name="Mesh" type="MeshInstance3D" parent="Terrain/Stairs/Step3" unique_id=1720940944]
+[node name="Mesh" type="MeshInstance3D" parent="Terrain/Stairs/Step3" unique_id=795960347]
 transform = Transform3D(3, 0, 0, 0, 1.2, 0, 0, 0, 0.5, 0, 0.6, 0)
 material_override = SubResource("ShaderMaterial_uy74a")
 mesh = ExtResource("4_i5lyy")
 
-[node name="Step4" type="StaticBody3D" parent="Terrain/Stairs" unique_id=1720456336]
+[node name="Step4" type="StaticBody3D" parent="Terrain/Stairs" unique_id=985399144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.25)
 
-[node name="Mesh" type="MeshInstance3D" parent="Terrain/Stairs/Step4" unique_id=28054338]
+[node name="Mesh" type="MeshInstance3D" parent="Terrain/Stairs/Step4" unique_id=776628920]
 transform = Transform3D(3, 0, 0, 0, 1.5, 0, 0, 0, 0.5, 0, 0.75, 0)
 material_override = SubResource("ShaderMaterial_uy74a")
 mesh = ExtResource("4_i5lyy")
 
-[node name="Step5" type="StaticBody3D" parent="Terrain/Stairs" unique_id=359277523]
+[node name="Step5" type="StaticBody3D" parent="Terrain/Stairs" unique_id=260472196]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.75)
 
-[node name="Mesh" type="MeshInstance3D" parent="Terrain/Stairs/Step5" unique_id=1842209123]
+[node name="Mesh" type="MeshInstance3D" parent="Terrain/Stairs/Step5" unique_id=1375710753]
 transform = Transform3D(3, 0, 0, 0, 1.8, 0, 0, 0, 0.5, 0, 0.9, 0)
 material_override = SubResource("ShaderMaterial_uy74a")
 mesh = ExtResource("4_i5lyy")
 
-[node name="SideL" type="StaticBody3D" parent="Terrain/Stairs" unique_id=1106925596]
+[node name="SideL" type="StaticBody3D" parent="Terrain/Stairs" unique_id=1628772398]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.675, 0, -1.5)
 
-[node name="Mesh" type="MeshInstance3D" parent="Terrain/Stairs/SideL" unique_id=1763947605]
+[node name="Mesh" type="MeshInstance3D" parent="Terrain/Stairs/SideL" unique_id=1620528284]
 transform = Transform3D(0.35, 0, 0, 0, 2.1, 0, 0, 0, 3, 0, 1.05, 0)
 material_override = SubResource("ShaderMaterial_uy74a")
 mesh = ExtResource("4_i5lyy")
 
-[node name="Collision" type="CollisionShape3D" parent="Terrain/Stairs/SideL" unique_id=1162402326]
+[node name="Collision" type="CollisionShape3D" parent="Terrain/Stairs/SideL" unique_id=1059433697]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
 shape = SubResource("BoxShape3D_j87pd")
 
-[node name="SideR" type="StaticBody3D" parent="Terrain/Stairs" unique_id=1912044132]
+[node name="SideR" type="StaticBody3D" parent="Terrain/Stairs" unique_id=483420581]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.675, 0, -1.5)
 
-[node name="Mesh" type="MeshInstance3D" parent="Terrain/Stairs/SideR" unique_id=632464610]
+[node name="Mesh" type="MeshInstance3D" parent="Terrain/Stairs/SideR" unique_id=910972082]
 transform = Transform3D(0.35, 0, 0, 0, 2.1, 0, 0, 0, 3, 0, 1.05, 0)
 material_override = SubResource("ShaderMaterial_uy74a")
 mesh = ExtResource("4_i5lyy")
 
-[node name="Collision" type="CollisionShape3D" parent="Terrain/Stairs/SideR" unique_id=1364270050]
+[node name="Collision" type="CollisionShape3D" parent="Terrain/Stairs/SideR" unique_id=1478570417]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
 shape = SubResource("BoxShape3D_fna02")
 
-[node name="Ramp" type="StaticBody3D" parent="Terrain/Stairs" unique_id=694278210]
+[node name="Ramp" type="StaticBody3D" parent="Terrain/Stairs" unique_id=948326450]
 
-[node name="Collision" type="CollisionShape3D" parent="Terrain/Stairs/Ramp" unique_id=636103332]
+[node name="Collision" type="CollisionShape3D" parent="Terrain/Stairs/Ramp" unique_id=986462095]
 transform = Transform3D(1, 0, 0, 0, 0.8574929, -0.5144958, 0, 0.5144958, 0.8574929, 0, 0.8, -1.5)
 shape = SubResource("BoxShape3D_u03a4")
 
-[node name="Coping" type="StaticBody3D" parent="Terrain" unique_id=186631168]
+[node name="Coping" type="StaticBody3D" parent="Terrain" unique_id=1549274175]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.925, 1.5, -16.075)
 
-[node name="Mesh" type="MeshInstance3D" parent="Terrain/Coping" unique_id=484455279]
+[node name="Mesh" type="MeshInstance3D" parent="Terrain/Coping" unique_id=370759336]
 transform = Transform3D(44.15, 0, 0, 0, 0.45, 0, 0, 0, 0.55, 0, 0.225, 0)
 material_override = SubResource("ShaderMaterial_uy74a")
 mesh = ExtResource("4_i5lyy")
 
-[node name="Collision" type="CollisionShape3D" parent="Terrain/Coping" unique_id=982979504]
+[node name="Collision" type="CollisionShape3D" parent="Terrain/Coping" unique_id=1422747337]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225, 0)
 shape = SubResource("BoxShape3D_wky2u")
 
-[node name="@StaticBody3D@3" type="StaticBody3D" parent="Terrain" unique_id=384720536]
+[node name="@StaticBody3D@3" type="StaticBody3D" parent="Terrain" unique_id=2029493227]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 1.5, -16.075)
 
-[node name="Mesh" type="MeshInstance3D" parent="Terrain/@StaticBody3D@3" unique_id=1126071082]
+[node name="Mesh" type="MeshInstance3D" parent="Terrain/@StaticBody3D@3" unique_id=458753843]
 transform = Transform3D(6.4, 0, 0, 0, 0.45, 0, 0, 0, 0.55, 0, 0.225, 0)
 material_override = SubResource("ShaderMaterial_uy74a")
 mesh = ExtResource("4_i5lyy")
 
-[node name="Collision" type="CollisionShape3D" parent="Terrain/@StaticBody3D@3" unique_id=1026376830]
+[node name="Collision" type="CollisionShape3D" parent="Terrain/@StaticBody3D@3" unique_id=742826184]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225, 0)
 shape = SubResource("BoxShape3D_intae")
 
-[node name="CopingEast" type="StaticBody3D" parent="Terrain" unique_id=1615293772]
+[node name="CopingEast" type="StaticBody3D" parent="Terrain" unique_id=71761199]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, -25.175)
 
-[node name="Mesh" type="MeshInstance3D" parent="Terrain/CopingEast" unique_id=1530500770]
+[node name="Mesh" type="MeshInstance3D" parent="Terrain/CopingEast" unique_id=1339310216]
 transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 17.65, 0, 0.225, 0)
 material_override = SubResource("ShaderMaterial_uy74a")
 mesh = ExtResource("4_i5lyy")
 
-[node name="Collision" type="CollisionShape3D" parent="Terrain/CopingEast" unique_id=505231863]
+[node name="Collision" type="CollisionShape3D" parent="Terrain/CopingEast" unique_id=1873409633]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225, 0)
 shape = SubResource("BoxShape3D_wfif4")
 
-[node name="Pillar" type="StaticBody3D" parent="Terrain" unique_id=1835217558 instance=ExtResource("6_ki78n")]
+[node name="Pillar" type="StaticBody3D" parent="Terrain" unique_id=416170656 instance=ExtResource("6_ki78n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -15.55)
 
-[node name="Pillar2" type="StaticBody3D" parent="Terrain" unique_id=666972189 instance=ExtResource("6_ki78n")]
+[node name="Pillar2" type="StaticBody3D" parent="Terrain" unique_id=602373016 instance=ExtResource("6_ki78n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0, -15.55)
 
-[node name="Pillar3" type="StaticBody3D" parent="Terrain" unique_id=1273698744 instance=ExtResource("6_ki78n")]
+[node name="Pillar3" type="StaticBody3D" parent="Terrain" unique_id=396963309 instance=ExtResource("6_ki78n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -15.55)
 
-[node name="Pillar4" type="StaticBody3D" parent="Terrain" unique_id=726968871 instance=ExtResource("6_ki78n")]
+[node name="Pillar4" type="StaticBody3D" parent="Terrain" unique_id=774442613 instance=ExtResource("6_ki78n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, -15.55)
 
-[node name="Pillar5" type="StaticBody3D" parent="Terrain" unique_id=576428159 instance=ExtResource("6_ki78n")]
+[node name="Pillar5" type="StaticBody3D" parent="Terrain" unique_id=26918723 instance=ExtResource("6_ki78n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -15.55)
 
-[node name="Bush" type="StaticBody3D" parent="Terrain" unique_id=562762996 instance=ExtResource("7_bx0s6")]
+[node name="Bush" type="StaticBody3D" parent="Terrain" unique_id=141742508 instance=ExtResource("7_bx0s6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7, 0, -15.25)
 
-[node name="TallGrass" type="Node3D" parent="Terrain" unique_id=2026045220 instance=ExtResource("8_unb8j")]
+[node name="TallGrass" type="Node3D" parent="Terrain" unique_id=779592587 instance=ExtResource("8_unb8j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8, 0, -15.25)
 
-[node name="TallGrass2" type="Node3D" parent="Terrain" unique_id=2134283603 instance=ExtResource("8_unb8j")]
+[node name="TallGrass2" type="Node3D" parent="Terrain" unique_id=1994441422 instance=ExtResource("8_unb8j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2, 0, -15.25)
 
-[node name="Bush2" type="StaticBody3D" parent="Terrain" unique_id=377076795 instance=ExtResource("7_bx0s6")]
+[node name="Bush2" type="StaticBody3D" parent="Terrain" unique_id=842106580 instance=ExtResource("7_bx0s6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, -15.25)
 
-[node name="TallGrass3" type="Node3D" parent="Terrain" unique_id=1400203265 instance=ExtResource("8_unb8j")]
+[node name="TallGrass3" type="Node3D" parent="Terrain" unique_id=814462630 instance=ExtResource("8_unb8j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -15.25)
 
-[node name="WallFoot" type="Sprite3D" parent="Terrain" unique_id=1087762217]
+[node name="WallFoot" type="Sprite3D" parent="Terrain" unique_id=112242062]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.044444446, -25, 0.015, -15.5)
 cast_shadow = 0
 pixel_size = 3.375
@@ -526,7 +526,7 @@ axis = 1
 texture_filter = 0
 texture = ExtResource("9_eakiv")
 
-[node name="@Sprite3D@4" type="Sprite3D" parent="Terrain" unique_id=1830973671]
+[node name="@Sprite3D@4" type="Sprite3D" parent="Terrain" unique_id=1314576413]
 transform = Transform3D(-4.371139e-08, 0, 0.13333334, 0, 1, 0, -1, 0, -5.8281855e-09, 2.5, 0.015, -25)
 cast_shadow = 0
 pixel_size = 1.125
@@ -534,109 +534,109 @@ axis = 1
 texture_filter = 0
 texture = ExtResource("9_eakiv")
 
-[node name="VillageSquare" type="MeshInstance3D" parent="Terrain" unique_id=680840855]
+[node name="VillageSquare" type="MeshInstance3D" parent="Terrain" unique_id=1984416928]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1.812, -18.3)
 material_override = SubResource("ShaderMaterial_vuan0")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_1ovy1")
 
-[node name="RoadNorth" type="MeshInstance3D" parent="Terrain" unique_id=1698111526]
+[node name="RoadNorth" type="MeshInstance3D" parent="Terrain" unique_id=1804126519]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.014, -7.2)
 material_override = SubResource("ShaderMaterial_wiwnk")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_kbfck")
 
-[node name="RoadEast" type="MeshInstance3D" parent="Terrain" unique_id=2014018170]
+[node name="RoadEast" type="MeshInstance3D" parent="Terrain" unique_id=1143350425]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.01, -0.4)
 material_override = SubResource("ShaderMaterial_t4dyx")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_cou0m")
 
-[node name="RoadWest" type="MeshInstance3D" parent="Terrain" unique_id=1464814078]
+[node name="RoadWest" type="MeshInstance3D" parent="Terrain" unique_id=1649578735]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0.01, -0.4)
 material_override = SubResource("ShaderMaterial_0xq4n")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_d77om")
 
-[node name="ForestFloorTerrace" type="MeshInstance3D" parent="Terrain" unique_id=496094992]
+[node name="ForestFloorTerrace" type="MeshInstance3D" parent="Terrain" unique_id=1167581657]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1.806, -26)
 material_override = SubResource("ShaderMaterial_x1pyi")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_64p38")
 
-[node name="ForestFloorWest" type="MeshInstance3D" parent="Terrain" unique_id=1864675194]
+[node name="ForestFloorWest" type="MeshInstance3D" parent="Terrain" unique_id=2015044389]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 1.806, -20)
 material_override = SubResource("ShaderMaterial_4j5av")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_j678n")
 
-[node name="ForestFloorNorthEast" type="MeshInstance3D" parent="Terrain" unique_id=1169642568]
+[node name="ForestFloorNorthEast" type="MeshInstance3D" parent="Terrain" unique_id=45599140]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.006, -23)
 material_override = SubResource("ShaderMaterial_shrcr")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_uj0hw")
 
-[node name="ForestFloorEast" type="MeshInstance3D" parent="Terrain" unique_id=1944858783]
+[node name="ForestFloorEast" type="MeshInstance3D" parent="Terrain" unique_id=226707033]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 0.006, 0)
 material_override = SubResource("ShaderMaterial_rw4jk")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_pnra0")
 
-[node name="ForestFloorWestMeadow" type="MeshInstance3D" parent="Terrain" unique_id=1915427781]
+[node name="ForestFloorWestMeadow" type="MeshInstance3D" parent="Terrain" unique_id=1064264541]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.5, 0.006, 0)
 material_override = SubResource("ShaderMaterial_yj6ta")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_hpsiu")
 
-[node name="ForestFloorSouth" type="MeshInstance3D" parent="Terrain" unique_id=1287009782]
+[node name="ForestFloorSouth" type="MeshInstance3D" parent="Terrain" unique_id=476783717]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.006, 19.5)
 material_override = SubResource("ShaderMaterial_kfvvo")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_xniim")
 
-[node name="Garden" type="MeshInstance3D" parent="Terrain" unique_id=903279773]
+[node name="Garden" type="MeshInstance3D" parent="Terrain" unique_id=146583688]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.3, 1.812, -21.6)
 material_override = SubResource("ShaderMaterial_hh37h")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_m3n4a")
 
-[node name="RiftScar" type="MeshInstance3D" parent="Terrain" unique_id=2136373362]
+[node name="RiftScar" type="MeshInstance3D" parent="Terrain" unique_id=1517042586]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4, 0.008, -8)
 material_override = SubResource("ShaderMaterial_d2deq")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_71kjx")
 
-[node name="Edge" type="StaticBody3D" parent="Terrain" unique_id=743810079]
+[node name="Edge" type="StaticBody3D" parent="Terrain" unique_id=2135385453]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.75, 3, -9)
 
-[node name="Collision" type="CollisionShape3D" parent="Terrain/Edge" unique_id=2048839013]
+[node name="Collision" type="CollisionShape3D" parent="Terrain/Edge" unique_id=1307429243]
 shape = SubResource("BoxShape3D_m8niq")
 
-[node name="@StaticBody3D@5" type="StaticBody3D" parent="Terrain" unique_id=1077923070]
+[node name="@StaticBody3D@5" type="StaticBody3D" parent="Terrain" unique_id=295679519]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.75, 3, -9)
 
-[node name="Collision" type="CollisionShape3D" parent="Terrain/@StaticBody3D@5" unique_id=496122405]
+[node name="Collision" type="CollisionShape3D" parent="Terrain/@StaticBody3D@5" unique_id=853296729]
 shape = SubResource("BoxShape3D_mxedc")
 
-[node name="@StaticBody3D@6" type="StaticBody3D" parent="Terrain" unique_id=1516834259]
+[node name="@StaticBody3D@6" type="StaticBody3D" parent="Terrain" unique_id=372879001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 13.25)
 
-[node name="Collision" type="CollisionShape3D" parent="Terrain/@StaticBody3D@6" unique_id=653716659]
+[node name="Collision" type="CollisionShape3D" parent="Terrain/@StaticBody3D@6" unique_id=1740392505]
 shape = SubResource("BoxShape3D_ubywd")
 
-[node name="@StaticBody3D@7" type="StaticBody3D" parent="Terrain" unique_id=2048377269]
+[node name="@StaticBody3D@7" type="StaticBody3D" parent="Terrain" unique_id=2041170532]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -27.25)
 
-[node name="Collision" type="CollisionShape3D" parent="Terrain/@StaticBody3D@7" unique_id=1826985499]
+[node name="Collision" type="CollisionShape3D" parent="Terrain/@StaticBody3D@7" unique_id=1109970394]
 shape = SubResource("BoxShape3D_cfflm")
 
-[node name="Buildings" type="Node3D" parent="." unique_id=2056118098]
+[node name="Buildings" type="Node3D" parent="." unique_id=958545477]
 
-[node name="Inn" type="StaticBody3D" parent="Buildings" unique_id=2033127516]
+[node name="Inn" type="StaticBody3D" parent="Buildings" unique_id=1931672596]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1.8, -22.8)
 script = ExtResource("15_gjafh")
 
-[node name="Shell" type="MeshInstance3D" parent="Buildings/Inn" unique_id=1345077014]
+[node name="Shell" type="MeshInstance3D" parent="Buildings/Inn" unique_id=530761285]
 script = ExtResource("16_klxxt")
 size = Vector3(7.133333, 4.8, 6)
 roof_height = 3.3333332739143726
@@ -649,11 +649,11 @@ right_texture = ExtResource("18_4uefq")
 gable_texture = ExtResource("19_ap4ul")
 roof_texture = ExtResource("20_8bufo")
 
-[node name="Collision" type="CollisionShape3D" parent="Buildings/Inn" unique_id=2032516596]
+[node name="Collision" type="CollisionShape3D" parent="Buildings/Inn" unique_id=1535760184]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
 shape = SubResource("BoxShape3D_x5e0h")
 
-[node name="BaseShadow" type="Sprite3D" parent="Buildings/Inn" unique_id=447677793]
+[node name="BaseShadow" type="Sprite3D" parent="Buildings/Inn" unique_id=1745663889]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.22, 0, 0.02, 3.15)
 cast_shadow = 0
 pixel_size = 0.49583334
@@ -661,11 +661,11 @@ axis = 1
 texture_filter = 0
 texture = ExtResource("9_eakiv")
 
-[node name="Shop" type="StaticBody3D" parent="Buildings" unique_id=663643900]
+[node name="Shop" type="StaticBody3D" parent="Buildings" unique_id=227695091]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.8, -23.2)
 script = ExtResource("15_gjafh")
 
-[node name="Shell" type="MeshInstance3D" parent="Buildings/Shop" unique_id=1790525209]
+[node name="Shell" type="MeshInstance3D" parent="Buildings/Shop" unique_id=1178833910]
 script = ExtResource("16_klxxt")
 size = Vector3(7.133333, 4.8, 5.4)
 roof_height = 3.3333332739143726
@@ -678,11 +678,11 @@ right_texture = ExtResource("18_4uefq")
 gable_texture = ExtResource("22_dkjr4")
 roof_texture = ExtResource("23_27kkm")
 
-[node name="Collision" type="CollisionShape3D" parent="Buildings/Shop" unique_id=1367610880]
+[node name="Collision" type="CollisionShape3D" parent="Buildings/Shop" unique_id=1671292572]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
 shape = SubResource("BoxShape3D_q2w6d")
 
-[node name="BaseShadow" type="Sprite3D" parent="Buildings/Shop" unique_id=1027370811]
+[node name="BaseShadow" type="Sprite3D" parent="Buildings/Shop" unique_id=1133059072]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.22, 0, 0.02, 2.8500001)
 cast_shadow = 0
 pixel_size = 0.49583334
@@ -690,801 +690,801 @@ axis = 1
 texture_filter = 0
 texture = ExtResource("9_eakiv")
 
-[node name="Nature" type="Node3D" parent="." unique_id=1977808746]
+[node name="Nature" type="Node3D" parent="." unique_id=1894369700]
 
-[node name="TreeOak" type="StaticBody3D" parent="Nature" unique_id=119729566 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak" type="StaticBody3D" parent="Nature" unique_id=241844046 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.35274, 1.8, -26.159758)
 
-[node name="TreeOak2" type="StaticBody3D" parent="Nature" unique_id=759426818 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak2" type="StaticBody3D" parent="Nature" unique_id=1837801826 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.24805, 1.8, -26.24659)
 
-[node name="TreeFir" type="StaticBody3D" parent="Nature" unique_id=1600836368 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir" type="StaticBody3D" parent="Nature" unique_id=1890809163 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.89041, 1.8, -26.182257)
 
-[node name="TreeFir2" type="StaticBody3D" parent="Nature" unique_id=1327947960 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir2" type="StaticBody3D" parent="Nature" unique_id=779596279 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.131973, 1.8, -26.479002)
 
-[node name="TreeOak3" type="StaticBody3D" parent="Nature" unique_id=1521502982 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak3" type="StaticBody3D" parent="Nature" unique_id=491260749 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.306484, 1.8, -26.3838)
 
-[node name="TreeFir3" type="StaticBody3D" parent="Nature" unique_id=1732623164 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir3" type="StaticBody3D" parent="Nature" unique_id=1372996274 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.00865, 1.8, -26.125269)
 
-[node name="TreeFir4" type="StaticBody3D" parent="Nature" unique_id=1514169444 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir4" type="StaticBody3D" parent="Nature" unique_id=501150567 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.967781, 1.8, -26.459938)
 
-[node name="TreeOak4" type="StaticBody3D" parent="Nature" unique_id=1583409253 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak4" type="StaticBody3D" parent="Nature" unique_id=1054637412 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.208563, 1.8, -26.50535)
 
-[node name="TreeOak5" type="StaticBody3D" parent="Nature" unique_id=1932835669 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak5" type="StaticBody3D" parent="Nature" unique_id=1448547699 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.772457, 1.8, -26.685007)
 
-[node name="TreeOak6" type="StaticBody3D" parent="Nature" unique_id=1072826644 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak6" type="StaticBody3D" parent="Nature" unique_id=925636332 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.734037, 1.8, -26.638798)
 
-[node name="TreeOak7" type="StaticBody3D" parent="Nature" unique_id=1400307008 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak7" type="StaticBody3D" parent="Nature" unique_id=192658923 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.045664, 1.8, -26.648085)
 
-[node name="TreeFir5" type="StaticBody3D" parent="Nature" unique_id=1070826228 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir5" type="StaticBody3D" parent="Nature" unique_id=987399535 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.726496, 1.8, -26.49183)
 
-[node name="TreeFir6" type="StaticBody3D" parent="Nature" unique_id=273069754 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir6" type="StaticBody3D" parent="Nature" unique_id=239233807 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.455531, 1.8, -26.51564)
 
-[node name="TreeFir7" type="StaticBody3D" parent="Nature" unique_id=1887098931 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir7" type="StaticBody3D" parent="Nature" unique_id=594158724 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.773798, 1.8, -26.418255)
 
-[node name="TreeFir8" type="StaticBody3D" parent="Nature" unique_id=1234231967 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir8" type="StaticBody3D" parent="Nature" unique_id=1108335461 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.315322, 1.8, -26.566568)
 
-[node name="TreeOak8" type="StaticBody3D" parent="Nature" unique_id=1834347277 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak8" type="StaticBody3D" parent="Nature" unique_id=1725788473 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.824738, 1.8, -26.50324)
 
-[node name="TreeFir9" type="StaticBody3D" parent="Nature" unique_id=863532392 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir9" type="StaticBody3D" parent="Nature" unique_id=9403716 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4081256, 1.8, -26.66822)
 
-[node name="TreeFir10" type="StaticBody3D" parent="Nature" unique_id=333525303 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir10" type="StaticBody3D" parent="Nature" unique_id=1456843470 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05559467, 1.8, -26.100603)
 
-[node name="TreeOak9" type="StaticBody3D" parent="Nature" unique_id=1421573627 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak9" type="StaticBody3D" parent="Nature" unique_id=473381463 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3896837, 0, -26.16228)
 
-[node name="TreeFir11" type="StaticBody3D" parent="Nature" unique_id=216830067 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir11" type="StaticBody3D" parent="Nature" unique_id=1880913047 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.531812, 0, -26.27045)
 
-[node name="TreeFir12" type="StaticBody3D" parent="Nature" unique_id=1582434120 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir12" type="StaticBody3D" parent="Nature" unique_id=536366318 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.310853, 0, -26.480017)
 
-[node name="TreeOak10" type="StaticBody3D" parent="Nature" unique_id=422318108 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak10" type="StaticBody3D" parent="Nature" unique_id=1993386807 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.561968, 0, -26.58277)
 
-[node name="TreeFir13" type="StaticBody3D" parent="Nature" unique_id=2094896199 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir13" type="StaticBody3D" parent="Nature" unique_id=761461940 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0762205, 0, -26.498085)
 
-[node name="TreeOak11" type="StaticBody3D" parent="Nature" unique_id=370376500 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak11" type="StaticBody3D" parent="Nature" unique_id=1987262710 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.26108, 0, -26.145948)
 
-[node name="TreeFir14" type="StaticBody3D" parent="Nature" unique_id=1914667403 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir14" type="StaticBody3D" parent="Nature" unique_id=487547280 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.07486, 0, -26.226072)
 
-[node name="TreeFir15" type="StaticBody3D" parent="Nature" unique_id=1384247445 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir15" type="StaticBody3D" parent="Nature" unique_id=1935584917 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.437819, 0, -26.574007)
 
-[node name="TreeFir16" type="StaticBody3D" parent="Nature" unique_id=1684862807 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir16" type="StaticBody3D" parent="Nature" unique_id=764676421 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.858593, 0, -26.137283)
 
-[node name="TreeOak12" type="StaticBody3D" parent="Nature" unique_id=1535871966 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak12" type="StaticBody3D" parent="Nature" unique_id=518189760 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.877298, 0, -26.12958)
 
-[node name="TreeOak13" type="StaticBody3D" parent="Nature" unique_id=538124976 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak13" type="StaticBody3D" parent="Nature" unique_id=1620771918 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.254028, 0, -26.442835)
 
-[node name="TreeFir17" type="StaticBody3D" parent="Nature" unique_id=221281819 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir17" type="StaticBody3D" parent="Nature" unique_id=1111133785 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.91813, 0, -26.249308)
 
-[node name="TreeOak14" type="StaticBody3D" parent="Nature" unique_id=649209762 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak14" type="StaticBody3D" parent="Nature" unique_id=838294246 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.317078, 0, -26.491077)
 
-[node name="TreeFir18" type="StaticBody3D" parent="Nature" unique_id=1953238462 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir18" type="StaticBody3D" parent="Nature" unique_id=1207304662 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.109776, 0, -26.605757)
 
-[node name="TreeOak15" type="StaticBody3D" parent="Nature" unique_id=1779850447 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak15" type="StaticBody3D" parent="Nature" unique_id=1997251255 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.453815, 0, -26.354887)
 
-[node name="TreeOak16" type="StaticBody3D" parent="Nature" unique_id=2001629385 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak16" type="StaticBody3D" parent="Nature" unique_id=1701583970 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.341866, 0, -26.459755)
 
-[node name="TreeFir19" type="StaticBody3D" parent="Nature" unique_id=390995168 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir19" type="StaticBody3D" parent="Nature" unique_id=209121224 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.59084, 0, -26.657377)
 
-[node name="TreeFir20" type="StaticBody3D" parent="Nature" unique_id=1990153319 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir20" type="StaticBody3D" parent="Nature" unique_id=496578548 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.119995, 1.8, -25.268194)
 
-[node name="TreeFir21" type="StaticBody3D" parent="Nature" unique_id=518567216 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir21" type="StaticBody3D" parent="Nature" unique_id=1684392206 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.842346, 1.8, -25.404926)
 
-[node name="TreeOak17" type="StaticBody3D" parent="Nature" unique_id=1257188483 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak17" type="StaticBody3D" parent="Nature" unique_id=504908910 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.972782, 1.8, -25.264471)
 
-[node name="TreeFir22" type="StaticBody3D" parent="Nature" unique_id=1851140665 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir22" type="StaticBody3D" parent="Nature" unique_id=364693154 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.64127, 1.8, -25.041756)
 
-[node name="TreeOak18" type="StaticBody3D" parent="Nature" unique_id=1167598712 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak18" type="StaticBody3D" parent="Nature" unique_id=2144821344 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.486126, 1.8, -25.185497)
 
-[node name="TreeFir23" type="StaticBody3D" parent="Nature" unique_id=625333027 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir23" type="StaticBody3D" parent="Nature" unique_id=1153544604 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.96124, 1.8, -25.12387)
 
-[node name="TreeOak19" type="StaticBody3D" parent="Nature" unique_id=700920129 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak19" type="StaticBody3D" parent="Nature" unique_id=280138916 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.888384, 1.8, -25.05783)
 
-[node name="TreeFir24" type="StaticBody3D" parent="Nature" unique_id=1249562202 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir24" type="StaticBody3D" parent="Nature" unique_id=276351065 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.687937, 1.8, -25.479475)
 
-[node name="TreeFir25" type="StaticBody3D" parent="Nature" unique_id=541578003 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir25" type="StaticBody3D" parent="Nature" unique_id=1524814061 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.08136, 1.8, -25.486269)
 
-[node name="TreeFir26" type="StaticBody3D" parent="Nature" unique_id=1772102221 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir26" type="StaticBody3D" parent="Nature" unique_id=1392060349 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.297165, 1.8, -25.407001)
 
-[node name="TreeOak20" type="StaticBody3D" parent="Nature" unique_id=125599353 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak20" type="StaticBody3D" parent="Nature" unique_id=363504905 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.537844, 1.8, -25.021894)
 
-[node name="TreeOak21" type="StaticBody3D" parent="Nature" unique_id=558680433 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak21" type="StaticBody3D" parent="Nature" unique_id=197661171 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.900982, 1.8, -24.95069)
 
-[node name="TreeOak22" type="StaticBody3D" parent="Nature" unique_id=493165033 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak22" type="StaticBody3D" parent="Nature" unique_id=574919312 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.794958, 1.8, -25.275652)
 
-[node name="TreeOak23" type="StaticBody3D" parent="Nature" unique_id=651955369 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak23" type="StaticBody3D" parent="Nature" unique_id=193473463 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5060344, 1.8, -25.484127)
 
-[node name="TreeOak24" type="StaticBody3D" parent="Nature" unique_id=579963902 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak24" type="StaticBody3D" parent="Nature" unique_id=1203269640 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3340616, 1.8, -25.164984)
 
-[node name="TreeFir27" type="StaticBody3D" parent="Nature" unique_id=1095355739 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir27" type="StaticBody3D" parent="Nature" unique_id=527632540 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7302064, 1.8, -25.435637)
 
-[node name="TreeOak25" type="StaticBody3D" parent="Nature" unique_id=1937225912 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak25" type="StaticBody3D" parent="Nature" unique_id=272759912 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9222686, 0, -25.022049)
 
-[node name="TreeFir28" type="StaticBody3D" parent="Nature" unique_id=1878977706 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir28" type="StaticBody3D" parent="Nature" unique_id=1535329517 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5163484, 0, -25.096947)
 
-[node name="TreeOak26" type="StaticBody3D" parent="Nature" unique_id=973589073 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak26" type="StaticBody3D" parent="Nature" unique_id=1476984749 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.236777, 0, -25.209515)
 
-[node name="TreeOak27" type="StaticBody3D" parent="Nature" unique_id=1587246486 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak27" type="StaticBody3D" parent="Nature" unique_id=1010906050 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.021675, 0, -25.05861)
 
-[node name="TreeFir29" type="StaticBody3D" parent="Nature" unique_id=1452701819 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir29" type="StaticBody3D" parent="Nature" unique_id=51465042 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.550031, 0, -25.076342)
 
-[node name="TreeFir30" type="StaticBody3D" parent="Nature" unique_id=1282493696 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir30" type="StaticBody3D" parent="Nature" unique_id=188231204 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4078, 0, -25.49874)
 
-[node name="TreeFir31" type="StaticBody3D" parent="Nature" unique_id=101677911 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir31" type="StaticBody3D" parent="Nature" unique_id=1704422767 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.116034, 0, -24.98522)
 
-[node name="TreeOak28" type="StaticBody3D" parent="Nature" unique_id=1360828741 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak28" type="StaticBody3D" parent="Nature" unique_id=47219950 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.785648, 0, -25.141844)
 
-[node name="TreeOak29" type="StaticBody3D" parent="Nature" unique_id=2094691975 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak29" type="StaticBody3D" parent="Nature" unique_id=1054935256 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.923073, 0, -25.454952)
 
-[node name="TreeFir32" type="StaticBody3D" parent="Nature" unique_id=853260962 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir32" type="StaticBody3D" parent="Nature" unique_id=2004678986 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.606716, 0, -25.073275)
 
-[node name="TreeOak30" type="StaticBody3D" parent="Nature" unique_id=788005107 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak30" type="StaticBody3D" parent="Nature" unique_id=1206197399 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.279568, 0, -25.096323)
 
-[node name="TreeFir33" type="StaticBody3D" parent="Nature" unique_id=73291698 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir33" type="StaticBody3D" parent="Nature" unique_id=1295116080 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.827576, 0, -25.031637)
 
-[node name="TreeFir34" type="StaticBody3D" parent="Nature" unique_id=2135487503 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir34" type="StaticBody3D" parent="Nature" unique_id=1421853480 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.45913, 0, -25.38444)
 
-[node name="TreeOak31" type="StaticBody3D" parent="Nature" unique_id=382340132 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak31" type="StaticBody3D" parent="Nature" unique_id=1136039853 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.797394, 0, -25.488379)
 
-[node name="TreeFir35" type="StaticBody3D" parent="Nature" unique_id=1050396069 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir35" type="StaticBody3D" parent="Nature" unique_id=1054039182 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.12128, 0, -25.381575)
 
-[node name="TreeOak32" type="StaticBody3D" parent="Nature" unique_id=460648483 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak32" type="StaticBody3D" parent="Nature" unique_id=1653763522 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.782898, 0, -25.369087)
 
-[node name="TreeFir36" type="StaticBody3D" parent="Nature" unique_id=1619253074 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir36" type="StaticBody3D" parent="Nature" unique_id=51908127 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -21.5)
 
-[node name="TreeOak33" type="StaticBody3D" parent="Nature" unique_id=1384771660 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak33" type="StaticBody3D" parent="Nature" unique_id=1764409353 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -23)
 
-[node name="TreeFir37" type="StaticBody3D" parent="Nature" unique_id=575069309 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir37" type="StaticBody3D" parent="Nature" unique_id=1483342075 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -20.5)
 
-[node name="TreeOak34" type="StaticBody3D" parent="Nature" unique_id=316154570 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak34" type="StaticBody3D" parent="Nature" unique_id=1280646772 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8, 0, -22.6)
 
-[node name="TreeFir38" type="StaticBody3D" parent="Nature" unique_id=730192039 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir38" type="StaticBody3D" parent="Nature" unique_id=1236293206 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -19.8)
 
-[node name="TreeOak35" type="StaticBody3D" parent="Nature" unique_id=618539612 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak35" type="StaticBody3D" parent="Nature" unique_id=881239621 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2, 0, -22)
 
-[node name="TreeFir39" type="StaticBody3D" parent="Nature" unique_id=427247835 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir39" type="StaticBody3D" parent="Nature" unique_id=1673943981 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, -18.2)
 
-[node name="TreeYoung" type="StaticBody3D" parent="Nature" unique_id=556377211 instance=ExtResource("26_0u7my")]
+[node name="TreeYoung" type="StaticBody3D" parent="Nature" unique_id=1441392595 instance=ExtResource("26_0u7my")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -18.2)
 
-[node name="TreeYoung2" type="StaticBody3D" parent="Nature" unique_id=887642598 instance=ExtResource("26_0u7my")]
+[node name="TreeYoung2" type="StaticBody3D" parent="Nature" unique_id=43872266 instance=ExtResource("26_0u7my")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, -17.2)
 
-[node name="TreeFir40" type="StaticBody3D" parent="Nature" unique_id=891406175 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir40" type="StaticBody3D" parent="Nature" unique_id=1229428810 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -14)
 
-[node name="TreeOak36" type="StaticBody3D" parent="Nature" unique_id=1244007208 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak36" type="StaticBody3D" parent="Nature" unique_id=1902963449 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2, 0, -6.8)
 
-[node name="TreeFir41" type="StaticBody3D" parent="Nature" unique_id=1452943874 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir41" type="StaticBody3D" parent="Nature" unique_id=527721303 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4, 0, -9.6)
 
-[node name="TreeOak37" type="StaticBody3D" parent="Nature" unique_id=504182230 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak37" type="StaticBody3D" parent="Nature" unique_id=1944722907 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 0, -11.5)
 
-[node name="TreeFir42" type="StaticBody3D" parent="Nature" unique_id=2066944267 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir42" type="StaticBody3D" parent="Nature" unique_id=1673994509 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 0, -6.5)
 
-[node name="TreeYoung3" type="StaticBody3D" parent="Nature" unique_id=1494430371 instance=ExtResource("26_0u7my")]
+[node name="TreeYoung3" type="StaticBody3D" parent="Nature" unique_id=582815310 instance=ExtResource("26_0u7my")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8, 0, -8.8)
 
-[node name="TreeOak38" type="StaticBody3D" parent="Nature" unique_id=780808313 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak38" type="StaticBody3D" parent="Nature" unique_id=2025457970 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 1.8)
 
-[node name="TreeFir43" type="StaticBody3D" parent="Nature" unique_id=1947514525 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir43" type="StaticBody3D" parent="Nature" unique_id=1733366999 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 7.5)
 
-[node name="TreeOak39" type="StaticBody3D" parent="Nature" unique_id=1441914062 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak39" type="StaticBody3D" parent="Nature" unique_id=2071691180 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 9.5)
 
-[node name="TreeFir44" type="StaticBody3D" parent="Nature" unique_id=1712441213 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir44" type="StaticBody3D" parent="Nature" unique_id=576000905 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 10.5)
 
-[node name="TreeYoung4" type="StaticBody3D" parent="Nature" unique_id=1619020792 instance=ExtResource("26_0u7my")]
+[node name="TreeYoung4" type="StaticBody3D" parent="Nature" unique_id=1246992048 instance=ExtResource("26_0u7my")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 8.8)
 
-[node name="TreeOak40" type="StaticBody3D" parent="Nature" unique_id=806872910 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak40" type="StaticBody3D" parent="Nature" unique_id=1160629592 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 9.8)
 
-[node name="TreeFir45" type="StaticBody3D" parent="Nature" unique_id=1781325623 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir45" type="StaticBody3D" parent="Nature" unique_id=230784783 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 0, 6.8)
 
-[node name="TreeYoung5" type="StaticBody3D" parent="Nature" unique_id=1614583889 instance=ExtResource("26_0u7my")]
+[node name="TreeYoung5" type="StaticBody3D" parent="Nature" unique_id=1820567594 instance=ExtResource("26_0u7my")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 11.5)
 
-[node name="TreeOak41" type="StaticBody3D" parent="Nature" unique_id=261750690 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak41" type="StaticBody3D" parent="Nature" unique_id=313458454 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.820267, 0, 18.740173)
 
-[node name="TreeFir46" type="StaticBody3D" parent="Nature" unique_id=359637438 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir46" type="StaticBody3D" parent="Nature" unique_id=250017198 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.890717, 0, 22.968563)
 
-[node name="TreeFir47" type="StaticBody3D" parent="Nature" unique_id=176075300 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir47" type="StaticBody3D" parent="Nature" unique_id=2007560510 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.75875, 0, -13.472091)
 
-[node name="TreeFir48" type="StaticBody3D" parent="Nature" unique_id=290443420 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir48" type="StaticBody3D" parent="Nature" unique_id=1623172866 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.623642, 0, -4.6608315)
 
-[node name="TreeOak42" type="StaticBody3D" parent="Nature" unique_id=1261561466 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak42" type="StaticBody3D" parent="Nature" unique_id=191772738 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.051893, 1.8, -23.499603)
 
-[node name="TreeOak43" type="StaticBody3D" parent="Nature" unique_id=458262575 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak43" type="StaticBody3D" parent="Nature" unique_id=559747221 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.548714, 1.8, -19.827196)
 
-[node name="TreeFir49" type="StaticBody3D" parent="Nature" unique_id=354312826 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir49" type="StaticBody3D" parent="Nature" unique_id=865074046 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.795973, 0, -5.300247)
 
-[node name="TreeOak44" type="StaticBody3D" parent="Nature" unique_id=967690262 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak44" type="StaticBody3D" parent="Nature" unique_id=57523015 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.356567, 0, -1.3079624)
 
-[node name="TreeFir50" type="StaticBody3D" parent="Nature" unique_id=160035510 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir50" type="StaticBody3D" parent="Nature" unique_id=1546031530 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.839325, 0, 15.744812)
 
-[node name="TreeFir51" type="StaticBody3D" parent="Nature" unique_id=1127616492 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir51" type="StaticBody3D" parent="Nature" unique_id=1788017985 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.628304, 0, 19.268787)
 
-[node name="TreeFir52" type="StaticBody3D" parent="Nature" unique_id=83453351 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir52" type="StaticBody3D" parent="Nature" unique_id=1010049079 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.860783, 0, 1.5027542)
 
-[node name="TreeOak45" type="StaticBody3D" parent="Nature" unique_id=682946113 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak45" type="StaticBody3D" parent="Nature" unique_id=1521924139 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.070997, 0, 5.566742)
 
-[node name="TreeFir53" type="StaticBody3D" parent="Nature" unique_id=399986187 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir53" type="StaticBody3D" parent="Nature" unique_id=974330624 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.28871, 0, 18.895489)
 
-[node name="TreeFir54" type="StaticBody3D" parent="Nature" unique_id=1853793752 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir54" type="StaticBody3D" parent="Nature" unique_id=190386611 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.043266, 0, -1.1512165)
 
-[node name="TreeFir55" type="StaticBody3D" parent="Nature" unique_id=915821524 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir55" type="StaticBody3D" parent="Nature" unique_id=678240581 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.47528, 0, 23.200134)
 
-[node name="TreeFir56" type="StaticBody3D" parent="Nature" unique_id=1001268565 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir56" type="StaticBody3D" parent="Nature" unique_id=832961404 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.91021, 0, -2.4076157)
 
-[node name="TreeOak46" type="StaticBody3D" parent="Nature" unique_id=1188559274 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak46" type="StaticBody3D" parent="Nature" unique_id=1502206038 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.155483, 0, 6.229952)
 
-[node name="TreeOak47" type="StaticBody3D" parent="Nature" unique_id=136490127 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak47" type="StaticBody3D" parent="Nature" unique_id=1158594693 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.55892, 0, -5.8763123)
 
-[node name="TreeFir57" type="StaticBody3D" parent="Nature" unique_id=634476145 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir57" type="StaticBody3D" parent="Nature" unique_id=524372146 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.877872, 1.8, -16.531088)
 
-[node name="TreeOak48" type="StaticBody3D" parent="Nature" unique_id=2095477433 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak48" type="StaticBody3D" parent="Nature" unique_id=1068838484 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.41921, 0, -14.837817)
 
-[node name="TreeFir58" type="StaticBody3D" parent="Nature" unique_id=1033868440 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir58" type="StaticBody3D" parent="Nature" unique_id=1004158030 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.741043, 1.8, -19.430473)
 
-[node name="TreeFir59" type="StaticBody3D" parent="Nature" unique_id=1849102168 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir59" type="StaticBody3D" parent="Nature" unique_id=1072346784 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.446236, 0, -4.5556355)
 
-[node name="TreeFir60" type="StaticBody3D" parent="Nature" unique_id=789519629 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir60" type="StaticBody3D" parent="Nature" unique_id=604085855 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.69997, 0, -13.364253)
 
-[node name="TreeOak49" type="StaticBody3D" parent="Nature" unique_id=1392675263 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak49" type="StaticBody3D" parent="Nature" unique_id=1658089207 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.598724, 0, 14.532196)
 
-[node name="TreeOak50" type="StaticBody3D" parent="Nature" unique_id=578751728 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak50" type="StaticBody3D" parent="Nature" unique_id=143564939 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.45127, 0, -8.869815)
 
-[node name="TreeFir61" type="StaticBody3D" parent="Nature" unique_id=342296729 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir61" type="StaticBody3D" parent="Nature" unique_id=84948359 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.287163, 1.8, -17.152744)
 
-[node name="TreeOak51" type="StaticBody3D" parent="Nature" unique_id=1130067591 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak51" type="StaticBody3D" parent="Nature" unique_id=435342508 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.815037, 0, -2.298132)
 
-[node name="TreeOak52" type="StaticBody3D" parent="Nature" unique_id=260220813 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak52" type="StaticBody3D" parent="Nature" unique_id=1943412773 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.713287, 0, -2.9326305)
 
-[node name="TreeFir62" type="StaticBody3D" parent="Nature" unique_id=697091179 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir62" type="StaticBody3D" parent="Nature" unique_id=72407252 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.272434, 0, 2.8124046)
 
-[node name="TreeFir63" type="StaticBody3D" parent="Nature" unique_id=934636966 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir63" type="StaticBody3D" parent="Nature" unique_id=1460857020 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.712963, 0, -14.807059)
 
-[node name="TreeFir64" type="StaticBody3D" parent="Nature" unique_id=1887160808 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir64" type="StaticBody3D" parent="Nature" unique_id=1359347046 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.21852, 0, -23.81342)
 
-[node name="TreeOak53" type="StaticBody3D" parent="Nature" unique_id=2073026706 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak53" type="StaticBody3D" parent="Nature" unique_id=8470088 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.25546, 0, 1.5156746)
 
-[node name="TreeOak54" type="StaticBody3D" parent="Nature" unique_id=1617556285 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak54" type="StaticBody3D" parent="Nature" unique_id=499956320 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.830242, 0, -4.383545)
 
-[node name="TreeOak55" type="StaticBody3D" parent="Nature" unique_id=229363496 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak55" type="StaticBody3D" parent="Nature" unique_id=5096156 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.013443, 0, 1.8961868)
 
-[node name="TreeFir65" type="StaticBody3D" parent="Nature" unique_id=236657210 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir65" type="StaticBody3D" parent="Nature" unique_id=1725733564 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.548096, 0, -16.067347)
 
-[node name="TreeFir66" type="StaticBody3D" parent="Nature" unique_id=1409718172 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir66" type="StaticBody3D" parent="Nature" unique_id=1672393323 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.152992, 0, 5.4386177)
 
-[node name="TreeFir67" type="StaticBody3D" parent="Nature" unique_id=1599536370 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir67" type="StaticBody3D" parent="Nature" unique_id=729423921 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.958527, 0, -6.641224)
 
-[node name="TreeFir68" type="StaticBody3D" parent="Nature" unique_id=1492649686 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir68" type="StaticBody3D" parent="Nature" unique_id=868228665 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.172417, 0, 17.598343)
 
-[node name="TreeFir69" type="StaticBody3D" parent="Nature" unique_id=1015096857 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir69" type="StaticBody3D" parent="Nature" unique_id=1144178761 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.324265, 0, -17.689892)
 
-[node name="TreeFir70" type="StaticBody3D" parent="Nature" unique_id=33872374 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir70" type="StaticBody3D" parent="Nature" unique_id=106521602 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5955, 0, -5.518053)
 
-[node name="TreeFir71" type="StaticBody3D" parent="Nature" unique_id=1068256398 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir71" type="StaticBody3D" parent="Nature" unique_id=64406879 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.649456, 0, 0.6601181)
 
-[node name="TreeOak56" type="StaticBody3D" parent="Nature" unique_id=1574086808 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak56" type="StaticBody3D" parent="Nature" unique_id=526734868 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.713478, 0, 16.986977)
 
-[node name="TreeFir72" type="StaticBody3D" parent="Nature" unique_id=1672755630 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir72" type="StaticBody3D" parent="Nature" unique_id=1105761850 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.46432, 0, 11.993259)
 
-[node name="TreeFir73" type="StaticBody3D" parent="Nature" unique_id=45851636 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir73" type="StaticBody3D" parent="Nature" unique_id=2110978399 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.841896, 0, -17.002926)
 
-[node name="TreeOak57" type="StaticBody3D" parent="Nature" unique_id=664726492 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak57" type="StaticBody3D" parent="Nature" unique_id=1661420370 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.83826, 0, 15.911945)
 
-[node name="TreeFir74" type="StaticBody3D" parent="Nature" unique_id=1921121499 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir74" type="StaticBody3D" parent="Nature" unique_id=574840591 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.977436, 0, -7.976736)
 
-[node name="TreeFir75" type="StaticBody3D" parent="Nature" unique_id=807623764 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir75" type="StaticBody3D" parent="Nature" unique_id=1828423023 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.125515, 0, 3.5815506)
 
-[node name="TreeOak58" type="StaticBody3D" parent="Nature" unique_id=102045710 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak58" type="StaticBody3D" parent="Nature" unique_id=362335029 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.585848, 0, 20.577686)
 
-[node name="TreeOak59" type="StaticBody3D" parent="Nature" unique_id=947507742 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak59" type="StaticBody3D" parent="Nature" unique_id=1897938990 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.281597, 0, -1.8071308)
 
-[node name="TreeFir76" type="StaticBody3D" parent="Nature" unique_id=2082974490 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir76" type="StaticBody3D" parent="Nature" unique_id=506334968 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.341232, 0, -14.793112)
 
-[node name="TreeOak60" type="StaticBody3D" parent="Nature" unique_id=35133615 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak60" type="StaticBody3D" parent="Nature" unique_id=605675930 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.50848, 0, 17.307224)
 
-[node name="TreeFir77" type="StaticBody3D" parent="Nature" unique_id=331005272 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir77" type="StaticBody3D" parent="Nature" unique_id=1727741548 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.794395, 0, -4.179249)
 
-[node name="TreeOak61" type="StaticBody3D" parent="Nature" unique_id=118597666 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak61" type="StaticBody3D" parent="Nature" unique_id=470270637 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.049515, 0, 16.864033)
 
-[node name="TreeFir78" type="StaticBody3D" parent="Nature" unique_id=465280721 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir78" type="StaticBody3D" parent="Nature" unique_id=1328748250 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.078182, 0, 16.286236)
 
-[node name="Bush" type="StaticBody3D" parent="Nature" unique_id=363371549 instance=ExtResource("7_bx0s6")]
+[node name="Bush" type="StaticBody3D" parent="Nature" unique_id=194631923 instance=ExtResource("7_bx0s6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.451145, 0, 19.743734)
 
-[node name="TreeYoung6" type="StaticBody3D" parent="Nature" unique_id=695715215 instance=ExtResource("26_0u7my")]
+[node name="TreeYoung6" type="StaticBody3D" parent="Nature" unique_id=404268722 instance=ExtResource("26_0u7my")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6796227, 0, 15.565519)
 
-[node name="TreeOak62" type="StaticBody3D" parent="Nature" unique_id=714670030 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak62" type="StaticBody3D" parent="Nature" unique_id=1900057080 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.165854, 0, 20.64157)
 
-[node name="TreeFir79" type="StaticBody3D" parent="Nature" unique_id=108460442 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir79" type="StaticBody3D" parent="Nature" unique_id=2105533759 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.52967, 0, 15.329655)
 
-[node name="Bush2" type="StaticBody3D" parent="Nature" unique_id=1750039872 instance=ExtResource("7_bx0s6")]
+[node name="Bush2" type="StaticBody3D" parent="Nature" unique_id=1496485016 instance=ExtResource("7_bx0s6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.506645, 0, 22.189716)
 
-[node name="TreeYoung7" type="StaticBody3D" parent="Nature" unique_id=1679280024 instance=ExtResource("26_0u7my")]
+[node name="TreeYoung7" type="StaticBody3D" parent="Nature" unique_id=2085245070 instance=ExtResource("26_0u7my")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.111046, 0, 23.794308)
 
-[node name="TreeOak63" type="StaticBody3D" parent="Nature" unique_id=1191440534 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak63" type="StaticBody3D" parent="Nature" unique_id=1815318675 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.445057, 0, 18.825335)
 
-[node name="TreeFir80" type="StaticBody3D" parent="Nature" unique_id=793481617 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir80" type="StaticBody3D" parent="Nature" unique_id=1370307784 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.498848, 0, 18.087137)
 
-[node name="Bush3" type="StaticBody3D" parent="Nature" unique_id=1986244479 instance=ExtResource("7_bx0s6")]
+[node name="Bush3" type="StaticBody3D" parent="Nature" unique_id=1112008897 instance=ExtResource("7_bx0s6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.790726, 0, 18.413008)
 
-[node name="TreeYoung8" type="StaticBody3D" parent="Nature" unique_id=393997518 instance=ExtResource("26_0u7my")]
+[node name="TreeYoung8" type="StaticBody3D" parent="Nature" unique_id=654064859 instance=ExtResource("26_0u7my")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.50794, 0, 15.7198305)
 
-[node name="TreeOak64" type="StaticBody3D" parent="Nature" unique_id=1305470323 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak64" type="StaticBody3D" parent="Nature" unique_id=2090744679 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.008846, 0, 23.181612)
 
-[node name="TreeFir81" type="StaticBody3D" parent="Nature" unique_id=267297747 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir81" type="StaticBody3D" parent="Nature" unique_id=327550197 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.14579, 0, 15.674454)
 
-[node name="Bush4" type="StaticBody3D" parent="Nature" unique_id=688018882 instance=ExtResource("7_bx0s6")]
+[node name="Bush4" type="StaticBody3D" parent="Nature" unique_id=1677071306 instance=ExtResource("7_bx0s6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.41513, 0, 20.705715)
 
-[node name="TreeYoung9" type="StaticBody3D" parent="Nature" unique_id=388606854 instance=ExtResource("26_0u7my")]
+[node name="TreeYoung9" type="StaticBody3D" parent="Nature" unique_id=1559304990 instance=ExtResource("26_0u7my")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.123325, 0, 17.055586)
 
-[node name="TreeOak65" type="StaticBody3D" parent="Nature" unique_id=960155018 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak65" type="StaticBody3D" parent="Nature" unique_id=1866074677 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.458092, 0, 16.460213)
 
-[node name="TreeFir82" type="StaticBody3D" parent="Nature" unique_id=1684011135 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir82" type="StaticBody3D" parent="Nature" unique_id=612147602 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.585823, 0, 23.290024)
 
-[node name="Bush5" type="StaticBody3D" parent="Nature" unique_id=2020280110 instance=ExtResource("7_bx0s6")]
+[node name="Bush5" type="StaticBody3D" parent="Nature" unique_id=1271066736 instance=ExtResource("7_bx0s6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.52392, 0, 18.872787)
 
-[node name="TreeYoung10" type="StaticBody3D" parent="Nature" unique_id=1740180468 instance=ExtResource("26_0u7my")]
+[node name="TreeYoung10" type="StaticBody3D" parent="Nature" unique_id=1557020785 instance=ExtResource("26_0u7my")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.840675, 0, 18.14618)
 
-[node name="TreeOak66" type="StaticBody3D" parent="Nature" unique_id=1277943898 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak66" type="StaticBody3D" parent="Nature" unique_id=816235058 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.128166, 0, 17.38942)
 
-[node name="TreeFir83" type="StaticBody3D" parent="Nature" unique_id=3740738 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir83" type="StaticBody3D" parent="Nature" unique_id=70557462 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.78147, 0, 18.956112)
 
-[node name="Bush6" type="StaticBody3D" parent="Nature" unique_id=828510532 instance=ExtResource("7_bx0s6")]
+[node name="Bush6" type="StaticBody3D" parent="Nature" unique_id=292953965 instance=ExtResource("7_bx0s6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.571991, 0, 21.7138)
 
-[node name="TreeYoung11" type="StaticBody3D" parent="Nature" unique_id=412466836 instance=ExtResource("26_0u7my")]
+[node name="TreeYoung11" type="StaticBody3D" parent="Nature" unique_id=775234876 instance=ExtResource("26_0u7my")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.488754, 0, 14.703134)
 
-[node name="TreeOak67" type="StaticBody3D" parent="Nature" unique_id=258061505 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak67" type="StaticBody3D" parent="Nature" unique_id=1626194095 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.640129, 0, 16.826548)
 
-[node name="TreeFir84" type="StaticBody3D" parent="Nature" unique_id=195121730 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir84" type="StaticBody3D" parent="Nature" unique_id=1278652362 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.901299, 0, 19.965164)
 
-[node name="Bush7" type="StaticBody3D" parent="Nature" unique_id=1830110114 instance=ExtResource("7_bx0s6")]
+[node name="Bush7" type="StaticBody3D" parent="Nature" unique_id=1536324804 instance=ExtResource("7_bx0s6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.167957, 0, 19.632715)
 
-[node name="TreeYoung12" type="StaticBody3D" parent="Nature" unique_id=1872158783 instance=ExtResource("26_0u7my")]
+[node name="TreeYoung12" type="StaticBody3D" parent="Nature" unique_id=234040868 instance=ExtResource("26_0u7my")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3447266, 0, 20.609894)
 
-[node name="TreeOak68" type="StaticBody3D" parent="Nature" unique_id=937520384 instance=ExtResource("24_f8m8t")]
+[node name="TreeOak68" type="StaticBody3D" parent="Nature" unique_id=2100194095 instance=ExtResource("24_f8m8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.401806, 0, 18.825552)
 
-[node name="TreeFir85" type="StaticBody3D" parent="Nature" unique_id=764375345 instance=ExtResource("25_nqm2c")]
+[node name="TreeFir85" type="StaticBody3D" parent="Nature" unique_id=365297054 instance=ExtResource("25_nqm2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.223896, 0, 23.48431)
 
-[node name="Bush8" type="StaticBody3D" parent="Nature" unique_id=236175053 instance=ExtResource("7_bx0s6")]
+[node name="Bush8" type="StaticBody3D" parent="Nature" unique_id=1275177951 instance=ExtResource("7_bx0s6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2, 0, -12.6)
 
-[node name="BushBerries" type="StaticBody3D" parent="Nature" unique_id=1279746188 instance=ExtResource("27_5fof4")]
+[node name="BushBerries" type="StaticBody3D" parent="Nature" unique_id=1174204371 instance=ExtResource("27_5fof4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4, 0, -11.8)
 
-[node name="Bush9" type="StaticBody3D" parent="Nature" unique_id=378568707 instance=ExtResource("7_bx0s6")]
+[node name="Bush9" type="StaticBody3D" parent="Nature" unique_id=12331273 instance=ExtResource("7_bx0s6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, -12.2)
 
-[node name="BushBerries2" type="StaticBody3D" parent="Nature" unique_id=1573067919 instance=ExtResource("27_5fof4")]
+[node name="BushBerries2" type="StaticBody3D" parent="Nature" unique_id=1569907417 instance=ExtResource("27_5fof4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0, -14.4)
 
-[node name="Bush10" type="StaticBody3D" parent="Nature" unique_id=654260883 instance=ExtResource("7_bx0s6")]
+[node name="Bush10" type="StaticBody3D" parent="Nature" unique_id=1601456010 instance=ExtResource("7_bx0s6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 6.2)
 
-[node name="Bush11" type="StaticBody3D" parent="Nature" unique_id=27290513 instance=ExtResource("7_bx0s6")]
+[node name="Bush11" type="StaticBody3D" parent="Nature" unique_id=1875178095 instance=ExtResource("7_bx0s6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8, 0, 6.6)
 
-[node name="Boulder" type="StaticBody3D" parent="Nature" unique_id=1732239853 instance=ExtResource("28_nllni")]
+[node name="Boulder" type="StaticBody3D" parent="Nature" unique_id=2116974113 instance=ExtResource("28_nllni")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6, 0, 6.4)
 
-[node name="Rocks" type="StaticBody3D" parent="Nature" unique_id=1561378907 instance=ExtResource("29_5x3fr")]
+[node name="Rocks" type="StaticBody3D" parent="Nature" unique_id=265509854 instance=ExtResource("29_5x3fr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, -5)
 
-[node name="Rocks2" type="StaticBody3D" parent="Nature" unique_id=2087679358 instance=ExtResource("29_5x3fr")]
+[node name="Rocks2" type="StaticBody3D" parent="Nature" unique_id=1203734999 instance=ExtResource("29_5x3fr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5.5)
 
-[node name="Stump" type="StaticBody3D" parent="Nature" unique_id=1679191691 instance=ExtResource("30_o1iv5")]
+[node name="Stump" type="StaticBody3D" parent="Nature" unique_id=2067029271 instance=ExtResource("30_o1iv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 0, 2.5)
 
-[node name="Mushrooms" type="Node3D" parent="Nature" unique_id=295810145 instance=ExtResource("31_rv5w2")]
+[node name="Mushrooms" type="Node3D" parent="Nature" unique_id=800876503 instance=ExtResource("31_rv5w2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -10.6)
 
-[node name="Mushrooms2" type="Node3D" parent="Nature" unique_id=1616520155 instance=ExtResource("31_rv5w2")]
+[node name="Mushrooms2" type="Node3D" parent="Nature" unique_id=513882808 instance=ExtResource("31_rv5w2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6, 0, -5.8)
 
-[node name="Bush12" type="StaticBody3D" parent="Nature" unique_id=2127467125 instance=ExtResource("7_bx0s6")]
+[node name="Bush12" type="StaticBody3D" parent="Nature" unique_id=1244491814 instance=ExtResource("7_bx0s6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6.4)
 
-[node name="BushBerries3" type="StaticBody3D" parent="Nature" unique_id=1136316165 instance=ExtResource("27_5fof4")]
+[node name="BushBerries3" type="StaticBody3D" parent="Nature" unique_id=788991328 instance=ExtResource("27_5fof4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4, 0, 4.6)
 
-[node name="Bush13" type="StaticBody3D" parent="Nature" unique_id=2143920034 instance=ExtResource("7_bx0s6")]
+[node name="Bush13" type="StaticBody3D" parent="Nature" unique_id=1004229756 instance=ExtResource("7_bx0s6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 7.4)
 
-[node name="Boulder2" type="StaticBody3D" parent="Nature" unique_id=2109868904 instance=ExtResource("28_nllni")]
+[node name="Boulder2" type="StaticBody3D" parent="Nature" unique_id=933600792 instance=ExtResource("28_nllni")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4, 0, -11.8)
 
-[node name="Rocks3" type="StaticBody3D" parent="Nature" unique_id=185874055 instance=ExtResource("29_5x3fr")]
+[node name="Rocks3" type="StaticBody3D" parent="Nature" unique_id=2032838568 instance=ExtResource("29_5x3fr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2, 0, -11.6)
 
-[node name="Stump2" type="StaticBody3D" parent="Nature" unique_id=1811255787 instance=ExtResource("30_o1iv5")]
+[node name="Stump2" type="StaticBody3D" parent="Nature" unique_id=219008573 instance=ExtResource("30_o1iv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2, 0, -14.6)
 
-[node name="Flowers" type="Node3D" parent="Nature" unique_id=1684123675 instance=ExtResource("32_oievg")]
+[node name="Flowers" type="Node3D" parent="Nature" unique_id=465070976 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.042274, 0, 8.317457)
 
-[node name="Flowers2" type="Node3D" parent="Nature" unique_id=573541506 instance=ExtResource("32_oievg")]
+[node name="Flowers2" type="Node3D" parent="Nature" unique_id=1452974778 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3689893, 0, 8.643524)
 
-[node name="Flowers3" type="Node3D" parent="Nature" unique_id=244680979 instance=ExtResource("32_oievg")]
+[node name="Flowers3" type="Node3D" parent="Nature" unique_id=989181422 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1432252, 0, 9.55963)
 
-[node name="Flowers4" type="Node3D" parent="Nature" unique_id=1015714969 instance=ExtResource("32_oievg")]
+[node name="Flowers4" type="Node3D" parent="Nature" unique_id=1112115464 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.044277, 0, 8.102532)
 
-[node name="Flowers5" type="Node3D" parent="Nature" unique_id=928637770 instance=ExtResource("32_oievg")]
+[node name="Flowers5" type="Node3D" parent="Nature" unique_id=1049968854 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.533723, 0, 7.7004323)
 
-[node name="TallGrass" type="Node3D" parent="Nature" unique_id=637218062 instance=ExtResource("8_unb8j")]
+[node name="TallGrass" type="Node3D" parent="Nature" unique_id=738329231 instance=ExtResource("8_unb8j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.190031, 0, 8.897919)
 
-[node name="Flowers6" type="Node3D" parent="Nature" unique_id=522805297 instance=ExtResource("32_oievg")]
+[node name="Flowers6" type="Node3D" parent="Nature" unique_id=1265263417 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.15992, 0, -9.807045)
 
-[node name="Flowers7" type="Node3D" parent="Nature" unique_id=1103544258 instance=ExtResource("32_oievg")]
+[node name="Flowers7" type="Node3D" parent="Nature" unique_id=340696991 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.848883, 0, -9.718987)
 
-[node name="Flowers8" type="Node3D" parent="Nature" unique_id=342171362 instance=ExtResource("32_oievg")]
+[node name="Flowers8" type="Node3D" parent="Nature" unique_id=972003629 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.399901, 0, -9.4105)
 
-[node name="Flowers9" type="Node3D" parent="Nature" unique_id=791960556 instance=ExtResource("32_oievg")]
+[node name="Flowers9" type="Node3D" parent="Nature" unique_id=326780025 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5590975, 0, -13.09224)
 
-[node name="TallGrass2" type="Node3D" parent="Nature" unique_id=199616631 instance=ExtResource("8_unb8j")]
+[node name="TallGrass2" type="Node3D" parent="Nature" unique_id=1069672528 instance=ExtResource("8_unb8j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3547988, 0, -12.000239)
 
-[node name="Flowers10" type="Node3D" parent="Nature" unique_id=1402384980 instance=ExtResource("32_oievg")]
+[node name="Flowers10" type="Node3D" parent="Nature" unique_id=473764475 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.334686, 0, 5.6396437)
 
-[node name="Flowers11" type="Node3D" parent="Nature" unique_id=736503982 instance=ExtResource("32_oievg")]
+[node name="Flowers11" type="Node3D" parent="Nature" unique_id=320161173 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.302599, 0, 5.327407)
 
-[node name="Flowers12" type="Node3D" parent="Nature" unique_id=1997352098 instance=ExtResource("32_oievg")]
+[node name="Flowers12" type="Node3D" parent="Nature" unique_id=2114265920 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.438422, 0, 5.7937417)
 
-[node name="Flowers13" type="Node3D" parent="Nature" unique_id=1532328231 instance=ExtResource("32_oievg")]
+[node name="Flowers13" type="Node3D" parent="Nature" unique_id=799125608 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.421667, 0, 8.527752)
 
-[node name="Flowers14" type="Node3D" parent="Nature" unique_id=1458041507 instance=ExtResource("32_oievg")]
+[node name="Flowers14" type="Node3D" parent="Nature" unique_id=1846314289 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.103817, 0, 7.702182)
 
-[node name="TallGrass3" type="Node3D" parent="Nature" unique_id=1433899694 instance=ExtResource("8_unb8j")]
+[node name="TallGrass3" type="Node3D" parent="Nature" unique_id=1984672668 instance=ExtResource("8_unb8j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.681943, 0, 8.506353)
 
-[node name="Flowers15" type="Node3D" parent="Nature" unique_id=1121033634 instance=ExtResource("32_oievg")]
+[node name="Flowers15" type="Node3D" parent="Nature" unique_id=1833328308 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.121339, 0, -4.0674257)
 
-[node name="Flowers16" type="Node3D" parent="Nature" unique_id=74685419 instance=ExtResource("32_oievg")]
+[node name="Flowers16" type="Node3D" parent="Nature" unique_id=383632478 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.296591, 0, -3.794486)
 
-[node name="Flowers17" type="Node3D" parent="Nature" unique_id=197897089 instance=ExtResource("32_oievg")]
+[node name="Flowers17" type="Node3D" parent="Nature" unique_id=2002334838 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8215885, 0, -3.6353848)
 
-[node name="Flowers18" type="Node3D" parent="Nature" unique_id=229414196 instance=ExtResource("32_oievg")]
+[node name="Flowers18" type="Node3D" parent="Nature" unique_id=1083602105 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.652893, 0, -9.6163)
 
-[node name="Flowers19" type="Node3D" parent="Nature" unique_id=1794927466 instance=ExtResource("32_oievg")]
+[node name="Flowers19" type="Node3D" parent="Nature" unique_id=2134624395 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9789318, 0, -8.94783)
 
-[node name="Flowers20" type="Node3D" parent="Nature" unique_id=231480090 instance=ExtResource("32_oievg")]
+[node name="Flowers20" type="Node3D" parent="Nature" unique_id=1827542665 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.854513, 0, 6.8370028)
 
-[node name="Flowers21" type="Node3D" parent="Nature" unique_id=61810396 instance=ExtResource("32_oievg")]
+[node name="Flowers21" type="Node3D" parent="Nature" unique_id=441546015 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.433736, 0, 7.762225)
 
-[node name="Flowers22" type="Node3D" parent="Nature" unique_id=1995421789 instance=ExtResource("32_oievg")]
+[node name="Flowers22" type="Node3D" parent="Nature" unique_id=1039744261 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5466523, 0, 7.0300846)
 
-[node name="Flowers23" type="Node3D" parent="Nature" unique_id=1352971743 instance=ExtResource("32_oievg")]
+[node name="Flowers23" type="Node3D" parent="Nature" unique_id=1883338643 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2961913, 0, 6.051973)
 
-[node name="Flowers24" type="Node3D" parent="Nature" unique_id=126005727 instance=ExtResource("32_oievg")]
+[node name="Flowers24" type="Node3D" parent="Nature" unique_id=1075560200 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95374525, 0, 6.084943)
 
-[node name="Flowers25" type="Node3D" parent="Nature" unique_id=1799744106 instance=ExtResource("32_oievg")]
+[node name="Flowers25" type="Node3D" parent="Nature" unique_id=1996115307 instance=ExtResource("32_oievg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27877426, 0, 6.711641)
 
-[node name="TreeDead" type="StaticBody3D" parent="Nature" unique_id=871252399 instance=ExtResource("33_rwigg")]
+[node name="TreeDead" type="StaticBody3D" parent="Nature" unique_id=888606114 instance=ExtResource("33_rwigg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -10.5)
 
-[node name="Boulder3" type="StaticBody3D" parent="Nature" unique_id=672000308 instance=ExtResource("28_nllni")]
+[node name="Boulder3" type="StaticBody3D" parent="Nature" unique_id=198408101 instance=ExtResource("28_nllni")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6, 0, -9)
 
-[node name="Rocks4" type="StaticBody3D" parent="Nature" unique_id=1969595061 instance=ExtResource("29_5x3fr")]
+[node name="Rocks4" type="StaticBody3D" parent="Nature" unique_id=888685339 instance=ExtResource("29_5x3fr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6, 0, -5.2)
 
-[node name="RiftBramble" type="StaticBody3D" parent="Nature" unique_id=2022376006 instance=ExtResource("34_g3j66")]
+[node name="RiftBramble" type="StaticBody3D" parent="Nature" unique_id=1518291339 instance=ExtResource("34_g3j66")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6, 0, -9.6)
 
-[node name="RiftBramble2" type="StaticBody3D" parent="Nature" unique_id=199736182 instance=ExtResource("34_g3j66")]
+[node name="RiftBramble2" type="StaticBody3D" parent="Nature" unique_id=1017924339 instance=ExtResource("34_g3j66")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2, 0, -5)
 
-[node name="Props" type="Node3D" parent="." unique_id=978320522]
+[node name="Props" type="Node3D" parent="." unique_id=1238367842]
 
-[node name="Fence" type="StaticBody3D" parent="Props" unique_id=1379200676 instance=ExtResource("35_orb7v")]
+[node name="Fence" type="StaticBody3D" parent="Props" unique_id=909601874 instance=ExtResource("35_orb7v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6, 1.8, -16.45)
 
-[node name="Fence2" type="StaticBody3D" parent="Props" unique_id=1305445999 instance=ExtResource("35_orb7v")]
+[node name="Fence2" type="StaticBody3D" parent="Props" unique_id=506365076 instance=ExtResource("35_orb7v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.7, 1.8, -16.45)
 
-[node name="Fence3" type="StaticBody3D" parent="Props" unique_id=2025594238 instance=ExtResource("35_orb7v")]
+[node name="Fence3" type="StaticBody3D" parent="Props" unique_id=1318837523 instance=ExtResource("35_orb7v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8, 1.8, -16.45)
 
-[node name="Fence4" type="StaticBody3D" parent="Props" unique_id=1862601221 instance=ExtResource("35_orb7v")]
+[node name="Fence4" type="StaticBody3D" parent="Props" unique_id=33386284 instance=ExtResource("35_orb7v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9, 1.8, -16.45)
 
-[node name="Fence5" type="StaticBody3D" parent="Props" unique_id=387722701 instance=ExtResource("35_orb7v")]
+[node name="Fence5" type="StaticBody3D" parent="Props" unique_id=60268888 instance=ExtResource("35_orb7v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9, 1.8, -16.45)
 
-[node name="Fence6" type="StaticBody3D" parent="Props" unique_id=1562465564 instance=ExtResource("35_orb7v")]
+[node name="Fence6" type="StaticBody3D" parent="Props" unique_id=1216511545 instance=ExtResource("35_orb7v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1.8, -16.45)
 
-[node name="Fence7" type="StaticBody3D" parent="Props" unique_id=933693025 instance=ExtResource("35_orb7v")]
+[node name="Fence7" type="StaticBody3D" parent="Props" unique_id=787127401 instance=ExtResource("35_orb7v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.1, 1.8, -16.45)
 
-[node name="Fence8" type="StaticBody3D" parent="Props" unique_id=1185636935 instance=ExtResource("35_orb7v")]
+[node name="Fence8" type="StaticBody3D" parent="Props" unique_id=626932964 instance=ExtResource("35_orb7v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 1.8, -16.45)
 
-[node name="Fence9" type="StaticBody3D" parent="Props" unique_id=1596780306 instance=ExtResource("35_orb7v")]
+[node name="Fence9" type="StaticBody3D" parent="Props" unique_id=732377623 instance=ExtResource("35_orb7v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.8, -16.45)
 
-[node name="Fence10" type="StaticBody3D" parent="Props" unique_id=570274979 instance=ExtResource("35_orb7v")]
+[node name="Fence10" type="StaticBody3D" parent="Props" unique_id=824275038 instance=ExtResource("35_orb7v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 1.8, -16.45)
 
-[node name="StreetLamp" type="StaticBody3D" parent="Props" unique_id=956681224 instance=ExtResource("36_6tghj")]
+[node name="StreetLamp" type="StaticBody3D" parent="Props" unique_id=608828596 instance=ExtResource("36_6tghj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.8, -17)
 
-[node name="StreetLamp2" type="StaticBody3D" parent="Props" unique_id=1428278585 instance=ExtResource("36_6tghj")]
+[node name="StreetLamp2" type="StaticBody3D" parent="Props" unique_id=2065674961 instance=ExtResource("36_6tghj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9, 1.8, -17)
 
-[node name="NoticeBoard" type="StaticBody3D" parent="Props" unique_id=1068717314 instance=ExtResource("37_cr22l")]
+[node name="NoticeBoard" type="StaticBody3D" parent="Props" unique_id=1794904226 instance=ExtResource("37_cr22l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4, 1.8, -19)
 
-[node name="Barrel" type="StaticBody3D" parent="Props" unique_id=600477417 instance=ExtResource("38_int7a")]
+[node name="Barrel" type="StaticBody3D" parent="Props" unique_id=507471138 instance=ExtResource("38_int7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2, 1.8, -18.6)
 
-[node name="Barrel2" type="StaticBody3D" parent="Props" unique_id=1242864674 instance=ExtResource("38_int7a")]
+[node name="Barrel2" type="StaticBody3D" parent="Props" unique_id=943161118 instance=ExtResource("38_int7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3, 1.8, -18.1)
 
-[node name="Crate" type="StaticBody3D" parent="Props" unique_id=1933232287 instance=ExtResource("39_3ortc")]
+[node name="Crate" type="StaticBody3D" parent="Props" unique_id=283702816 instance=ExtResource("39_3ortc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2, 1.8, -18.9)
 
-[node name="Crate2" type="StaticBody3D" parent="Props" unique_id=797902933 instance=ExtResource("39_3ortc")]
+[node name="Crate2" type="StaticBody3D" parent="Props" unique_id=208374741 instance=ExtResource("39_3ortc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1.8, -19.4)
 
-[node name="Well" type="StaticBody3D" parent="Props" unique_id=5772508 instance=ExtResource("40_458ra")]
+[node name="Well" type="StaticBody3D" parent="Props" unique_id=1534182767 instance=ExtResource("40_458ra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6, 1.8, -18.4)
 
-[node name="Bucket" type="StaticBody3D" parent="Props" unique_id=1291639234 instance=ExtResource("41_2d504")]
+[node name="Bucket" type="StaticBody3D" parent="Props" unique_id=1121972996 instance=ExtResource("41_2d504")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3, 1.8, -17.8)
 
-[node name="Sacks" type="StaticBody3D" parent="Props" unique_id=1204177419 instance=ExtResource("42_if1xb")]
+[node name="Sacks" type="StaticBody3D" parent="Props" unique_id=471072851 instance=ExtResource("42_if1xb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1, 1.8, -17.7)
 
-[node name="Firewood" type="StaticBody3D" parent="Props" unique_id=1341572438 instance=ExtResource("43_a2fji")]
+[node name="Firewood" type="StaticBody3D" parent="Props" unique_id=361190056 instance=ExtResource("43_a2fji")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4, 1.8, -20.6)
 
-[node name="Planter" type="StaticBody3D" parent="Props" unique_id=1776389669 instance=ExtResource("44_ydl2p")]
+[node name="Planter" type="StaticBody3D" parent="Props" unique_id=84946159 instance=ExtResource("44_ydl2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 1.8, -20)
 
-[node name="Bench" type="StaticBody3D" parent="Props" unique_id=575849113 instance=ExtResource("45_vatvm")]
+[node name="Bench" type="StaticBody3D" parent="Props" unique_id=1138139352 instance=ExtResource("45_vatvm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.8, -19.6)
 
-[node name="Banner" type="StaticBody3D" parent="Props" unique_id=290295658 instance=ExtResource("46_3dr62")]
+[node name="Banner" type="StaticBody3D" parent="Props" unique_id=1930732972 instance=ExtResource("46_3dr62")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.8, -19.9)
 
-[node name="FlowerBed" type="StaticBody3D" parent="Props" unique_id=1745217886 instance=ExtResource("47_4qbun")]
+[node name="FlowerBed" type="StaticBody3D" parent="Props" unique_id=5687616 instance=ExtResource("47_4qbun")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3, 1.8, -19.4)
 
-[node name="Chalkboard" type="StaticBody3D" parent="Props" unique_id=1406742538 instance=ExtResource("48_m0g2d")]
+[node name="Chalkboard" type="StaticBody3D" parent="Props" unique_id=1985309671 instance=ExtResource("48_m0g2d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9, 1.8, -18.4)
 
-[node name="TreePlanter" type="StaticBody3D" parent="Props" unique_id=1637040924 instance=ExtResource("49_t4rgd")]
+[node name="TreePlanter" type="StaticBody3D" parent="Props" unique_id=567619101 instance=ExtResource("49_t4rgd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 1.8, -18.4)
 
-[node name="FlowerCart" type="StaticBody3D" parent="Props" unique_id=837420486 instance=ExtResource("50_xqw6g")]
+[node name="FlowerCart" type="StaticBody3D" parent="Props" unique_id=2097952518 instance=ExtResource("50_xqw6g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8, 1.8, -17.4)
 
-[node name="HayBale" type="StaticBody3D" parent="Props" unique_id=1773698883 instance=ExtResource("51_i75sd")]
+[node name="HayBale" type="StaticBody3D" parent="Props" unique_id=2080669096 instance=ExtResource("51_i75sd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8, 1.8, -18.3)
 
-[node name="HayCart" type="StaticBody3D" parent="Props" unique_id=981283917 instance=ExtResource("52_gs338")]
+[node name="HayCart" type="StaticBody3D" parent="Props" unique_id=719776013 instance=ExtResource("52_gs338")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.4, 1.8, -24.2)
 
-[node name="Signpost" type="StaticBody3D" parent="Props" unique_id=1511717205 instance=ExtResource("53_5lcgl")]
+[node name="Signpost" type="StaticBody3D" parent="Props" unique_id=315640669 instance=ExtResource("53_5lcgl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 0, -3.2)
 
-[node name="Chest" type="StaticBody3D" parent="Props" unique_id=153726022 instance=ExtResource("54_14xsk")]
+[node name="Chest" type="StaticBody3D" parent="Props" unique_id=839517687 instance=ExtResource("54_14xsk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4, 0, 5)
 script = ExtResource("55_25cej")
 orb_scene = ExtResource("56_i3hjk")
 
-[node name="Crystal" type="StaticBody3D" parent="Props" unique_id=646502332 instance=ExtResource("57_vadvj")]
+[node name="Crystal" type="StaticBody3D" parent="Props" unique_id=1175490939 instance=ExtResource("57_vadvj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6, 0, -7.4)
 
-[node name="Crystal2" type="StaticBody3D" parent="Props" unique_id=657096374 instance=ExtResource("57_vadvj")]
+[node name="Crystal2" type="StaticBody3D" parent="Props" unique_id=1181251695 instance=ExtResource("57_vadvj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6, 0, -5.6)
 
-[node name="Crystal3" type="StaticBody3D" parent="Props" unique_id=730221009 instance=ExtResource("57_vadvj")]
+[node name="Crystal3" type="StaticBody3D" parent="Props" unique_id=1537967477 instance=ExtResource("57_vadvj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4, 0, -8.4)
 
-[node name="Crystal4" type="StaticBody3D" parent="Props" unique_id=1013816521 instance=ExtResource("57_vadvj")]
+[node name="Crystal4" type="StaticBody3D" parent="Props" unique_id=1071577115 instance=ExtResource("57_vadvj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -10.2)
 
-[node name="RiftCrack" type="Node3D" parent="Props" unique_id=459866760 instance=ExtResource("58_1k8xk")]
+[node name="RiftCrack" type="Node3D" parent="Props" unique_id=2040271452 instance=ExtResource("58_1k8xk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4, 0, -8.1)
 
-[node name="RiftCrystals" type="StaticBody3D" parent="Props" unique_id=90389773 instance=ExtResource("59_g6tc4")]
+[node name="RiftCrystals" type="StaticBody3D" parent="Props" unique_id=1276449969 instance=ExtResource("59_g6tc4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9, 0, -11.4)
 
-[node name="RuneStone" type="StaticBody3D" parent="Props" unique_id=1809456568 instance=ExtResource("60_eigb3")]
+[node name="RuneStone" type="StaticBody3D" parent="Props" unique_id=1920978416 instance=ExtResource("60_eigb3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -12.3)
 
-[node name="Enemies" type="Node3D" parent="." unique_id=1725373825]
+[node name="Enemies" type="Node3D" parent="." unique_id=390120885]
 
-[node name="Wolf" type="CharacterBody3D" parent="Enemies" unique_id=509995413 instance=ExtResource("61_4mbsd")]
+[node name="Wolf" type="CharacterBody3D" parent="Enemies" unique_id=1223264725 instance=ExtResource("61_4mbsd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6, 0, -6.4)
 collision_layer = 4
 collision_mask = 7
@@ -1493,7 +1493,7 @@ orb_scene = ExtResource("56_i3hjk")
 death_effect = ExtResource("63_gkhel")
 text_scene = ExtResource("64_7y0p2")
 
-[node name="Wolf2" type="CharacterBody3D" parent="Enemies" unique_id=1127830158 instance=ExtResource("61_4mbsd")]
+[node name="Wolf2" type="CharacterBody3D" parent="Enemies" unique_id=586211186 instance=ExtResource("61_4mbsd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8, 0, -8.9)
 collision_layer = 4
 collision_mask = 7
@@ -1502,7 +1502,7 @@ orb_scene = ExtResource("56_i3hjk")
 death_effect = ExtResource("63_gkhel")
 text_scene = ExtResource("64_7y0p2")
 
-[node name="Exit" type="Area3D" parent="." unique_id=246454857]
+[node name="Exit" type="Area3D" parent="." unique_id=599168383]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.2, 0, -0.4)
 collision_layer = 0
 collision_mask = 2
@@ -1510,15 +1510,15 @@ script = ExtResource("65_efuy5")
 target_scene = "res://scenes/levels/brumaclara.tscn"
 arrival = Vector3(-35, 0, 29)
 
-[node name="Collision" type="CollisionShape3D" parent="Exit" unique_id=1421319846]
+[node name="Collision" type="CollisionShape3D" parent="Exit" unique_id=1399635313]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_700xa")
 
-[node name="Backdrop" type="CanvasLayer" parent="." unique_id=8767215 instance=ExtResource("66_rokd2")]
+[node name="Backdrop" type="CanvasLayer" parent="." unique_id=179838328 instance=ExtResource("66_rokd2")]
 layer = -1
 script = ExtResource("67_5xww6")
 
-[node name="Player" type="CharacterBody3D" parent="." unique_id=869936045 instance=ExtResource("68_jan5s")]
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1179023112 instance=ExtResource("68_jan5s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -11)
 collision_layer = 2
 collision_mask = 5
@@ -1530,6 +1530,6 @@ burst_scene = ExtResource("71_51cwo")
 dust_scene = ExtResource("72_ysa3a")
 text_scene = ExtResource("64_7y0p2")
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=860903321 groups=["hud"] instance=ExtResource("73_1ahao")]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=950111603 groups=["hud"] instance=ExtResource("73_1ahao")]
 script = ExtResource("74_ser2c")
 player_path = NodePath("../Player")

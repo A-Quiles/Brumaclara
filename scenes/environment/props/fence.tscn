@@ -5,9 +5,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_s8nsc"]
 size = Vector3(1.9, 1.2, 0.25)
 
-[node name="Fence" type="StaticBody3D" unique_id=1379200676]
+[node name="Fence" type="StaticBody3D" unique_id=909601874]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=33982714]
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1769392574]
 centered = false
 offset = Vector2(-21.5, 0)
 pixel_size = 0.0449
@@ -15,6 +15,6 @@ alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("1_7owcy")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=557793988]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1102688719]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("BoxShape3D_s8nsc")

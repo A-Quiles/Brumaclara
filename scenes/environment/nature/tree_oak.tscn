@@ -6,9 +6,9 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_qreoh"]
 height = 1.6
 
-[node name="TreeOak" type="StaticBody3D" unique_id=119729566]
+[node name="TreeOak" type="StaticBody3D" unique_id=241844046]
 
-[node name="Sprite" type="Sprite3D" parent="." unique_id=1723142195]
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1180076418]
 centered = false
 offset = Vector2(-46, 0)
 pixel_size = 0.0449
@@ -16,7 +16,7 @@ alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("1_5ipyr")
 
-[node name="Shadow" type="Sprite3D" parent="." unique_id=637779197]
+[node name="Shadow" type="Sprite3D" parent="." unique_id=353250076]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.576)
 cast_shadow = 0
 pixel_size = 0.2
@@ -24,6 +24,6 @@ axis = 1
 texture_filter = 0
 texture = ExtResource("2_7wqf1")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=487830887]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=972023601]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CylinderShape3D_qreoh")

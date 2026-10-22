@@ -115,3 +115,9 @@ Referencias del autor para el pueblo: `docs/reference/pueblo_1.jpg` … `pueblo_
 | `home_facades.png` | Cuatro viviendas (puerta verde, azul, roja y amarilla). | Todo aprovechable. |
 | `townsfolk_b.png` | Mara y Elia caminando de lado y de espaldas. | El carretero y el guardia solo tienen la vista de frente: están quietos en su puesto hasta tener las demás. |
 | `town_props.png` | Puerta del pueblo, chimenea, buhardilla, farol de pared, muñeco de entrenamiento, armero, diana, carromato, caballo, abrevadero, heno, cancela, hiedra, rosal, ciprés en maceta y taburete con pan. | La buhardilla, el farol de pared y la hiedra no se usan todavía. |
+
+## Vistas extra de objetos (art/ai/variants)
+Hojas hechas por el autor con Gemini (18 objetos, varias perspectivas sobre magenta). `tools/art_pipeline/variants.py`
+segmenta las piezas; la receta `variants` de `build.py` elige las útiles (`VARIANTS`), las escala al mismo
+píxel que el sprite original y las guarda como `<objeto>__<vista>.png`. La versión espejada se usa con el sufijo `_m`.
+Descartadas: vistas cenitales/planos, desde abajo, con etiquetas o marcos, y duplicados.

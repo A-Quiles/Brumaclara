@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/props/horse__back.png" id="1_m3dn0"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="2_cf4w3"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k0bha"]
+height = 1.6
+
+[node name="HorseBackM" type="StaticBody3D" unique_id=355542090]
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1191304670]
+centered = false
+offset = Vector2(-10.5, 0)
+flip_h = true
+pixel_size = 0.0449
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_m3dn0")
+
+[node name="Shadow" type="Sprite3D" parent="." unique_id=595597386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.216)
+cast_shadow = 0
+pixel_size = 0.075
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_cf4w3")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1055736250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CylinderShape3D_k0bha")

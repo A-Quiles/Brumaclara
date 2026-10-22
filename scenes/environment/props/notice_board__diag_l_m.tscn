@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/props/notice_board__diag_l.png" id="1_1qi15"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="2_vfj1u"]
+
+[node name="NoticeBoardDiagLM" type="Node3D" unique_id=224757321]
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1397431509]
+centered = false
+offset = Vector2(-19.5, 0)
+flip_h = true
+pixel_size = 0.0449
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_1qi15")
+
+[node name="Shadow" type="Sprite3D" parent="." unique_id=407921302]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.252)
+cast_shadow = 0
+pixel_size = 0.0875
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_vfj1u")

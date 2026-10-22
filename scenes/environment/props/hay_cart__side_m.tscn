@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/props/hay_cart__side.png" id="1_1gr1o"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="2_75bdd"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_l8cp7"]
+height = 1.6
+radius = 0.6
+
+[node name="HayCartSideM" type="StaticBody3D" unique_id=1061432226]
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1688003427]
+centered = false
+offset = Vector2(-14.5, 0)
+flip_h = true
+pixel_size = 0.0449
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_1gr1o")
+
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1970674798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.252)
+cast_shadow = 0
+pixel_size = 0.0875
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_75bdd")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=26610019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CylinderShape3D_l8cp7")

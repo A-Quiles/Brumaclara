@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/props/bench__right.png" id="1_6ptio"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="2_n8473"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q2vow"]
+height = 1.6
+radius = 0.35
+
+[node name="BenchRight" type="StaticBody3D" unique_id=2047588926]
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1303658041]
+centered = false
+offset = Vector2(-12.5, 0)
+pixel_size = 0.0449
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_6ptio")
+
+[node name="Shadow" type="Sprite3D" parent="." unique_id=59987032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.144)
+cast_shadow = 0
+pixel_size = 0.05
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_n8473")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=5354265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CylinderShape3D_q2vow")

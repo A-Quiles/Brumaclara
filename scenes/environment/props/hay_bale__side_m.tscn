@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/props/hay_bale__side.png" id="1_53aww"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="2_runod"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wu1uv"]
+height = 1.6
+
+[node name="HayBaleSideM" type="StaticBody3D" unique_id=1286964105]
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=631770895]
+centered = false
+offset = Vector2(-15.5, 0)
+flip_h = true
+pixel_size = 0.0449
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_53aww")
+
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1706343974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.02, -0.216)
+cast_shadow = 0
+pixel_size = 0.075
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_runod")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=450699235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CylinderShape3D_wu1uv")
