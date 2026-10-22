@@ -91,10 +91,14 @@ comparte dos rampas de acento definidas en `tools/art_pipeline/build.py`:
 - Un edificio no es una caja: `_building` compone una nave con tejado paralelo a la calle y un cuerpo
   con hastial que sobresale y lleva la fachada (`docs/reference/arquitectura_casa.jpg`). Buhardillas en
   el faldón delantero, chimeneas en el trasero. Viviendas pequeñas y almacenes: un bloque (`plain`).
-- Alturas reales: el pueblo se escalona en cinco niveles (puerta, plaza y calles, casas sobre las calles,
-  terraza de los gremios, colina del Archivo) separados por muros de contención con albardilla y
-  unidos por escaleras. Además cada casa puede ir sobre un zócalo de piedra (`plinth`) con su escalinata.
-- Calles que serpentean (`_path`): tramos solapados con la textura en coordenadas del mundo, sin costuras.
+- Alturas reales y naturales: el pueblo está en una ladera (`town_terrain.gd`). Cada nivel es un
+  rellano llano donde se asientan las casas; entre rellanos hay pendientes cuyo borde serpentea y cuya
+  inclinación cambia: hierba donde es suave, tierra donde se empina y roca donde es casi vertical.
+  Donde las calles suben, la pendiente se suaviza para poder andar. Nada de muros rectos.
+- Las casas se asientan con una cimentación de piedra que baja hasta el suelo, y algunas van sobre un
+  zócalo con escalinata (`plinth`), así cada una queda a su propia altura.
+- Calles que serpentean pintadas sobre el terreno (máscara de `town_terrain.gdshader`), así siguen las
+  pendientes. Toda puerta que no da a la calle tiene su camino hasta ella.
 - Pueblo pequeño y denso: casas pegadas a las calles, cada hueco con una función (huerto, patio,
   abrevadero, banco, leña) y la vegetación en grupos.
 - Nunca dos vecinos con el mismo tejado.

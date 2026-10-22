@@ -16,7 +16,7 @@ func _run() -> void:
 	var hero: Node3D = town.get_node("Player")
 	var mara: Node3D = town.get_node("People/Mara")
 	var message: Label = town.get_node("HUD").get_node("%Message")
-	hero.global_position = mara.global_position + Vector3(0, 0, 1.0)
+	hero.global_position = mara.global_position + Vector3(0, 0.3, 1.0)
 	await _frames(5)
 	Input.action_press("interact")
 	await _frames(2)
