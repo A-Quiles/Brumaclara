@@ -23,7 +23,7 @@ lobo de la Fractura y su guarida. Todo el contenido nuevo debe mantener este niv
 
 1. Instala [Godot 4.7](https://godotengine.org/download) (versión estándar, no hace falta .NET).
 2. Abre Godot → *Importar* → selecciona `project.godot`.
-3. Pulsa **F5**.
+3. Pulsa **F5**. El juego empieza en el creador de personaje; tu elección se guarda para la próxima vez.
 
 | Acción | Teclas |
 |---|---|
@@ -33,6 +33,15 @@ lobo de la Fractura y su guarida. Todo el contenido nuevo debe mantener este niv
 | Chispa: proyectil de fuego (8 PM) | Q o U |
 | Estallido: anillo de fuego alrededor del héroe (25 PM) | E o I |
 | Hablar / abrir un cofre | F |
+
+## Creador de personaje
+
+Al empezar eliges hombre o mujer, peinado, color de pelo, color de piel y atuendo, con el héroe
+caminando en la vista previa. Ver [docs/creador_personaje.md](docs/creador_personaje.md).
+
+| | |
+|---|---|
+| ![Creador: hombre](docs/screenshots/15_creador_hombre.png) | ![Creador: mujer](docs/screenshots/16_creador_mujer.png) |
 
 ## Modo edición (desarrollo)
 
@@ -108,6 +117,7 @@ python3 tools/art_pipeline/build.py            # todos los recursos (o solo: her
 godot --headless --path . --script res://tools/tests/test_combat.gd
 godot --headless --path . --script res://tools/tests/test_town.gd
 godot --headless --path . --script res://tools/tests/test_edit_mode.gd
+godot --headless --path . --script res://tools/tests/test_hero_look.gd
 xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capturas (necesita pantalla)
 ```
 
@@ -117,6 +127,8 @@ xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capt
 - [ ] Validar el estilo y la sensación del combate
 - [x] Pueblo de Brumaclara: barrios, edificios de los gremios y primeros habitantes
 - [x] Modo edición para decorar los niveles dentro del juego
+- [x] Creador de personaje (hombre y mujer, colores de pelo, piel y atuendo)
+- [ ] Más peinados y atuendos dibujados; hojas definitivas de ataque y esquiva de la heroína
 - [ ] Interiores, caja de diálogo y minimapa
 - [ ] Árbol de habilidades, equipo, diálogos y misiones
 

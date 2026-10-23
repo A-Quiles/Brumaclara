@@ -54,6 +54,8 @@ var _spawn_point := Vector3.ZERO
 
 func _ready() -> void:
 	add_to_group("player")
+	_sprite.sprite_frames = HeroLook.frames(HeroLook.load_look())  # the look from the character creator
+	_silhouette.sprite_frames = _sprite.sprite_frames
 	if Exit.pending_arrival != Vector3.INF:  # arriving through another map's exit
 		global_position = Exit.pending_arrival
 		Exit.pending_arrival = Vector3.INF

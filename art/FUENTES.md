@@ -145,6 +145,29 @@ dibujo base cuando no es hacia la cámara.
 | `lamp` | e, sw | Pieza doble (dos faroles en un recorte), vistas desde arriba y detalles sueltos |
 | `low_wall`, `chimney`, `bread_stool`, `bucket` | — | Pendientes: el muro bajo en diagonal no encaja con la cámara fija; los demás no aportan vistas nuevas útiles |
 
+## Heroína del creador de personaje (art/ai/heroes)
+
+Hechas con Figma AI (`gemini-3.1-flash-image`) el 23 de octubre de 2026, en el archivo «Brumaclara —
+Arte del juego (vistas y personaje)». La descripción fija se repite en cada hoja:
+
+> The same heroine in every cell: young anime adventurer girl, long straight golden-blonde hair tied in a
+> high ponytail with a short fringe, dark crimson scarf wrapped around the neck, crimson cape reaching
+> the knees, blue short-sleeved tunic, brown leather bracers, brown leather strap diagonally across the
+> chest, brown belt with a small silver buckle, dark grey leggings, brown leather boots, a steel short
+> sword with a brown grip. About 2.5 heads tall, full body.
+
+| Archivo | Contenido | Notas de revisión |
+|---|---|---|
+| `mujer_walk.png` | Caminar de frente, de lado (a la derecha) y de espaldas; quieta en 4 direcciones. | A tamaño completo. Todo aprovechable. |
+| `mujer_actions.png` | Ataque de frente, de lado y de espaldas; daño, daño de lado, derrota y hechizo. | **Provisional:** es la miniatura de 256 px ampliada (se alcanzó el límite diario de Figma). |
+| `mujer_extra.png` | Esquiva de frente, de lado y de espaldas; reposo. | **Provisional**, como la anterior. |
+
+## Variantes de color (receta `recolors`)
+
+Sin generar imágenes: `build.py recolors` repinta sprites terminados. Caballos negro, tordo, blanco,
+palomino y alazán, en todas sus vistas y modelos (`horse__negro`, `horse__negro__s`,
+`horse__negro_grazing`…). Carromato con la lona azul, verde y roja.
+
 ## Imágenes nuevas (assets/nuevos)
 
 Las imágenes que el autor deje en `assets/nuevos` no pasan por el pipeline: el modo edición les quita

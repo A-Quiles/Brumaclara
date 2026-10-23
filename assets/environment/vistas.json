@@ -2,6 +2,21 @@
 	"props/bench": "sw",
 	"props/hay_cart": "sw",
 	"props/horse": "w",
+	"props/horse__alazan": "w",
+	"props/horse__alazan_grazing": "e",
+	"props/horse__alazan_lying": "e",
+	"props/horse__blanco": "w",
+	"props/horse__blanco_grazing": "e",
+	"props/horse__blanco_lying": "e",
 	"props/horse__grazing": "e",
-	"props/horse__lying": "e"
+	"props/horse__lying": "e",
+	"props/horse__negro": "w",
+	"props/horse__negro_grazing": "e",
+	"props/horse__negro_lying": "e",
+	"props/horse__palomino": "w",
+	"props/horse__palomino_grazing": "e",
+	"props/horse__palomino_lying": "e",
+	"props/horse__tordo": "w",
+	"props/horse__tordo_grazing": "e",
+	"props/horse__tordo_lying": "e"
 }

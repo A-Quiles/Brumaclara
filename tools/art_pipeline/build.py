@@ -6,6 +6,7 @@ Each recipe says which cells of which source become which frames, the pixel size
 drawing (source pixels per game pixel) and where the result goes in assets/. The sources and their
 prompts are listed in art/FUENTES.md.
 """
+import json
 import sys
 from pathlib import Path
 
@@ -72,37 +73,127 @@ HERO_ANCHOR = (28, 53)  # feet centre inside a frame
 
 def hero():
     walk, act, extra = grid("hero_walk"), grid("hero_actions"), grid("hero_extra")
+    return hero_set("hero", (walk, act, extra), ((walk, 0, 0), (act, 1, 0), (extra, 3, 0)), {
+        "walk_down": (walk, 0, range(4)),
+        "walk_side": (walk, 1, range(4), True),
+        "walk_up": (act, 0, range(4)),
+        "attack_down": (act, 1, range(4)),
+        "attack_side": (act, 2, range(4)),
+        "attack_up": (act, 3, range(4)),
+        "dodge_down": (extra, 0, range(4)),
+        "dodge_side": (extra, 1, range(4)),
+        "dodge_up": (extra, 2, range(3)),
+        "misc": (extra, 3, range(4)),  # hurt front, hurt front (alt), knocked out, casting
+    })
+
+
+def heroine():
+    """The heroine of the character creator (art/ai/heroes): every row faces right where it is a side view.
+    ponytail: mujer_actions and mujer_extra are the 256 px previews (the Figma MCP daily limit); replace
+    them with the full 1024 px exports from the Figma file and rebuild."""
+    walk, act, extra = (grid(f"heroes/mujer_{n}") for n in ("walk", "actions", "extra"))
+    return hero_set("heroine", (walk, act, extra), ((walk, 0, 0), (act, 3, 3, extra), (extra, 3, 0)), {
+        "walk_down": (walk, 0, range(4)),
+        "walk_side": (walk, 1, range(4)),
+        "walk_up": (walk, 2, range(4)),
+        "attack_down": (act, 0, range(4)),
+        "attack_side": (act, 1, range(4)),
+        "attack_up": (act, 2, range(4)),
+        "dodge_down": (extra, 0, range(4)),
+        "dodge_side": (extra, 1, range(4)),
+        "dodge_up": (extra, 2, range(3)),
+        "misc": (act, 3, range(4)),  # hurt front, hurt side, knocked out, casting
+    }, clean=True)
+
+
+# Colour groups of the character creator (scripts/systems/hero_look.gd): each set says which
+# palette colours are hair, skin, clothes and cape, by hue (degrees), saturation and value ranges.
+# "top" groups only count in the upper part of an upright figure (the hero's hair and tunic share a blue).
+LOOK_GROUPS = {
+    "hero": [
+        ("hair", (200, 245), (0.4, 1), (0, 1), 0.38),
+        ("clothes", (200, 245), (0.4, 1), (0, 1), None),
+        ("cape", (320, 350), (0.55, 1), (0, 1), None),
+        ("skin", (8, 30), (0.2, 0.42), (0.6, 1), None),
+    ],
+    "heroine": [
+        ("hair", (28, 56), (0.3, 1), (0.55, 1), None),
+        ("hair", (24, 28), (0.6, 1), (0.5, 1), 0.45),
+        ("clothes", (205, 235), (0.45, 1), (0, 1), None),
+        ("cape", (320, 350), (0.6, 1), (0, 1), None),
+        ("skin", (8, 25), (0.2, 0.5), (0.6, 1), None),
+    ],
+}
+LOOK_IDS = {"hair": 1, "skin": 2, "clothes": 3, "cape": 4}
+
+
+def look_mask(sheet, rules, frame):
+    """L image: the colour group of every pixel of a hero sheet, as id * 50 (0 = keep the colour)."""
+    import colorsys
+    a = np.asarray(sheet.convert("RGBA"))
+    out = np.zeros(a.shape[:2], np.uint8)
+    hsv = np.zeros(a.shape[:2] + (3,))
+    solid = a[..., 3] > 0
+    for y, x in zip(*np.nonzero(solid)):
+        h, s_, v = colorsys.rgb_to_hsv(*(a[y, x, :3] / 255.0))
+        hsv[y, x] = (h * 360, s_, v)
+    fire = np.zeros(a.shape[:2], bool)
+    for c in FIRE:
+        fire |= (a[..., :3] == c).all(2)
+    fw, fh = frame
+    for fy in range(0, a.shape[0], fh):
+        for fx in range(0, a.shape[1], fw):
+            cell = solid[fy:fy + fh, fx:fx + fw]
+            ys, xs = np.nonzero(cell)
+            if len(ys) == 0:
+                continue
+            top, height, upright = ys.min(), ys.max() - ys.min() + 1, (ys.max() - ys.min()) >= (xs.max() - xs.min()) * 0.9
+            sub = hsv[fy:fy + fh, fx:fx + fw]
+            done = out[fy:fy + fh, fx:fx + fw] > 0
+            rows = np.arange(fh)[:, None].repeat(fw, 1)
+            for group, hue, sat, val, upper in rules:
+                hit = cell & ~done & ~fire[fy:fy + fh, fx:fx + fw]
+                hit &= (sub[..., 0] >= hue[0]) & (sub[..., 0] <= hue[1])
+                hit &= (sub[..., 1] >= sat[0]) & (sub[..., 1] <= sat[1])
+                hit &= (sub[..., 2] >= val[0]) & (sub[..., 2] <= val[1])
+                if upper is not None:  # ponytail: lying frames (knocked out) keep this group's colour
+                    hit &= upright & (rows < top + height * upper)
+                out[fy:fy + fh, fx:fx + fw][hit] = LOOK_IDS[group] * 50
+                done |= hit
+    return Image.fromarray(out, "L")
+
+
+def hero_set(name, sources, standing, layout, clean=False):
+    """One hero sprite set: `layout` maps each animation row to (sheet, row, columns[, mirror]).
+    `standing` gives, per sheet, a cell where the hero stands upright (optionally on another sheet
+    drawn at the same size)."""
     # each source sheet draws the hero at a slightly different size: normalise on a standing pose
-    scale = {id(walk): None, id(act): None, id(extra): None}
-    for sheet, (r, c) in ((walk, (0, 0)), (act, (1, 0)), (extra, (3, 0))):
-        scale[id(sheet)] = HERO_HEIGHT * HERO_F / raw_height(sheet[r][c])
+    scale = {id(sheet): HERO_HEIGHT * HERO_F / raw_height((ref + [sheet])[0][r][c])
+             for sheet, r, c, *ref in standing}
 
     def frames(sheet, r, cols, flip=False):
         out = []
         for c in cols:
             im = sheets.pixelate_cell(sheet[r][c], HERO_F, scale[id(sheet)])
+            if clean:  # magenta backdrop left on the outline (JPEG sources) becomes outline
+                a = np.asarray(im).copy()
+                rgb = a[..., :3].astype(int)
+                spill = (rgb[..., 0] > rgb[..., 1] * 1.6) & (rgb[..., 2] > rgb[..., 1] * 1.6) & (rgb[..., 2] > rgb[..., 0] * 0.75)
+                a[spill & (a[..., 3] > 0), :3] = (38, 26, 24)
+                im = Image.fromarray(a, "RGBA")
             out.append(sheets.mirror(im) if flip else im)
         return out
 
-    rows = {  # animation rows of the sheet; side views face right (the game mirrors them for left)
-        "walk_down": frames(walk, 0, range(4)),
-        "walk_side": frames(walk, 1, range(4), flip=True),
-        "walk_up": frames(act, 0, range(4)),
-        "attack_down": frames(act, 1, range(4)),
-        "attack_side": frames(act, 2, range(4)),
-        "attack_up": frames(act, 3, range(4)),
-        "dodge_down": frames(extra, 0, range(4)),
-        "dodge_side": frames(extra, 1, range(4)),
-        "dodge_up": frames(extra, 2, range(3)),
-        "misc": frames(extra, 3, range(4)),  # hurt front, hurt front (alt), knocked out, casting
-    }
+    rows = {key: frames(*spec) for key, spec in layout.items()}
     every = [im for row in rows.values() for im in row]
     palette = palette_for(every, 40, FIRE)
     sheet_rows = baseline_rows([sheets.snap_all(row, palette) for row in rows.values()], HERO_FRAME, HERO_ANCHOR)
     out_dir = OUT / "characters" / "hero"
-    save(sheets.assemble(sheet_rows, *HERO_FRAME), "characters", "hero", "hero.png")
-    r = {name: i for i, name in enumerate(rows)}
-    cells = lambda name, n: [(c, r[name]) for c in range(n)]
+    sheet = sheets.assemble(sheet_rows, *HERO_FRAME)
+    save(sheet, "characters", "hero", f"{name}.png")
+    save(look_mask(sheet, LOOK_GROUPS[name], HERO_FRAME), "characters", "hero", f"{name}_mask.png")
+    r = {key: i for i, key in enumerate(rows)}
+    cells = lambda key, n: [(c, r[key]) for c in range(n)]
     animations = [
         ("idle_down", [(0, r["walk_down"])], 1, True),
         ("idle_side", [(0, r["walk_side"])], 1, True),
@@ -124,9 +215,9 @@ def hero():
         ("cast_up", [(1, r["attack_up"])], 1, False),
         ("dead", [(0, r["misc"]), (2, r["misc"])], 4, False),
     ]
-    sheets.write_sprite_frames(out_dir / "hero_frames.tres", "res://assets/characters/hero/hero.png",
+    sheets.write_sprite_frames(out_dir / f"{name}_frames.tres", f"res://assets/characters/hero/{name}.png",
                                *HERO_FRAME, animations)
-    return out_dir / "hero.png"
+    return out_dir / f"{name}.png"
 
 
 # --- enemy: Fractura wolf ------------------------------------------------------------------
@@ -515,6 +606,67 @@ VARIANTS = {
 FACING = {"props/bench": "sw", "props/hay_cart": "sw", "props/horse": "w", "props/horse__grazing": "e",
           "props/horse__lying": "e"}
 
+# Colour variants painted over finished sprites (recipe `recolors`): object -> how to find each
+# colour group, and the variants with a colour per group. A variant of a model is "<colour>_<model>".
+HORSE_COATS = {"negro": ("3a3640", "1e1a22"), "tordo": ("b4b2b0", "5e5a62"), "blanco": ("e6e2da", "c4bcb4"),
+               "palomino": ("d6a650", "f0e2b8"), "alazan": ("a84e2a", "7e3418")}
+WAGON_CANVAS = {"azul": "5a7ab0", "verde": "6a9a5a", "rojo": "b0483a"}
+for coat in HORSE_COATS:
+    FACING[f"props/horse__{coat}"] = "w"
+    FACING[f"props/horse__{coat}_grazing"] = "e"
+    FACING[f"props/horse__{coat}_lying"] = "e"
+
+
+def _paint(rgba, groups, targets):
+    """Moves every colour group of an RGBA sprite to its target colour, keeping its shading."""
+    import colorsys
+    out = rgba.copy()
+    for g, hexc in targets.items():
+        sel = groups == g
+        if not sel.any():
+            continue
+        t = colorsys.rgb_to_hsv(*(int(hexc[i:i + 2], 16) / 255 for i in (0, 2, 4)))
+        v = rgba[..., :3].max(2) / 255.0
+        rel = v / v[sel].mean()
+        for y, x in zip(*np.nonzero(sel)):
+            r = rel[y, x]
+            sat = min(1.0, t[1] * (1.15 - 0.25 * r))
+            out[y, x, :3] = [round(c * 255) for c in colorsys.hsv_to_rgb(t[0], sat, min(1.0, t[2] * r))]
+    return out
+
+
+def _hsv(rgba):
+    import colorsys
+    flat = rgba[..., :3].reshape(-1, 3) / 255.0
+    return np.array([colorsys.rgb_to_hsv(*c) for c in flat]).reshape(rgba.shape[:2] + (3,)) * [360, 1, 1]
+
+
+def recolors():
+    folder = OUT / "environment" / "props"
+    for old in list(folder.glob("horse__*_*.png*")) + [f for c in HORSE_COATS for f in folder.glob(f"horse__{c}*")] + \
+            [f for c in WAGON_CANVAS for f in folder.glob(f"wagon__{c}*")]:
+        old.unlink(missing_ok=True)
+    for src in sorted(folder.glob("horse*.png")):
+        rgba = np.asarray(Image.open(src).convert("RGBA"))
+        h = _hsv(rgba)
+        solid = (rgba[..., 3] > 0) & (h[..., 2] >= 0.17) & (h[..., 1] >= 0.3)  # outline and white markings stay
+        red = (h[..., 0] < 35) | (h[..., 0] > 340)
+        groups = np.where(solid & red & ((h[..., 0] < 17) | (h[..., 0] > 340)), 2, np.where(solid & red, 1, 0))
+        rest = src.stem.split("__")[1:]  # [] / ["s"] / ["grazing"]
+        for coat, (body, mane) in HORSE_COATS.items():
+            if rest and rest[0] in ("grazing", "lying"):
+                name = f"horse__{coat}_{rest[0]}"
+            else:
+                name = "__".join(["horse", coat] + rest)
+            save(Image.fromarray(_paint(rgba, groups, {1: body, 2: mane}), "RGBA"), "environment", "props", name + ".png")
+    rgba = np.asarray(Image.open(folder / "wagon.png").convert("RGBA"))
+    h = _hsv(rgba)
+    canvas = (rgba[..., 3] > 0) & (h[..., 1] < 0.35) & (h[..., 2] > 0.55)
+    for colour, hexc in WAGON_CANVAS.items():
+        save(Image.fromarray(_paint(rgba, canvas.astype(int), {1: hexc}), "RGBA"), "environment", "props", f"wagon__{colour}.png")
+    (OUT / "environment" / "vistas.json").write_text(json.dumps(FACING, indent="\t", sort_keys=True) + "\n")
+    return folder
+
 
 def _main_parts(mask):
     """Drops the specks a cut-out drags along (bits of labels or of the next drawing)."""
@@ -559,9 +711,9 @@ def variants():
     return OUT / "environment"
 
 
-RECIPES = {"hero": hero, "wolf": wolf, "nature": nature, "props_b": props_b, "terrain": terrain,
+RECIPES = {"hero": hero, "heroine": heroine, "wolf": wolf, "nature": nature, "props_b": props_b, "terrain": terrain,
            "terrain_b": terrain_b, "house": house, "facades": facades, "plaza": plaza, "walls_roofs": walls_roofs,
-           "town_props": town_props, "townsfolk": townsfolk, "variants": variants, "ui": ui, "vfx": vfx, "backdrop": backdrop, "shadow": shadow}
+           "town_props": town_props, "townsfolk": townsfolk, "variants": variants, "recolors": recolors, "ui": ui, "vfx": vfx, "backdrop": backdrop, "shadow": shadow}
 
 if __name__ == "__main__":
     for key in sys.argv[1:] or RECIPES:

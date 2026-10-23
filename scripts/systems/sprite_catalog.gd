@@ -49,7 +49,7 @@ const NAMES := {
 	"tree_young": "arbolillo",
 }
 const MODEL_NAMES := {"grazing": "pastando", "lying": "tumbado", "tipped": "volcado", "rolled": "en rollos",
-	"upright": "de pie", "tall": "alta", "post": "poste"}
+	"upright": "de pie", "tall": "alta", "post": "poste", "alazan": "alazán"}
 
 static var _facing := {}   # sprite without a direction in its name -> where it faces (vistas.json)
 static var _files := {}    # key ("props/bench__w") -> image file
@@ -180,7 +180,8 @@ static func label(key: String, flip := false) -> String:
 	var stem: String = i.group.get_slice("/", 1)
 	var text: String = NAMES.get(stem, stem.replace("_", " "))
 	if i.model != "":
-		text += " " + MODEL_NAMES.get(i.model, i.model.replace("_", " "))
+		for part: String in i.model.split("_"):  # "negro_grazing" -> "negro pastando"
+			text += " " + MODEL_NAMES.get(part, part)
 	return "%s · %s" % [text, DIR_NAMES[MIRROR[i.dir] if flip else i.dir]]
 
 

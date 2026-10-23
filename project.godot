@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Proyecto Brumaclara (nombre provisional)"
 config/description="Prototipo de RPG de acción en pixel art. Demo: las afueras de Brumaclara."
-run/main_scene="res://scenes/levels/brumaclara.tscn"
+run/main_scene="res://scenes/ui/character_creator.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]
