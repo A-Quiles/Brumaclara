@@ -55,6 +55,15 @@ volver a pulsar F1. Ver [docs/modo_edicion.md](docs/modo_edicion.md).
 |---|---|
 | ![Colocando objetos](docs/screenshots/12_edicion_colocar.png) | ![Selección](docs/screenshots/13_edicion_seleccion.png) |
 
+## Sala de pruebas (desarrollo)
+
+`scenes/dev/test_room.tscn` (ábrela en Godot y pulsa **F6**): bloques grises con la cámara real del
+juego para medir la escala (cuadros de 1 unidad, una puerta de 1,2 × 2,2 y la altura del héroe) y probar
+qué se puede subir: escaleras con escalones de 0,2, 0,3 y 0,45 y rampas de 30°, 45° y 55° (esta última
+no se puede subir, a propósito).
+
+![Sala de pruebas](docs/screenshots/19_sala_de_pruebas.png)
+
 ## Qué hay en la demo
 
 - **Protagonista** en cuatro direcciones: reposo, caminar, combo de espada, esquiva con estela, daño,
@@ -94,6 +103,7 @@ scenes/
   effects/                Hechizos, impactos, polvo, orbe de experiencia y números de daño
   environment/            Árboles, plantas, objetos y fondo lejano
   ui/hud.tscn             Interfaz
+  dev/test_room.tscn      Sala de pruebas greybox: escala, escaleras y pendientes (solo desarrollo)
 scripts/
   components/   Vida, hitbox y hurtbox, reutilizables por cualquier personaje
   characters/   Protagonista y enemigos
@@ -118,6 +128,7 @@ godot --headless --path . --script res://tools/tests/test_combat.gd
 godot --headless --path . --script res://tools/tests/test_town.gd
 godot --headless --path . --script res://tools/tests/test_edit_mode.gd
 godot --headless --path . --script res://tools/tests/test_hero_look.gd
+godot --headless --path . --script res://tools/tests/test_climb.gd      # escaleras y rampas
 xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capturas (necesita pantalla)
 ```
 

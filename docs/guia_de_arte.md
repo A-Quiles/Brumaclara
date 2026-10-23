@@ -97,6 +97,10 @@ comparte dos rampas de acento definidas en `tools/art_pipeline/build.py`:
   Donde las calles suben, la pendiente se suaviza para poder andar. Nada de muros rectos.
 - Las casas se asientan con una cimentación de piedra que baja hasta el suelo, y algunas van sobre un
   zócalo con escalinata (`plinth`), así cada una queda a su propia altura.
+- Escaleras: siempre con la pieza `Stairs` (`scripts/environment/stairs.gd`). Los escalones solo se
+  ven; el héroe pisa una rampa invisible que pasa por el centro de las huellas, así sube cualquier altura
+  de escalón sin engancharse. Pendiente máxima andable: 50° (`floor_max_angle` del héroe); por encima,
+  la rampa o el talud bloquean. Medidas comprobadas en la sala de pruebas (`scenes/dev/test_room.tscn`).
 - Calles que serpentean pintadas sobre el terreno (máscara de `town_terrain.gdshader`), así siguen las
   pendientes. Toda puerta que no da a la calle tiene su camino hasta ella.
 - Pueblo pequeño y denso: casas pegadas a las calles, cada hueco con una función (huerto, patio,

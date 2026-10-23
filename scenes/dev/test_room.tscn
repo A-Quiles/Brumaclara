@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/dev/test_room.gd" id="1_room"]
+[ext_resource type="PackedScene" path="res://scenes/characters/player.tscn" id="2_hero"]
+
+[sub_resource type="Environment" id="Environment_room"]
+background_mode = 1
+background_color = Color(0.42, 0.5, 0.58, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.6
+
+[node name="SalaDePruebas" type="Node3D"]
+script = ExtResource("1_room")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_room")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8433914, 0.40550515, -0.35250026, 0, 0.656059, 0.75470954, 0.53729963, -0.63651556, 0.55331457, 0, 0, 0)
+light_energy = 0.35
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_normal_bias = 1.0
+directional_shadow_mode = 0
+directional_shadow_max_distance = 80.0
+
+[node name="Player" parent="." instance=ExtResource("2_hero")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
