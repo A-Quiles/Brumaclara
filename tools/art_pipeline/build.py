@@ -71,28 +71,13 @@ HERO_FRAME = (56, 56)
 HERO_ANCHOR = (28, 53)  # feet centre inside a frame
 
 
-def hero():
-    walk, act, extra = grid("hero_walk"), grid("hero_actions"), grid("hero_extra")
-    return hero_set("hero", (walk, act, extra), ((walk, 0, 0), (act, 1, 0), (extra, 3, 0)), {
-        "walk_down": (walk, 0, range(4)),
-        "walk_side": (walk, 1, range(4), True),
-        "walk_up": (act, 0, range(4)),
-        "attack_down": (act, 1, range(4)),
-        "attack_side": (act, 2, range(4)),
-        "attack_up": (act, 3, range(4)),
-        "dodge_down": (extra, 0, range(4)),
-        "dodge_side": (extra, 1, range(4)),
-        "dodge_up": (extra, 2, range(3)),
-        "misc": (extra, 3, range(4)),  # hurt front, hurt front (alt), knocked out, casting
-    })
-
-
-def heroine():
-    """The heroine of the character creator (art/ai/heroes): every row faces right where it is a side view.
-    ponytail: mujer_actions and mujer_extra are the 256 px previews (the Figma MCP daily limit); replace
-    them with the full 1024 px exports from the Figma file and rebuild."""
-    walk, act, extra = (grid(f"heroes/mujer_{n}") for n in ("walk", "actions", "extra"))
-    return hero_set("heroine", (walk, act, extra), ((walk, 0, 0), (act, 3, 3, extra), (extra, 3, 0)), {
+def traveller(name, prefix, flips=None):
+    """A player model of the character creator (art/ai/heroes/<prefix>_walk|actions|extra): a traveller
+    looking for work, no cape. Side views face right; `flips` maps an animation row to the columns drawn
+    facing left, which are mirrored."""
+    walk, act, extra = (grid(f"heroes/{prefix}_{n}") for n in ("walk", "actions", "extra"))
+    flips = flips or {}
+    layout = {
         "walk_down": (walk, 0, range(4)),
         "walk_side": (walk, 1, range(4)),
         "walk_up": (walk, 2, range(4)),
@@ -103,28 +88,38 @@ def heroine():
         "dodge_side": (extra, 1, range(4)),
         "dodge_up": (extra, 2, range(3)),
         "misc": (act, 3, range(4)),  # hurt front, hurt side, knocked out, casting
-    }, clean=True)
+    }
+    layout = {k: v + (flips[k],) if k in flips else v for k, v in layout.items()}
+    # the actions sheet has no plain standing pose: it is drawn at the size of the dodge sheet's
+    return hero_set(name, (walk, act, extra), ((walk, 3, 0), (act, 3, 0, extra), (extra, 3, 0)), layout, clean=True)
+
+
+def hero():
+    return traveller("hero", "hombre", {"attack_side": {2, 3}})
+
+
+def heroine():
+    return traveller("heroine", "mujer", {"walk_side": {0}})
 
 
 # Colour groups of the character creator (scripts/systems/hero_look.gd): each set says which
-# palette colours are hair, skin, clothes and cape, by hue (degrees), saturation and value ranges.
+# palette colours are hair, skin, clothes (tunic) and vest, by hue (degrees), saturation and value ranges.
 # "top" groups only count in the upper part of an upright figure (the hero's hair and tunic share a blue).
 LOOK_GROUPS = {
     "hero": [
-        ("hair", (200, 245), (0.4, 1), (0, 1), 0.38),
-        ("clothes", (200, 245), (0.4, 1), (0, 1), None),
-        ("cape", (320, 350), (0.55, 1), (0, 1), None),
-        ("skin", (8, 30), (0.2, 0.42), (0.6, 1), None),
+        ("hair", (220, 242), (0.45, 1), (0.25, 1), None),
+        ("clothes", (95, 130), (0.25, 1), (0.18, 1), None),
+        ("vest", (345, 360), (0.55, 1), (0.25, 1), None),
+        ("skin", (15, 26), (0.2, 0.45), (0.6, 1), None),
     ],
     "heroine": [
-        ("hair", (28, 56), (0.3, 1), (0.55, 1), None),
-        ("hair", (24, 28), (0.6, 1), (0.5, 1), 0.45),
-        ("clothes", (205, 235), (0.45, 1), (0, 1), None),
-        ("cape", (320, 350), (0.6, 1), (0, 1), None),
-        ("skin", (8, 25), (0.2, 0.5), (0.6, 1), None),
+        ("hair", (30, 46), (0.6, 1), (0.58, 1), None),
+        ("clothes", (95, 130), (0.25, 1), (0.18, 1), None),
+        ("vest", (345, 360), (0.55, 1), (0.25, 1), None),
+        ("skin", (15, 26), (0.2, 0.45), (0.6, 1), None),
     ],
 }
-LOOK_IDS = {"hair": 1, "skin": 2, "clothes": 3, "cape": 4}
+LOOK_IDS = {"hair": 1, "skin": 2, "clothes": 3, "vest": 4}
 
 
 def look_mask(sheet, rules, frame):
@@ -179,9 +174,13 @@ def hero_set(name, sources, standing, layout, clean=False):
                 a = np.asarray(im).copy()
                 rgb = a[..., :3].astype(int)
                 spill = (rgb[..., 0] > rgb[..., 1] * 1.6) & (rgb[..., 2] > rgb[..., 1] * 1.6) & (rgb[..., 2] > rgb[..., 0] * 0.75)
-                a[spill & (a[..., 3] > 0), :3] = (38, 26, 24)
+                # pinkish blends of backdrop and drawing on the silhouette edge become outline too
+                solid = a[..., 3] > 0
+                edge = solid & ~(np.roll(solid, 1, 0) & np.roll(solid, -1, 0) & np.roll(solid, 1, 1) & np.roll(solid, -1, 1))
+                spill |= edge & (rgb[..., 2] > rgb[..., 1] * 1.1) & (rgb[..., 0] > rgb[..., 1] * 1.3)
+                a[spill & solid, :3] = (38, 26, 24)
                 im = Image.fromarray(a, "RGBA")
-            out.append(sheets.mirror(im) if flip else im)
+            out.append(sheets.mirror(im) if flip is True or (flip and c in flip) else im)
         return out
 
     rows = {key: frames(*spec) for key, spec in layout.items()}

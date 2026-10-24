@@ -1,6 +1,6 @@
 class_name HeroLook
 ## The hero's look chosen in the character creator: a drawn model (gender and hairstyle) and the
-## colours of the hair, skin, clothes and cape. The colours are painted over the model's sprite
+## colours of the hair, skin, tunic and vest. The colours are painted over the model's sprite
 ## sheet with its group mask (built by tools/art_pipeline/build.py), keeping the drawing's shading.
 ## The look is saved in user://personaje.json.
 
@@ -18,12 +18,12 @@ const HAIR := [["Original", ""], ["Negro", "2a2630"], ["Castaño", "6b3f24"], ["
 		["Verde", "4f9a5a"], ["Morado", "7a4fb0"]]
 const SKIN := [["Original", ""], ["Clara", "f6d2bc"], ["Media", "e0aa86"], ["Morena", "b57a52"],
 		["Oscura", "7a4a32"]]
-## Outfits: [name, clothes colour, cape and scarf colour]
-const OUTFITS := [["Aventurero", "", ""], ["Explorador", "4f7a3a", "7a5230"], ["Arcano", "5a3f9a", "d0a03a"],
-		["Guardián", "6e7888", "2f4f8a"], ["Sombra", "34343c", "1e1e24"], ["Real", "e6e2d8", "9a1e2e"],
-		["Brasa", "b8462a", "3a2a24"], ["Bruma", "6aa0b8", "e6e6ee"]]
+## Outfits: [name, tunic colour, vest colour]. A traveller's clothes, not a hero's (no cape).
+const OUTFITS := [["Viajero", "", ""], ["Campesino", "d8cfb4", "7a5230"], ["Leñador", "4f7a3a", "6b3f24"],
+		["Marinero", "e6e6ee", "2f4f8a"], ["Herrero", "6e6a66", "3a2a24"], ["Mercader", "c9a04a", "5a3f9a"],
+		["Brasa", "b8462a", "3a2a24"], ["Bruma", "6aa0b8", "e6e6ee"], ["Noche", "34343c", "5a2030"]]
 
-const GROUPS := {1: "hair", 2: "skin", 3: "clothes", 4: "cape"}
+const GROUPS := {1: "hair", 2: "skin", 3: "clothes", 4: "vest"}
 
 static var _frames_cache := {}
 

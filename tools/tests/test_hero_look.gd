@@ -11,7 +11,7 @@ func _initialize() -> void:
 	for m in HeroLook.MODELS.size():
 		var frames := HeroLook.frames({"model": m, "hair": 0, "skin": 0, "outfit": 0})
 		_check(frames.get_animation_names() == names, "model %s has every animation" % HeroLook.MODELS[m].set)
-	for set_name in ["hero", "heroine"]:
+	for set_name: String in HeroLook.MODELS.map(func(m: Dictionary) -> String: return m.set):
 		var plain: Image = HeroLook.paint(set_name, {1: null, 2: null, 3: null, 4: null})
 		var red: Image = HeroLook.paint(set_name, {1: Color("c2482a"), 2: null, 3: null, 4: null})
 		var mask: Image = load("res://assets/characters/hero/%s_mask.png" % set_name).get_image()

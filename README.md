@@ -139,7 +139,8 @@ xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capt
 - [x] Pueblo de Brumaclara: barrios, edificios de los gremios y primeros habitantes
 - [x] Modo edición para decorar los niveles dentro del juego
 - [x] Creador de personaje (hombre y mujer, colores de pelo, piel y atuendo)
-- [ ] Más peinados y atuendos dibujados; hojas definitivas de ataque y esquiva de la heroína
+- [x] Protagonista sin capa (viajero que busca trabajo), hombre y mujer con hojas completas
+- [ ] Más peinados dibujados
 - [ ] Interiores, caja de diálogo y minimapa
 - [ ] Árbol de habilidades, equipo, diálogos y misiones
 

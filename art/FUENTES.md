@@ -145,22 +145,25 @@ dibujo base cuando no es hacia la cámara.
 | `lamp` | e, sw | Pieza doble (dos faroles en un recorte), vistas desde arriba y detalles sueltos |
 | `low_wall`, `chimney`, `bread_stool`, `bucket` | — | Pendientes: el muro bajo en diagonal no encaja con la cámara fija; los demás no aportan vistas nuevas útiles |
 
-## Heroína del creador de personaje (art/ai/heroes)
+## Protagonistas del creador de personaje (art/ai/heroes)
 
-Hechas con Figma AI (`gemini-3.1-flash-image`) el 23 de octubre de 2026, en el archivo «Brumaclara —
-Arte del juego (vistas y personaje)». La descripción fija se repite en cada hoja:
+Hechas con Figma AI (`gemini-3.1-flash-image`) el 24 de octubre de 2026, en el archivo «Brumaclara —
+Arte del juego (vistas y personaje)» (nodos 4:2 a 9:2). Sustituyen a las del héroe y la heroína con capa
+(del 18 y 23 de octubre), que se retiraron: el protagonista es un viajero que busca trabajo, no un héroe.
+La descripción fija de cada hoja (la de la mujer cambia el pelo por *«long straight golden-blonde hair
+tied in a high ponytail with a short fringe»* y los pantalones por *leggings*):
 
-> The same heroine in every cell: young anime adventurer girl, long straight golden-blonde hair tied in a
-> high ponytail with a short fringe, dark crimson scarf wrapped around the neck, crimson cape reaching
-> the knees, blue short-sleeved tunic, brown leather bracers, brown leather strap diagonally across the
-> chest, brown belt with a small silver buckle, dark grey leggings, brown leather boots, a steel short
-> sword with a brown grip. About 2.5 heads tall, full body.
+> The same young man in every cell: an ordinary young traveller looking for work, not a hero; spiky swept
+> royal-blue hair with a long fringe, a forest-green short-sleeved tunic, a sleeveless crimson-red cloth
+> vest worn over the tunic and laced at the front, brown leather bracers, brown leather belt with a small
+> pouch, dark grey trousers, brown leather boots, a plain steel short sword with a brown grip on his hip.
+> NO cape, NO cloak, NO scarf: his back shows the vest and tunic. About 2.5 heads tall, full body.
 
 | Archivo | Contenido | Notas de revisión |
 |---|---|---|
-| `mujer_walk.png` | Caminar de frente, de lado (a la derecha) y de espaldas; quieta en 4 direcciones. | A tamaño completo. Todo aprovechable. |
-| `mujer_actions.png` | Ataque de frente, de lado y de espaldas; daño, daño de lado, derrota y hechizo. | **Provisional:** es la miniatura de 256 px ampliada (se alcanzó el límite diario de Figma). |
-| `mujer_extra.png` | Esquiva de frente, de lado y de espaldas; reposo. | **Provisional**, como la anterior. |
+| `hombre_walk.png`, `mujer_walk.png` | Caminar de frente, de lado (a la derecha) y de espaldas; quieto en 4 direcciones. | El 1.er paso lateral de la mujer mira a la izquierda: se refleja. |
+| `hombre_actions.png`, `mujer_actions.png` | Ataque de frente, de lado y de espaldas; daño, daño de lado, derrota y hechizo. | Los dos últimos fotogramas del ataque lateral del hombre miran a la izquierda: se reflejan. |
+| `hombre_extra.png`, `mujer_extra.png` | Esquiva de frente, de lado y de espaldas; quieto en 4 direcciones. | Todo aprovechable. |
 
 ## Variantes de color (receta `recolors`)
 

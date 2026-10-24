@@ -1,6 +1,8 @@
 # Creador de personaje
 
-Es la primera pantalla del juego (`scenes/ui/character_creator.tscn`). Se elige:
+Es la primera pantalla del juego (`scenes/ui/character_creator.tscn`). El protagonista es un viajero
+que llega a Brumaclara buscando trabajo, no un héroe elegido (GDD 7.1), así que viste ropa de viaje:
+túnica, chaleco de tela, cinturón con bolsa, brazales y botas. Sin capa ni bufanda. Se elige:
 
 | Opción | Qué cambia |
 |---|---|
@@ -8,7 +10,7 @@ Es la primera pantalla del juego (`scenes/ui/character_creator.tscn`). Se elige:
 | Peinado | Los peinados dibujados para ese género (de momento uno por género: puntas y coleta) |
 | Pelo | 10 colores (el original, negro, castaño, rubio, pelirrojo, blanco, azul, rosa, verde y morado) |
 | Piel | 5 tonos (el original, clara, media, morena y oscura) |
-| Atuendo | 8 combinaciones de colores para la túnica y la capa con la bufanda |
+| Atuendo | 9 combinaciones de colores para la túnica y el chaleco (Viajero, Campesino, Leñador, Marinero, Herrero, Mercader, Brasa, Bruma y Noche) |
 
 Flechas o WASD para elegir, Intro para confirmar. También se puede usar el ratón. «Aleatorio» sortea
 un aspecto. Al empezar se guarda en `user://personaje.json` y el juego lo usa en todos los niveles.
@@ -21,7 +23,7 @@ un aspecto. Al empezar se guarda en `user://personaje.json` y el juego lo usa en
   con `<set>_frames.tres`, con las mismas animaciones. Están en la lista `MODELS` de
   `scripts/systems/hero_look.gd`.
 - **Colores.** `tools/art_pipeline/build.py` guarda junto a cada juego una máscara (`<set>_mask.png`)
-  que dice qué píxeles son pelo, piel, ropa o capa (tabla `LOOK_GROUPS`). Al cargar, `HeroLook` pinta
+  que dice qué píxeles son pelo, piel, túnica o chaleco (tabla `LOOK_GROUPS`). Al cargar, `HeroLook` pinta
   cada grupo con el color elegido y conserva el sombreado del dibujo.
 
 ## Añadir un peinado o un atuendo dibujado
@@ -33,8 +35,10 @@ un aspecto. Al empezar se guarda en `user://personaje.json` y el juego lo usa en
 
 ## Pendiente
 
-Las hojas de ataque y esquiva de la heroína salen de las miniaturas de 256 px de Figma, porque se
-alcanzó el límite diario de llamadas de Figma antes de descargarlas a tamaño completo. Funcionan, pero
-están algo más borrosas y son algo más grandes que las de caminar. Cuando estén las hojas grandes
-(nodos 2:2 y 3:2 del archivo «Brumaclara — Arte del juego (vistas y personaje)»), se sustituyen
-`art/ai/heroes/mujer_actions.png` y `mujer_extra.png` y se ejecuta `build.py heroine`.
+- **Más peinados.** Cada peinado es un juego completo de tres hojas. El siguiente previsto es un hombre
+  con pelo corto rubio. Los créditos de IA de Figma del plan Starter se agotaron el 24 de octubre de 2026
+  y vuelven el 1 de noviembre. Canva sabe editar una hoja existente cambiando solo el peinado
+  (`generate-image` con la hoja como referencia), pero la imagen a tamaño completo solo se puede bajar
+  exportando un diseño de Canva.
+- **Espadas finas.** En algunos fotogramas de ataque la hoja de la espada queda muy fina al reducirla al
+  píxel del juego.
