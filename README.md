@@ -1,12 +1,15 @@
 # Proyecto Brumaclara *(nombre provisional)*
 
 RPG de acción y aventura de fantasía anime en píxel art, desarrollado en solitario con **Godot 4.7**.
-El diseño completo está en el GDD del proyecto (título de trabajo: *GUILD ZERO*).
+Este repositorio es el **juego final** en desarrollo (ya no un prototipo ni una demo). El diseño completo
+está en el GDD del proyecto (título de trabajo: *GUILD ZERO*) y en `docs/`: combate
+(`diseno_combate.md`), árboles de habilidades de las seis afinidades (`arbol_habilidades.md`) y
+bestiario (`bestiario.md`).
 
 El juego empieza en **el pueblo de Brumaclara** (plaza de la Fuente, terraza de los gremios, calle del
 Mercado, barrio de viviendas, establos y puerta sur; ver `docs/diseno_pueblo.md`) con sus primeros
-habitantes. Por el camino del oeste se sale a **las afueras**, la zona de demostración del combate: el
-lobo de la Fractura y su guarida. Todo el contenido nuevo debe mantener este nivel visual (ver la
+habitantes. Por el camino del oeste se sale a **las afueras** (zona 1 del bestiario), con el lobo de la
+Fractura y su guarida. Todo el contenido nuevo debe mantener este nivel visual (ver la
 [guía de arte](docs/guia_de_arte.md)).
 
 ![Plaza de la Fuente](docs/screenshots/05_plaza.png)
@@ -64,7 +67,7 @@ no se puede subir, a propósito).
 
 ![Sala de pruebas](docs/screenshots/19_sala_de_pruebas.png)
 
-## Qué hay en la demo
+## Qué hay ya en el juego
 
 - **Protagonista** en cuatro direcciones: reposo, caminar, combo de espada, esquiva con estela, daño,
   hechizos y derrota.
@@ -100,7 +103,7 @@ data/enemies/   Fichas de enemigos (lobo)
 docs/           Guía de arte, diseño del pueblo y del combate, modo edición y capturas
 scenes/
   levels/brumaclara.tscn  Escena principal: el pueblo
-  levels/demo_zone.tscn   Las afueras de Brumaclara (combate)
+  levels/afueras.tscn     Las afueras de Brumaclara (zona 1, combate)
   characters/             Protagonista, lobo y habitantes
   effects/                Hechizos, impactos, polvo, orbe de experiencia y números de daño
   environment/            Árboles, plantas, objetos y fondo lejano
@@ -137,7 +140,7 @@ xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capt
 
 ## Estado
 
-- [x] Zona de demostración con el modelo artístico definitivo y combate funcional
+- [x] Las afueras de Brumaclara con el modelo artístico definitivo y combate funcional
 - [ ] Validar el estilo y la sensación del combate
 - [x] Pueblo de Brumaclara: barrios, edificios de los gremios y primeros habitantes
 - [x] Modo edición para decorar los niveles dentro del juego
@@ -147,6 +150,7 @@ xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capt
 - [ ] Interiores, caja de diálogo y minimapa
 - [x] Diseño de combate: afinidades, talentos, técnicas de gremio, estados y bestiario (`docs/diseno_combate.md`)
 - [x] Habilidades y enemigos como fichas de datos
+- [x] Diseño de las seis afinidades con sus árboles (218 nodos) y del bestiario (53 enemigos, 10 jefes)
 - [ ] Árbol de habilidades en juego, equipo, diálogos y misiones
 
 El prototipo anterior de la plaza del pueblo (arte dibujado por código) se conserva como referencia en la

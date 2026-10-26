@@ -1,5 +1,5 @@
 extends SceneTree
-## Headless checks of the demo's combat loop (sword, Chispa, Estallido, dodge, wolf pounce, death
+## Headless checks of the combat loop (sword, Chispa, Estallido, dodge, wolf pounce, death
 ## rewards) and of the hidden chest. Run: godot --headless --path . --script res://tools/tests/test_combat.gd
 
 var _failures := 0
@@ -12,7 +12,7 @@ func _initialize() -> void:
 
 
 func _run() -> void:
-	var level: Node = load("res://scenes/levels/demo_zone.tscn").instantiate()
+	var level: Node = load("res://scenes/levels/afueras.tscn").instantiate()
 	root.add_child(level)
 	_hero = level.get_node("Player")
 	var wolves := level.get_node("Enemies").get_children()

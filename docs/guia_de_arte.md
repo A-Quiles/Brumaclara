@@ -1,7 +1,7 @@
 # Guía de arte de Brumaclara
 
 El modelo visual que deben seguir todos los recursos del juego. La escena de referencia es
-`scenes/levels/demo_zone.tscn` (las afueras de Brumaclara); si un recurso nuevo no encaja al lado del
+`scenes/levels/afueras.tscn` (las afueras de Brumaclara); si un recurso nuevo no encaja al lado del
 héroe y del lobo de esa escena, no está terminado.
 
 ## 1. Objetivo

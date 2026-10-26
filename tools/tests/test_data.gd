@@ -7,7 +7,7 @@ var _failures := 0
 
 
 func _initialize() -> void:
-	var level: Node = load("res://scenes/levels/demo_zone.tscn").instantiate()
+	var level: Node = load("res://scenes/levels/afueras.tscn").instantiate()
 	root.add_child(level)
 	await physics_frame
 	var hero: Node = level.get_node("Player")

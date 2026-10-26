@@ -4,7 +4,7 @@ extends SceneTree
 ## Needs a display; on a server use:
 ##   xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd -- [shot names | combat]
 
-const LEVEL := "res://scenes/levels/demo_zone.tscn"
+const LEVEL := "res://scenes/levels/afueras.tscn"
 const TOWN := "res://scenes/levels/brumaclara.tscn"
 const OUT := "res://docs/screenshots/"
 const SCALE := 3  # 640x360 -> 1920x1080
