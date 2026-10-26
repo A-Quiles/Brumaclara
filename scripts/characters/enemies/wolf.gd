@@ -7,14 +7,7 @@ enum State { PROWL, CHASE, WINDUP, POUNCE, RECOVER, HURT, DEAD }
 
 const GRAVITY := 30.0
 
-@export var detect_radius := 7.5
-@export var give_up_radius := 13.0
-@export var attack_range := 3.6
-@export var speed := 4.0
-@export var pounce_speed := 12.5
-@export var windup_seconds := 0.6
-@export var xp_reward := 30
-@export var respawn_seconds := 12.0
+@export var data: EnemyData  ## its numbers: data/enemies/wolf.tres
 @export var orb_scene: PackedScene
 @export var death_effect: PackedScene
 @export var text_scene: PackedScene
@@ -36,6 +29,10 @@ var _layers := Vector2i.ZERO  # collision layer and mask while alive
 
 
 func _ready() -> void:
+	_health.maximum = data.max_hp
+	_health.heal(data.max_hp)
+	_bite.damage = data.damage
+	_bite.push = data.push
 	_layers = Vector2i(collision_layer, collision_mask)
 	_home = global_position
 	_wander_to = _home
@@ -69,8 +66,8 @@ func _physics_process(delta: float) -> void:
 			if _timer <= 0.0:
 				_pounce()
 		State.POUNCE:
-			velocity.x = _pounce_dir.x * pounce_speed
-			velocity.z = _pounce_dir.z * pounce_speed
+			velocity.x = _pounce_dir.x * data.attack_speed
+			velocity.z = _pounce_dir.z * data.attack_speed
 			if _timer <= 0.0:
 				_bite.set_active(false)
 				_set_state(State.RECOVER, 0.8, "idle")
@@ -85,7 +82,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _prowl(to_hero: Vector3) -> void:
-	if to_hero.length() < detect_radius and _hero_alive():
+	if to_hero.length() < data.detect_radius and _hero_alive():
 		_set_state(State.CHASE, 0.0, "run")
 		return
 	var step := _flat(_wander_to - global_position)
@@ -93,21 +90,21 @@ func _prowl(to_hero: Vector3) -> void:
 		_wander_to = _home + Vector3(randf_range(-2.5, 2.5), 0, randf_range(-2.0, 2.0))
 		_timer = randf_range(2.0, 3.5)
 		step = Vector3.ZERO
-	_move(step.normalized() * speed * 0.35 if step.length() > 0.3 else Vector3.ZERO, "idle" if step == Vector3.ZERO else "run")
+	_move(step.normalized() * data.speed * 0.35 if step.length() > 0.3 else Vector3.ZERO, "idle" if step == Vector3.ZERO else "run")
 
 
 func _chase(to_hero: Vector3) -> void:
 	var from_home := _flat(global_position - _home).length()
-	if not _hero_alive() or to_hero.length() > give_up_radius or from_home > give_up_radius * 1.3:
+	if not _hero_alive() or to_hero.length() > data.give_up_radius or from_home > data.give_up_radius * 1.3:
 		_wander_to = _home
 		_set_state(State.PROWL, 3.0, "run")
 		return
-	if to_hero.length() < attack_range:
+	if to_hero.length() < data.attack_range:
 		_pounce_dir = to_hero.normalized()
 		_face(View.to_screen(_pounce_dir).x)
-		_set_state(State.WINDUP, windup_seconds, "windup")
+		_set_state(State.WINDUP, data.windup_seconds, "windup")
 		return
-	_move(to_hero.normalized() * speed, "run")
+	_move(to_hero.normalized() * data.speed, "run")
 
 
 func _pounce() -> void:
@@ -146,10 +143,10 @@ func _on_died() -> void:
 		_spawn(death_effect, global_position + Vector3(0, 0.6, 0.1))
 	if orb_scene:
 		var orb := _spawn(orb_scene, global_position + Vector3(0, 0, 0.2))
-		orb.amount = xp_reward
+		orb.amount = data.xp_reward
 	await create_tween().tween_property(_sprite, "modulate:a", 0.0, 0.4).finished
 	visible = false
-	await get_tree().create_timer(respawn_seconds).timeout
+	await get_tree().create_timer(data.respawn_seconds).timeout
 	global_position = _home
 	_health.heal(_health.maximum)
 	_sprite.modulate = Color.WHITE

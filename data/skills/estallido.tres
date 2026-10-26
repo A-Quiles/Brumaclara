@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/effects/fire_burst.tscn" id="1_7pbns"]
+[ext_resource type="Script" path="res://scripts/data/skill_data.gd" id="2_sxday"]
+
+[resource]
+script = ExtResource("2_sxday")
+id = &"burst"
+display_name = "Estallido"
+kind = 1
+scene = ExtResource("1_7pbns")
+mana_cost = 25.0
+cooldown = 4.0
+cast_seconds = 0.5
+release_at = 0.22
+damage = 30
+push = 11.0

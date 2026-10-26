@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/effects/fire_bolt.tscn" id="1_imop8"]
+[ext_resource type="Script" path="res://scripts/data/skill_data.gd" id="2_0pcpo"]
+
+[resource]
+script = ExtResource("2_0pcpo")
+id = &"bolt"
+display_name = "Chispa"
+scene = ExtResource("1_imop8")
+cooldown = 0.45
+cast_seconds = 0.28
+release_at = 0.08
+damage = 18

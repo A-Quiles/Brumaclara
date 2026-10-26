@@ -1,7 +1,7 @@
 extends CharacterBody3D
 ## The hero. Free 8-way movement drawn with 4-direction sprites (left is the mirrored right), a
-## chainable sword attack, a dodge with brief invulnerability, two fire skills (Chispa bolt and
-## Estallido burst), hit reactions, defeat and respawn, experience and levels.
+## chainable sword attack, a dodge with brief invulnerability, skills read from data files (`skills`:
+## the first on Q, the second on E), hit reactions, defeat and respawn, experience and levels.
 
 signal stats_changed(hp: int, max_hp: int, mp: float, max_mp: float)
 signal progressed(level: int, xp: int, xp_next: int)
@@ -18,10 +18,7 @@ const MASK_WORLD := 1
 
 @export var max_mp := 50.0
 @export var mp_regen := 5.0  ## mana recovered per second
-@export var bolt_scene: PackedScene
-@export var bolt_cost := 8.0
-@export var burst_scene: PackedScene
-@export var burst_cost := 25.0
+@export var skills: Array[SkillData] = []  ## data/skills/*.tres, in key order (Q, E)
 @export var dust_scene: PackedScene
 @export var text_scene: PackedScene  ## floating damage numbers and words
 
@@ -37,7 +34,7 @@ var _invulnerable := 0.0  # seconds of invulnerability left
 var _cooldowns := {}      # skill -> seconds left
 var _queued_attack := false
 var _sword_state := 0     # 0 waiting, 1 swinging, 2 done (per attack)
-var _cast_skill := &""
+var _cast_skill: SkillData
 var _cast_released := false
 var _dodge_dir := Vector3.ZERO
 var _afterimage_clock := 0.0
@@ -128,10 +125,11 @@ func _read_actions(input: Vector2) -> void:
 		_start_attack()
 	elif Input.is_action_just_pressed("dodge") and _ready_skill(&"dodge"):
 		_start_dodge(input)
-	elif Input.is_action_just_pressed("skill_1"):
-		_try_cast(&"bolt", bolt_cost, 0.45)
-	elif Input.is_action_just_pressed("skill_2"):
-		_try_cast(&"burst", burst_cost, 4.0)
+	else:
+		for i in mini(skills.size(), 2):
+			if Input.is_action_just_pressed("skill_%d" % (i + 1)):
+				_try_cast(skills[i])
+				return
 
 
 func _begin(state: State, seconds: float, animation: String) -> void:
@@ -196,33 +194,36 @@ func _dodge_step(delta: float) -> void:
 		_afterimage()
 
 
-func _try_cast(skill: StringName, cost: float, cooldown: float) -> void:
-	if not _ready_skill(skill):
+func _try_cast(skill: SkillData) -> void:
+	if not _ready_skill(skill.id):
 		return
-	if mp < cost:
+	if mp < skill.mana_cost:
 		_popup("Sin maná", Color("9fc8ff"))
 		return
-	mp -= cost
+	mp -= skill.mana_cost
 	_emit_stats()
-	_cooldowns[skill] = cooldown
-	cooldown_started.emit(skill, cooldown)
+	_cooldowns[skill.id] = skill.cooldown
+	cooldown_started.emit(skill.id, skill.cooldown)
 	_cast_skill = skill
 	_cast_released = false
-	_begin(State.CAST, 0.28 if skill == &"bolt" else 0.5, "cast")
+	_begin(State.CAST, skill.cast_seconds, "cast")
 
 
 func _cast_step() -> void:
-	if _cast_released or _elapsed < (0.08 if _cast_skill == &"bolt" else 0.22):
+	if _cast_released or _elapsed < _cast_skill.release_at:
 		return
 	_cast_released = true
-	if _cast_skill == &"bolt":
-		var bolt: Node3D = bolt_scene.instantiate()
-		bolt.direction = _facing_3d()
-		get_parent().add_child(bolt)
-		bolt.global_position = global_position + _facing_3d() * 0.7 + Vector3(0, 0.95, 0.05)
+	var effect: Hitbox = _cast_skill.scene.instantiate()
+	effect.damage = _cast_skill.damage
+	effect.push = _cast_skill.push
+	if _cast_skill.kind == SkillData.Kind.PROJECTILE:
+		effect.set("direction", _facing_3d())  # a projectile scene (fire_bolt.gd) flies this way
+		get_parent().add_child(effect)
+		effect.global_position = global_position + _facing_3d() * 0.7 + Vector3(0, 0.95, 0.05)
 	else:
-		var burst := _spawn(burst_scene, global_position + Vector3(0, 0, 0.1))
-		burst.landed.connect(func(_target: Hurtbox) -> void: GameFeel.hitstop(0.04))
+		get_parent().add_child(effect)
+		effect.global_position = global_position + Vector3(0, 0, 0.1)
+		effect.landed.connect(func(_target: Hurtbox) -> void: GameFeel.hitstop(0.04))
 		_shake = 0.3
 
 

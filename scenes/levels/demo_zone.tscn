@@ -69,8 +69,6 @@
 [ext_resource type="Script" path="res://scripts/environment/backdrop.gd" id="67_jan5s"]
 [ext_resource type="PackedScene" path="res://scenes/characters/player.tscn" id="68_in63q"]
 [ext_resource type="Script" path="res://scripts/characters/player.gd" id="69_i7dcl"]
-[ext_resource type="PackedScene" path="res://scenes/effects/fire_bolt.tscn" id="70_51cwo"]
-[ext_resource type="PackedScene" path="res://scenes/effects/fire_burst.tscn" id="71_ysa3a"]
 [ext_resource type="PackedScene" path="res://scenes/effects/dust.tscn" id="72_1ahao"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="73_ser2c"]
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="74_o7wky"]
@@ -1526,8 +1524,6 @@ collision_mask = 5
 floor_max_angle = 0.87266463
 floor_snap_length = 0.4
 script = ExtResource("69_i7dcl")
-bolt_scene = ExtResource("70_51cwo")
-burst_scene = ExtResource("71_ysa3a")
 dust_scene = ExtResource("72_1ahao")
 text_scene = ExtResource("64_efuy5")
 

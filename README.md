@@ -95,7 +95,9 @@ art/            Imágenes de origen generadas con IA (Godot no las importa) y su
 assets/         Recursos del juego producidos por el pipeline: personajes, escenario, efectos, interfaz
   nuevos/       Imágenes nuevas sin procesar para el modo edición
 data/edits/     Cambios hechos con el modo edición, uno por nivel
-docs/           Guía de arte, diseño del pueblo, modo edición y capturas
+data/skills/    Fichas de habilidades (Chispa, Estallido)
+data/enemies/   Fichas de enemigos (lobo)
+docs/           Guía de arte, diseño del pueblo y del combate, modo edición y capturas
 scenes/
   levels/brumaclara.tscn  Escena principal: el pueblo
   levels/demo_zone.tscn   Las afueras de Brumaclara (combate)
@@ -129,6 +131,7 @@ godot --headless --path . --script res://tools/tests/test_town.gd
 godot --headless --path . --script res://tools/tests/test_edit_mode.gd
 godot --headless --path . --script res://tools/tests/test_hero_look.gd
 godot --headless --path . --script res://tools/tests/test_climb.gd      # escaleras y rampas
+godot --headless --path . --script res://tools/tests/test_data.gd       # fichas de habilidades y enemigos
 xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capturas (necesita pantalla)
 ```
 
@@ -142,7 +145,9 @@ xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capt
 - [x] Protagonista sin capa (viajero que busca trabajo), hombre y mujer con hojas completas
 - [ ] Más peinados dibujados
 - [ ] Interiores, caja de diálogo y minimapa
-- [ ] Árbol de habilidades, equipo, diálogos y misiones
+- [x] Diseño de combate: afinidades, talentos, técnicas de gremio, estados y bestiario (`docs/diseno_combate.md`)
+- [x] Habilidades y enemigos como fichas de datos
+- [ ] Árbol de habilidades en juego, equipo, diálogos y misiones
 
 El prototipo anterior de la plaza del pueblo (arte dibujado por código) se conserva como referencia en la
 rama `prototipo-plaza`.
