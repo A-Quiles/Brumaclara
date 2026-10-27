@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/props/interior/armario.png" id="1_r"]
+[ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="2_r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1"]
+size = Vector3(1.336, 1.4, 0.7)
+
+[node name="Armario" type="StaticBody3D"]
+
+[node name="Sprite" type="Sprite3D" parent="."]
+centered = false
+offset = Vector2(-17, 0)
+pixel_size = 0.0449
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_r")
+
+[node name="Shadow" type="Sprite3D" parent="."]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.02, -0.05)
+cast_shadow = 0
+pixel_size = 0.054
+axis = 1
+texture_filter = 0
+modulate = Color(1.000, 1.000, 1.000, 0.8)
+texture = ExtResource("2_r")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.7, -0.09999999999999998)
+shape = SubResource("BoxShape3D_1")

@@ -7,6 +7,7 @@
 script = ExtResource("1_data")
 display_name = "Murciélago de cueva"
 frames = ExtResource("2_frames")
+sprite_offset = Vector2(-23, -15)
 sprite_scale = 0.9
 max_hp = 28
 damage = 9

@@ -122,6 +122,7 @@
 [ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/carter.tscn" id="120_mphe0"]
 [ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/mara.tscn" id="121_lfsom"]
 [ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/elia.tscn" id="122_thi1a"]
+[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/neris.tscn" id="901_neris"]
 [ext_resource type="Script" path="res://scripts/systems/exit.gd" id="123_xnj2r"]
 [ext_resource type="PackedScene" path="res://scenes/environment/backdrop.tscn" id="124_jm8as"]
 [ext_resource type="Script" path="res://scripts/environment/backdrop.gd" id="125_pbybv"]
@@ -133,6 +134,9 @@
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="133_n0xg0"]
 [ext_resource type="Script" path="res://scripts/systems/level_edits.gd" id="134_fd11v"]
 [ext_resource type="PackedScene" path="res://scenes/environment/props/shrine.tscn" id="200_shrine"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_puerta"]
+size = Vector3(1.4, 2.2, 0.8)
 
 [sub_resource type="Environment" id="Environment_kypcr"]
 background_mode = 3
@@ -5323,6 +5327,11 @@ script = ExtResource("119_hoxqx")
 lines = PackedStringArray("Me llamo Elia. Curo lo que puedo con hierbas y paciencia.", "Desde que apareció esa grieta violeta, los animales del bosque ya no se comportan igual.")
 wander = 3.0
 
+[node name="Neris" type="CharacterBody3D" parent="People" instance=ExtResource("901_neris")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6, 3.6, -45.2)
+script = ExtResource("119_hoxqx")
+lines = PackedStringArray("Neris Vale, del Archivo. Estudio lo que dejan atrás las Fracturas.", "No podemos protegernos de algo que nos negamos a estudiar.", "Si ves cristales violeta en las afueras, no los toques con las manos desnudas. Tráeme lo que puedas contarme de ellos.")
+
 [node name="Edge" type="StaticBody3D" parent="." unique_id=1254126211]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.25, 7, -8)
 
@@ -5370,6 +5379,56 @@ mesh = ExtResource("21_h6yhu")
 [node name="Collision" type="CollisionShape3D" parent="@StaticBody3D@11" unique_id=518578751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("BoxShape3D_4hjnc")
+
+
+
+[node name="Puerta" type="Area3D" parent="Buildings/Posada"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.0, 4.0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("123_xnj2r")
+target_scene = "res://scenes/levels/interiors/posada.tscn"
+arrival = Vector3(0, 0.1, 9.4)
+
+[node name="Collision" type="CollisionShape3D" parent="Buildings/Posada/Puerta"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 1.1, 0.0)
+shape = SubResource("BoxShape3D_puerta")
+
+[node name="Puerta" type="Area3D" parent="Buildings/SedeDelFaro"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.0, 5.84)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("123_xnj2r")
+target_scene = "res://scenes/levels/interiors/sede_faro.tscn"
+arrival = Vector3(0, 0.1, 8.4)
+
+[node name="Collision" type="CollisionShape3D" parent="Buildings/SedeDelFaro/Puerta"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 1.1, 0.0)
+shape = SubResource("BoxShape3D_puerta")
+
+[node name="Puerta" type="Area3D" parent="Buildings/TiendaDeNara"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.0, 4.0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("123_xnj2r")
+target_scene = "res://scenes/levels/interiors/tienda_nara.tscn"
+arrival = Vector3(0, 0.1, 7.4)
+
+[node name="Collision" type="CollisionShape3D" parent="Buildings/TiendaDeNara/Puerta"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 1.1, 0.0)
+shape = SubResource("BoxShape3D_puerta")
+
+[node name="Puerta" type="Area3D" parent="Buildings/CasaDeElia"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.0, 4.56)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("123_xnj2r")
+target_scene = "res://scenes/levels/interiors/taller_elia.tscn"
+arrival = Vector3(0, 0.1, 7.4)
+
+[node name="Collision" type="CollisionShape3D" parent="Buildings/CasaDeElia/Puerta"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 1.1, 0.0)
+shape = SubResource("BoxShape3D_puerta")
 
 [node name="Exit" type="Area3D" parent="." unique_id=642910999]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0, 29)

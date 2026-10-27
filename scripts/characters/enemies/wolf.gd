@@ -39,6 +39,11 @@ func _ready() -> void:
 	add_child(_status)
 	if data.frames:
 		_sprite.sprite_frames = data.frames
+	if data.sprite_offset != Vector2.ZERO:
+		_sprite.offset = data.sprite_offset
+		var frame := _sprite.sprite_frames.get_frame_texture(&"idle", 0)
+		if frame:  # the health bar floats just above the drawing
+			_bar.position.y = (frame.get_height() + data.sprite_offset.y) * _sprite.pixel_size + 0.25
 	if data.sprite_scale != 1.0:
 		scale = Vector3.ONE * data.sprite_scale
 		_bar.scale = Vector3.ONE / data.sprite_scale
@@ -144,8 +149,21 @@ func _pounce() -> void:
 		_pounce_dir = _pounce_dir.lerp(to_hero.normalized(), 0.35).normalized()
 	_set_state(State.POUNCE, 0.3, "pounce")
 	var weaken: float = Progress.stat("marked_weaken") if _hero_marks_me() else 0.0
-	_bite.damage = roundi(data.damage * (1.0 - weaken))
-	_bite.set_active(true)
+	var dmg := roundi(data.damage * (1.0 - weaken))
+	match data.attack_kind:
+		"burst":  # slams where it stands
+			_pounce_dir = Vector3.ZERO
+			SkillCaster.enemy_blast(self, global_position, dmg, data.shot_affinity, data.burst_radius)
+		"volley":  # a fan of shots toward the hero
+			var spread := deg_to_rad(16.0)
+			for k in data.volley:
+				var turn := (k - (data.volley - 1) / 2.0) * spread
+				SkillCaster.enemy_bolt(self, global_position + Vector3(0, 0.7, 0), _pounce_dir.rotated(Vector3.UP, turn),
+						dmg, data.shot_affinity, data.shot_speed)
+			_pounce_dir = Vector3.ZERO
+		_:
+			_bite.damage = dmg
+			_bite.set_active(true)
 
 
 func _on_struck(damage: int, push: Vector3, source: Hitbox = null) -> void:

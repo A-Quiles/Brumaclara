@@ -7,6 +7,7 @@
 script = ExtResource("1_data")
 display_name = "Gólem de musgo"
 frames = ExtResource("2_frames")
+sprite_offset = Vector2(-25, -5)
 sprite_scale = 1.5
 max_hp = 160
 damage = 26
@@ -20,3 +21,6 @@ respawn_seconds = 40
 weak = Array[StringName]([&"rayo", &"hielo"])
 resist = Array[StringName]([&"tierra", &"fuego"])
 defense = 0.2
+attack_kind = "burst"
+burst_radius = 2.4
+shot_affinity = &"tierra"

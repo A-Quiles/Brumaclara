@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/props/interior/alfombrilla.png" id="1_r"]
+
+[node name="Alfombrilla" type="Node3D"]
+
+[node name="Sprite" type="Sprite3D" parent="."]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.02, 0.0)
+pixel_size = 0.0449
+axis = 1
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_r")

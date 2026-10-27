@@ -7,6 +7,7 @@
 script = ExtResource("1_data")
 display_name = "Gólem fracturado"
 frames = ExtResource("2_frames")
+sprite_offset = Vector2(-25, -4)
 sprite_scale = 1.5
 max_hp = 210
 damage = 32
@@ -20,3 +21,6 @@ respawn_seconds = 30
 weak = Array[StringName]([&"luz", &"rayo"])
 resist = Array[StringName]([&"tierra", &"sombra"])
 anomalous = true
+attack_kind = "burst"
+burst_radius = 2.6
+shot_affinity = &"sombra"

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_data"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/enemies/espectro_f_frames.tres" id="2_frames"]
+
+[resource]
+script = ExtResource("1_data")
+display_name = "Espectro de la Fractura"
+frames = ExtResource("2_frames")
+sprite_offset = Vector2(-25, -10)
+max_hp = 60
+damage = 16
+push = 6.0
+speed = 3.6
+attack_range = 6.5
+windup_seconds = 0.6
+xp_reward = 70
+respawn_seconds = 30
+weak = Array[StringName]([&"luz"])
+resist = Array[StringName]([&"sombra", &"espada"])
+anomalous = true
+attack_kind = "volley"
+volley = 1
+shot_speed = 10.0
+shot_affinity = &"sombra"
+sprite_scale = 1.1

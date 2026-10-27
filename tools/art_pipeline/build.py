@@ -7,6 +7,7 @@ drawing (source pixels per game pixel) and where the result goes in assets/. The
 prompts are listed in art/FUENTES.md.
 """
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -504,6 +505,37 @@ def townsfolk():
     return OUT / "characters" / "townsfolk"
 
 
+# People of the story drawn as 4 x 3 sheets (art/ai/<who>.png, 200 x 150 px, one game pixel per
+# source pixel): rows walking toward the camera, to the side and away. who -> (the side row was drawn
+# facing left: the game expects right and mirrors it, keying tolerance: lower when the clothes are close
+# to the backdrop's colour).
+CHARACTERS = {"iven": (True, 80.0, True), "neris": (False, 50.0, False)}  # + clear magenta spill
+
+
+def characters(only=None):
+    out = OUT / "characters" / "townsfolk"
+    for who, (faces_left, tol, spill) in CHARACTERS.items():
+        if (only and who not in only) or not (SRC / f"{who}.png").exists():
+            continue
+        rgb = px.load(SRC / f"{who}.png")
+        bg = px.dominant_border_colour(rgb)
+        g = sheets.cut_grid(rgb, 3, 4, inset=2)
+        rows = {facing: [flood_key(cell, tol, bg=bg, main_only=True, spill=spill) for cell in g[r]]
+                for r, facing in enumerate(["down", "side", "up"])}
+        if faces_left:
+            rows["side"] = [sheets.mirror(im) for im in rows["side"]]
+        palette = palette_for([im for row in rows.values() for im in row], 32)
+        placed = baseline_rows([[cropped(im) for im in row] for row in (sheets.snap_all(r, palette) for r in rows.values())],
+                               HERO_FRAME, HERO_ANCHOR)
+        path = save(sheets.assemble(placed, *HERO_FRAME), "characters", "townsfolk", who + ".png")
+        animations = []
+        for i, facing in enumerate(rows):
+            animations += [("idle_" + facing, [(0, i)], 1, True), ("walk_" + facing, [(c, i) for c in range(4)], 7, True)]
+        sheets.write_sprite_frames(path.with_name(who + "_frames.tres"),
+                                   f"res://assets/characters/townsfolk/{who}.png", *HERO_FRAME, animations)
+    return out
+
+
 # --- interface -------------------------------------------------------------------------------
 
 UI_PARTS = ["panel", "trough", "bar_hp", "trough_2", "bar_mp", "trough_3", "bar_xp",
@@ -740,26 +772,21 @@ def wolf_variants():
 
 
 # Monsters drawn as 4x4 sheets (art/ai/<src>.png, 200 px, one game pixel per source pixel):
-# rows idle, move, attack, fall; name -> (source, frame size, feet anchor, palette colours)
+# rows idle, move, attack, fall. name -> (palette colours, lift): `lift` raises flying creatures above
+# their shadow. Frames are as big as the largest drawing; the feet sit 3 px above the bottom (+ lift),
+# centred, and data/enemies/<name>.tres gets the matching sprite_offset.
 MONSTERS = {
-    "hongo": ("hongo", (48, 44), (24, 42), 24),
-    "murcielago": ("murcielago", (48, 44), (24, 42), 24),
-    "esqueleto": ("esqueleto", (48, 48), (24, 46), 24),
-    "golem": ("golem", (52, 50), (26, 48), 24),
-    "espectro": ("espectro", (48, 48), (24, 46), 24),
-    # touched by the Fractura (violet art: no purple clean-up, it would eat the cracks)
-    "hongo_f": ("hongo_f", (48, 44), (24, 42), 28),
-    "murcielago_f": ("murcielago_f", (48, 44), (24, 42), 28),
-    "esqueleto_f": ("esqueleto_f", (48, 48), (24, 46), 28),
-    "golem_f": ("golem_f", (52, 50), (26, 48), 28),
+    "hongo": (24, 0), "murcielago": (24, 10), "esqueleto": (24, 0), "golem": (24, 0), "espectro": (24, 6),
+    # touched by the Fractura
+    "hongo_f": (28, 0), "murcielago_f": (28, 10), "esqueleto_f": (28, 0), "golem_f": (28, 0), "espectro_f": (28, 6),
+    "sporineo": (28, 0), "guardian_raices": (28, 0), "polilla_luminica": (24, 12),
 }
-
-
-KEY_TOL = {"murcielago_f": 45.0, "esqueleto_f": 45.0}  # dark violet art sits close to the magenta backdrop
+KEY_TOL = {"murcielago_f": 45.0, "esqueleto_f": 45.0, "sporineo": 55.0}  # violet art close to the magenta backdrop
+PURPLE_CLEAN = {"hongo", "murcielago", "esqueleto", "golem"}  # no violet in the art: purple is backdrop spill
 
 
 def _unbackdrop(im):
-    """Drops the magenta backdrop and its purple shadow that survive the keying."""
+    """Drops the magenta backdrop's purple spill (shadows, fringes) from art that has no violet."""
     a = np.asarray(im).copy()
     r, g, b = (a[..., i].astype(int) for i in range(3))
     bad = (b > g * 1.25) & (r > g * 1.25) & (a[..., 3] > 0)
@@ -767,28 +794,121 @@ def _unbackdrop(im):
     return Image.fromarray(a, "RGBA")
 
 
-def monsters():
+def flood_key(cell, tol, tight=38.0, bg=None, main_only=False, spill=False):
+    """Alpha of a cell: the backdrop is what has the corners' colour AND touches the border, so
+    colours like it inside the outline (violet cracks on a magenta sheet) stay; only holes of the
+    backdrop's exact colour (between legs, under arms) go too. `bg` overrides the corners' colour;
+    `main_only` drops specks (bits of the neighbouring cells); `spill` also clears the backdrop-tinted
+    shadows drawn under the objects (purple pixels reached from outside the outline)."""
+    bg = sheets.cell_background(cell) if bg is None else bg
+    like = px.background_mask(cell, bg, tol)
+    if spill:
+        r, g, b = cell[..., 0], cell[..., 1], cell[..., 2]
+        like |= (r - g > 40) & (b - g > 25)  # strongly magenta: dark outlines are grey, never spill
+    hole = px.background_mask(cell, bg, min(tight, tol))
+    reach = np.zeros_like(like)
+    reach[0, :], reach[-1, :], reach[:, 0], reach[:, -1] = like[0, :], like[-1, :], like[:, 0], like[:, -1]
+    while True:
+        grown = reach.copy()
+        grown[1:, :] |= reach[:-1, :]
+        grown[:-1, :] |= reach[1:, :]
+        grown[:, 1:] |= reach[:, :-1]
+        grown[:, :-1] |= reach[:, 1:]
+        grown &= like
+        if (grown == reach).all():
+            break
+        reach = grown
+    alpha = px.despeckle((~(reach | hole)).astype(np.float64))
+    if main_only:
+        from scipy import ndimage
+        labels, n = ndimage.label(alpha > 0)
+        if n > 1:
+            sizes = ndimage.sum(alpha > 0, labels, range(1, n + 1))
+            keep = [i + 1 for i, size in enumerate(sizes) if size >= 0.04 * sizes.max()]
+            alpha = np.isin(labels, keep).astype(np.float64)
+    return px.to_image(cell, alpha)
+
+
+def monsters(only=None):
     out = None
-    for name, (src, frame, anchor, ncol) in MONSTERS.items():
-        if not (SRC / f"{src}.png").exists():
+    for name, (ncol, lift) in MONSTERS.items():
+        if (only and name not in only) or not (SRC / f"{name}.png").exists():
             continue
-        g = sheets.cut_grid(px.load(SRC / f"{src}.png"), 4, 4, inset=2)
-        clean = _unbackdrop if not name.endswith("_f") else (lambda im: im)
-        rows = {key: [clean(sheets.pixelate_cell(g[r][c], 1, tol=KEY_TOL.get(name, 100.0))) for c in range(4)]
+        g = sheets.cut_grid(px.load(SRC / f"{name}.png"), 4, 4, inset=2)
+        clean = _unbackdrop if name in PURPLE_CLEAN else (lambda im: im)
+        rows = {key: [clean(flood_key(g[r][c], KEY_TOL.get(name, 100.0))) for c in range(4)]
                 for r, key in enumerate(["idle", "run", "attack", "fall"])}
         palette = palette_for([im for row in rows.values() for im in row], ncol)
-        sheet_rows = baseline_rows([sheets.snap_all(row, palette) for row in rows.values()], frame, anchor)
-        path = save(sheets.assemble(sheet_rows, *frame), "characters", "enemies", f"{name}.png")
-        cells = lambda key, cols: [(c, list(rows).index(key)) for c in cols]
+        snapped = [sheets.snap_all(row, palette) for row in rows.values()]
+        cx = snapped[0][0].width / 2  # the drawings keep their place in their cells (no jitter)
+        bases, half, above, below = [], 0, 0, 0
+        for row in snapped:
+            boxes = [sheets.solid_box(im) for im in row if sheets.solid_box(im)]
+            base = int(np.median([b[3] for b in boxes]))
+            bases.append(base)
+            for b in boxes:
+                half = max(half, cx - b[0], b[2] - cx)
+                above = max(above, base - b[1])
+                below = max(below, b[3] - base)
+        w = 2 * int(np.ceil(half)) + 4
+        bottom = 3 + lift + below
+        h = above + bottom + 2
+        anchor = (w // 2, h - bottom)
+        sheet_rows = [[sheets.place(im, w, h, anchor[0], anchor[1], x_centre=cx, bottom=base) for im in row]
+                      for row, base in zip(snapped, bases)]
+        path = save(sheets.assemble(sheet_rows, w, h), "characters", "enemies", f"{name}.png")
+        cells = lambda key, cols: [(c, list(rows).index(key)) for c in cols]  # noqa: E731
         sheets.write_sprite_frames(path.with_name(f"{name}_frames.tres"), f"res://assets/characters/enemies/{name}.png",
-                                   *frame, [("idle", cells("idle", range(4)), 5, True),
-                                            ("run", cells("run", range(4)), 10, True),
-                                            ("windup", cells("attack", [0]), 1, False),
-                                            ("pounce", cells("attack", [1, 2, 3]), 10, False),
-                                            ("hurt", cells("fall", [0]), 1, False),
-                                            ("dead", cells("fall", [1, 2, 3]), 5, False)])
+                                   w, h, [("idle", cells("idle", range(4)), 5, True),
+                                          ("run", cells("run", range(4)), 10, True),
+                                          ("windup", cells("attack", [0]), 1, False),
+                                          ("pounce", cells("attack", [1, 2, 3]), 10, False),
+                                          ("hurt", cells("fall", [0]), 1, False),
+                                          ("dead", cells("fall", [1, 2, 3]), 5, False)])
+        _set_offset(name, (-(w // 2), -bottom))
         out = path
     return out
+
+
+def _set_offset(name, offset):
+    """Writes where the feet are (Sprite3D offset) into the enemy's data, if it exists."""
+    data = ROOT / "data" / "enemies" / f"{name}.tres"
+    if not data.exists():
+        return
+    text = data.read_text()
+    line = f"sprite_offset = Vector2({offset[0]}, {offset[1]})"
+    if "sprite_offset" in text:
+        text = re.sub(r"sprite_offset = Vector2\([^)]*\)", line, text)
+    else:
+        text = text.replace('frames = ExtResource("2_frames")', 'frames = ExtResource("2_frames")\n' + line)
+    data.write_text(text)
+
+
+FURNITURE = {  # sheet -> the props in its 4 x 4 cells, row by row
+    "furniture_a": ["mesa_redonda", "silla", "mesa_larga", "barra", "estante_botellas", "chimenea", "cama", "armario",
+                    "barril_grifo", "fogon", "estanteria", "escritorio", "alfombrilla", "planta", "farol_poste", "arcon"],
+    "furniture_b": ["mostrador_registro", "tablon_contratos", "vitrina_pociones", "armero", "maniqui_cota", "yunque",
+                    "banco_trabajo", "mesa_mapas", "estante_pergaminos", "lampara_cristal", "cajas_mercancia",
+                    "sacos_harina", "estante_pociones", "estandarte_gremio", "cofre_tesoro", "candelabro"],
+}
+
+
+def interiors():
+    """Floors, walls and rug of the interiors, and their furniture (assets/environment/props/interior)."""
+    g = grid("interior_textures", 2, 2, 4)
+    for (r, c), name in {(0, 0): "floor_planks", (0, 1): "wall_plaster", (1, 0): "floor_flagstone"}.items():
+        save(texture(g[r][c], 1, 20, band=8), "environment", "textures", name + ".png")
+    rug = g[1][1]
+    save(texture(rug, 1, 18), "environment", "textures", "rug_red.png")
+    for sheet, names in FURNITURE.items():
+        rgb = px.load(SRC / f"{sheet}.png")
+        bg = px.dominant_border_colour(rgb)
+        cells = sheets.cut_grid(rgb, 4, 4, inset=2)
+        images = [flood_key(cells[i // 4][i % 4], 70.0, bg=bg, main_only=True, spill=True) for i in range(16)]
+        palette = palette_for(images, 40, FIRE)
+        for name, im in zip(names, sheets.snap_all(images, palette)):
+            save(cropped(im), "environment", "props", "interior", name + ".png")
+    return OUT / "environment" / "props" / "interior"
 
 
 HAIRSTYLES = ["alto", "cresta", "mono", "largo", "volumen"]
@@ -855,7 +975,7 @@ def variants():
 
 RECIPES = {"hero": hero, "heroine": heroine, "wolf": wolf, "nature": nature, "props_b": props_b, "terrain": terrain,
            "terrain_b": terrain_b, "house": house, "facades": facades, "plaza": plaza, "walls_roofs": walls_roofs,
-           "town_props": town_props, "townsfolk": townsfolk, "variants": variants, "recolors": recolors, "affinity_fx": affinity_fx, "wolf_variants": wolf_variants, "monsters": monsters, "hair_styles": hair_styles, "ui": ui, "vfx": vfx, "backdrop": backdrop, "shadow": shadow}
+           "town_props": town_props, "townsfolk": townsfolk, "variants": variants, "recolors": recolors, "affinity_fx": affinity_fx, "wolf_variants": wolf_variants, "monsters": monsters, "interiors": interiors, "characters": characters, "hair_styles": hair_styles, "ui": ui, "vfx": vfx, "backdrop": backdrop, "shadow": shadow}
 
 if __name__ == "__main__":
     for key in sys.argv[1:] or RECIPES:

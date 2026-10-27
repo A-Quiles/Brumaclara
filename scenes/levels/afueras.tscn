@@ -90,6 +90,10 @@
 [ext_resource type="Resource" path="res://data/enemies/murcielago_f.tres" id="902_murcielago_f"]
 [ext_resource type="Resource" path="res://data/enemies/esqueleto_f.tres" id="902_esqueleto_f"]
 [ext_resource type="Resource" path="res://data/enemies/golem_f.tres" id="902_golem_f"]
+[ext_resource type="Resource" path="res://data/enemies/sporineo.tres" id="903_sporineo"]
+[ext_resource type="Resource" path="res://data/enemies/guardian_raices.tres" id="903_guardian_raices"]
+[ext_resource type="Resource" path="res://data/enemies/polilla_luminica.tres" id="903_polilla_luminica"]
+[ext_resource type="Resource" path="res://data/enemies/espectro_f.tres" id="903_espectro_f"]
 [ext_resource type="Script" path="res://scripts/systems/level_edits.gd" id="75_8x18h"]
 
 [sub_resource type="Environment" id="Environment_hlfps"]
@@ -1735,6 +1739,66 @@ collision_layer = 4
 collision_mask = 7
 script = ExtResource("62_gkhel")
 data = ExtResource("902_golem_f")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Bosque_sporineo0" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -10)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("903_sporineo")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Bosque_sporineo1" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -6)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("903_sporineo")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Bosque_guardian_raices0" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -15)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("903_guardian_raices")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Bosque_polilla_luminica0" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -16)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("903_polilla_luminica")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Bosque_polilla_luminica1" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -14)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("903_polilla_luminica")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Bosque_espectro_f0" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -13)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("903_espectro_f")
 orb_scene = ExtResource("56_vadvj")
 death_effect = ExtResource("63_7y0p2")
 text_scene = ExtResource("64_efuy5")

@@ -9,6 +9,7 @@ const SPARK := preload("res://scenes/effects/spark.tscn")
 const BLAST_SCRIPT := preload("res://scripts/effects/skill_blast.gd")
 const ZONE_SCRIPT := preload("res://scripts/effects/skill_zone.gd")
 const ENEMY_HURTBOXES := 16  ## collision layer 5
+const HERO_HURTBOX := 8  ## collision layer 4
 const PROPS := {"boulder": preload("res://scenes/environment/nature/boulder.tscn"),
 		"crystal": preload("res://scenes/environment/props/crystal.tscn")}
 
@@ -309,6 +310,52 @@ static func flat(v: Vector3) -> Vector3:
 
 
 # --- helpers ------------------------------------------------------------------------------------
+
+## An enemy's slam: an area around `at` that hurts only the hero (the enemy's warning came before).
+static func enemy_blast(enemy: Node3D, at: Vector3, dmg: int, affinity: StringName, radius: float) -> void:
+	var blast := Hitbox.new()
+	blast.set_script(BLAST_SCRIPT)
+	blast.damage = dmg
+	blast.push = 9.0
+	blast.attacker = enemy
+	blast.collision_layer = 0
+	blast.collision_mask = HERO_HURTBOX
+	blast.affinity = affinity
+	var shape := CollisionShape3D.new()
+	var sphere := SphereShape3D.new()
+	sphere.radius = radius
+	shape.shape = sphere
+	shape.position.y = 0.6
+	blast.add_child(shape)
+	var sprite := AnimatedSprite3D.new()
+	sprite.name = "Sprite"
+	sprite.sprite_frames = Affinity.frames(_explosion_frames(), affinity)
+	sprite.animation = &"burst"
+	sprite.pixel_size = 0.0449 * radius / 1.2
+	sprite.offset = Vector2(0, 16)
+	sprite.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+	sprite.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	blast.add_child(sprite)
+	enemy.get_parent().add_child(blast)
+	blast.global_position = at + Vector3(0, 0, 0.05)
+
+
+## An enemy's shot: flies straight and hurts only the hero; walls stop it.
+static func enemy_bolt(enemy: Node3D, from: Vector3, direction: Vector3, dmg: int, affinity: StringName, speed := 9.0) -> void:
+	var bolt: Hitbox = BOLT.instantiate()
+	bolt.damage = dmg
+	bolt.push = 5.0
+	bolt.attacker = enemy
+	bolt.affinity = affinity
+	bolt.speed = speed
+	bolt.lifetime = 1.6
+	bolt.direction = direction
+	enemy.get_parent().add_child(bolt)
+	bolt.collision_layer = 0
+	bolt.collision_mask = HERO_HURTBOX | 1
+	bolt.get_node("Sprite").sprite_frames = Affinity.frames(bolt.get_node("Sprite").sprite_frames, affinity)
+	bolt.global_position = from
+
 
 static func _setup(hb: Hitbox, hero: Node3D, s: SkillData, dmg: int) -> void:
 	hb.damage = dmg

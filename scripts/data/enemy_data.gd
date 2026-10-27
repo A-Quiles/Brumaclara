@@ -21,8 +21,15 @@ extends Resource
 @export_range(0.0, 0.6) var defense := 0.0
 @export var boss := false  ## never frozen; immune to stuns for 6 s after each one
 @export var anomalous := false  ## a creature of the Fractura (light hurts it more)
+@export_group("Ataque")
+@export_enum("pounce", "burst", "volley") var attack_kind := "pounce"  ## lunge, area slam or a fan of shots
+@export var burst_radius := 2.2  ## of the slam (burst)
+@export var volley := 3  ## shots in the fan (volley)
+@export var shot_speed := 9.0
+@export var shot_affinity: StringName = &"sombra"  ## colour of its shots and slams
 @export_group("Aspecto")
 @export var frames: SpriteFrames  ## its sprite sheet (empty: the one in the scene)
+@export var sprite_offset := Vector2.ZERO  ## where its feet are in the frames (zero: the wolf's)
 @export var sprite_scale := 1.0  ## size of the sprite, the body and the bite
 @export var attack_count := 1  ## pounces in a row before it recovers
 @export var summons := 0  ## cubs it calls when it drops under half health (bosses)
