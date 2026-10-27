@@ -1,0 +1,477 @@
+{
+	"id": "fuego",
+	"name": "Fuego",
+	"nodes": [
+		{
+			"tier": 1,
+			"name": "Chispa",
+			"type": "activa",
+			"cost": 2,
+			"desc": "8 / 0,45 s / 18. Proyectil rápido que estalla al primer impacto",
+			"branch": 0,
+			"branch_name": "Llama (proyectiles)",
+			"id": "fuego.chispa",
+			"skill": {
+				"kind": "PROJECTILE",
+				"mana_cost": 8,
+				"cooldown": 0.45,
+				"damage": 18,
+				"push": 5.0,
+				"cast_seconds": 0.28,
+				"release_at": 0.08
+			}
+		},
+		{
+			"tier": 1,
+			"name": "Chispa doble",
+			"type": "mejora",
+			"cost": 1,
+			"desc": "Chispa lanza dos proyectiles en abanico; coste 12",
+			"branch": 0,
+			"branch_name": "Llama (proyectiles)",
+			"id": "fuego.chispa_doble",
+			"mods": [
+				{
+					"skill": "fuego.chispa",
+					"set": {
+						"count": 2,
+						"spread_deg": 12.0,
+						"mana_cost": 12.0
+					}
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Lanza de fuego",
+			"type": "activa",
+			"cost": 2,
+			"desc": "14 / 3 s / 26. Atraviesa a todos los enemigos en línea",
+			"branch": 0,
+			"branch_name": "Llama (proyectiles)",
+			"id": "fuego.lanza_de_fuego",
+			"skill": {
+				"kind": "PROJECTILE",
+				"mana_cost": 14,
+				"cooldown": 3,
+				"damage": 26,
+				"pierce": true,
+				"speed": 18.0,
+				"scale": 1.4,
+				"push": 4.0
+			}
+		},
+		{
+			"tier": 2,
+			"name": "Combustión",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Los proyectiles de fuego aplican Quemadura",
+			"branch": 0,
+			"branch_name": "Llama (proyectiles)",
+			"id": "fuego.combustion",
+			"mods": [
+				{
+					"skills_of": "fuego",
+					"kind": "PROJECTILE",
+					"set": {
+						"status": "quemadura"
+					}
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Chispa rebotante",
+			"type": "mejora",
+			"cost": 1,
+			"desc": "Chispa salta a un segundo enemigo a menos de 4 unidades",
+			"branch": 0,
+			"branch_name": "Llama (proyectiles)",
+			"id": "fuego.chispa_rebotante",
+			"mods": [
+				{
+					"skill": "fuego.chispa",
+					"set": {
+						"bounce": 1
+					}
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Puntería ardiente",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "+20 % de daño de fuego a más de 5 unidades",
+			"branch": 0,
+			"branch_name": "Llama (proyectiles)",
+			"id": "fuego.punteria_ardiente",
+			"mods": [
+				{
+					"stat": "far_pct.fuego",
+					"add": 0.2
+				}
+			]
+		},
+		{
+			"tier": 4,
+			"name": "Cometa",
+			"type": "activa",
+			"cost": 2,
+			"desc": "30 / 9 s / 45. Proyectil grande y lento que explota en área",
+			"branch": 0,
+			"branch_name": "Llama (proyectiles)",
+			"id": "fuego.cometa",
+			"skill": {
+				"kind": "PROJECTILE",
+				"mana_cost": 30,
+				"cooldown": 9,
+				"damage": 45,
+				"speed": 7.0,
+				"scale": 2.2,
+				"explode_radius": 2.5,
+				"push": 9.0
+			}
+		},
+		{
+			"tier": 5,
+			"name": "Lluvia de brasas",
+			"type": "mejora",
+			"cost": 1,
+			"desc": "El Cometa deja caer 5 brasas alrededor (10 cada una)",
+			"branch": 0,
+			"branch_name": "Llama (proyectiles)",
+			"id": "fuego.lluvia_de_brasas",
+			"mods": [
+				{
+					"skill": "fuego.cometa",
+					"set": {
+						"embers": 5,
+						"ember_damage": 10
+					}
+				}
+			]
+		},
+		{
+			"tier": 1,
+			"name": "Estallido",
+			"type": "activa",
+			"cost": 2,
+			"desc": "25 / 4 s / 30. Anillo alrededor del héroe que empuja fuerte",
+			"branch": 1,
+			"branch_name": "Hoguera (áreas)",
+			"id": "fuego.estallido",
+			"skill": {
+				"kind": "AREA",
+				"mana_cost": 25,
+				"cooldown": 4,
+				"damage": 30,
+				"push": 11.0,
+				"cast_seconds": 0.5,
+				"release_at": 0.22
+			}
+		},
+		{
+			"tier": 1,
+			"name": "Anillo amplio",
+			"type": "mejora",
+			"cost": 1,
+			"desc": "+40 % de radio del Estallido",
+			"branch": 1,
+			"branch_name": "Hoguera (áreas)",
+			"id": "fuego.anillo_amplio",
+			"mods": [
+				{
+					"skill": "fuego.estallido",
+					"mul": {
+						"scale": 1.4
+					}
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Rastro ardiente",
+			"type": "activa",
+			"cost": 2,
+			"desc": "20 / 6 s / 6 cada 0,5 s. Zona de 3 s en el suelo que quema",
+			"branch": 1,
+			"branch_name": "Hoguera (áreas)",
+			"id": "fuego.rastro_ardiente",
+			"skill": {
+				"kind": "ZONE",
+				"mana_cost": 20,
+				"cooldown": 6,
+				"damage": 6,
+				"duration": 3.0,
+				"tick": 0.5,
+				"radius": 1.5,
+				"offset": 1.8,
+				"status": "quemadura"
+			}
+		},
+		{
+			"tier": 2,
+			"name": "Suelo encendido",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Al esquivar dejas una llama de 1,5 s (8 de daño)",
+			"branch": 1,
+			"branch_name": "Hoguera (áreas)",
+			"id": "fuego.suelo_encendido",
+			"mods": [
+				{
+					"on": "dodge",
+					"zone": {
+						"affinity": "fuego",
+						"damage": 8,
+						"duration": 1.5,
+						"tick": 0.5,
+						"radius": 1.0
+					}
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Muro de llamas",
+			"type": "activa",
+			"cost": 2,
+			"desc": "28 / 10 s / 8 cada 0,5 s. Línea de fuego de 5 unidades durante 4 s; detiene proyectiles enemigos",
+			"branch": 1,
+			"branch_name": "Hoguera (áreas)",
+			"id": "fuego.muro_de_llamas",
+			"skill": {
+				"kind": "ZONE",
+				"mana_cost": 28,
+				"cooldown": 10,
+				"damage": 8,
+				"duration": 4.0,
+				"tick": 0.5,
+				"radius": 0.7,
+				"line": 5.0,
+				"offset": 2.0,
+				"status": "quemadura"
+			}
+		},
+		{
+			"tier": 3,
+			"name": "Hoguera persistente",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Las zonas de fuego duran +50 %",
+			"branch": 1,
+			"branch_name": "Hoguera (áreas)",
+			"id": "fuego.hoguera_persistente",
+			"mods": [
+				{
+					"skills_of": "fuego",
+					"kind": "ZONE",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			]
+		},
+		{
+			"tier": 4,
+			"name": "Columna ígnea",
+			"type": "activa",
+			"cost": 2,
+			"desc": "35 / 12 s / 60. Columna en el punto apuntado tras 0,6 s de aviso",
+			"branch": 1,
+			"branch_name": "Hoguera (áreas)",
+			"id": "fuego.columna_ignea",
+			"skill": {
+				"kind": "STRIKE",
+				"mana_cost": 35,
+				"cooldown": 12,
+				"damage": 60,
+				"offset": 4.0,
+				"delay": 0.6,
+				"radius": 1.5,
+				"push": 6.0
+			}
+		},
+		{
+			"tier": 5,
+			"name": "Infierno contenido",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "Los enemigos que mueren con Quemadura explotan (15 en área)",
+			"branch": 1,
+			"branch_name": "Hoguera (áreas)",
+			"id": "fuego.infierno_contenido",
+			"mods": [
+				{
+					"stat": "burning_explode",
+					"add": 15
+				}
+			]
+		},
+		{
+			"tier": 1,
+			"name": "Ascua viva",
+			"type": "activa",
+			"cost": 2,
+			"desc": "15 / 8 s. El siguiente golpe de espada hace +100 % y quema",
+			"branch": 2,
+			"branch_name": "Brasa interior (potenciación)",
+			"id": "fuego.ascua_viva",
+			"skill": {
+				"kind": "BUFF",
+				"mana_cost": 15,
+				"cooldown": 8,
+				"damage": 0,
+				"duration": 6.0,
+				"mods": {
+					"next_sword_pct": 1.0,
+					"next_sword_status": 1
+				},
+				"status": "quemadura"
+			}
+		},
+		{
+			"tier": 1,
+			"name": "Calor corporal",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "+10 de maná máximo",
+			"branch": 2,
+			"branch_name": "Brasa interior (potenciación)",
+			"id": "fuego.calor_corporal",
+			"mods": [
+				{
+					"stat": "max_mp",
+					"add": 10
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Filo encendido",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "El último golpe del combo aplica Quemadura",
+			"branch": 2,
+			"branch_name": "Brasa interior (potenciación)",
+			"id": "fuego.filo_encendido",
+			"mods": [
+				{
+					"stat": "combo_last_status",
+					"set": "quemadura"
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Avivar",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Golpear con la espada a un enemigo quemado devuelve 3 de maná",
+			"branch": 2,
+			"branch_name": "Brasa interior (potenciación)",
+			"id": "fuego.avivar",
+			"mods": [
+				{
+					"stat": "mp_on_burning_hit",
+					"add": 3
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Sobrecalentamiento",
+			"type": "activa",
+			"cost": 2,
+			"desc": "20 / 18 s. Durante 6 s, +30 % de daño de fuego y +15 % de daño recibido",
+			"branch": 2,
+			"branch_name": "Brasa interior (potenciación)",
+			"id": "fuego.sobrecalentamiento",
+			"skill": {
+				"kind": "BUFF",
+				"mana_cost": 20,
+				"cooldown": 18,
+				"damage": 0,
+				"duration": 6.0,
+				"mods": {
+					"aff_pct.fuego": 0.3,
+					"received_pct": 0.15
+				}
+			}
+		},
+		{
+			"tier": 3,
+			"name": "Piel de brasas",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Quien te golpea cuerpo a cuerpo se quema",
+			"branch": 2,
+			"branch_name": "Brasa interior (potenciación)",
+			"id": "fuego.piel_de_brasas",
+			"mods": [
+				{
+					"stat": "thorns_status",
+					"set": "quemadura"
+				}
+			]
+		},
+		{
+			"tier": 4,
+			"name": "Fénix menor",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "Una vez por zona, al caer, vuelves con el 30 % de vida y un Estallido gratis",
+			"branch": 2,
+			"branch_name": "Brasa interior (potenciación)",
+			"id": "fuego.fenix_menor",
+			"mods": [
+				{
+					"on": "death",
+					"revive_pct": 0.3,
+					"cast": "fuego.estallido"
+				}
+			]
+		},
+		{
+			"tier": 5,
+			"name": "Corazón de horno",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "+50 % de regeneración de maná mientras haya un enemigo quemado a menos de 6 unidades",
+			"branch": 2,
+			"branch_name": "Brasa interior (potenciación)",
+			"id": "fuego.corazon_de_horno",
+			"mods": [
+				{
+					"stat": "regen_near_burning",
+					"add": 0.5
+				}
+			]
+		},
+		{
+			"tier": 5,
+			"name": "Ruptura ígnea",
+			"type": "definitiva",
+			"cost": 5,
+			"desc": "50 / 30 s / 120 en total. Se canaliza 0,5 s (interrumpible) y abre una línea de explosiones de 10 unidades.",
+			"branch": -1,
+			"branch_name": "Definitiva",
+			"id": "fuego.ruptura_ignea",
+			"skill": {
+				"kind": "LINE",
+				"mana_cost": 50,
+				"cooldown": 30,
+				"damage": 20,
+				"length": 10.0,
+				"count": 6,
+				"step_delay": 0.08,
+				"cast_seconds": 0.7,
+				"release_at": 0.5,
+				"scale": 1.1,
+				"push": 8.0
+			}
+		}
+	]
+}

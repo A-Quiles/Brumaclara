@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_data"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/enemies/wolf__pedrero_frames.tres" id="2_frames"]
+
+[resource]
+script = ExtResource("1_data")
+display_name = "Lobo pedrero"
+frames = ExtResource("2_frames")
+max_hp = 85
+damage = 18
+speed = 3.4
+xp_reward = 60
+respawn_seconds = 30
+defense = 0.15
+weak = Array[StringName]([&"rayo"])
+resist = Array[StringName]([&"tierra"])

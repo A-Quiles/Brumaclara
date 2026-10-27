@@ -132,6 +132,7 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="132_2lred"]
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="133_n0xg0"]
 [ext_resource type="Script" path="res://scripts/systems/level_edits.gd" id="134_fd11v"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/shrine.tscn" id="200_shrine"]
 
 [sub_resource type="Environment" id="Environment_kypcr"]
 background_mode = 3
@@ -3686,6 +3687,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5, 3.5598428, -49)
 
 [node name="RuneStone" type="StaticBody3D" parent="Props" unique_id=23313021 instance=ExtResource("68_c60my")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3.573461, -50)
+
+[node name="Shrine" type="StaticBody3D" parent="Props" instance=ExtResource("200_shrine")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 27)
 
 [node name="Bench2" type="StaticBody3D" parent="Props" unique_id=61326316 instance=ExtResource("60_a0xlw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6, 0, -10.1)

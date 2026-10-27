@@ -7,10 +7,11 @@ túnica, chaleco de tela, cinturón con bolsa, brazales y botas. Sin capa ni buf
 | Opción | Qué cambia |
 |---|---|
 | Género | El modelo dibujado: hombre o mujer |
-| Peinado | Los peinados dibujados para ese género (de momento uno por género: puntas y coleta) |
-| Pelo | 10 colores (el original, negro, castaño, rubio, pelirrojo, blanco, azul, rosa, verde y morado) |
+| Peinado | Los peinados dibujados para ese género (12 modelos: por género, el original, alto, cresta, moño, largo y volumen) |
+| Pelo | 26 colores |
 | Piel | 5 tonos (el original, clara, media, morena y oscura) |
-| Atuendo | 9 combinaciones de colores para la túnica y el chaleco (Viajero, Campesino, Leñador, Marinero, Herrero, Mercader, Brasa, Bruma y Noche) |
+| Cuero / Pantalón | 10 y 9 colores para cinturón, botas y pantalón |
+| Atuendo | 19 combinaciones (antes 9) de colores para la túnica y el chaleco (Viajero, Campesino, Leñador, Marinero, Herrero, Mercader, Brasa, Bruma y Noche) |
 
 Flechas o WASD para elegir, Intro para confirmar. También se puede usar el ratón. «Aleatorio» sortea
 un aspecto. Al empezar se guarda en `user://personaje.json` y el juego lo usa en todos los niveles.

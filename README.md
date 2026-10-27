@@ -146,7 +146,10 @@ xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capt
 - [x] Modo edición para decorar los niveles dentro del juego
 - [x] Creador de personaje (hombre y mujer, colores de pelo, piel y atuendo)
 - [x] Protagonista sin capa (viajero que busca trabajo), hombre y mujer con hojas completas
-- [ ] Más peinados dibujados
+- [x] Más peinados (12 modelos), 26 colores de pelo, 12 de piel, 19 atuendos, cuero y pantalón
+- [x] Árbol de habilidades (182 nodos, 6 afinidades), santuario, 4 huecos + definitiva
+- [x] 11 tipos de lobo (élites, jefe con invocaciones, elementales) en las afueras
+- [ ] Más especies de enemigos con arte propio (los nuevos son variantes de color del lobo)
 - [ ] Interiores, caja de diálogo y minimapa
 - [x] Diseño de combate: afinidades, talentos, técnicas de gremio, estados y bestiario (`docs/diseno_combate.md`)
 - [x] Habilidades y enemigos como fichas de datos

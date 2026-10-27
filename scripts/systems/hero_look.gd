@@ -6,30 +6,58 @@ class_name HeroLook
 
 const FILE := "user://personaje.json"
 
-## Drawn models. A new hairstyle or outfit drawing is one more entry (and its sprite set + mask).
+## Drawn models: each hairstyle is its own sprite set (and colour mask) built by
+## tools/art_pipeline/build.py. A new hairstyle or outfit drawing is one more entry.
 const MODELS := [
 	{"gender": "Hombre", "hair": "Puntas", "set": "hero"},
+	{"gender": "Hombre", "hair": "Puntas altas", "set": "hero__alto"},
+	{"gender": "Hombre", "hair": "Cresta", "set": "hero__cresta"},
+	{"gender": "Hombre", "hair": "Moño", "set": "hero__mono"},
+	{"gender": "Hombre", "hair": "Largo", "set": "hero__largo"},
+	{"gender": "Hombre", "hair": "Voluminoso", "set": "hero__volumen"},
 	{"gender": "Mujer", "hair": "Coleta", "set": "heroine"},
+	{"gender": "Mujer", "hair": "Coleta de puntas", "set": "heroine__alto"},
+	{"gender": "Mujer", "hair": "Cresta", "set": "heroine__cresta"},
+	{"gender": "Mujer", "hair": "Moño", "set": "heroine__mono"},
+	{"gender": "Mujer", "hair": "Suelta", "set": "heroine__largo"},
+	{"gender": "Mujer", "hair": "Voluminosa", "set": "heroine__volumen"},
 ]
 
 ## Colour choices; "" keeps the drawing's own colour.
-const HAIR := [["Original", ""], ["Negro", "2a2630"], ["Castaño", "6b3f24"], ["Rubio", "e8c25a"],
-		["Pelirrojo", "c2482a"], ["Blanco", "e8e6ee"], ["Azul", "3d5fb0"], ["Rosa", "e07aa8"],
-		["Verde", "4f9a5a"], ["Morado", "7a4fb0"]]
-const SKIN := [["Original", ""], ["Clara", "f6d2bc"], ["Media", "e0aa86"], ["Morena", "b57a52"],
-		["Oscura", "7a4a32"]]
+const HAIR := [["Original", ""], ["Negro", "2a2630"], ["Carbón", "403c48"], ["Castaño oscuro", "4a2c1a"],
+		["Castaño", "6b3f24"], ["Caoba", "8a3a22"], ["Cobrizo", "b5622e"], ["Pelirrojo", "c2482a"],
+		["Rubio fresa", "d98c5a"], ["Rubio", "e8c25a"], ["Platino", "f0e6b8"], ["Blanco", "e8e6ee"],
+		["Gris", "9a9aa6"], ["Plata", "c4cad6"], ["Azul", "3d5fb0"], ["Marino", "23346e"],
+		["Celeste", "6fb8e8"], ["Turquesa", "2fb3a8"], ["Verde", "4f9a5a"], ["Esmeralda", "1f7a4a"],
+		["Lima", "9ccf4a"], ["Morado", "7a4fb0"], ["Violeta", "a56ae0"], ["Rosa", "e07aa8"],
+		["Fucsia", "c8307a"], ["Carmesí", "b01c2e"]]
+const SKIN := [["Original", ""], ["Porcelana", "f8e0d0"], ["Clara", "f6d2bc"], ["Rosada", "f0b8a0"],
+		["Dorada", "e8c08a"], ["Media", "e0aa86"], ["Aceituna", "c4946a"], ["Bronceada", "c08a58"],
+		["Morena", "b57a52"], ["Canela", "9a5e3a"], ["Oscura", "7a4a32"], ["Ébano", "4e3024"]]
 ## Outfits: [name, tunic colour, vest colour]. A traveller's clothes, not a hero's (no cape).
 const OUTFITS := [["Viajero", "", ""], ["Campesino", "d8cfb4", "7a5230"], ["Leñador", "4f7a3a", "6b3f24"],
 		["Marinero", "e6e6ee", "2f4f8a"], ["Herrero", "6e6a66", "3a2a24"], ["Mercader", "c9a04a", "5a3f9a"],
-		["Brasa", "b8462a", "3a2a24"], ["Bruma", "6aa0b8", "e6e6ee"], ["Noche", "34343c", "5a2030"]]
+		["Brasa", "b8462a", "3a2a24"], ["Bruma", "6aa0b8", "e6e6ee"], ["Noche", "34343c", "5a2030"],
+		["Guardia", "3a5f9a", "d8b04a"], ["Cazador", "5a6a3a", "3a2a1a"], ["Alquimista", "7a3a8a", "d8cfb4"],
+		["Costero", "3aa0a0", "e8d8a8"], ["Arcilla", "b8764a", "5a3a2a"], ["Orquídea", "c86aa0", "4a2a5a"],
+		["Ceniza", "8a8a92", "3a3a42"], ["Dorado", "e0b84a", "7a2a2a"], ["Bosque", "2f5a3a", "a88a4a"],
+		["Escarlata", "c0302a", "e8e0c8"]]
+## Boots, belt and bracers.
+const LEATHER := [["Original", ""], ["Castaño", "6b4430"], ["Negro", "2a2428"], ["Pizarra", "4a5060"],
+		["Vino", "6a2a36"], ["Bosque", "3a5a3a"], ["Tinta", "2a3a6a"], ["Cuero claro", "a07a4a"],
+		["Hueso", "c8bca0"], ["Rojo", "b03a2a"]]
+const TROUSERS := [["Original", ""], ["Negro", "2a2a30"], ["Gris", "6a6a76"], ["Marrón", "5a4030"],
+		["Marino", "2a3a6a"], ["Oliva", "5a6a3a"], ["Crema", "c8b890"], ["Burdeos", "6a2a3a"],
+		["Verde oscuro", "2a4a3a"]]
 
-const GROUPS := {1: "hair", 2: "skin", 3: "clothes", 4: "vest"}
+const STEP := 30  ## the colour masks store group id * STEP
+const GROUPS := {1: "hair", 2: "skin", 3: "clothes", 4: "vest", 5: "leather", 6: "trousers"}
 
 static var _frames_cache := {}
 
 
 static func default_look() -> Dictionary:
-	return {"model": 0, "hair": 0, "skin": 0, "outfit": 0}
+	return {"model": 0, "hair": 0, "skin": 0, "outfit": 0, "leather": 0, "trousers": 0}
 
 
 static func load_look() -> Dictionary:
@@ -50,16 +78,22 @@ static func save_look(look: Dictionary) -> void:
 
 
 static func clamp_look(look: Dictionary) -> Dictionary:
+	for key: String in default_look():  # looks saved before a choice existed keep the drawn colour
+		if not look.has(key):
+			look[key] = 0
 	look.model = posmod(look.model, MODELS.size())
 	look.hair = posmod(look.hair, HAIR.size())
 	look.skin = posmod(look.skin, SKIN.size())
 	look.outfit = posmod(look.outfit, OUTFITS.size())
+	look.leather = posmod(look.leather, LEATHER.size())
+	look.trousers = posmod(look.trousers, TROUSERS.size())
 	return look
 
 
 ## Target colour per group id for a look (null keeps the drawn colour).
 static func targets(look: Dictionary) -> Dictionary:
-	var hex := {1: HAIR[look.hair][1], 2: SKIN[look.skin][1], 3: OUTFITS[look.outfit][1], 4: OUTFITS[look.outfit][2]}
+	var hex := {1: HAIR[look.hair][1], 2: SKIN[look.skin][1], 3: OUTFITS[look.outfit][1], 4: OUTFITS[look.outfit][2],
+			5: LEATHER[look.leather][1], 6: TROUSERS[look.trousers][1]}
 	var out := {}
 	for id: int in hex:
 		out[id] = Color(hex[id]) if hex[id] != "" else null
@@ -68,6 +102,7 @@ static func targets(look: Dictionary) -> Dictionary:
 
 ## The model's sprite frames painted with the look's colours.
 static func frames(look: Dictionary) -> SpriteFrames:
+	look = clamp_look(look.duplicate())
 	var key := JSON.stringify(look)
 	if _frames_cache.has(key):
 		return _frames_cache[key]
@@ -99,7 +134,7 @@ static func paint(set_name: String, target: Dictionary) -> Image:
 	var sum := {}
 	var count := {}
 	for i in groups.size():
-		var id := groups[i] / 50
+		var id := groups[i] / STEP
 		if id == 0 or target.get(id) == null:
 			continue
 		var c := Color8(data[i * 4], data[i * 4 + 1], data[i * 4 + 2])
@@ -107,7 +142,7 @@ static func paint(set_name: String, target: Dictionary) -> Image:
 		count[id] = count.get(id, 0) + 1
 	var memo := {}
 	for i in groups.size():
-		var id := groups[i] / 50
+		var id := groups[i] / STEP
 		if not count.has(id):
 			continue
 		var p := i * 4

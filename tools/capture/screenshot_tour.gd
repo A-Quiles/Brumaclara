@@ -112,12 +112,12 @@ func _pilot(wolves: Array) -> void:
 	var to: Vector3 = wolves[0].global_position - hero
 	var flat := Vector2(to.x, to.z)
 	if wolves.size() > 1 and hero.distance_to(wolves[1].global_position) < 2.6 and _player.mp >= 25.0 \
-			and _player.cooldown_left(&"burst") == 0.0:
+			and _player.cooldown_left(&"fuego.estallido") == 0.0:
 		Input.action_press("skill_2")
 	elif flat.length() < 1.4:
 		_hold(_axis(flat))
 		Input.action_press("attack")
-	elif flat.length() > 2.0 and flat.length() < 7.0 and _player.mp >= 8.0 and _player.cooldown_left(&"bolt") == 0.0:
+	elif flat.length() > 2.0 and flat.length() < 7.0 and _player.mp >= 8.0 and _player.cooldown_left(&"fuego.chispa") == 0.0:
 		if absf(flat.y) < 0.6:
 			_hold(Vector2(signf(flat.x), 0))
 			Input.action_press("skill_1")

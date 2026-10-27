@@ -20,6 +20,10 @@ var _pounce_dir := Vector3.ZERO
 var _hero: Node3D
 var _layers := Vector2i.ZERO  # collision layer and mask while alive
 
+var _status: StatusEffects
+var _pounces_left := 0
+var _summoned := false
+
 @onready var _sprite: AnimatedSprite3D = $Sprite
 @onready var _health: Health = $Health
 @onready var _hurtbox: Hurtbox = $Hurtbox
@@ -29,6 +33,16 @@ var _layers := Vector2i.ZERO  # collision layer and mask while alive
 
 
 func _ready() -> void:
+	add_to_group("enemies")
+	_status = StatusEffects.new()
+	_status.name = "Status"
+	add_child(_status)
+	if data.frames:
+		_sprite.sprite_frames = data.frames
+	if data.sprite_scale != 1.0:
+		scale = Vector3.ONE * data.sprite_scale
+		_bar.scale = Vector3.ONE / data.sprite_scale
+	_bite.attacker = self
 	_health.maximum = data.max_hp
 	_health.heal(data.max_hp)
 	_bite.damage = data.damage
@@ -37,6 +51,7 @@ func _ready() -> void:
 	_home = global_position
 	_wander_to = _home
 	_hurtbox.struck.connect(_on_struck)
+	_hurtbox.add_to_group("enemy_hurtbox")
 	_health.died.connect(_on_died)
 	_health.changed.connect(_on_health_changed)
 	_bar.visible = false
@@ -55,6 +70,15 @@ func _physics_process(delta: float) -> void:
 		_hero = get_tree().get_first_node_in_group("player")
 	_timer -= delta
 	var to_hero := _flat(_hero.global_position - global_position) if _hero else Vector3.INF
+	if _state != State.DEAD and not _status.can_act():  # stunned or frozen
+		_bite.set_active(false)
+		if _state in [State.WINDUP, State.POUNCE]:
+			_set_state(State.CHASE, 0.0, "idle")
+		_halt(delta, 30.0)
+		velocity.y = 0.0 if is_on_floor() else velocity.y - GRAVITY * delta
+		move_and_slide()
+		_sprite.modulate = Color(0.75, 0.9, 1.4) if _status.has(&"congelado") else Color(1.2, 1.2, 0.8)
+		return
 	match _state:
 		State.PROWL:
 			_prowl(to_hero)
@@ -70,7 +94,12 @@ func _physics_process(delta: float) -> void:
 			velocity.z = _pounce_dir.z * data.attack_speed
 			if _timer <= 0.0:
 				_bite.set_active(false)
-				_set_state(State.RECOVER, 0.8, "idle")
+				_pounces_left -= 1
+				if _pounces_left > 0 and _hero_alive():  # a pack leader lunges again
+					_pounce_dir = _flat(_hero.global_position - global_position).normalized()
+					_set_state(State.WINDUP, data.windup_seconds * 0.6 + _status.warning_bonus(), "windup")
+				else:
+					_set_state(State.RECOVER, 0.8, "idle")
 		State.RECOVER, State.HURT:
 			_halt(delta, 20.0)
 			if _timer <= 0.0:
@@ -102,9 +131,10 @@ func _chase(to_hero: Vector3) -> void:
 	if to_hero.length() < data.attack_range:
 		_pounce_dir = to_hero.normalized()
 		_face(View.to_screen(_pounce_dir).x)
-		_set_state(State.WINDUP, data.windup_seconds, "windup")
+		_pounces_left = data.attack_count
+		_set_state(State.WINDUP, data.windup_seconds + _status.warning_bonus(), "windup")
 		return
-	_move(to_hero.normalized() * data.speed, "run")
+	_move(to_hero.normalized() * data.speed * _status.speed_mult(), "run")
 
 
 func _pounce() -> void:
@@ -113,12 +143,15 @@ func _pounce() -> void:
 	if to_hero.length() > 0.5:  # a last small correction keeps the warning honest but readable
 		_pounce_dir = _pounce_dir.lerp(to_hero.normalized(), 0.35).normalized()
 	_set_state(State.POUNCE, 0.3, "pounce")
+	var weaken: float = Progress.stat("marked_weaken") if _hero_marks_me() else 0.0
+	_bite.damage = roundi(data.damage * (1.0 - weaken))
 	_bite.set_active(true)
 
 
-func _on_struck(damage: int, push: Vector3) -> void:
+func _on_struck(damage: int, push: Vector3, source: Hitbox = null) -> void:
 	if _state == State.DEAD:
 		return
+	damage = _status.take_hit(damage, source)
 	_health.damage(damage)
 	_popup(str(damage), Color("fff1b0"))
 	_sprite.modulate = Color(4, 4, 4)
@@ -126,12 +159,16 @@ func _on_struck(damage: int, push: Vector3) -> void:
 	GameFeel.hitstop(0.05)
 	if _health.is_dead():
 		return
-	velocity = push
+	_check_summon()
+	if data.boss and damage < data.max_hp * 0.08:  # a boss only staggers under heavy blows
+		return
+	velocity = push * (0.4 if data.boss else 1.0)
 	_bite.set_active(false)
 	_set_state(State.HURT, 0.28, "hurt")
 
 
 func _on_died() -> void:
+	_status.on_owner_died()
 	_set_state(State.DEAD, 0.0, "dead")
 	_bite.set_active(false)
 	_bar.visible = false
@@ -146,7 +183,11 @@ func _on_died() -> void:
 		orb.amount = data.xp_reward
 	await create_tween().tween_property(_sprite, "modulate:a", 0.0, 0.4).finished
 	visible = false
+	if has_meta("summoned"):
+		queue_free()
+		return
 	await get_tree().create_timer(data.respawn_seconds).timeout
+	_summoned = false
 	global_position = _home
 	_health.heal(_health.maximum)
 	_sprite.modulate = Color.WHITE
@@ -157,8 +198,47 @@ func _on_died() -> void:
 	_set_state(State.PROWL, 1.0, "idle")
 
 
+func is_alive() -> bool:
+	return _state != State.DEAD
+
+
+func is_recovering() -> bool:
+	return _state == State.RECOVER
+
+
+## Damage over time (burning, poison, shadow): no knockback, no reaction.
+func status_damage(amount: int, colour: Color) -> void:
+	if _state == State.DEAD or amount <= 0:
+		return
+	_health.damage(amount)
+	_popup(str(amount), colour)
+
+
+func _hero_marks_me() -> bool:
+	return _status.has(&"marca_sombra") or _status.has(&"marca_electrica") or _status.has(&"quemadura") \
+			or _status.has(&"frio") or _status.has(&"fisura")
+
+
+## Bosses call cubs once, when they fall under half their health.
+func _check_summon() -> void:
+	if data.summons <= 0 or _summoned or _health.current > _health.maximum / 2:
+		return
+	_summoned = true
+	var cub_data: EnemyData = load("res://data/enemies/lobezno.tres")
+	for i in data.summons:
+		var cub: CharacterBody3D = load(scene_file_path).instantiate()
+		cub.data = cub_data
+		cub.orb_scene = orb_scene
+		cub.death_effect = death_effect
+		cub.text_scene = text_scene
+		get_parent().add_child(cub)
+		cub.place(global_position + Vector3(cos(TAU * i / data.summons) * 2.0, 0, sin(TAU * i / data.summons) * 2.0))
+		cub.set_meta("summoned", true)
+	_popup("¡Aúlla!", Color("ffb0b0"))
+
+
 func _on_health_changed(current: int, maximum: int) -> void:
-	_bar.visible = current < maximum and current > 0
+	_bar.visible = (current < maximum or Progress.stat("show_enemy_hp") > 0.0) and current > 0
 	_bar_fill.region_rect.size.x = roundf(_bar_fill.texture.get_width() * float(current) / maximum)
 
 
@@ -188,7 +268,7 @@ func _face(x: float) -> void:
 
 
 func _hero_alive() -> bool:
-	return _hero != null and not _hero.get_node("Health").is_dead()
+	return _hero != null and not _hero.get_node("Health").is_dead() and not _hero.is_invisible() and not _status.blinded()
 
 
 func _flat(v: Vector3) -> Vector3:

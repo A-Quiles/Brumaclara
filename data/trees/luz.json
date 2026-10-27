@@ -1,0 +1,453 @@
+{
+	"id": "luz",
+	"name": "Luz",
+	"nodes": [
+		{
+			"tier": 1,
+			"name": "Destello",
+			"type": "activa",
+			"cost": 2,
+			"desc": "8 / 0,5 s / 12. Rayo corto y rápido",
+			"branch": 0,
+			"branch_name": "Resplandor (ataque)",
+			"id": "luz.destello",
+			"skill": {
+				"kind": "PROJECTILE",
+				"mana_cost": 8,
+				"cooldown": 0.5,
+				"damage": 12,
+				"speed": 22.0
+			}
+		},
+		{
+			"tier": 1,
+			"name": "Haz doble",
+			"type": "mejora",
+			"cost": 1,
+			"desc": "El Destello atraviesa al primer enemigo",
+			"branch": 0,
+			"branch_name": "Resplandor (ataque)",
+			"id": "luz.haz_doble",
+			"mods": [
+				{
+					"skill": "luz.destello",
+					"set": {
+						"pierce": true
+					}
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Lanza solar",
+			"type": "activa",
+			"cost": 2,
+			"desc": "20 / 6 s / 35. Tras 0,4 s de carga, haz de 8 unidades",
+			"branch": 0,
+			"branch_name": "Resplandor (ataque)",
+			"id": "luz.lanza_solar",
+			"skill": {
+				"kind": "LINE",
+				"mana_cost": 20,
+				"cooldown": 6,
+				"damage": 35,
+				"length": 8.0,
+				"count": 8,
+				"step_delay": 0.0,
+				"once": true,
+				"delay": 0.4
+			}
+		},
+		{
+			"tier": 2,
+			"name": "Purificar",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "+40 % de daño de luz contra enemigos anómalos",
+			"branch": 0,
+			"branch_name": "Resplandor (ataque)",
+			"id": "luz.purificar",
+			"mods": [
+				{
+					"stat": "anomalous_pct.luz",
+					"add": 0.4
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Prisma",
+			"type": "activa",
+			"cost": 2,
+			"desc": "24 / 9 s. Cristal que divide tus Destellos en tres durante 6 s",
+			"branch": 0,
+			"branch_name": "Resplandor (ataque)",
+			"id": "luz.prisma",
+			"skill": {
+				"kind": "BUFF",
+				"mana_cost": 24,
+				"cooldown": 9,
+				"damage": 0,
+				"duration": 6.0,
+				"mods": {
+					"extra_projectiles.luz": 2
+				}
+			}
+		},
+		{
+			"tier": 3,
+			"name": "Ceguera",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "La Lanza solar deslumbra 1,5 s",
+			"branch": 0,
+			"branch_name": "Resplandor (ataque)",
+			"id": "luz.ceguera",
+			"mods": [
+				{
+					"skill": "luz.lanza_solar",
+					"set": {
+						"status": "deslumbrado",
+						"status_seconds": 1.5
+					}
+				}
+			]
+		},
+		{
+			"tier": 4,
+			"name": "Nova",
+			"type": "activa",
+			"cost": 2,
+			"desc": "40 / 15 s / 45. Explosión de luz de 5 unidades que deslumbra",
+			"branch": 0,
+			"branch_name": "Resplandor (ataque)",
+			"id": "luz.nova",
+			"skill": {
+				"kind": "AREA",
+				"mana_cost": 40,
+				"cooldown": 15,
+				"damage": 45,
+				"scale": 2.4,
+				"status": "deslumbrado"
+			}
+		},
+		{
+			"tier": 5,
+			"name": "Amanecer",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "Si la Nova alcanza a 3 enemigos o más, recuperas el 20 % de vida",
+			"branch": 0,
+			"branch_name": "Resplandor (ataque)",
+			"id": "luz.amanecer",
+			"mods": [
+				{
+					"skill": "luz.nova",
+					"set": {
+						"heal_if_hits": 3,
+						"heal_pct": 0.2
+					}
+				}
+			]
+		},
+		{
+			"tier": 1,
+			"name": "Escudo de luz",
+			"type": "activa",
+			"cost": 2,
+			"desc": "18 / 12 s. Absorbe 30 de daño durante 5 s",
+			"branch": 1,
+			"branch_name": "Égida (protección)",
+			"id": "luz.escudo_de_luz",
+			"skill": {
+				"kind": "SHIELD",
+				"mana_cost": 18,
+				"cooldown": 12,
+				"damage": 0,
+				"duration": 5.0,
+				"shield": 30
+			}
+		},
+		{
+			"tier": 1,
+			"name": "Escudo reflejante",
+			"type": "mejora",
+			"cost": 1,
+			"desc": "Al romperse, deslumbra a los enemigos cercanos",
+			"branch": 1,
+			"branch_name": "Égida (protección)",
+			"id": "luz.escudo_reflejante",
+			"mods": [
+				{
+					"skill": "luz.escudo_de_luz",
+					"set": {
+						"break_status": "deslumbrado"
+					}
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Halo",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Tras 4 s sin recibir daño, el siguiente golpe que recibes se reduce a la mitad",
+			"branch": 1,
+			"branch_name": "Égida (protección)",
+			"id": "luz.halo",
+			"mods": [
+				{
+					"stat": "halo",
+					"add": 1
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Sello protector",
+			"type": "activa",
+			"cost": 2,
+			"desc": "22 / 14 s. Círculo de 3 unidades durante 5 s que destruye los proyectiles enemigos",
+			"branch": 1,
+			"branch_name": "Égida (protección)",
+			"id": "luz.sello_protector",
+			"implemented": false
+		},
+		{
+			"tier": 3,
+			"name": "Guardián de luz",
+			"type": "activa",
+			"cost": 2,
+			"desc": "30 / 20 s. Un espíritu protege a un aliado o escoltado y bloquea 3 golpes",
+			"branch": 1,
+			"branch_name": "Égida (protección)",
+			"id": "luz.guardian_de_luz",
+			"implemented": false
+		},
+		{
+			"tier": 3,
+			"name": "Égida firme",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "El Escudo de luz absorbe +50 %",
+			"branch": 1,
+			"branch_name": "Égida (protección)",
+			"id": "luz.egida_firme",
+			"mods": [
+				{
+					"skill": "luz.escudo_de_luz",
+					"mul": {
+						"shield": 1.5
+					}
+				}
+			]
+		},
+		{
+			"tier": 4,
+			"name": "Santuario",
+			"type": "activa",
+			"cost": 2,
+			"desc": "40 / 30 s. Zona de 4 unidades durante 6 s: recuperas un 3 % de vida por segundo y no puedes bajar de 1",
+			"branch": 1,
+			"branch_name": "Égida (protección)",
+			"id": "luz.santuario",
+			"skill": {
+				"kind": "ZONE",
+				"mana_cost": 40,
+				"cooldown": 30,
+				"damage": 0,
+				"duration": 6.0,
+				"tick": 0.5,
+				"radius": 4.0,
+				"offset": 0.0,
+				"self_mods": {
+					"regen_pct": 0.03,
+					"min_hp": 1
+				}
+			}
+		},
+		{
+			"tier": 5,
+			"name": "Juramento",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "El Escudo de luz se lanza solo al bajar del 30 % de vida (una vez cada 60 s)",
+			"branch": 1,
+			"branch_name": "Égida (protección)",
+			"id": "luz.juramento",
+			"mods": [
+				{
+					"on": "low_hp",
+					"below": 0.3,
+					"every": 60.0,
+					"cast": "luz.escudo_de_luz"
+				}
+			]
+		},
+		{
+			"tier": 1,
+			"name": "Respiro",
+			"type": "activa",
+			"cost": 2,
+			"desc": "20 / 15 s. Recuperas el 25 % de vida en 1 s (un golpe lo interrumpe)",
+			"branch": 2,
+			"branch_name": "Alba (curación y apoyo)",
+			"id": "luz.respiro",
+			"skill": {
+				"kind": "HEAL",
+				"mana_cost": 20,
+				"cooldown": 15,
+				"damage": 0,
+				"heal_pct": 0.25,
+				"cast_seconds": 1.0,
+				"release_at": 0.95,
+				"interruptible": true
+			}
+		},
+		{
+			"tier": 1,
+			"name": "Luz serena",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "+1 de regeneración de maná por segundo",
+			"branch": 2,
+			"branch_name": "Alba (curación y apoyo)",
+			"id": "luz.luz_serena",
+			"mods": [
+				{
+					"stat": "mp_regen",
+					"add": 1.0
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Purgar",
+			"type": "activa",
+			"cost": 2,
+			"desc": "15 / 10 s. Quita todos los estados negativos",
+			"branch": 2,
+			"branch_name": "Alba (curación y apoyo)",
+			"id": "luz.purgar",
+			"implemented": false
+		},
+		{
+			"tier": 2,
+			"name": "Revelar",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Ves trampas, enemigos ocultos y puntos débiles de los jefes (+15 % de daño en ellos)",
+			"branch": 2,
+			"branch_name": "Alba (curación y apoyo)",
+			"id": "luz.revelar",
+			"mods": [
+				{
+					"stat": "show_enemy_hp",
+					"add": 1
+				},
+				{
+					"stat": "boss_pct",
+					"add": 0.15
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Bendición",
+			"type": "activa",
+			"cost": 2,
+			"desc": "25 / 20 s. Durante 8 s, +20 % de daño y −20 % de recargas",
+			"branch": 2,
+			"branch_name": "Alba (curación y apoyo)",
+			"id": "luz.bendicion",
+			"skill": {
+				"kind": "BUFF",
+				"mana_cost": 25,
+				"cooldown": 20,
+				"damage": 0,
+				"duration": 8.0,
+				"mods": {
+					"damage_pct": 0.2,
+					"cooldown_pct": -0.2
+				}
+			}
+		},
+		{
+			"tier": 3,
+			"name": "Fe",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "El Respiro no se interrumpe y cura un 10 % más",
+			"branch": 2,
+			"branch_name": "Alba (curación y apoyo)",
+			"id": "luz.fe",
+			"mods": [
+				{
+					"skill": "luz.respiro",
+					"set": {
+						"interruptible": false,
+						"heal_pct": 0.35
+					}
+				}
+			]
+		},
+		{
+			"tier": 4,
+			"name": "Faro interior",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "Cada 30 s, el siguiente hechizo de luz no cuesta maná",
+			"branch": 2,
+			"branch_name": "Alba (curación y apoyo)",
+			"id": "luz.faro_interior",
+			"mods": [
+				{
+					"stat": "free_cast_every.luz",
+					"add": 30.0
+				}
+			]
+		},
+		{
+			"tier": 5,
+			"name": "Segunda alba",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "Una vez por zona, al caer, vuelves con el 50 % de vida y una Nova gratis",
+			"branch": 2,
+			"branch_name": "Alba (curación y apoyo)",
+			"id": "luz.segunda_alba",
+			"mods": [
+				{
+					"on": "death",
+					"revive_pct": 0.5,
+					"cast": "luz.nova"
+				}
+			]
+		},
+		{
+			"tier": 5,
+			"name": "Sol de mediodía",
+			"type": "definitiva",
+			"cost": 5,
+			"desc": "60 / 45 s. Durante 6 s, un sol sobre el héroe hace 10 cada 0,5 s y deslumbra a los enemigos a menos de 6 unidades, y te cura un 2 % de vida por segundo.",
+			"branch": -1,
+			"branch_name": "Definitiva",
+			"id": "luz.sol_de_mediodia",
+			"skill": {
+				"kind": "ZONE",
+				"mana_cost": 60,
+				"cooldown": 45,
+				"damage": 10,
+				"duration": 6.0,
+				"tick": 0.5,
+				"radius": 6.0,
+				"offset": 0.0,
+				"follow": true,
+				"status": "deslumbrado",
+				"self_mods": {
+					"regen_pct": 0.02
+				}
+			}
+		}
+	]
+}

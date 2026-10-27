@@ -1,0 +1,490 @@
+{
+	"id": "tronco",
+	"name": "Aventurero",
+	"nodes": [
+		{
+			"tier": 1,
+			"name": "Filo templado",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "El 3.er golpe del combo hace +50 %",
+			"branch": 0,
+			"branch_name": "Acero (la espada)",
+			"id": "tronco.filo_templado",
+			"mods": [
+				{
+					"stat": "combo_last_pct",
+					"add": 0.5
+				}
+			]
+		},
+		{
+			"tier": 1,
+			"name": "Estocada",
+			"type": "activa",
+			"cost": 2,
+			"desc": "Avanza 2 unidades con la espada por delante y hace 20; sin maná, recarga 5 s",
+			"branch": 0,
+			"branch_name": "Acero (la espada)",
+			"id": "tronco.estocada",
+			"skill": {
+				"kind": "DASH",
+				"mana_cost": 0,
+				"cooldown": 5,
+				"damage": 20,
+				"length": 2.0
+			}
+		},
+		{
+			"tier": 2,
+			"name": "Castigo",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "+30 % de daño a enemigos que acaban de fallar un ataque",
+			"branch": 0,
+			"branch_name": "Acero (la espada)",
+			"id": "tronco.castigo",
+			"mods": [
+				{
+					"stat": "punish_pct",
+					"add": 0.3
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Combo largo",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "El combo pasa de 3 a 4 golpes",
+			"branch": 0,
+			"branch_name": "Acero (la espada)",
+			"id": "tronco.combo_largo",
+			"mods": [
+				{
+					"stat": "combo_hits",
+					"add": 1
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Golpe pesado",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "El último golpe del combo empuja el doble e interrumpe a enemigos pequeños",
+			"branch": 0,
+			"branch_name": "Acero (la espada)",
+			"id": "tronco.golpe_pesado",
+			"mods": [
+				{
+					"stat": "combo_last_push",
+					"add": 1.0
+				},
+				{
+					"stat": "combo_last_stun",
+					"add": 0.3
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Torbellino",
+			"type": "activa",
+			"cost": 2,
+			"desc": "Giro de 360°, 25 de daño; sin maná, recarga 8 s",
+			"branch": 0,
+			"branch_name": "Acero (la espada)",
+			"id": "tronco.torbellino",
+			"skill": {
+				"kind": "AREA",
+				"mana_cost": 0,
+				"cooldown": 8,
+				"damage": 25,
+				"scale": 0.9,
+				"fx": "spark"
+			}
+		},
+		{
+			"tier": 4,
+			"name": "Remate",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "+50 % de daño a enemigos con menos del 25 % de vida",
+			"branch": 0,
+			"branch_name": "Acero (la espada)",
+			"id": "tronco.remate",
+			"mods": [
+				{
+					"stat": "execute_pct",
+					"add": 0.5
+				}
+			]
+		},
+		{
+			"tier": 5,
+			"name": "Maestro de armas",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "Cada golpe de espada reduce 0,3 s la recarga de todas las habilidades",
+			"branch": 0,
+			"branch_name": "Acero (la espada)",
+			"id": "tronco.maestro_de_armas",
+			"mods": [
+				{
+					"stat": "sword_cdr",
+					"add": 0.3
+				}
+			]
+		},
+		{
+			"tier": 1,
+			"name": "Impulso",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Tras esquivar, el siguiente golpe en 1 s hace +40 %",
+			"branch": 1,
+			"branch_name": "Instinto (esquiva y movimiento)",
+			"id": "tronco.impulso",
+			"mods": [
+				{
+					"stat": "after_dodge_pct",
+					"add": 0.4
+				}
+			]
+		},
+		{
+			"tier": 1,
+			"name": "Paso ligero",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "+10 % de velocidad fuera de combate",
+			"branch": 1,
+			"branch_name": "Instinto (esquiva y movimiento)",
+			"id": "tronco.paso_ligero",
+			"mods": [
+				{
+					"stat": "ooc_move_pct",
+					"add": 0.1
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Esquiva limpia",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Esquivar en los últimos 0,15 s antes de un golpe devuelve 10 de maná",
+			"branch": 1,
+			"branch_name": "Instinto (esquiva y movimiento)",
+			"id": "tronco.esquiva_limpia",
+			"mods": [
+				{
+					"stat": "perfect_dodge_mp",
+					"add": 10
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Doble esquiva",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Dos cargas de esquiva",
+			"branch": 1,
+			"branch_name": "Instinto (esquiva y movimiento)",
+			"id": "tronco.doble_esquiva",
+			"mods": [
+				{
+					"stat": "dodge_charges",
+					"add": 1
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Lectura",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Los avisos enemigos se ven 0,15 s antes",
+			"branch": 1,
+			"branch_name": "Instinto (esquiva y movimiento)",
+			"id": "tronco.lectura",
+			"mods": [
+				{
+					"stat": "warning_bonus",
+					"add": 0.15
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Rodar y golpear",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Atacar justo al acabar la esquiva hace un tajo giratorio de 15",
+			"branch": 1,
+			"branch_name": "Instinto (esquiva y movimiento)",
+			"id": "tronco.rodar_y_golpear",
+			"implemented": false
+		},
+		{
+			"tier": 4,
+			"name": "Tiempo justo",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "La esquiva perfecta ralentiza a los enemigos 0,5 s (el efecto de pantalla se puede desactivar)",
+			"branch": 1,
+			"branch_name": "Instinto (esquiva y movimiento)",
+			"id": "tronco.tiempo_justo",
+			"mods": [
+				{
+					"stat": "perfect_dodge_slow",
+					"add": 0.5
+				}
+			]
+		},
+		{
+			"tier": 5,
+			"name": "Fantasma",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "+0,1 s de invulnerabilidad en la esquiva",
+			"branch": 1,
+			"branch_name": "Instinto (esquiva y movimiento)",
+			"id": "tronco.fantasma",
+			"mods": [
+				{
+					"stat": "dodge_iframes",
+					"add": 0.1
+				}
+			]
+		},
+		{
+			"tier": 1,
+			"name": "Piel curtida",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "+15 % de vida máxima",
+			"branch": 2,
+			"branch_name": "Resistencia (supervivencia)",
+			"id": "tronco.piel_curtida",
+			"mods": [
+				{
+					"stat": "max_hp_pct",
+					"add": 0.15
+				}
+			]
+		},
+		{
+			"tier": 1,
+			"name": "Pociones dobles",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "4 pociones por expedición en lugar de 3",
+			"branch": 2,
+			"branch_name": "Resistencia (supervivencia)",
+			"id": "tronco.pociones_dobles",
+			"implemented": false
+		},
+		{
+			"tier": 2,
+			"name": "Segundo aliento",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "En lugar de caer te quedas a 1 de vida e invulnerable 1 s; se recarga en 60 s",
+			"branch": 2,
+			"branch_name": "Resistencia (supervivencia)",
+			"id": "tronco.segundo_aliento",
+			"mods": [
+				{
+					"stat": "last_stand",
+					"add": 1
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Recuperación",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Fuera de combate recuperas un 2 % de vida por segundo",
+			"branch": 2,
+			"branch_name": "Resistencia (supervivencia)",
+			"id": "tronco.recuperacion",
+			"mods": [
+				{
+					"stat": "ooc_regen_pct",
+					"add": 0.02
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Último recurso",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Con menos del 30 % de vida recibes −20 % de daño",
+			"branch": 2,
+			"branch_name": "Resistencia (supervivencia)",
+			"id": "tronco.ultimo_recurso",
+			"mods": [
+				{
+					"stat": "low_hp_received_pct",
+					"add": -0.2
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Antídotos",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Los estados alterados duran −40 % sobre ti",
+			"branch": 2,
+			"branch_name": "Resistencia (supervivencia)",
+			"id": "tronco.antidotos",
+			"implemented": false
+		},
+		{
+			"tier": 4,
+			"name": "Corazón firme",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "+25 de vida; inmune al primer aturdimiento de cada combate",
+			"branch": 2,
+			"branch_name": "Resistencia (supervivencia)",
+			"id": "tronco.corazon_firme",
+			"mods": [
+				{
+					"stat": "max_hp",
+					"add": 25
+				}
+			]
+		},
+		{
+			"tier": 5,
+			"name": "Inquebrantable",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "Segundo aliento tiene dos cargas",
+			"branch": 2,
+			"branch_name": "Resistencia (supervivencia)",
+			"id": "tronco.inquebrantable",
+			"mods": [
+				{
+					"stat": "last_stand",
+					"add": 1
+				}
+			]
+		},
+		{
+			"tier": 1,
+			"name": "Ojo de rastreador",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Ves la vida de los enemigos sin golpearlos",
+			"branch": 3,
+			"branch_name": "Oficio (exploración y utilidad)",
+			"id": "tronco.ojo_de_rastreador",
+			"mods": [
+				{
+					"stat": "show_enemy_hp",
+					"add": 1
+				}
+			]
+		},
+		{
+			"tier": 1,
+			"name": "Bolsillos",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "+1 hueco de consumible",
+			"branch": 3,
+			"branch_name": "Oficio (exploración y utilidad)",
+			"id": "tronco.bolsillos",
+			"implemented": false
+		},
+		{
+			"tier": 2,
+			"name": "Botín atento",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Los cofres dan un objeto más",
+			"branch": 3,
+			"branch_name": "Oficio (exploración y utilidad)",
+			"id": "tronco.botin_atento",
+			"mods": [
+				{
+					"stat": "chest_bonus",
+					"add": 1
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Regateo",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "−10 % en las tiendas",
+			"branch": 3,
+			"branch_name": "Oficio (exploración y utilidad)",
+			"id": "tronco.regateo",
+			"implemented": false
+		},
+		{
+			"tier": 3,
+			"name": "Cartógrafo",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "El mapa marca los secretos a menos de 20 unidades",
+			"branch": 3,
+			"branch_name": "Oficio (exploración y utilidad)",
+			"id": "tronco.cartografo",
+			"implemented": false
+		},
+		{
+			"tier": 3,
+			"name": "Alquimia de campo",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Las pociones preparadas en un punto de descanso curan +20 %",
+			"branch": 3,
+			"branch_name": "Oficio (exploración y utilidad)",
+			"id": "tronco.alquimia_de_campo",
+			"implemented": false
+		},
+		{
+			"tier": 4,
+			"name": "Recarga rápida",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "−15 % a todas las recargas",
+			"branch": 3,
+			"branch_name": "Oficio (exploración y utilidad)",
+			"id": "tronco.recarga_rapida",
+			"mods": [
+				{
+					"stat": "cooldown_pct",
+					"add": -0.15
+				}
+			]
+		},
+		{
+			"tier": 5,
+			"name": "Leyenda en ciernes",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "+10 % de experiencia y de reputación por contrato",
+			"branch": 3,
+			"branch_name": "Oficio (exploración y utilidad)",
+			"id": "tronco.leyenda_en_ciernes",
+			"mods": [
+				{
+					"stat": "xp_pct",
+					"add": 0.1
+				}
+			]
+		}
+	]
+}

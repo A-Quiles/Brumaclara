@@ -12,9 +12,13 @@ const GOLD := Color("ffd34a")
 const INK := Color("f4e9c8")
 const DIM := Color(0.62, 0.66, 0.8)
 const TURN := [["walk_down", false], ["walk_side", false], ["walk_up", false], ["walk_side", true]]
-const ROWS := ["Género", "Peinado", "Pelo", "Piel", "Atuendo", "", ""]  # the last two: Aleatorio, Empezar
+const OPTIONS := ["Género", "Peinado", "Pelo", "Piel", "Atuendo", "Cuero", "Pantalón"]
+const ROW_RANDOM := 7
+const ROW_NEW := 8
+const ROW_CONTINUE := 9  # only with a saved game
 
 var look := HeroLook.load_look()
+var _rows := 9
 var _row := 0
 var _turn := 0
 var _turn_clock := 0.0
@@ -25,6 +29,7 @@ var _lines: Array[Control] = []
 
 
 func _ready() -> void:
+	_rows = 10 if Progress.has_save() and Progress.principal != &"" else 9
 	set_anchors_preset(PRESET_FULL_RECT)
 	theme = Theme.new()
 	theme.default_font = FONT
@@ -45,9 +50,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not event.is_pressed() or event.is_echo():
 		return
 	if event.is_action("move_up"):
-		_row = posmod(_row - 1, ROWS.size())
+		_row = posmod(_row - 1, _rows)
 	elif event.is_action("move_down"):
-		_row = posmod(_row + 1, ROWS.size())
+		_row = posmod(_row + 1, _rows)
 	elif event.is_action("move_left"):
 		_change(_row, -1)
 	elif event.is_action("move_right"):
@@ -83,6 +88,10 @@ func _change(row: int, step: int) -> void:
 			look.skin += step
 		4:
 			look.outfit += step
+		5:
+			look.leather += step
+		6:
+			look.trousers += step
 		_:
 			return
 	HeroLook.clamp_look(look)
@@ -90,10 +99,15 @@ func _change(row: int, step: int) -> void:
 
 
 func _activate(row: int) -> void:
-	if row == 5:
-		look = HeroLook.clamp_look({"model": randi(), "hair": randi(), "skin": randi(), "outfit": randi()})
+	if row == ROW_RANDOM:
+		look = HeroLook.clamp_look({"model": randi(), "hair": randi(), "skin": randi(), "outfit": randi(),
+				"leather": randi(), "trousers": randi()})
 		_refresh()
-	elif row == 6:
+	elif row == ROW_NEW:  # a new game: level 1, no affinity, nothing learned
+		HeroLook.save_look(look)
+		Progress.new_game()
+		get_tree().change_scene_to_file(FIRST_LEVEL)
+	elif row == ROW_CONTINUE:
 		HeroLook.save_look(look)
 		get_tree().change_scene_to_file(FIRST_LEVEL)
 	else:
@@ -105,8 +119,10 @@ func _refresh() -> void:
 	var hair: Array = HeroLook.HAIR[look.hair]
 	var skin: Array = HeroLook.SKIN[look.skin]
 	var outfit: Array = HeroLook.OUTFITS[look.outfit]
-	var texts := [model.gender, model.hair, hair[0], skin[0], outfit[0]]
-	var colours := [null, null, hair[1], skin[1], outfit[1]]
+	var leather: Array = HeroLook.LEATHER[look.leather]
+	var trousers: Array = HeroLook.TROUSERS[look.trousers]
+	var texts := [model.gender, model.hair, hair[0], skin[0], outfit[0], leather[0], trousers[0]]
+	var colours := [null, null, hair[1], skin[1], outfit[1], leather[1], trousers[1]]
 	var same_gender := HeroLook.MODELS.filter(func(m: Dictionary) -> bool: return m.gender == model.gender).size()
 	for i in texts.size():
 		_values[i].text = texts[i] + ("  (único)" if i == 1 and same_gender == 1 else "")
@@ -183,24 +199,24 @@ func _build() -> void:
 	box.set_content_margin_all(10)
 	box.anti_aliasing = false
 	panel.add_theme_stylebox_override("panel", box)
-	panel.position = Vector2(318, 64)
+	panel.position = Vector2(318, 50)
 	panel.custom_minimum_size = Vector2(290, 0)
 	add_child(panel)
 	var column := VBoxContainer.new()
-	column.add_theme_constant_override("separation", 6)
+	column.add_theme_constant_override("separation", 3)
 	panel.add_child(column)
-	for i in ROWS.size():
+	for i in _rows:
 		var line := HBoxContainer.new()
-		line.custom_minimum_size = Vector2(0, 22)
+		line.custom_minimum_size = Vector2(0, 21)
 		line.mouse_filter = MOUSE_FILTER_PASS
 		var mark := Label.new()
 		mark.name = "Mark"
 		mark.custom_minimum_size = Vector2(10, 0)
 		mark.add_theme_color_override("font_color", GOLD)
 		line.add_child(mark)
-		if i < 5:
+		if i < OPTIONS.size():
 			var name_label := Label.new()
-			name_label.text = ROWS[i]
+			name_label.text = OPTIONS[i]
 			name_label.custom_minimum_size = Vector2(70, 0)
 			name_label.add_theme_color_override("font_color", DIM)
 			line.add_child(name_label)
@@ -219,15 +235,15 @@ func _build() -> void:
 			_swatches.append(swatch)
 		else:
 			var button := Button.new()
-			button.text = "Aleatorio" if i == 5 else "Empezar la aventura"
+			button.text = ["Aleatorio", "Nueva aventura", "Continuar partida"][i - ROW_RANDOM]
 			button.focus_mode = FOCUS_NONE
 			button.size_flags_horizontal = SIZE_EXPAND_FILL
-			button.add_theme_color_override("font_color", GOLD if i == 6 else INK)
+			button.add_theme_color_override("font_color", GOLD if i == ROW_NEW else INK)
 			button.pressed.connect(func() -> void:
 				_row = i
 				_activate(i))
 			line.add_child(button)
-		if i == 5:
+		if i == ROW_RANDOM:
 			var gap := Control.new()
 			gap.custom_minimum_size = Vector2(0, 6)
 			column.add_child(gap)
@@ -237,7 +253,7 @@ func _build() -> void:
 	var hint := Label.new()
 	hint.text = "Flechas o WASD: elegir · Intro: confirmar"
 	hint.add_theme_color_override("font_color", DIM)
-	hint.position = Vector2(318, 330)
+	hint.position = Vector2(318, 338)
 	add_child(hint)
 
 

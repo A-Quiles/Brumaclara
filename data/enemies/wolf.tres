@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyData" format=3]
 
-[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_oico5"]
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_data"]
 
 [resource]
-script = ExtResource("1_oico5")
+script = ExtResource("1_data")
 display_name = "Lobo de la Fractura"

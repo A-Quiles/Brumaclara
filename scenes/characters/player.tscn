@@ -1,9 +1,6 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/characters/player.gd" id="1_jk2m4"]
-[ext_resource type="Script" path="res://scripts/data/skill_data.gd" id="2_xhtjm"]
-[ext_resource type="Resource" path="res://data/skills/chispa.tres" id="3_k4v7y"]
-[ext_resource type="Resource" path="res://data/skills/estallido.tres" id="4_g66nw"]
 [ext_resource type="PackedScene" path="res://scenes/effects/dust.tscn" id="4_xrqxk"]
 [ext_resource type="PackedScene" path="res://scenes/effects/floating_text.tscn" id="5_g66nw"]
 [ext_resource type="SpriteFrames" path="res://assets/characters/hero/hero_frames.tres" id="6_rpnd8"]
@@ -39,7 +36,6 @@ collision_mask = 5
 floor_max_angle = 0.87266463
 floor_snap_length = 0.4
 script = ExtResource("1_jk2m4")
-skills = Array[ExtResource("2_xhtjm")]([ExtResource("3_k4v7y"), ExtResource("4_g66nw")])
 dust_scene = ExtResource("4_xrqxk")
 text_scene = ExtResource("5_g66nw")
 

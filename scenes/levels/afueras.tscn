@@ -72,6 +72,15 @@
 [ext_resource type="PackedScene" path="res://scenes/effects/dust.tscn" id="72_1ahao"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="73_ser2c"]
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="74_o7wky"]
+[ext_resource type="Resource" path="res://data/enemies/lobezno.tres" id="900_lobezno"]
+[ext_resource type="Resource" path="res://data/enemies/alfa.tres" id="900_alfa"]
+[ext_resource type="Resource" path="res://data/enemies/brasa.tres" id="900_brasa"]
+[ext_resource type="Resource" path="res://data/enemies/escarcha.tres" id="900_escarcha"]
+[ext_resource type="Resource" path="res://data/enemies/umbral.tres" id="900_umbral"]
+[ext_resource type="Resource" path="res://data/enemies/pedrero.tres" id="900_pedrero"]
+[ext_resource type="Resource" path="res://data/enemies/tormenta.tres" id="900_tormenta"]
+[ext_resource type="Resource" path="res://data/enemies/sacro.tres" id="900_sacro"]
+[ext_resource type="Resource" path="res://data/enemies/gris.tres" id="900_gris"]
 [ext_resource type="Script" path="res://scripts/systems/level_edits.gd" id="75_8x18h"]
 
 [sub_resource type="Environment" id="Environment_hlfps"]
@@ -1497,6 +1506,96 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8, 0, -8.9)
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("62_gkhel")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Wolf_lobezno" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("900_lobezno")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Wolf_alfa" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -11)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("900_alfa")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Wolf_brasa" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -14)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("900_brasa")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Wolf_escarcha" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -9)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("900_escarcha")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Wolf_umbral" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -4)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("900_umbral")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Wolf_pedrero" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("900_pedrero")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Wolf_tormenta" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -3)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("900_tormenta")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Wolf_sacro" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("900_sacro")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Wolf_gris" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -14)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("900_gris")
 orb_scene = ExtResource("56_vadvj")
 death_effect = ExtResource("63_7y0p2")
 text_scene = ExtResource("64_efuy5")

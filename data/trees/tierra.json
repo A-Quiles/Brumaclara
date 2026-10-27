@@ -1,0 +1,454 @@
+{
+	"id": "tierra",
+	"name": "Tierra",
+	"nodes": [
+		{
+			"tier": 1,
+			"name": "Canto rodado",
+			"type": "activa",
+			"cost": 2,
+			"desc": "10 / 0,8 s / 20. Proyectil lento que empuja mucho y aplica Fisura",
+			"branch": 0,
+			"branch_name": "Roca (ataque)",
+			"id": "tierra.canto_rodado",
+			"skill": {
+				"kind": "PROJECTILE",
+				"mana_cost": 10,
+				"cooldown": 0.8,
+				"damage": 20,
+				"speed": 8.0,
+				"push": 12.0,
+				"status": "fisura",
+				"scale": 1.3
+			}
+		},
+		{
+			"tier": 1,
+			"name": "Rodar",
+			"type": "mejora",
+			"cost": 1,
+			"desc": "El canto sigue rodando 4 unidades y golpea a todo lo que encuentra",
+			"branch": 0,
+			"branch_name": "Roca (ataque)",
+			"id": "tierra.rodar",
+			"mods": [
+				{
+					"skill": "tierra.canto_rodado",
+					"set": {
+						"pierce": true
+					}
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Púas de piedra",
+			"type": "activa",
+			"cost": 2,
+			"desc": "18 / 5 s / 22. Línea de púas de 5 unidades que sale del suelo",
+			"branch": 0,
+			"branch_name": "Roca (ataque)",
+			"id": "tierra.puas_de_piedra",
+			"skill": {
+				"kind": "LINE",
+				"mana_cost": 18,
+				"cooldown": 5,
+				"damage": 22,
+				"length": 5.0,
+				"count": 5,
+				"step_delay": 0.05,
+				"once": true,
+				"status": "fisura"
+			}
+		},
+		{
+			"tier": 2,
+			"name": "Peso de la montaña",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Las habilidades de tierra empujan +50 %",
+			"branch": 0,
+			"branch_name": "Roca (ataque)",
+			"id": "tierra.peso_de_la_montana",
+			"mods": [
+				{
+					"skills_of": "tierra",
+					"kind": "",
+					"mul": {
+						"push": 1.5
+					}
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Lluvia de grava",
+			"type": "activa",
+			"cost": 2,
+			"desc": "24 / 8 s / 5 × 8. Área de 3 unidades; aplica Fisura",
+			"branch": 0,
+			"branch_name": "Roca (ataque)",
+			"id": "tierra.lluvia_de_grava",
+			"skill": {
+				"kind": "RAIN",
+				"mana_cost": 24,
+				"cooldown": 8,
+				"damage": 5,
+				"count": 8,
+				"duration": 1.0,
+				"radius": 1.8,
+				"offset": 3.5,
+				"status": "fisura"
+			}
+		},
+		{
+			"tier": 3,
+			"name": "Corazón de granito",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "+20 % de daño contra enemigos con Fisura",
+			"branch": 0,
+			"branch_name": "Roca (ataque)",
+			"id": "tierra.corazon_de_granito",
+			"mods": [
+				{
+					"stat": "vs_pct.fisura",
+					"add": 0.2
+				}
+			]
+		},
+		{
+			"tier": 4,
+			"name": "Meteoro de piedra",
+			"type": "activa",
+			"cost": 2,
+			"desc": "38 / 14 s / 70. Cae al cabo de 1 s (con aviso en el suelo) y derriba",
+			"branch": 0,
+			"branch_name": "Roca (ataque)",
+			"id": "tierra.meteoro_de_piedra",
+			"skill": {
+				"kind": "STRIKE",
+				"mana_cost": 38,
+				"cooldown": 14,
+				"damage": 70,
+				"offset": 4.5,
+				"delay": 1.0,
+				"radius": 2.0,
+				"status": "aturdido",
+				"status_seconds": 1.0,
+				"scale": 1.6
+			}
+		},
+		{
+			"tier": 5,
+			"name": "Avalancha",
+			"type": "mejora",
+			"cost": 1,
+			"desc": "El meteoro deja 3 rocas que bloquean el paso y estallan a los 3 s (20)",
+			"branch": 0,
+			"branch_name": "Roca (ataque)",
+			"id": "tierra.avalancha",
+			"implemented": false
+		},
+		{
+			"tier": 1,
+			"name": "Piel de piedra",
+			"type": "activa",
+			"cost": 2,
+			"desc": "15 / 12 s. −40 % de daño recibido y −20 % de velocidad durante 4 s",
+			"branch": 1,
+			"branch_name": "Bastión (defensa)",
+			"id": "tierra.piel_de_piedra",
+			"skill": {
+				"kind": "BUFF",
+				"mana_cost": 15,
+				"cooldown": 12,
+				"damage": 0,
+				"duration": 4.0,
+				"mods": {
+					"received_pct": -0.4,
+					"move_pct": -0.2
+				}
+			}
+		},
+		{
+			"tier": 1,
+			"name": "Raíces de roca",
+			"type": "mejora",
+			"cost": 1,
+			"desc": "Con Piel de piedra no te pueden empujar",
+			"branch": 1,
+			"branch_name": "Bastión (defensa)",
+			"id": "tierra.raices_de_roca",
+			"mods": [
+				{
+					"skill": "tierra.piel_de_piedra",
+					"merge_mods": {
+						"no_push": 1
+					}
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Muro de tierra",
+			"type": "activa",
+			"cost": 2,
+			"desc": "20 / 10 s. Muro de 3 unidades durante 6 s que detiene proyectiles",
+			"branch": 1,
+			"branch_name": "Bastión (defensa)",
+			"id": "tierra.muro_de_tierra",
+			"skill": {
+				"kind": "WALL",
+				"mana_cost": 20,
+				"cooldown": 10,
+				"damage": 0,
+				"length": 3.0,
+				"duration": 6.0,
+				"hits": 5,
+				"prop": "boulder",
+				"offset": 2.0
+			}
+		},
+		{
+			"tier": 2,
+			"name": "Fortificar",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "+0,08 de defensa permanente",
+			"branch": 1,
+			"branch_name": "Bastión (defensa)",
+			"id": "tierra.fortificar",
+			"mods": [
+				{
+					"stat": "received_pct",
+					"add": -0.08
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Escudo de rocas",
+			"type": "activa",
+			"cost": 2,
+			"desc": "25 / 15 s. Tres rocas orbitan a tu alrededor; cada una bloquea un golpe",
+			"branch": 1,
+			"branch_name": "Bastión (defensa)",
+			"id": "tierra.escudo_de_rocas",
+			"skill": {
+				"kind": "SHIELD",
+				"mana_cost": 25,
+				"cooldown": 15,
+				"damage": 0,
+				"duration": 10.0,
+				"hits": 3
+			}
+		},
+		{
+			"tier": 3,
+			"name": "Contraataque pétreo",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Cada roca que bloquea golpea al atacante (15)",
+			"branch": 1,
+			"branch_name": "Bastión (defensa)",
+			"id": "tierra.contraataque_petreo",
+			"mods": [
+				{
+					"skill": "tierra.escudo_de_rocas",
+					"set": {
+						"thorns": 15
+					}
+				}
+			]
+		},
+		{
+			"tier": 4,
+			"name": "Fortaleza",
+			"type": "activa",
+			"cost": 2,
+			"desc": "35 / 25 s. Círculo de 4 unidades durante 6 s: tú y tus aliados recibís −30 % de daño y los enemigos van más lentos",
+			"branch": 1,
+			"branch_name": "Bastión (defensa)",
+			"id": "tierra.fortaleza",
+			"skill": {
+				"kind": "ZONE",
+				"mana_cost": 35,
+				"cooldown": 25,
+				"damage": 0,
+				"duration": 6.0,
+				"tick": 0.5,
+				"radius": 4.0,
+				"offset": 0.0,
+				"slow": 0.7,
+				"self_mods": {
+					"received_pct": -0.3
+				}
+			}
+		},
+		{
+			"tier": 5,
+			"name": "Inamovible",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "Con Piel de piedra eres inmune a aturdimientos y derribos",
+			"branch": 1,
+			"branch_name": "Bastión (defensa)",
+			"id": "tierra.inamovible",
+			"implemented": false
+		},
+		{
+			"tier": 1,
+			"name": "Pisotón",
+			"type": "activa",
+			"cost": 2,
+			"desc": "12 / 4 s / 10. Anillo de 2,5 unidades que aturde 0,5 s a los enemigos pequeños",
+			"branch": 2,
+			"branch_name": "Temblor (control)",
+			"id": "tierra.pisoton",
+			"skill": {
+				"kind": "AREA",
+				"mana_cost": 12,
+				"cooldown": 4,
+				"damage": 10,
+				"scale": 1.2,
+				"status": "aturdido",
+				"status_seconds": 0.5
+			}
+		},
+		{
+			"tier": 1,
+			"name": "Réplica",
+			"type": "mejora",
+			"cost": 1,
+			"desc": "El Pisotón se repite 0,5 s después",
+			"branch": 2,
+			"branch_name": "Temblor (control)",
+			"id": "tierra.replica",
+			"mods": [
+				{
+					"skill": "tierra.pisoton",
+					"set": {
+						"repeat_after": 0.5
+					}
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Grieta",
+			"type": "activa",
+			"cost": 2,
+			"desc": "20 / 8 s / 12. Grieta en línea que derriba 1 s",
+			"branch": 2,
+			"branch_name": "Temblor (control)",
+			"id": "tierra.grieta",
+			"skill": {
+				"kind": "LINE",
+				"mana_cost": 20,
+				"cooldown": 8,
+				"damage": 12,
+				"length": 6.0,
+				"count": 6,
+				"step_delay": 0.05,
+				"once": true,
+				"status": "aturdido",
+				"status_seconds": 1.0
+			}
+		},
+		{
+			"tier": 2,
+			"name": "Terreno firme",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Inmune a las ralentizaciones del terreno (barro, hielo, telarañas)",
+			"branch": 2,
+			"branch_name": "Temblor (control)",
+			"id": "tierra.terreno_firme",
+			"implemented": false
+		},
+		{
+			"tier": 3,
+			"name": "Arenas movedizas",
+			"type": "activa",
+			"cost": 2,
+			"desc": "25 / 10 s. Zona de 4 s: −60 % de velocidad y los enemigos no pueden esquivar ni saltar",
+			"branch": 2,
+			"branch_name": "Temblor (control)",
+			"id": "tierra.arenas_movedizas",
+			"skill": {
+				"kind": "ZONE",
+				"mana_cost": 25,
+				"cooldown": 10,
+				"damage": 0,
+				"duration": 4.0,
+				"tick": 0.5,
+				"radius": 2.0,
+				"offset": 2.5,
+				"slow": 0.4
+			}
+		},
+		{
+			"tier": 3,
+			"name": "Ondas",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "+50 % de radio del Pisotón",
+			"branch": 2,
+			"branch_name": "Temblor (control)",
+			"id": "tierra.ondas",
+			"mods": [
+				{
+					"skill": "tierra.pisoton",
+					"mul": {
+						"scale": 1.5
+					}
+				}
+			]
+		},
+		{
+			"tier": 4,
+			"name": "Terremoto",
+			"type": "activa",
+			"cost": 2,
+			"desc": "45 / 20 s / 10 cada 0,5 s. Temblor de 3 s en 7 unidades; derriba a los pequeños cada segundo",
+			"branch": 2,
+			"branch_name": "Temblor (control)",
+			"id": "tierra.terremoto",
+			"skill": {
+				"kind": "ZONE",
+				"mana_cost": 45,
+				"cooldown": 20,
+				"damage": 10,
+				"duration": 3.0,
+				"tick": 0.5,
+				"radius": 7.0,
+				"offset": 0.0,
+				"status": "aturdido",
+				"status_seconds": 0.3
+			}
+		},
+		{
+			"tier": 5,
+			"name": "Falla",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "El Terremoto abre grietas que siguen activas 4 s más",
+			"branch": 2,
+			"branch_name": "Temblor (control)",
+			"id": "tierra.falla",
+			"implemented": false
+		},
+		{
+			"tier": 5,
+			"name": "Despertar de la montaña",
+			"type": "definitiva",
+			"cost": 5,
+			"desc": "60 / 45 s. Un gólem de roca lucha a tu lado 15 s; sus golpes aplican Fisura.",
+			"branch": -1,
+			"branch_name": "Definitiva",
+			"id": "tierra.despertar_de_la_montana",
+			"implemented": false
+		}
+	]
+}

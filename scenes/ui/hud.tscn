@@ -133,53 +133,7 @@ text = "J"
 label_settings = SubResource("LabelSettings_4mi7y")
 horizontal_alignment = 1
 
-[node name="SlotBolt" type="TextureRect" parent="." unique_id=1897295220]
-unique_name_in_owner = true
-offset_left = 553.0
-offset_top = 302.0
-offset_right = 553.0
-offset_bottom = 302.0
-mouse_filter = 2
-texture = ExtResource("9_65nxt")
 
-[node name="Cooldown" type="ColorRect" parent="SlotBolt" unique_id=1484457487]
-layout_mode = 0
-offset_right = 22.0
-mouse_filter = 2
-color = Color(0.02, 0.02, 0.06, 0.68)
-
-[node name="Key" type="Label" parent="SlotBolt" unique_id=1773287432]
-layout_mode = 0
-offset_top = 21.0
-offset_right = 22.0
-offset_bottom = 36.0
-text = "Q"
-label_settings = SubResource("LabelSettings_pkwgd")
-horizontal_alignment = 1
-
-[node name="SlotBurst" type="TextureRect" parent="." unique_id=612062983]
-unique_name_in_owner = true
-offset_left = 580.0
-offset_top = 302.0
-offset_right = 580.0
-offset_bottom = 302.0
-mouse_filter = 2
-texture = ExtResource("10_el1dq")
-
-[node name="Cooldown" type="ColorRect" parent="SlotBurst" unique_id=642524089]
-layout_mode = 0
-offset_right = 21.0
-mouse_filter = 2
-color = Color(0.02, 0.02, 0.06, 0.68)
-
-[node name="Key" type="Label" parent="SlotBurst" unique_id=1162131697]
-layout_mode = 0
-offset_top = 21.0
-offset_right = 21.0
-offset_bottom = 36.0
-text = "E"
-label_settings = SubResource("LabelSettings_d5po8")
-horizontal_alignment = 1
 
 [node name="SlotDash" type="TextureRect" parent="." unique_id=686421815]
 unique_name_in_owner = true
@@ -218,6 +172,6 @@ layout_mode = 0
 offset_left = 8.0
 offset_right = 632.0
 offset_bottom = 18.0
-text = "WASD: moverse  ·  J: espada  ·  Espacio: esquivar  ·  Q: Chispa  ·  E: Estallido"
+text = "WASD: moverse  ·  J: espada  ·  Espacio: esquivar  ·  Q E R C: habilidades  ·  X: definitiva  ·  T: árbol"
 label_settings = SubResource("LabelSettings_qmm8d")
 vertical_alignment = 1

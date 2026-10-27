@@ -1,0 +1,432 @@
+{
+	"id": "sombra",
+	"name": "Sombra",
+	"nodes": [
+		{
+			"tier": 1,
+			"name": "Dardo umbrío",
+			"type": "activa",
+			"cost": 2,
+			"desc": "8 / 0,5 s / 12. Aplica una marca de sombra",
+			"branch": 0,
+			"branch_name": "Umbra (marcas)",
+			"id": "sombra.dardo_umbrio",
+			"skill": {
+				"kind": "PROJECTILE",
+				"mana_cost": 8,
+				"cooldown": 0.5,
+				"damage": 12,
+				"status": "marca_sombra",
+				"speed": 17.0
+			}
+		},
+		{
+			"tier": 1,
+			"name": "Dardo triple",
+			"type": "mejora",
+			"cost": 1,
+			"desc": "Tres dardos en abanico; coste 14",
+			"branch": 0,
+			"branch_name": "Umbra (marcas)",
+			"id": "sombra.dardo_triple",
+			"mods": [
+				{
+					"skill": "sombra.dardo_umbrio",
+					"set": {
+						"count": 3,
+						"spread_deg": 15.0,
+						"mana_cost": 14.0
+					}
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Desgarro",
+			"type": "activa",
+			"cost": 2,
+			"desc": "35 / 10 s / 15 por marca. Consume las marcas",
+			"branch": 0,
+			"branch_name": "Umbra (marcas)",
+			"id": "sombra.desgarro",
+			"skill": {
+				"kind": "STRIKE",
+				"mana_cost": 35,
+				"cooldown": 10,
+				"damage": 0,
+				"target": "nearest",
+				"offset": 6.0,
+				"radius": 1.2,
+				"consume": "marca_sombra",
+				"per_stack": 15
+			}
+		},
+		{
+			"tier": 2,
+			"name": "Herida abierta",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Cada marca de sombra hace 2 de daño por segundo",
+			"branch": 0,
+			"branch_name": "Umbra (marcas)",
+			"id": "sombra.herida_abierta",
+			"mods": [
+				{
+					"stat": "shadow_dot",
+					"add": 2
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Lazo umbrío",
+			"type": "activa",
+			"cost": 2,
+			"desc": "20 / 8 s. Atrae a un enemigo pequeño hacia ti, o a ti hacia uno grande",
+			"branch": 0,
+			"branch_name": "Umbra (marcas)",
+			"id": "sombra.lazo_umbrio",
+			"skill": {
+				"kind": "PULL",
+				"mana_cost": 20,
+				"cooldown": 8,
+				"damage": 0,
+				"offset": 6.0
+			}
+		},
+		{
+			"tier": 3,
+			"name": "Profundidad",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Hasta 5 marcas por enemigo",
+			"branch": 0,
+			"branch_name": "Umbra (marcas)",
+			"id": "sombra.profundidad",
+			"mods": [
+				{
+					"stat": "max_shadow_marks",
+					"add": 2
+				}
+			]
+		},
+		{
+			"tier": 4,
+			"name": "Eclipse",
+			"type": "activa",
+			"cost": 2,
+			"desc": "40 / 15 s / 30. Esfera lenta que marca todo lo que toca y explota al final",
+			"branch": 0,
+			"branch_name": "Umbra (marcas)",
+			"id": "sombra.eclipse",
+			"skill": {
+				"kind": "PROJECTILE",
+				"mana_cost": 40,
+				"cooldown": 15,
+				"damage": 30,
+				"speed": 4.0,
+				"pierce": true,
+				"scale": 2.0,
+				"explode_radius": 2.0,
+				"status": "marca_sombra"
+			}
+		},
+		{
+			"tier": 5,
+			"name": "Cosecha",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "Si el Desgarro mata, las marcas que sobran pasan a los enemigos cercanos",
+			"branch": 0,
+			"branch_name": "Umbra (marcas)",
+			"id": "sombra.cosecha",
+			"implemented": false
+		},
+		{
+			"tier": 1,
+			"name": "Velo",
+			"type": "activa",
+			"cost": 2,
+			"desc": "15 / 8 s. Invisible 1,5 s: los enemigos pierden tu rastro",
+			"branch": 1,
+			"branch_name": "Velo (sigilo y evasión)",
+			"id": "sombra.velo",
+			"skill": {
+				"kind": "BUFF",
+				"mana_cost": 15,
+				"cooldown": 8,
+				"damage": 0,
+				"duration": 1.5,
+				"mods": {
+					"invisible": 1
+				}
+			}
+		},
+		{
+			"tier": 1,
+			"name": "Paso en las sombras",
+			"type": "mejora",
+			"cost": 1,
+			"desc": "El primer golpe desde el Velo hace +100 %",
+			"branch": 1,
+			"branch_name": "Velo (sigilo y evasión)",
+			"id": "sombra.paso_en_las_sombras",
+			"mods": [
+				{
+					"skill": "sombra.velo",
+					"merge_mods": {
+						"next_sword_pct": 1.0
+					}
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Silueta",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "La esquiva deja un señuelo de 1 s que atrae los ataques",
+			"branch": 1,
+			"branch_name": "Velo (sigilo y evasión)",
+			"id": "sombra.silueta",
+			"implemented": false
+		},
+		{
+			"tier": 2,
+			"name": "Fundirse",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "+20 % de velocidad durante el Velo",
+			"branch": 1,
+			"branch_name": "Velo (sigilo y evasión)",
+			"id": "sombra.fundirse",
+			"mods": [
+				{
+					"skill": "sombra.velo",
+					"merge_mods": {
+						"move_pct": 0.2
+					}
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Doble sombra",
+			"type": "activa",
+			"cost": 2,
+			"desc": "25 / 14 s. Un doble repite tus ataques al 40 % durante 5 s",
+			"branch": 1,
+			"branch_name": "Velo (sigilo y evasión)",
+			"id": "sombra.doble_sombra",
+			"implemented": false
+		},
+		{
+			"tier": 3,
+			"name": "Ojos de la noche",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Ves a los enemigos ocultos y la vida de los marcados",
+			"branch": 1,
+			"branch_name": "Velo (sigilo y evasión)",
+			"id": "sombra.ojos_de_la_noche",
+			"mods": [
+				{
+					"stat": "show_enemy_hp",
+					"add": 1
+				}
+			]
+		},
+		{
+			"tier": 4,
+			"name": "Paso del vacío",
+			"type": "activa",
+			"cost": 2,
+			"desc": "20 / 6 s. Apareces detrás de un enemigo marcado",
+			"branch": 1,
+			"branch_name": "Velo (sigilo y evasión)",
+			"id": "sombra.paso_del_vacio",
+			"skill": {
+				"kind": "BLINK",
+				"mana_cost": 20,
+				"cooldown": 6,
+				"damage": 0,
+				"offset": 8.0,
+				"on_marked": "marca_sombra"
+			}
+		},
+		{
+			"tier": 5,
+			"name": "Sin rastro",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "El Velo se activa solo al bajar del 20 % de vida (una vez por combate)",
+			"branch": 1,
+			"branch_name": "Velo (sigilo y evasión)",
+			"id": "sombra.sin_rastro",
+			"mods": [
+				{
+					"on": "low_hp",
+					"below": 0.2,
+					"every": 60.0,
+					"cast": "sombra.velo"
+				}
+			]
+		},
+		{
+			"tier": 1,
+			"name": "Drenaje",
+			"type": "activa",
+			"cost": 2,
+			"desc": "0 / 5 s / 8. Recupera 6 de maná por marca del objetivo",
+			"branch": 2,
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"id": "sombra.drenaje",
+			"skill": {
+				"kind": "STRIKE",
+				"mana_cost": 0,
+				"cooldown": 5,
+				"damage": 8,
+				"target": "nearest",
+				"offset": 5.0,
+				"radius": 1.0,
+				"mp_per_stack": 6,
+				"stack_status": "marca_sombra"
+			}
+		},
+		{
+			"tier": 1,
+			"name": "Debilitar",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Los enemigos marcados hacen −10 % de daño",
+			"branch": 2,
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"id": "sombra.debilitar",
+			"mods": [
+				{
+					"stat": "marked_weaken",
+					"add": 0.1
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Eco oscuro",
+			"type": "activa",
+			"cost": 2,
+			"desc": "20 / 6 s. Tu siguiente ataque se repite al 50 % sobre los marcados",
+			"branch": 2,
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"id": "sombra.eco_oscuro",
+			"implemented": false
+		},
+		{
+			"tier": 2,
+			"name": "Sed",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "El Drenaje también cura 3 de vida por marca",
+			"branch": 2,
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"id": "sombra.sed",
+			"mods": [
+				{
+					"skill": "sombra.drenaje",
+					"set": {
+						"hp_per_stack": 3
+					}
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Fragilidad",
+			"type": "activa",
+			"cost": 2,
+			"desc": "25 / 12 s. El objetivo recibe +25 % de daño durante 6 s",
+			"branch": 2,
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"id": "sombra.fragilidad",
+			"skill": {
+				"kind": "STRIKE",
+				"mana_cost": 25,
+				"cooldown": 12,
+				"damage": 0,
+				"target": "nearest",
+				"offset": 6.0,
+				"radius": 1.2,
+				"status": "fragil",
+				"status_seconds": 6.0
+			}
+		},
+		{
+			"tier": 3,
+			"name": "Contagio",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Cuando muere un enemigo marcado, sus marcas pasan al más cercano",
+			"branch": 2,
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"id": "sombra.contagio",
+			"implemented": false
+		},
+		{
+			"tier": 4,
+			"name": "Pacto de sombra",
+			"type": "activa",
+			"cost": 2,
+			"desc": "15 % de tu vida / 20 s. Recuperas todo el maná",
+			"branch": 2,
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"id": "sombra.pacto_de_sombra",
+			"skill": {
+				"kind": "HEAL",
+				"mana_cost": 0,
+				"cooldown": 20,
+				"damage": 0,
+				"hp_cost_pct": 0.15,
+				"restore_mp": true
+			}
+		},
+		{
+			"tier": 5,
+			"name": "Ruina total",
+			"type": "pasiva",
+			"cost": 2,
+			"desc": "La Fragilidad afecta a todos los enemigos marcados a menos de 6 unidades",
+			"branch": 2,
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"id": "sombra.ruina_total",
+			"mods": [
+				{
+					"skill": "sombra.fragilidad",
+					"set": {
+						"aoe_marked": 6.0
+					}
+				}
+			]
+		},
+		{
+			"tier": 5,
+			"name": "Noche cerrada",
+			"type": "definitiva",
+			"cost": 5,
+			"desc": "50 / 40 s. Oscuridad de 6 s en un área grande: los enemigos de dentro solo pueden atacarte si están pegados a ti y reciben 3 marcas.",
+			"branch": -1,
+			"branch_name": "Definitiva",
+			"id": "sombra.noche_cerrada",
+			"skill": {
+				"kind": "ZONE",
+				"mana_cost": 50,
+				"cooldown": 40,
+				"damage": 0,
+				"duration": 6.0,
+				"tick": 1.0,
+				"radius": 6.0,
+				"offset": 0.0,
+				"status": "deslumbrado",
+				"marks": 3
+			}
+		}
+	]
+}

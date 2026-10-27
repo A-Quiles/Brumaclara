@@ -5,6 +5,7 @@ extends SceneTree
 var _failures := 0
 var _hero: CharacterBody3D
 var _wolf: CharacterBody3D
+var _progress: Node
 
 
 func _initialize() -> void:
@@ -12,6 +13,10 @@ func _initialize() -> void:
 
 
 func _run() -> void:
+	_progress = root.get_node("Progress")
+	_progress.save_enabled = false
+	_progress.new_game()
+	_progress.choose_principal(&"fuego")  # Chispa on Q, Estallido on E
 	var level: Node = load("res://scenes/levels/afueras.tscn").instantiate()
 	root.add_child(level)
 	_hero = level.get_node("Player")
@@ -65,23 +70,23 @@ func _run() -> void:
 
 	# a defeated wolf drops experience that the hero picks up
 	_place(Vector3(0, 0, 4), Vector3(1.3, 0, 4))
-	var xp_before: int = _hero.xp
-	var level_before: int = _hero.level
+	var xp_before: int = _progress.xp
+	var level_before: int = _progress.level
 	_wolf.get_node("Health").damage(_wolf_hp())
 	await _frames(150)
 	_hero.global_position = _wolf.global_position + Vector3(0, 0, 0.3)
 	await _frames(30)
-	_check(_hero.xp != xp_before or _hero.level > level_before, "the wolf's orb gives experience")
+	_check(_progress.xp != xp_before or _progress.level > level_before, "the wolf's orb gives experience")
 
 	# the hidden chest opens with the interact key and its orbs give experience
 	var chest: Node3D = level.get_node("Props/Chest")
 	_hero.global_position = chest.global_position + Vector3(0, 0, 1.2)
-	xp_before = _hero.xp
-	level_before = _hero.level
+	xp_before = _progress.xp
+	level_before = _progress.level
 	await _frames(5)
 	await _press("interact", 90)
 	_check(chest.get("_opened"), "the chest opens with the interact key")
-	_check(_hero.xp != xp_before or _hero.level > level_before, "the chest's orbs give experience")
+	_check(_progress.xp != xp_before or _progress.level > level_before, "the chest's orbs give experience")
 
 	print("combat checks: %s" % ("all passed" if _failures == 0 else "%d FAILED" % _failures))
 	quit(1 if _failures else 0)
@@ -98,7 +103,7 @@ func _place(hero_at: Vector3, wolf_at: Vector3) -> void:
 
 func _heal_all() -> void:
 	_hero.get_node("Health").heal(999)
-	_hero.mp = _hero.max_mp
+	_hero.mp = _hero.max_mp()
 	var health: Health = _wolf.get_node("Health")
 	health.heal(health.maximum)
 

@@ -111,19 +111,24 @@ LOOK_GROUPS = {
         ("clothes", (95, 130), (0.25, 1), (0.18, 1), None),
         ("vest", (345, 360), (0.55, 1), (0.25, 1), None),
         ("skin", (15, 26), (0.2, 0.45), (0.6, 1), None),
+        ("leather", (10, 26), (0.45, 1), (0.18, 0.56), None),
+        ("trousers", (200, 260), (0, 0.25), (0.12, 0.42), None),
     ],
     "heroine": [
         ("hair", (30, 46), (0.6, 1), (0.58, 1), None),
         ("clothes", (95, 130), (0.25, 1), (0.18, 1), None),
         ("vest", (345, 360), (0.55, 1), (0.25, 1), None),
         ("skin", (15, 26), (0.2, 0.45), (0.6, 1), None),
+        ("leather", (10, 26), (0.45, 1), (0.18, 0.56), None),
+        ("trousers", (200, 260), (0, 0.25), (0.12, 0.42), None),
     ],
 }
-LOOK_IDS = {"hair": 1, "skin": 2, "clothes": 3, "vest": 4}
+LOOK_IDS = {"hair": 1, "skin": 2, "clothes": 3, "vest": 4, "leather": 5, "trousers": 6}
+LOOK_STEP = 30  # the mask stores id * LOOK_STEP (scripts/systems/hero_look.gd divides by the same number)
 
 
 def look_mask(sheet, rules, frame):
-    """L image: the colour group of every pixel of a hero sheet, as id * 50 (0 = keep the colour)."""
+    """L image: the colour group of every pixel of a hero sheet, as id * LOOK_STEP (0 = keep the colour)."""
     import colorsys
     a = np.asarray(sheet.convert("RGBA"))
     out = np.zeros(a.shape[:2], np.uint8)
@@ -153,7 +158,7 @@ def look_mask(sheet, rules, frame):
                 hit &= (sub[..., 2] >= val[0]) & (sub[..., 2] <= val[1])
                 if upper is not None:  # ponytail: lying frames (knocked out) keep this group's colour
                     hit &= upright & (rows < top + height * upper)
-                out[fy:fy + fh, fx:fx + fw][hit] = LOOK_IDS[group] * 50
+                out[fy:fy + fh, fx:fx + fw][hit] = LOOK_IDS[group] * LOOK_STEP
                 done |= hit
     return Image.fromarray(out, "L")
 
@@ -667,6 +672,92 @@ def recolors():
     return folder
 
 
+# --- affinity effects: the fire effects and skill icons repainted for each affinity ----------------
+
+# dark -> light colour ramp of each affinity; fire keeps the drawn colours
+AFFINITY_RAMPS = {
+    "hielo": ["1d3f8a", "3f8fd8", "8fd8ff", "eefcff"],
+    "rayo": ["2e2a8a", "6a6cff", "b4d8ff", "ffffff"],
+    "sombra": ["1a0f2a", "4a2a7a", "8f5ad0", "e2c8ff"],
+    "tierra": ["3a2414", "7a5030", "b88a50", "eedab0"],
+    "luz": ["8a6a10", "e0b030", "ffe880", "fffdf0"],
+}
+AFFINITY_SOURCES = [("effects", "bolt.png"), ("effects", "explosion.png"), ("effects", "spark.png"),
+                    ("ui", "icon_bolt.png"), ("ui", "icon_burst.png")]
+
+
+def _ramp_paint(rgba, ramp):
+    """Each opaque pixel takes the ramp colour at its brightness (relative to the image's own range)."""
+    out = rgba.copy()
+    solid = rgba[..., 3] > 0
+    lum = rgba[..., :3].astype(np.float64) @ np.array([0.299, 0.587, 0.114])
+    lo, hi = np.percentile(lum[solid], 2), np.percentile(lum[solid], 98)
+    t = np.clip((lum - lo) / max(hi - lo, 1.0), 0.0, 1.0) * (len(ramp) - 1)
+    stops = np.array([[int(c[i:i + 2], 16) for i in (0, 2, 4)] for c in ramp], np.float64)
+    i0 = np.floor(t).astype(int).clip(0, len(ramp) - 2)
+    f = (t - i0)[..., None]
+    rgb = stops[i0] * (1 - f) + stops[i0 + 1] * f
+    out[..., :3] = np.where(solid[..., None], rgb.round(), rgba[..., :3]).astype(np.uint8)
+    return out
+
+
+def affinity_fx():
+    """assets/<folder>/affinity/<affinity>_<file>: same frames as the fire version, repainted."""
+    for affinity, ramp in AFFINITY_RAMPS.items():
+        for folder, name in AFFINITY_SOURCES:
+            rgba = np.asarray(Image.open(OUT / folder / name).convert("RGBA"))
+            save(Image.fromarray(_ramp_paint(rgba, ramp), "RGBA"), folder, "affinity", f"{affinity}_{name}")
+    return OUT / "effects" / "affinity"
+
+
+# --- wolf variants (bestiary zone 1 and 5): the Fractura wolf repainted, same frames --------------
+
+# name: (fur colour, glow colour); fur is the slate-blue body, glow the violet cracks and eyes
+WOLF_VARIANTS = {
+    "alfa": ("5a4a44", "d0303c"),       # Lobo alfa: charcoal-brown, red cracks
+    "tormenta": ("5c7088", "40d8ff"),   # Lobo de tormenta: steel blue, electric cracks
+    "gris": ("a8a8ac", "ffb040"),       # Colmillo Gris (élite): pale grey, amber cracks
+    "madre": ("3a2a4c", "e050ff"),      # Madre de la manada (jefe): near-black, bright violet
+    "brasa": ("7a3a2a", "ff8a1c"),      # Lobo de brasa: ember-brown, orange cracks (fire)
+    "escarcha": ("a8d8e8", "8fd8ff"),   # Lobo de escarcha: pale ice (ice)
+    "umbral": ("2a2236", "a87ae0"),     # Lobo umbral: shadow violet (shadow)
+    "pedrero": ("8a7458", "c09060"),    # Lobo pedrero: dusty stone (earth)
+    "sacro": ("e8e0c0", "ffe880"),      # Lobo sacro: bone white, gold (light)
+}
+
+
+def wolf_variants():
+    src = OUT / "characters" / "enemies" / "wolf.png"
+    rgba = np.asarray(Image.open(src).convert("RGBA"))
+    h = _hsv(rgba)
+    solid = (rgba[..., 3] > 0) & (h[..., 2] >= 0.2)  # the darkest outline stays
+    groups = np.where(solid & (h[..., 0] < 250), 1, np.where(solid & (h[..., 0] >= 250), 2, 0))
+    frames = (src.parent / "wolf_frames.tres").read_text()
+    for name, (fur, glow) in WOLF_VARIANTS.items():
+        save(Image.fromarray(_paint(rgba, groups, {1: fur, 2: glow}), "RGBA"), "characters", "enemies", f"wolf__{name}.png")
+        (src.parent / f"wolf__{name}_frames.tres").write_text(frames.replace("enemies/wolf.png", f"enemies/wolf__{name}.png"))
+    return src.parent
+
+
+HAIRSTYLES = ["alto", "cresta", "mono", "largo", "volumen"]
+
+
+def hair_styles():
+    """The extra hairstyles of the creator: assets/characters/hero/<set>__<style>.png (+ mask + frames)."""
+    import hairstyles
+    folder = OUT / "characters" / "hero"
+    for base in ("hero", "heroine"):
+        sheet = Image.open(folder / f"{base}.png")
+        mask = Image.open(folder / f"{base}_mask.png")
+        frames = (folder / f"{base}_frames.tres").read_text()
+        for style in HAIRSTYLES:
+            img, new_mask = hairstyles.make(sheet, mask, style)
+            img.save(folder / f"{base}__{style}.png")
+            new_mask.save(folder / f"{base}__{style}_mask.png")
+            (folder / f"{base}__{style}_frames.tres").write_text(frames.replace(f"hero/{base}.png", f"hero/{base}__{style}.png"))
+    return folder
+
+
 def _main_parts(mask):
     """Drops the specks a cut-out drags along (bits of labels or of the next drawing)."""
     from scipy import ndimage
@@ -712,7 +803,7 @@ def variants():
 
 RECIPES = {"hero": hero, "heroine": heroine, "wolf": wolf, "nature": nature, "props_b": props_b, "terrain": terrain,
            "terrain_b": terrain_b, "house": house, "facades": facades, "plaza": plaza, "walls_roofs": walls_roofs,
-           "town_props": town_props, "townsfolk": townsfolk, "variants": variants, "recolors": recolors, "ui": ui, "vfx": vfx, "backdrop": backdrop, "shadow": shadow}
+           "town_props": town_props, "townsfolk": townsfolk, "variants": variants, "recolors": recolors, "affinity_fx": affinity_fx, "wolf_variants": wolf_variants, "hair_styles": hair_styles, "ui": ui, "vfx": vfx, "backdrop": backdrop, "shadow": shadow}
 
 if __name__ == "__main__":
     for key in sys.argv[1:] or RECIPES:

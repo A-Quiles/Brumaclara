@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_data"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/enemies/wolf__gris_frames.tres" id="2_frames"]
+
+[resource]
+script = ExtResource("1_data")
+display_name = "Colmillo Gris"
+frames = ExtResource("2_frames")
+max_hp = 180
+damage = 24
+speed = 4.4
+xp_reward = 160
+sprite_scale = 1.25
+attack_count = 2
+respawn_seconds = 90
+windup_seconds = 0.7
+defense = 0.1
+weak = Array[StringName]([&"luz"])
+resist = Array[StringName]([&"sombra"])

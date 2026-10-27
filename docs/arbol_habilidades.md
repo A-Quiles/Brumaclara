@@ -78,7 +78,7 @@ Sin afinidad: lo que aprende cualquier aventurero que vive de los contratos. Usa
 | Nv | Nodo | Tipo | PA | Efecto |
 |---|---|---|---|---|
 | I | Filo templado | Pasiva | 1 | El 3.er golpe del combo hace +50 % |
-| I | Estocada | Activa | 2 | Mantener ataque 0,5 s: avanza 2 unidades y hace 20; sin maná, recarga 5 s |
+| I | Estocada | Activa | 2 | Avanza 2 unidades con la espada por delante y hace 20; sin maná, recarga 5 s |
 | II | Castigo | Pasiva | 1 | +30 % de daño a enemigos que acaban de fallar un ataque |
 | II | Combo largo | Pasiva | 1 | El combo pasa de 3 a 4 golpes |
 | III | Golpe pesado | Pasiva | 1 | El último golpe del combo empuja el doble e interrumpe a enemigos pequeños |
@@ -105,12 +105,12 @@ Sin afinidad: lo que aprende cualquier aventurero que vive de los contratos. Usa
 |---|---|---|---|---|
 | I | Piel curtida | Pasiva | 1 | +15 % de vida máxima |
 | I | Pociones dobles | Pasiva | 1 | 4 pociones por expedición en lugar de 3 |
-| II | Segundo aliento | Pasiva | 1 | Una vez por combate, en lugar de caer te quedas a 1 de vida 1 s |
+| II | Segundo aliento | Pasiva | 1 | En lugar de caer te quedas a 1 de vida e invulnerable 1 s; se recarga en 60 s |
 | II | Recuperación | Pasiva | 1 | Fuera de combate recuperas un 2 % de vida por segundo |
 | III | Último recurso | Pasiva | 1 | Con menos del 30 % de vida recibes −20 % de daño |
 | III | Antídotos | Pasiva | 1 | Los estados alterados duran −40 % sobre ti |
 | IV | Corazón firme | Pasiva | 2 | +25 de vida; inmune al primer aturdimiento de cada combate |
-| V | Inquebrantable | Pasiva | 2 | Segundo aliento funciona dos veces por combate |
+| V | Inquebrantable | Pasiva | 2 | Segundo aliento tiene dos cargas |
 
 ### Oficio — exploración y utilidad
 

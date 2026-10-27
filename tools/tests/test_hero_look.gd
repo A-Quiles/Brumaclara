@@ -9,24 +9,26 @@ var _failures := 0
 func _initialize() -> void:
 	var names := (load("res://assets/characters/hero/hero_frames.tres") as SpriteFrames).get_animation_names()
 	for m in HeroLook.MODELS.size():
-		var frames := HeroLook.frames({"model": m, "hair": 0, "skin": 0, "outfit": 0})
+		var frames := HeroLook.frames(HeroLook.clamp_look({"model": m, "hair": 0, "skin": 0, "outfit": 0, "leather": 0, "trousers": 0}))
 		_check(frames.get_animation_names() == names, "model %s has every animation" % HeroLook.MODELS[m].set)
+	var tints := {1: Color("c2482a"), 2: Color("4e3024"), 3: Color("3a5f9a"), 4: Color("e0b84a"), 5: Color("2a3a6a"), 6: Color("c8b890")}
 	for set_name: String in HeroLook.MODELS.map(func(m: Dictionary) -> String: return m.set):
-		var plain: Image = HeroLook.paint(set_name, {1: null, 2: null, 3: null, 4: null})
-		var red: Image = HeroLook.paint(set_name, {1: Color("c2482a"), 2: null, 3: null, 4: null})
+		var plain: Image = HeroLook.paint(set_name, {})
 		var mask: Image = load("res://assets/characters/hero/%s_mask.png" % set_name).get_image()
-		var hair_changed := 0
-		var others_changed := 0
-		for y in range(0, plain.get_height()):
-			for x in range(0, plain.get_width()):
-				if plain.get_pixel(x, y) != red.get_pixel(x, y):
-					if mask.get_pixel(x, y).r8 == 50:
-						hair_changed += 1
-					else:
-						others_changed += 1
-		_check(hair_changed > 500 and others_changed == 0, "%s: red hair repaints the hair only (%d, %d)" % [set_name, hair_changed, others_changed])
+		for group: int in tints:  # each colour choice repaints its own group and nothing else
+			var painted: Image = HeroLook.paint(set_name, {group: tints[group]})
+			var own := 0
+			var others := 0
+			for y in range(0, plain.get_height()):
+				for x in range(0, plain.get_width()):
+					if plain.get_pixel(x, y) != painted.get_pixel(x, y):
+						if mask.get_pixel(x, y).r8 == group * HeroLook.STEP:
+							own += 1
+						else:
+							others += 1
+			_check(own > 100 and others == 0, "%s: %s colour repaints only its own group (%d, %d)" % [set_name, HeroLook.GROUPS[group], own, others])
 	var kept := FileAccess.get_file_as_string(HeroLook.FILE)  # the developer's own look is put back
-	var look := {"model": 1, "hair": 3, "skin": 2, "outfit": 4}
+	var look := {"model": 7, "hair": 3, "skin": 2, "outfit": 4, "leather": 2, "trousers": 5}
 	HeroLook.save_look(look)
 	_check(HeroLook.load_look() == look, "the chosen look is saved")
 	DirAccess.remove_absolute(HeroLook.FILE)
