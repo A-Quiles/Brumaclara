@@ -195,7 +195,7 @@ func _node_button(n: Dictionary, at: Vector2, colour: Color) -> Button:
 			icon = HUD.icon_for(Progress.skill(base))
 		mark = "+"
 	elif n.type == "pasiva":
-		icon = SkillIcons.passive(str(n.tree), hash(n.id) % 2 == 0)
+		icon = SkillIcons.passive(str(n.tree), hash(n.id) % 2 == 0, id)
 		mark = "P" if icon == null else ""
 	if icon:
 		b.icon = icon

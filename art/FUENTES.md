@@ -176,3 +176,22 @@ palomino y alazán, en todas sus vistas y modelos (`horse__negro`, `horse__negro
 Las imágenes que el autor deje en `assets/nuevos` no pasan por el pipeline: el modo edición les quita
 el fondo, mide el tamaño de sus bloques de píxeles y las reduce al píxel del juego al cargarlas
 (`docs/modo_edicion.md`). Cuando una se dé por buena, se registra aquí y se integra en una receta.
+
+## Canva — 27 de octubre de 2026
+
+Generadas con Canva (`generate-image`) a 200 px de ancho; el pipeline usa un píxel de la imagen por
+píxel del juego. El fondo plano (magenta, verde o negro) se quita rellenando desde el borde, así que
+los violetas de la Fractura dentro del dibujo se conservan. Todas las criaturas alteradas llevan la
+marca de la Fractura (ojos y grietas violeta, cristales).
+
+| Archivo | Contenido (prompt resumido) | Receta |
+|---|---|---|
+| `sporineo.png` | Seta andante con láminas violeta y cristales; 4×4: reposo, andar, ataque de esporas, caída. | `monsters` |
+| `espectro_f.png` | Espectro de la Fractura: encapuchado de energía violeta con farol; 4×4. | `monsters` |
+| `guardian_raices.png` | Guardián de raíces y corteza con corazón de cristal violeta; 4×4 (golpe con raíces). | `monsters` |
+| `polilla_luminica.png` | Polilla de luz lila y blanca con ocelos violeta; 4×4 (estallido de polvo). | `monsters` |
+| `interior_textures.png` | 2×2: tarima de madera, yeso con entramado, losas de piedra, alfombra roja. | `interiors` |
+| `furniture_a.png` | 4×4 muebles de posada y casa (mesas, silla, barra, chimenea, cama, armario...). | `interiors` |
+| `furniture_b.png` | 4×4 muebles de gremio y tienda (mostrador, tablón, vitrina, armero, yunque...). | `interiors` |
+| `iven.png`, `neris.png` | Personajes de la historia, 4×3: caminar de frente, de lado y de espaldas. | `characters` |
+| `icons_<afinidad>.png` | 5×5 iconos de habilidad (azulejo azul marino con marco dorado) por afinidad, en el orden de `tools/data/skill_icons.py`. | `skill_icons` |

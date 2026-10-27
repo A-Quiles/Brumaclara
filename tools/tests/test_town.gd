@@ -24,6 +24,19 @@ func _run() -> void:
 	Input.action_release("interact")
 	await _frames(2)
 	_check(message.text.begins_with("Soy Mara Venn"), "Mara answers the interact key (%s)" % message.text)
+	# the people of the story placed around the town answer too, with their first line
+	for who in ["Neris", "Tovan", "Rhea"]:
+		var person := town.get_node_or_null("People/" + who) as Node3D
+		if person == null:
+			continue
+		hero.global_position = person.global_position + Vector3(0, 0.3, 1.0)
+		await _frames(5)
+		Input.action_press("interact")
+		await _frames(2)
+		Input.action_release("interact")
+		await _frames(2)
+		var first: String = person.get("lines")[0]
+		_check(message.text == first, "%s answers the interact key (%s)" % [who, message.text.left(40)])
 
 	hero.global_position = Vector3(-37.8, 0, 29.0)
 	await _scene("afueras.tscn")

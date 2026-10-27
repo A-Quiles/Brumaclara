@@ -259,17 +259,30 @@ multiplicar el coste:
   zona según avance la campaña.
 
 
-## Monstruos con arte propio (ya en el juego)
+## En el juego
 
-| Monstruo | Vida | Débil a | Resiste | Nota |
-|---|---|---|---|---|
-| Hongo errante | 45 | fuego | tierra | lento, esporas |
-| Murciélago de cueva | 28 | rayo | — | rápido, frágil |
-| Esqueleto guerrero | 70 | luz, tierra | sombra, hielo | defensa 10 % |
-| Gólem de musgo | 160 | rayo, hielo | tierra, fuego | muy lento, golpe fuerte, defensa 20 % |
-| Espectro errante | 50 | luz, fuego | sombra, espada | |
+Cada enemigo es una ficha `data/enemies/<nombre>.tres` (vida, daño, avisos, debilidades, ataque) con su
+hoja de 4×4 fotogramas (`assets/characters/enemies/<nombre>.png`: reposo, moverse, aviso + ataque,
+daño + caída). El ataque es de uno de tres tipos, siempre tras su aviso:
 
-Datos en `data/enemies/<nombre>.tres`; hojas en `assets/characters/enemies/<nombre>.png`.
+- **Salto** (`pounce`): se lanza en línea recta y muerde; queda abierto al aterrizar.
+- **Golpe en área** (`burst`): golpea a su alrededor (el radio va en la ficha).
+- **Disparos** (`volley`): uno o varios proyectiles en abanico hacia el héroe.
 
-**Versiones fracturadas** (`*_f`, anómalas: la luz les hace más daño, resisten la sombra): hongo, murciélago,
-esqueleto y gólem fracturados, en el claro de la Fractura de las afueras. Arte con grietas y cristales violeta (`RIFT`).
+| Enemigo | Zona | Vida | Ataque | Débil a | Resiste | Nota |
+|---|---|---|---|---|---|---|
+| Lobo de la Fractura, alfa, de tormenta, Colmillo Gris, Madre de la manada y lobos elementales | 1 | 40–400 | Salto | según variante | según variante | 11 fichas; la Madre invoca crías |
+| Hongo errante | 1 | 45 | Disparo de esporas | fuego | tierra | |
+| Murciélago de cueva | 1 | 28 | Salto | rayo | — | vuela |
+| Esqueleto guerrero | 1 | 70 | Salto | luz, tierra | sombra, hielo | defensa 10 % |
+| Gólem de musgo | 1 | 160 | Golpe en área | rayo, hielo | tierra, fuego | lento, defensa 20 % |
+| Espectro errante | 1 | 50 | Disparo | luz, fuego | sombra, espada | flota |
+| Hongo, murciélago, esqueleto y gólem fracturados | 1 (claro) | 38–210 | como su base | luz | sombra | anómalos |
+| Espectro de la Fractura | 1 (claro) | 60 | Disparo | luz | sombra, espada | anómalo |
+| Sporíneo | 2 | 30 | Abanico de 3 esporas | fuego | hielo | |
+| Guardián de raíces | 2 | 90 | Golpe en área (raíces) | fuego | rayo | defensa 20 % |
+| Polilla lumínica | 2 | 25 | Estallido de polvo | espada, luz | la magia | anómala, vuela |
+
+Las criaturas alteradas llevan la marca de la Fractura en el dibujo: ojos y grietas violeta y cristales
+que les crecen en el cuerpo. Los números de los enemigos del bestiario que ya tienen dibujo están en
+`tools/data/enemies.py`, que escribe sus fichas y los coloca en las afueras.

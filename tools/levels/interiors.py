@@ -171,7 +171,10 @@ INTERIORS = {
                ("armero", -5.4, 4.0), ("cofre_tesoro", -5.6, 6.8), ("alfombrilla", 0.0, 5.6), ("estanteria", -0.0, 0.4)],
         people=[("iven", -3.4, 2.6, ["¿Tú también vienes por contratos? Llegas tarde: los buenos ya los he cogido yo.",
                                      "Un contrato bueno te da dinero. Uno difícil te da un nombre.",
-                                     "No te confundas: no soy tu enemigo. Solo no pienso volver a ser el prescindible de nadie."])],
+                                     "No te confundas: no soy tu enemigo. Solo no pienso volver a ser el prescindible de nadie."]),
+                ("caldus", 2.6, 3.0, ["Ser Caldus Renn, del Faro. Mientras yo dirija esta sede, nadie sale sin saber a qué se enfrenta.",
+                                      "La verdad hay que contarla cuando existan medios para gestionar lo que provoque.",
+                                      "Las afueras no son lugar para valientes sin preparación. Habla con Mara antes de salir."])],
     ),
     "tienda_nara": dict(
         title="Tienda de Nara", building="TiendaDeNara", floor="floor_planks", size=(12.0, 9.0), ambient=0.9,

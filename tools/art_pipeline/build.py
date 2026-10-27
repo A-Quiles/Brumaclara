@@ -509,7 +509,7 @@ def townsfolk():
 # source pixel): rows walking toward the camera, to the side and away. who -> (the side row was drawn
 # facing left: the game expects right and mirrors it, keying tolerance: lower when the clothes are close
 # to the backdrop's colour).
-CHARACTERS = {"iven": (True, 80.0, True), "neris": (False, 50.0, False)}  # + clear magenta spill
+CHARACTERS = {"iven": (True, 80.0, True), "neris": (False, 50.0, False), "tovan": (False, 80.0, "all"), "rhea": (False, 80.0, "all"), "caldus": (False, 80.0, "all")}  # + clear magenta spill
 
 
 def characters(only=None):
@@ -539,15 +539,18 @@ def characters(only=None):
 # --- interface -------------------------------------------------------------------------------
 
 ICON = 22  # px, the HUD's slots and the tree's nodes
+ICON_GRID = {"tronco": 6}  # icons per row and column of each sheet (5 by default)
 
 
 def skill_icons():
-    """art/ai/icons_<affinity>.png (5 x 5 framed icons on black) -> assets/ui/skills/<affinity>.png,
-    a 5 x 5 sheet of 22 px icons (data/ui/skill_icons.json says which skill uses which one)."""
+    """art/ai/icons_<tree>.png (5 x 5 framed icons on black; the adventurer's trunk 6 x 6) ->
+    assets/ui/skills/<tree>.png, a sheet of 22 px icons (data/ui/skill_icons.json says which skill uses
+    which one)."""
     out = None
     for src in sorted(SRC.glob("icons_*.png")):
         rgb = px.load(src)
-        cells = sheets.cut_grid(rgb, 5, 5, inset=1)
+        n = ICON_GRID.get(src.stem.replace("icons_", ""), 5)
+        cells = sheets.cut_grid(rgb, n, n, inset=1)
         icons = []
         for row in cells:
             for cell in row:
@@ -558,9 +561,9 @@ def skill_icons():
                 icons.append(np.asarray(small).astype(np.float64))
         solid = np.ones((ICON, ICON))
         palette = px.kmeans_palette(np.concatenate([i.reshape(-1, 3) for i in icons]), 40)
-        sheet = Image.new("RGBA", (ICON * 5, ICON * 5))
+        sheet = Image.new("RGBA", (ICON * n, ICON * n))
         for k, icon in enumerate(icons):
-            sheet.paste(px.to_image(px.snap(icon, solid, palette), solid), (k % 5 * ICON, k // 5 * ICON))
+            sheet.paste(px.to_image(px.snap(icon, solid, palette), solid), (k % n * ICON, k // n * ICON))
         out = save(sheet, "ui", "skills", src.stem.replace("icons_", "") + ".png")
     return out
 
@@ -821,6 +824,22 @@ def _unbackdrop(im):
 
 
 def flood_key(cell, tol, tight=38.0, bg=None, main_only=False, spill=False):
+    """See _flood_key; spill="all" also clears backdrop-tinted pixels enclosed by the outline (gaps
+    between an arm and the body), for art that has none of the backdrop's hue."""
+    image = _flood_key(cell, tol, tight, bg, main_only, bool(spill))
+    if spill == "all":
+        a = np.asarray(image).copy()
+        r, g, b = (a[..., i].astype(int) for i in range(3))
+        bgc = sheets.cell_background(cell) if bg is None else bg
+        if bgc[1] > bgc[0] + 60 and bgc[1] > bgc[2] + 60:
+            a[(g - r > 35) & (g - b > 25), 3] = 0
+        else:
+            a[(r - g > 40) & (b - g > 25), 3] = 0
+        image = Image.fromarray(a, "RGBA")
+    return image
+
+
+def _flood_key(cell, tol, tight=38.0, bg=None, main_only=False, spill=False):
     """Alpha of a cell: the backdrop is what has the corners' colour AND touches the border, so
     colours like it inside the outline (violet cracks on a magenta sheet) stay; only holes of the
     backdrop's exact colour (between legs, under arms) go too. `bg` overrides the corners' colour;
@@ -830,7 +849,10 @@ def flood_key(cell, tol, tight=38.0, bg=None, main_only=False, spill=False):
     like = px.background_mask(cell, bg, tol)
     if spill:
         r, g, b = cell[..., 0], cell[..., 1], cell[..., 2]
-        like |= (r - g > 40) & (b - g > 25)  # strongly magenta: dark outlines are grey, never spill
+        if bg[1] > bg[0] + 60 and bg[1] > bg[2] + 60:  # a green backdrop
+            like |= (g - r > 35) & (g - b > 25)
+        else:  # magenta: strongly magenta pixels; dark outlines are grey, never spill
+            like |= (r - g > 40) & (b - g > 25)
     hole = px.background_mask(cell, bg, min(tight, tol))
     reach = np.zeros_like(like)
     reach[0, :], reach[-1, :], reach[:, 0], reach[:, -1] = like[0, :], like[-1, :], like[:, 0], like[:, -1]

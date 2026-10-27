@@ -37,7 +37,15 @@ ORDER = {
             "respiro", "purgar", "bendicion", "rayos_gemelos", "juicio", "lluvia_de_estrellas", "destello_cegador",
             "paso_de_luz", "muro_de_luz", "luz_curativa", "aura_radiante", "himno", "haz_purificador", "sol_de_mediodia",
             "@mejora", "@pasiva2", "@pasiva"],
+    # the adventurer's trunk: one icon per node, 6 x 6
+    "tronco": ["filo_templado", "estocada", "castigo", "combo_largo", "golpe_pesado", "torbellino", "remate",
+               "maestro_de_armas", "impulso", "paso_ligero", "esquiva_limpia", "doble_esquiva", "lectura",
+               "rodar_y_golpear", "tiempo_justo", "fantasma", "piel_curtida", "pociones_dobles", "segundo_aliento",
+               "recuperacion", "ultimo_recurso", "antidotos", "corazon_firme", "inquebrantable", "ojo_de_rastreador",
+               "bolsillos", "botin_atento", "regateo", "cartografo", "alquimia_de_campo", "recarga_rapida",
+               "leyenda_en_ciernes", "@insignia", "@mochila", "@hoguera", "@pasiva"],
 }
+COLS = {"tronco": 6}
 
 
 def main():
@@ -45,7 +53,7 @@ def main():
     for aff, order in ORDER.items():
         tree = json.loads((ROOT / "data" / "trees" / f"{aff}.json").read_text())
         ids = {n["id"] for n in tree["nodes"]}
-        entry = {"sheet": f"res://assets/ui/skills/{aff}.png", "icons": {}}
+        entry = {"sheet": f"res://assets/ui/skills/{aff}.png", "cols": COLS.get(aff, 5), "icons": {}}
         for i, name in enumerate(order):
             if name.startswith("@"):
                 entry[name[1:]] = i
@@ -54,6 +62,8 @@ def main():
             assert nid in ids, nid
             entry["icons"][nid] = i
         missing = [n["id"] for n in tree["nodes"] if n["type"] in ("activa", "definitiva") and n["id"] not in entry["icons"]]
+        if aff == "tronco":
+            missing = [n["id"] for n in tree["nodes"] if n["id"] not in entry["icons"]]
         assert not missing, missing
         out[aff] = entry
     path = ROOT / "data" / "ui" / "skill_icons.json"

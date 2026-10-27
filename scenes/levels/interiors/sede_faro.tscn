@@ -16,14 +16,15 @@
 [ext_resource type="PackedScene" path="res://scenes/environment/props/interior/estanteria.tscn" id="14_r"]
 [ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/iven.tscn" id="15_r"]
 [ext_resource type="Script" path="res://scripts/characters/townsfolk.gd" id="16_r"]
-[ext_resource type="Script" path="res://scripts/systems/exit.gd" id="17_r"]
-[ext_resource type="PackedScene" path="res://scenes/characters/player.tscn" id="18_r"]
-[ext_resource type="Script" path="res://scripts/characters/player.gd" id="19_r"]
-[ext_resource type="PackedScene" path="res://scenes/effects/dust.tscn" id="20_r"]
-[ext_resource type="PackedScene" path="res://scenes/effects/floating_text.tscn" id="21_r"]
-[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="22_r"]
-[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="23_r"]
-[ext_resource type="Script" path="res://scripts/systems/level_edits.gd" id="24_r"]
+[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/caldus.tscn" id="17_r"]
+[ext_resource type="Script" path="res://scripts/systems/exit.gd" id="18_r"]
+[ext_resource type="PackedScene" path="res://scenes/characters/player.tscn" id="19_r"]
+[ext_resource type="Script" path="res://scripts/characters/player.gd" id="20_r"]
+[ext_resource type="PackedScene" path="res://scenes/effects/dust.tscn" id="21_r"]
+[ext_resource type="PackedScene" path="res://scenes/effects/floating_text.tscn" id="22_r"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="23_r"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="24_r"]
+[ext_resource type="Script" path="res://scripts/systems/level_edits.gd" id="25_r"]
 
 [sub_resource type="Environment" id="Environment_1"]
 background_mode = 1
@@ -200,11 +201,16 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.4, 0.1, 2.6)
 script = ExtResource("16_r")
 lines = PackedStringArray("¿Tú también vienes por contratos? Llegas tarde: los buenos ya los he cogido yo.", "Un contrato bueno te da dinero. Uno difícil te da un nombre.", "No te confundas: no soy tu enemigo. Solo no pienso volver a ser el prescindible de nadie.")
 
+[node name="Caldus" type="CharacterBody3D" parent="People" instance=ExtResource("17_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 2.6, 0.1, 3.0)
+script = ExtResource("16_r")
+lines = PackedStringArray("Ser Caldus Renn, del Faro. Mientras yo dirija esta sede, nadie sale sin saber a qué se enfrenta.", "La verdad hay que contarla cuando existan medios para gestionar lo que provoque.", "Las afueras no son lugar para valientes sin preparación. Habla con Mara antes de salir.")
+
 [node name="Exit" type="Area3D" parent="."]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0, 11.799999999999999)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("17_r")
+script = ExtResource("18_r")
 target_scene = "res://scenes/levels/brumaclara.tscn"
 arrival = Vector3(0.00, 3.00, -31.71)
 
@@ -215,23 +221,23 @@ shape = SubResource("BoxShape3D_9")
 [node name="Doormat" parent="Props" instance=ExtResource("13_r")]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0, 9.3)
 
-[node name="Player" type="CharacterBody3D" parent="." instance=ExtResource("18_r")]
+[node name="Player" type="CharacterBody3D" parent="." instance=ExtResource("19_r")]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.1, 8.4)
 collision_layer = 2
 collision_mask = 5
 floor_max_angle = 0.87266463
 floor_snap_length = 0.4
-script = ExtResource("19_r")
-dust_scene = ExtResource("20_r")
-text_scene = ExtResource("21_r")
+script = ExtResource("20_r")
+dust_scene = ExtResource("21_r")
+text_scene = ExtResource("22_r")
 
 [node name="Camera" parent="Player"]
 top_level = true
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 24.764, 49.034)
 
-[node name="HUD" type="CanvasLayer" parent="." groups=["hud"] instance=ExtResource("22_r")]
-script = ExtResource("23_r")
+[node name="HUD" type="CanvasLayer" parent="." groups=["hud"] instance=ExtResource("23_r")]
+script = ExtResource("24_r")
 player_path = NodePath("../Player")
 
 [node name="LevelEdits" type="Node" parent="."]
-script = ExtResource("24_r")
+script = ExtResource("25_r")

@@ -1,0 +1,59 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/dev/bestiary_gallery.gd" id="1_gal"]
+[ext_resource type="PackedScene" path="res://scenes/characters/player.tscn" id="2_player"]
+[ext_resource type="Script" path="res://scripts/characters/player.gd" id="3_player"]
+[ext_resource type="PackedScene" path="res://scenes/effects/dust.tscn" id="4_dust"]
+[ext_resource type="PackedScene" path="res://scenes/effects/floating_text.tscn" id="5_text"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="6_hud"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="7_hud"]
+[ext_resource type="Material" path="res://materials/interior/floor_flagstone.tres" id="8_floor"]
+[ext_resource type="BoxMesh" path="res://materials/blocks/unit_box.tres" id="9_box"]
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 1
+background_color = Color(0.08, 0.07, 0.1, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.7
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1"]
+size = Vector3(40, 1, 70)
+
+[node name="Bestiario" type="Node3D"]
+script = ExtResource("1_gal")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8433914, 0.40550515, -0.35250026, 0, 0.656059, 0.75470954, 0.53729963, -0.63651556, 0.55331457, 0, 0, 0)
+light_energy = 0.1
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -25)
+
+[node name="Mesh" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(40, 0, 0, 0, 1, 0, 0, 0, 70, 0, 0.5, 0)
+material_override = ExtResource("8_floor")
+mesh = ExtResource("9_box")
+
+[node name="Collision" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_1")
+
+[node name="Exhibits" type="Node3D" parent="."]
+
+[node name="Player" type="CharacterBody3D" parent="." instance=ExtResource("2_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 4)
+collision_layer = 2
+collision_mask = 5
+floor_max_angle = 0.87266463
+floor_snap_length = 0.4
+script = ExtResource("3_player")
+dust_scene = ExtResource("4_dust")
+text_scene = ExtResource("5_text")
+
+[node name="HUD" type="CanvasLayer" parent="." groups=["hud"] instance=ExtResource("6_hud")]
+script = ExtResource("7_hud")
+player_path = NodePath("../Player")

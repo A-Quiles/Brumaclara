@@ -24,7 +24,8 @@ static func _icon(affinity: String, index: int) -> Texture2D:
 	if sheet:
 		atlas = AtlasTexture.new()
 		atlas.atlas = sheet
-		atlas.region = Rect2(index % 5 * SIZE, index / 5 * SIZE, SIZE, SIZE)
+		var cols := int(entry.get("cols", 5))
+		atlas.region = Rect2(index % cols * SIZE, index / cols * SIZE, SIZE, SIZE)
 	_cache[key] = atlas
 	return atlas
 
@@ -39,9 +40,12 @@ static func for_skill(id: StringName) -> Texture2D:
 	return _icon(affinity, int(entry.icons[str(id)]))
 
 
-## The affinity's emblem for passives (`alt` picks the second one, for variety).
-static func passive(affinity: String, alt := false) -> Texture2D:
+## The icon of a passive: its own if it has one (the adventurer's trunk), else the affinity's emblem
+## (`alt` picks the second one, for variety).
+static func passive(affinity: String, alt := false, id: StringName = &"") -> Texture2D:
 	_load()
 	var entry: Dictionary = _data.get(affinity, {})
+	if id != &"" and entry.get("icons", {}).has(str(id)):
+		return _icon(affinity, int(entry.icons[str(id)]))
 	var key := "pasiva2" if alt and entry.has("pasiva2") else "pasiva"
 	return _icon(affinity, int(entry[key])) if entry.has(key) else null

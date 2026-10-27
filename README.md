@@ -69,18 +69,31 @@ no se puede subir, a propósito).
 
 ## Qué hay ya en el juego
 
-- **Protagonista** en cuatro direcciones: reposo, caminar, combo de espada, esquiva con estela, daño,
-  hechizos y derrota.
-- **Lobo de la Fractura**: vigila su guarida, persigue, avisa con un brillo violeta antes de saltar,
-  muerde, cae y se disuelve; suelta un orbe de experiencia y reaparece al rato.
+- **Protagonista** en cuatro direcciones (reposo, caminar, combo de espada, esquiva con estela, daño,
+  hechizos y derrota) y **creador de personaje** con 12 peinados y decenas de colores.
+- **El pueblo de Brumaclara** con sus barrios, gremios y habitantes, y **cuatro interiores** a los que
+  se entra por la puerta: la Posada del Cruce, la Sede del Faro, la Tienda de Nara y el Taller de Elia,
+  amueblados (32 muebles) y con luz propia.
+- **Personajes de la historia**: Mara, Elia, el carretero y la guardia, más **Iven** (el rival, en la
+  Sede del Faro) y **Neris** (la investigadora del Archivo), con sus frases.
+- **Las afueras** (zona 1) con el claro de la Fractura y un bestiario creciente: 11 lobos (élites, la
+  Madre de la manada y lobos elementales), hongos, murciélagos, esqueletos, gólems, espectros y sus
+  versiones **fracturadas**, y del Bosque de los Susurros el **sporíneo** (abanico de esporas), el
+  **guardián de raíces** (golpe en área), la **polilla lumínica** y el **espectro de la Fractura**.
+  Cada enemigo avisa antes de atacar: salto, golpe en área o disparos.
 - **Combate**: golpes con retroceso, invulnerabilidad tras recibir daño, congelación breve en cada
-  impacto, temblor de cámara, destellos y números de daño.
-- **Progresión mínima**: experiencia, subida de nivel (más vida y maná), maná que se regenera y
-  recargas visibles en la interfaz.
-- **Escenario**: la terraza de la aldea con sus casas, pozo, huerto y faroles; la pradera con sus
-  caminos; el bosque con su sombra; el claro de la Fractura con su suelo agrietado, la grieta luminosa,
-  el menhir con runas y los cristales; montañas y nubes al fondo. Detrás de una roca hay un cofre que se
-  abre y suelta experiencia.
+  impacto, temblor de cámara, destellos, números de daño y estados (quemadura, frío, marcas...).
+- **Árbol de habilidades** (T, o en el santuario): seis afinidades con **21 habilidades activas
+  distintas cada una, todas con su mejora**, pasivas y una definitiva, más el tronco del aventurero;
+  cada habilidad con su propio icono. Cuatro ranuras (Q, E, R, C) y la definitiva (X). Lista completa
+  en `docs/habilidades_lista.md`.
+- **Progresión**: experiencia, niveles, PA y puntos de atributo, guardado de la partida.
+
+![Posada del Cruce](docs/screenshots/30_posada.png)
+
+| | |
+|---|---|
+| ![Sede del Faro](docs/screenshots/31_sede_faro.png) | ![Árbol de hielo](docs/screenshots/21_arbol_hielo.png) |
 
 ## Cómo está hecho el arte
 

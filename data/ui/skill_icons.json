@@ -1,6 +1,7 @@
 {
 	"fuego": {
 		"sheet": "res://assets/ui/skills/fuego.png",
+		"cols": 5,
 		"icons": {
 			"fuego.chispa": 0,
 			"fuego.lanza_de_fuego": 1,
@@ -31,6 +32,7 @@
 	},
 	"hielo": {
 		"sheet": "res://assets/ui/skills/hielo.png",
+		"cols": 5,
 		"icons": {
 			"hielo.aguja_de_escarcha": 0,
 			"hielo.lanza_glacial": 1,
@@ -61,6 +63,7 @@
 	},
 	"rayo": {
 		"sheet": "res://assets/ui/skills/rayo.png",
+		"cols": 5,
 		"icons": {
 			"rayo.descarga": 0,
 			"rayo.salto_voltaico": 1,
@@ -91,6 +94,7 @@
 	},
 	"sombra": {
 		"sheet": "res://assets/ui/skills/sombra.png",
+		"cols": 5,
 		"icons": {
 			"sombra.dardo_umbrio": 0,
 			"sombra.desgarro": 1,
@@ -121,6 +125,7 @@
 	},
 	"tierra": {
 		"sheet": "res://assets/ui/skills/tierra.png",
+		"cols": 5,
 		"icons": {
 			"tierra.canto_rodado": 0,
 			"tierra.puas_de_piedra": 1,
@@ -151,6 +156,7 @@
 	},
 	"luz": {
 		"sheet": "res://assets/ui/skills/luz.png",
+		"cols": 5,
 		"icons": {
 			"luz.destello": 0,
 			"luz.lanza_solar": 1,
@@ -178,5 +184,47 @@
 		"mejora": 22,
 		"pasiva2": 23,
 		"pasiva": 24
+	},
+	"tronco": {
+		"sheet": "res://assets/ui/skills/tronco.png",
+		"cols": 6,
+		"icons": {
+			"tronco.filo_templado": 0,
+			"tronco.estocada": 1,
+			"tronco.castigo": 2,
+			"tronco.combo_largo": 3,
+			"tronco.golpe_pesado": 4,
+			"tronco.torbellino": 5,
+			"tronco.remate": 6,
+			"tronco.maestro_de_armas": 7,
+			"tronco.impulso": 8,
+			"tronco.paso_ligero": 9,
+			"tronco.esquiva_limpia": 10,
+			"tronco.doble_esquiva": 11,
+			"tronco.lectura": 12,
+			"tronco.rodar_y_golpear": 13,
+			"tronco.tiempo_justo": 14,
+			"tronco.fantasma": 15,
+			"tronco.piel_curtida": 16,
+			"tronco.pociones_dobles": 17,
+			"tronco.segundo_aliento": 18,
+			"tronco.recuperacion": 19,
+			"tronco.ultimo_recurso": 20,
+			"tronco.antidotos": 21,
+			"tronco.corazon_firme": 22,
+			"tronco.inquebrantable": 23,
+			"tronco.ojo_de_rastreador": 24,
+			"tronco.bolsillos": 25,
+			"tronco.botin_atento": 26,
+			"tronco.regateo": 27,
+			"tronco.cartografo": 28,
+			"tronco.alquimia_de_campo": 29,
+			"tronco.recarga_rapida": 30,
+			"tronco.leyenda_en_ciernes": 31
+		},
+		"insignia": 32,
+		"mochila": 33,
+		"hoguera": 34,
+		"pasiva": 35
 	}
 }

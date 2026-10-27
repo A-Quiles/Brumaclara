@@ -122,7 +122,6 @@
 [ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/carter.tscn" id="120_mphe0"]
 [ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/mara.tscn" id="121_lfsom"]
 [ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/elia.tscn" id="122_thi1a"]
-[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/neris.tscn" id="901_neris"]
 [ext_resource type="Script" path="res://scripts/systems/exit.gd" id="123_xnj2r"]
 [ext_resource type="PackedScene" path="res://scenes/environment/backdrop.tscn" id="124_jm8as"]
 [ext_resource type="Script" path="res://scripts/environment/backdrop.gd" id="125_pbybv"]
@@ -135,6 +134,9 @@
 [ext_resource type="Script" path="res://scripts/systems/level_edits.gd" id="134_fd11v"]
 [ext_resource type="PackedScene" path="res://scenes/environment/props/shrine.tscn" id="200_shrine"]
 
+[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/neris.tscn" id="901_neris"]
+[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/tovan.tscn" id="901_tovan"]
+[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/rhea.tscn" id="901_rhea"]
 [sub_resource type="BoxShape3D" id="BoxShape3D_puerta"]
 size = Vector3(1.4, 2.2, 1.4)
 
@@ -5332,6 +5334,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6, 3.6, -45.2)
 script = ExtResource("119_hoxqx")
 lines = PackedStringArray("Neris Vale, del Archivo. Estudio lo que dejan atrás las Fracturas.", "No podemos protegernos de algo que nos negamos a estudiar.", "Si ves cristales violeta en las afueras, no los toques con las manos desnudas. Tráeme lo que puedas contarme de ellos.")
 
+[node name="Tovan" type="CharacterBody3D" parent="People" instance=ExtResource("901_tovan")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.4, 2.4, -31.4)
+script = ExtResource("119_hoxqx")
+lines = PackedStringArray("Tovan Sere, de la Liga. Si una caravana no llega, alguien pasa hambre: de eso me ocupo.", "Un mapa no muestra quién merece ayuda. Solo muestra cuánto tardas en llegar.", "El camino del oeste está cerrado desde lo de la grieta. Si lo despejas, la Liga sabrá agradecerlo.")
+wander = 1.5
+
+[node name="Rhea" type="CharacterBody3D" parent="People" instance=ExtResource("901_rhea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6, 2.4, -32.0)
+script = ExtResource("119_hoxqx")
+lines = PackedStringArray("Rhea Kest. Sí, la de la Brasa. No, no voy a firmarte nada.", "El Faro llama imprudente a cualquiera que no espere permiso.", "¿Quieres aprender a pelear de verdad? Sal ahí fuera y vuelve con todos los dedos.")
+
 [node name="Edge" type="StaticBody3D" parent="." unique_id=1254126211]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.25, 7, -8)
 
@@ -5379,8 +5392,6 @@ mesh = ExtResource("21_h6yhu")
 [node name="Collision" type="CollisionShape3D" parent="@StaticBody3D@11" unique_id=518578751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("BoxShape3D_4hjnc")
-
-
 
 
 [node name="Puerta" type="Area3D" parent="Buildings/Posada"]
