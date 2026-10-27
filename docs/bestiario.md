@@ -270,3 +270,6 @@ multiplicar el coste:
 | Espectro errante | 50 | luz, fuego | sombra, espada | |
 
 Datos en `data/enemies/<nombre>.tres`; hojas en `assets/characters/enemies/<nombre>.png`.
+
+**Versiones fracturadas** (`*_f`, anómalas: la luz les hace más daño, resisten la sombra): hongo, murciélago,
+esqueleto y gólem fracturados, en el claro de la Fractura de las afueras. Arte con grietas y cristales violeta (`RIFT`).

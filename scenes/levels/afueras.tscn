@@ -86,6 +86,10 @@
 [ext_resource type="Resource" path="res://data/enemies/esqueleto.tres" id="901_esqueleto"]
 [ext_resource type="Resource" path="res://data/enemies/golem.tres" id="901_golem"]
 [ext_resource type="Resource" path="res://data/enemies/espectro.tres" id="901_espectro"]
+[ext_resource type="Resource" path="res://data/enemies/hongo_f.tres" id="902_hongo_f"]
+[ext_resource type="Resource" path="res://data/enemies/murcielago_f.tres" id="902_murcielago_f"]
+[ext_resource type="Resource" path="res://data/enemies/esqueleto_f.tres" id="902_esqueleto_f"]
+[ext_resource type="Resource" path="res://data/enemies/golem_f.tres" id="902_golem_f"]
 [ext_resource type="Script" path="res://scripts/systems/level_edits.gd" id="75_8x18h"]
 
 [sub_resource type="Environment" id="Environment_hlfps"]
@@ -1691,6 +1695,46 @@ collision_layer = 4
 collision_mask = 7
 script = ExtResource("62_gkhel")
 data = ExtResource("901_espectro")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Rift_hongo_f" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -14)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("902_hongo_f")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Rift_murcielago_f" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -14)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("902_murcielago_f")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Rift_esqueleto_f" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("902_esqueleto_f")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Rift_golem_f" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -10)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("902_golem_f")
 orb_scene = ExtResource("56_vadvj")
 death_effect = ExtResource("63_7y0p2")
 text_scene = ExtResource("64_efuy5")

@@ -1,0 +1,148 @@
+[gd_resource type="SpriteFrames" load_steps=18 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/characters/enemies/golem_f.png" id="1_sheet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0_0"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 0, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1_0"]
+atlas = ExtResource("1_sheet")
+region = Rect2(52, 0, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2_0"]
+atlas = ExtResource("1_sheet")
+region = Rect2(104, 0, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3_0"]
+atlas = ExtResource("1_sheet")
+region = Rect2(156, 0, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0_1"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 50, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1_1"]
+atlas = ExtResource("1_sheet")
+region = Rect2(52, 50, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2_1"]
+atlas = ExtResource("1_sheet")
+region = Rect2(104, 50, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3_1"]
+atlas = ExtResource("1_sheet")
+region = Rect2(156, 50, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0_2"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 100, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1_2"]
+atlas = ExtResource("1_sheet")
+region = Rect2(52, 100, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2_2"]
+atlas = ExtResource("1_sheet")
+region = Rect2(104, 100, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3_2"]
+atlas = ExtResource("1_sheet")
+region = Rect2(156, 100, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0_3"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 150, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1_3"]
+atlas = ExtResource("1_sheet")
+region = Rect2(52, 150, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2_3"]
+atlas = ExtResource("1_sheet")
+region = Rect2(104, 150, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3_3"]
+atlas = ExtResource("1_sheet")
+region = Rect2(156, 150, 52, 50)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3_0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3_1")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0_2")
+}],
+"loop": false,
+"name": &"windup",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3_2")
+}],
+"loop": false,
+"name": &"pounce",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0_3")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3_3")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}]

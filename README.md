@@ -150,6 +150,8 @@ xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capt
 - [x] Árbol de habilidades (182 nodos, 6 afinidades), santuario, 4 huecos + definitiva
 - [x] 11 tipos de lobo (élites, jefe con invocaciones, elementales) en las afueras
 - [x] 5 monstruos con arte propio: hongo errante, murciélago de cueva, esqueleto guerrero, gólem de musgo y espectro errante (`tools/art_pipeline/build.py monsters`)
+- [x] 4 versiones fracturadas (violeta, anómalas) en el claro de la Fractura: hongo, murciélago, esqueleto y gólem
+- [ ] Espectro fracturado y los monstruos de la zona 2 (Guardián de raíces, Polilla lumínica, Araña de musgo, Ciervo de cuerno cristal, Enredadera): faltan por generar (cuota de Canva agotada)
 - [ ] Más especies (hoy son 11 lobos y 5 monstruos); el arte sale de Canva a 200 px, hay que rehacerlo a más resolución con Figma
 - [ ] Interiores, caja de diálogo y minimapa
 - [x] Diseño de combate: afinidades, talentos, técnicas de gremio, estados y bestiario (`docs/diseno_combate.md`)

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_data"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/enemies/golem_f_frames.tres" id="2_frames"]
+
+[resource]
+script = ExtResource("1_data")
+display_name = "Gólem fracturado"
+frames = ExtResource("2_frames")
+sprite_scale = 1.5
+max_hp = 210
+damage = 32
+push = 13
+speed = 2.6
+attack_speed = 10
+attack_range = 3.8
+windup_seconds = 0.9
+xp_reward = 192
+respawn_seconds = 30
+weak = Array[StringName]([&"luz", &"rayo"])
+resist = Array[StringName]([&"tierra", &"sombra"])
+anomalous = true

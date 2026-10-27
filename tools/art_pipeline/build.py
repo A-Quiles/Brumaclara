@@ -747,7 +747,15 @@ MONSTERS = {
     "esqueleto": ("esqueleto", (48, 48), (24, 46), 24),
     "golem": ("golem", (52, 50), (26, 48), 24),
     "espectro": ("espectro", (48, 48), (24, 46), 24),
+    # touched by the Fractura (violet art: no purple clean-up, it would eat the cracks)
+    "hongo_f": ("hongo_f", (48, 44), (24, 42), 28),
+    "murcielago_f": ("murcielago_f", (48, 44), (24, 42), 28),
+    "esqueleto_f": ("esqueleto_f", (48, 48), (24, 46), 28),
+    "golem_f": ("golem_f", (52, 50), (26, 48), 28),
 }
+
+
+KEY_TOL = {"murcielago_f": 45.0, "esqueleto_f": 45.0}  # dark violet art sits close to the magenta backdrop
 
 
 def _unbackdrop(im):
@@ -765,7 +773,8 @@ def monsters():
         if not (SRC / f"{src}.png").exists():
             continue
         g = sheets.cut_grid(px.load(SRC / f"{src}.png"), 4, 4, inset=2)
-        rows = {key: [_unbackdrop(sheets.pixelate_cell(g[r][c], 1, tol=100.0)) for c in range(4)]
+        clean = _unbackdrop if not name.endswith("_f") else (lambda im: im)
+        rows = {key: [clean(sheets.pixelate_cell(g[r][c], 1, tol=KEY_TOL.get(name, 100.0))) for c in range(4)]
                 for r, key in enumerate(["idle", "run", "attack", "fall"])}
         palette = palette_for([im for row in rows.values() for im in row], ncol)
         sheet_rows = baseline_rows([sheets.snap_all(row, palette) for row in rows.values()], frame, anchor)

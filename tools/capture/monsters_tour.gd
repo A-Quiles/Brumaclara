@@ -13,6 +13,7 @@ func _run() -> void:
 	root.add_child(level)
 	current_scene = level
 	var names := ["hongo0", "murcielago0", "esqueleto0", "golem0", "espectro0"]
+	var rift := ["hongo_f", "murcielago_f", "esqueleto_f", "golem_f"]
 	var enemies := level.get_node("Enemies")
 	var hero: Node3D = level.get_node("Player")
 	var x := 0.0
@@ -20,7 +21,11 @@ func _run() -> void:
 		var m: Node3D = enemies.get_node("Monster_" + n)
 		m.global_position = Vector3(x, 0.0, 0.0)
 		x += 3.0
-	hero.global_position = Vector3(6.0, 0.5, 6.0)
+	x = 0.0
+	for n in rift:
+		enemies.get_node("Rift_" + n).global_position = Vector3(x, 0.0, 3.0)
+		x += 3.0
+	hero.global_position = Vector3(6.0, 0.5, 8.0)
 	for i in 45:
 		await process_frame
 	await RenderingServer.frame_post_draw
