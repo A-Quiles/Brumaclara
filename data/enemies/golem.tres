@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_data"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/enemies/golem_frames.tres" id="2_frames"]
+
+[resource]
+script = ExtResource("1_data")
+display_name = "Gólem de musgo"
+frames = ExtResource("2_frames")
+sprite_scale = 1.5
+max_hp = 160
+damage = 26
+push = 13
+speed = 2.6
+attack_speed = 10
+attack_range = 3.8
+windup_seconds = 1.0
+xp_reward = 120
+respawn_seconds = 40
+weak = Array[StringName]([&"rayo", &"hielo"])
+resist = Array[StringName]([&"tierra", &"fuego"])
+defense = 0.2

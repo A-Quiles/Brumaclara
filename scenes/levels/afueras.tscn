@@ -81,6 +81,11 @@
 [ext_resource type="Resource" path="res://data/enemies/tormenta.tres" id="900_tormenta"]
 [ext_resource type="Resource" path="res://data/enemies/sacro.tres" id="900_sacro"]
 [ext_resource type="Resource" path="res://data/enemies/gris.tres" id="900_gris"]
+[ext_resource type="Resource" path="res://data/enemies/hongo.tres" id="901_hongo"]
+[ext_resource type="Resource" path="res://data/enemies/murcielago.tres" id="901_murcielago"]
+[ext_resource type="Resource" path="res://data/enemies/esqueleto.tres" id="901_esqueleto"]
+[ext_resource type="Resource" path="res://data/enemies/golem.tres" id="901_golem"]
+[ext_resource type="Resource" path="res://data/enemies/espectro.tres" id="901_espectro"]
 [ext_resource type="Script" path="res://scripts/systems/level_edits.gd" id="75_8x18h"]
 
 [sub_resource type="Environment" id="Environment_hlfps"]
@@ -1596,6 +1601,96 @@ collision_layer = 4
 collision_mask = 7
 script = ExtResource("62_gkhel")
 data = ExtResource("900_gris")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Monster_hongo0" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("901_hongo")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Monster_hongo1" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("901_hongo")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Monster_murcielago0" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -12)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("901_murcielago")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Monster_murcielago1" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -9)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("901_murcielago")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Monster_esqueleto0" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -6)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("901_esqueleto")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Monster_esqueleto1" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -3)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("901_esqueleto")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Monster_golem0" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -9)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("901_golem")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Monster_espectro0" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("901_espectro")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Monster_espectro1" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("901_espectro")
 orb_scene = ExtResource("56_vadvj")
 death_effect = ExtResource("63_7y0p2")
 text_scene = ExtResource("64_efuy5")

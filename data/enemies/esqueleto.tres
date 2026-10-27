@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_data"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/enemies/esqueleto_frames.tres" id="2_frames"]
+
+[resource]
+script = ExtResource("1_data")
+display_name = "Esqueleto guerrero"
+frames = ExtResource("2_frames")
+sprite_scale = 1.15
+max_hp = 70
+damage = 18
+push = 9
+speed = 3.6
+attack_speed = 12
+attack_range = 3.6
+windup_seconds = 0.7
+xp_reward = 55
+respawn_seconds = 25
+weak = Array[StringName]([&"luz", &"tierra"])
+resist = Array[StringName]([&"sombra", &"hielo"])
+defense = 0.1

@@ -739,6 +739,49 @@ def wolf_variants():
     return src.parent
 
 
+# Monsters drawn as 4x4 sheets (art/ai/<src>.png, 200 px, one game pixel per source pixel):
+# rows idle, move, attack, fall; name -> (source, frame size, feet anchor, palette colours)
+MONSTERS = {
+    "hongo": ("hongo", (48, 44), (24, 42), 24),
+    "murcielago": ("murcielago", (48, 44), (24, 42), 24),
+    "esqueleto": ("esqueleto", (48, 48), (24, 46), 24),
+    "golem": ("golem", (52, 50), (26, 48), 24),
+    "espectro": ("espectro", (48, 48), (24, 46), 24),
+}
+
+
+def _unbackdrop(im):
+    """Drops the magenta backdrop and its purple shadow that survive the keying."""
+    a = np.asarray(im).copy()
+    r, g, b = (a[..., i].astype(int) for i in range(3))
+    bad = (b > g * 1.25) & (r > g * 1.25) & (a[..., 3] > 0)
+    a[bad, 3] = 0
+    return Image.fromarray(a, "RGBA")
+
+
+def monsters():
+    out = None
+    for name, (src, frame, anchor, ncol) in MONSTERS.items():
+        if not (SRC / f"{src}.png").exists():
+            continue
+        g = sheets.cut_grid(px.load(SRC / f"{src}.png"), 4, 4, inset=2)
+        rows = {key: [_unbackdrop(sheets.pixelate_cell(g[r][c], 1, tol=100.0)) for c in range(4)]
+                for r, key in enumerate(["idle", "run", "attack", "fall"])}
+        palette = palette_for([im for row in rows.values() for im in row], ncol)
+        sheet_rows = baseline_rows([sheets.snap_all(row, palette) for row in rows.values()], frame, anchor)
+        path = save(sheets.assemble(sheet_rows, *frame), "characters", "enemies", f"{name}.png")
+        cells = lambda key, cols: [(c, list(rows).index(key)) for c in cols]
+        sheets.write_sprite_frames(path.with_name(f"{name}_frames.tres"), f"res://assets/characters/enemies/{name}.png",
+                                   *frame, [("idle", cells("idle", range(4)), 5, True),
+                                            ("run", cells("run", range(4)), 10, True),
+                                            ("windup", cells("attack", [0]), 1, False),
+                                            ("pounce", cells("attack", [1, 2, 3]), 10, False),
+                                            ("hurt", cells("fall", [0]), 1, False),
+                                            ("dead", cells("fall", [1, 2, 3]), 5, False)])
+        out = path
+    return out
+
+
 HAIRSTYLES = ["alto", "cresta", "mono", "largo", "volumen"]
 
 
@@ -803,7 +846,7 @@ def variants():
 
 RECIPES = {"hero": hero, "heroine": heroine, "wolf": wolf, "nature": nature, "props_b": props_b, "terrain": terrain,
            "terrain_b": terrain_b, "house": house, "facades": facades, "plaza": plaza, "walls_roofs": walls_roofs,
-           "town_props": town_props, "townsfolk": townsfolk, "variants": variants, "recolors": recolors, "affinity_fx": affinity_fx, "wolf_variants": wolf_variants, "hair_styles": hair_styles, "ui": ui, "vfx": vfx, "backdrop": backdrop, "shadow": shadow}
+           "town_props": town_props, "townsfolk": townsfolk, "variants": variants, "recolors": recolors, "affinity_fx": affinity_fx, "wolf_variants": wolf_variants, "monsters": monsters, "hair_styles": hair_styles, "ui": ui, "vfx": vfx, "backdrop": backdrop, "shadow": shadow}
 
 if __name__ == "__main__":
     for key in sys.argv[1:] or RECIPES:

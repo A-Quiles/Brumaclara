@@ -257,3 +257,16 @@ multiplicar el coste:
 - Los **ecos** son en gran parte efectos visuales, no animaciones completas.
 - Orden de producción recomendado: la zona 1 completa (cinco enemigos nuevos y su jefe), luego zona a
   zona según avance la campaña.
+
+
+## Monstruos con arte propio (ya en el juego)
+
+| Monstruo | Vida | Débil a | Resiste | Nota |
+|---|---|---|---|---|
+| Hongo errante | 45 | fuego | tierra | lento, esporas |
+| Murciélago de cueva | 28 | rayo | — | rápido, frágil |
+| Esqueleto guerrero | 70 | luz, tierra | sombra, hielo | defensa 10 % |
+| Gólem de musgo | 160 | rayo, hielo | tierra, fuego | muy lento, golpe fuerte, defensa 20 % |
+| Espectro errante | 50 | luz, fuego | sombra, espada | |
+
+Datos en `data/enemies/<nombre>.tres`; hojas en `assets/characters/enemies/<nombre>.png`.

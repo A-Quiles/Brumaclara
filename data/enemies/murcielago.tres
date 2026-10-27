@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_data"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/enemies/murcielago_frames.tres" id="2_frames"]
+
+[resource]
+script = ExtResource("1_data")
+display_name = "Murciélago de cueva"
+frames = ExtResource("2_frames")
+sprite_scale = 0.9
+max_hp = 28
+damage = 9
+push = 5
+speed = 6.5
+attack_speed = 15
+attack_range = 3.2
+windup_seconds = 0.4
+xp_reward = 25
+respawn_seconds = 15
+weak = Array[StringName]([&"rayo"])
+resist = Array[StringName]([])
+defense = 0
