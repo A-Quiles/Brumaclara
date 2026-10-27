@@ -162,6 +162,12 @@ INTERIORS = {
                ("silla", -0.6, 4.8), ("silla", 2.6, 4.8), ("mesa_larga", 4.5, 7.6), ("candelabro", 1.0, 4.5),
                ("planta", -7.2, 0.6), ("planta", 7.3, 9.6), ("farol_poste", -6.8, 9.3), ("armario", -1.0, 0.45),
                ("fogon", 0.9, 0.45)],
+        people=[("lio", -2.6, 6.8, ["¡Eh, tú! Lio, guía de la ruta oriental. Si vas hacia Puentegris, conozco atajos que no salen en ningún mapa.",
+                                   "Mi hermana Sella dice que soy un imprudente. Yo digo que llegar tarde también es un riesgo.",
+                                   "Desde que se abrió la grieta, el puente oriental cruje de una forma que no me gusta nada."]),
+                ("sella", -0.8, 7.2, ["Sella. Llevo las cuentas de Puentegris. Alguien tiene que hacerlo mientras mi hermano busca atajos.",
+                                      "Cada caravana que no llega es un mes más difícil para nosotros.",
+                                      "Si de verdad vas a ayudar, apúntalo. Las promesas sin apuntar se las lleva el viento."])],
     ),
     "sede_faro": dict(
         title="Sede del Faro", building="SedeDelFaro", floor="floor_flagstone", size=(14.0, 10.0), ambient=0.8,

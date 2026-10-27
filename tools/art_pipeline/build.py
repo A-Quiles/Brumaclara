@@ -509,7 +509,32 @@ def townsfolk():
 # source pixel): rows walking toward the camera, to the side and away. who -> (the side row was drawn
 # facing left: the game expects right and mirrors it, keying tolerance: lower when the clothes are close
 # to the backdrop's colour).
-CHARACTERS = {"iven": (True, 80.0, True), "neris": (False, 50.0, False), "tovan": (False, 80.0, "all"), "rhea": (False, 80.0, "all"), "caldus": (False, 80.0, "all")}  # + clear magenta spill
+CHARACTERS = {"iven": (True, 80.0, True), "neris": (False, 50.0, False), "tovan": (False, 80.0, "all"), "rhea": (False, 80.0, "all"), "caldus": (False, 80.0, "all"), "lio": (False, 80.0, "all"), "sella": (False, 80.0, "all")}  # + clear magenta spill
+
+
+def segment_sheet(rgb, rows, cols, tol, spill=False):
+    """The figures of a sheet whose grid is not exact: the backdrop is keyed on the whole image, the
+    figures found as blobs (parts a pixel or two apart join), the rows*cols largest kept and sorted
+    row by row. Returns rows of RGBA images, each cut to its figure."""
+    from scipy import ndimage
+    whole = flood_key(rgb, tol, bg=px.dominant_border_colour(rgb), spill=spill)
+    alpha = np.asarray(whole)[..., 3] > 0
+    labels, n = ndimage.label(ndimage.binary_dilation(alpha, structure=np.ones((1, 5))))  # sideways only: rows stay apart
+    boxes = ndimage.find_objects(labels)
+    sizes = ndimage.sum(alpha, labels, range(1, n + 1))
+    keep = sorted(range(n), key=lambda i: -sizes[i])[:rows * cols]
+    figures = [(boxes[i], i + 1) for i in keep]
+    figures.sort(key=lambda f: (f[0][0].start + f[0][0].stop) / 2)
+    out = []
+    for r in range(rows):
+        row = sorted(figures[r * cols:(r + 1) * cols], key=lambda f: f[0][1].start)
+        images = []
+        for (sy, sx), label in row:
+            cut = np.asarray(whole)[sy, sx].copy()
+            cut[..., 3] = np.where(labels[sy, sx] == label, cut[..., 3], 0)
+            images.append(Image.fromarray(cut, "RGBA"))
+        out.append(images)
+    return out
 
 
 def characters(only=None):
@@ -518,10 +543,8 @@ def characters(only=None):
         if (only and who not in only) or not (SRC / f"{who}.png").exists():
             continue
         rgb = px.load(SRC / f"{who}.png")
-        bg = px.dominant_border_colour(rgb)
-        g = sheets.cut_grid(rgb, 3, 4, inset=2)
-        rows = {facing: [flood_key(cell, tol, bg=bg, main_only=True, spill=spill) for cell in g[r]]
-                for r, facing in enumerate(["down", "side", "up"])}
+        g = segment_sheet(rgb, 3, 4, tol, spill)
+        rows = {facing: g[r] for r, facing in enumerate(["down", "side", "up"])}
         if faces_left:
             rows["side"] = [sheets.mirror(im) for im in rows["side"]]
         palette = palette_for([im for row in rows.values() for im in row], 32)
