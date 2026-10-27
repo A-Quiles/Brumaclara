@@ -144,10 +144,11 @@ func _draw_tree() -> void:
 	for n: Dictionary in nodes:
 		if n.branch >= 0:
 			branches[int(n.branch)] = n.branch_name
+	var column := COLUMN if branches.size() <= 3 else 3 * COLUMN / branches.size()  # four branches still fit beside the panel
 	for b: int in branches:
-		var l := _label(str(branches[b]).split(" (")[0], GRID + Vector2(b * COLUMN, -26), colour, 11)
-		l.custom_minimum_size = Vector2(COLUMN - 6, 0)
-		l.size = Vector2(COLUMN - 6, 24)
+		var l := _label(str(branches[b]).split(" (")[0], GRID + Vector2(b * column, -26), colour, 11)
+		l.custom_minimum_size = Vector2(column - 6, 0)
+		l.size = Vector2(column - 6, 24)
 		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		l.clip_text = true
 		_grid.add_child(l)
@@ -156,10 +157,10 @@ func _draw_tree() -> void:
 		var key := Vector2i(n.branch, n.tier)
 		var k: int = slots.get(key, 0)
 		slots[key] = k + 1
-		var x: float = GRID.x + n.branch * COLUMN + k * (NODE + 2)
+		var x: float = GRID.x + n.branch * column + k * (NODE + 2)
 		var y: float = GRID.y + (n.tier - 1) * ROW
 		if n.branch < 0:  # the ultimate sits alone under the branches
-			x = GRID.x + COLUMN
+			x = GRID.x + column
 			y = GRID.y + 5 * ROW
 		_grid.add_child(_node_button(n, Vector2(x, y), colour))
 
@@ -298,7 +299,7 @@ func _draw_bottom() -> void:
 		child.queue_free()
 	for attr in Progress.ATTRS:
 		var a: String = attr
-		var l := _text("%s %d" % [a.capitalize(), Progress.attr(a)], INK, 11)
+		var l := _label("%s %d" % [a.capitalize(), Progress.attr(a)], Vector2.ZERO, INK, 11)
 		_bottom.add_child(l)
 		var b := _button("+", func() -> void: Progress.add_attr(a), GOLD)
 		b.disabled = Progress.attr_points <= 0 or Progress.attrs[a] >= Progress.ATTR_CAP[a]

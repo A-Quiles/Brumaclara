@@ -39,9 +39,10 @@ func _run() -> void:
 	await _walk(Vector2.UP, 160, true)  # the door changes the scene
 	await _wait(40)
 	_hero = current_scene.get_node("Player")
-	await _walk(Vector2(-1, -0.5), 90)
-	await _walk(Vector2.RIGHT, 120)
-	await _walk(Vector2(0.4, 1), 70)
+	await _walk_to(Vector3(-2.6, 0, 8.0), 120)  # Lio, the guide, by the tables
+	await _face_and_talk("People/Lio", 1)
+	await _walk_to(Vector3(2.5, 0, 6.5), 120)
+	await _walk(Vector2.RIGHT, 60)
 	# 3. the Faro's hall: Iven by the contract board
 	await _load("res://scenes/levels/interiors/sede_faro.tscn", Vector3(0, 0.1, 8.0))
 	await _walk(Vector2(-0.5, -1), 100)
