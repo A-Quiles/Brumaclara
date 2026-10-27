@@ -105,6 +105,9 @@ func _set_icon(slot: TextureRect, id: StringName) -> void:
 
 ## The icon of a skill: the bolt, burst or dash drawing in its affinity's colour.
 static func icon_for(s: SkillData) -> Texture2D:
+	var drawn := SkillIcons.for_skill(s.id)
+	if drawn:
+		return drawn
 	var base: Texture2D = ICON_BURST
 	match s.kind:
 		SkillData.Kind.PROJECTILE, SkillData.Kind.CHAIN, SkillData.Kind.BEAM, SkillData.Kind.LINE, SkillData.Kind.PULL:

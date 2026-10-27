@@ -198,15 +198,37 @@ func can_learn(id: StringName) -> String:
 		return "Las afinidades secundarias llegan al nivel III"
 	if spent_in(n.tree) < TIER_PA[n.tier]:
 		return "Gasta %d PA en este árbol para abrir el nivel %s" % [TIER_PA[n.tier], roman(n.tier)]
-	var before := previous(id)
-	if before != &"" and before not in learned:
-		return "Requiere «%s»" % nodes[before].name
+	var missing := requirement(id)
+	if missing != "":
+		return missing
 	if n.type == "definitiva":
 		var high := learned.filter(func(l: StringName) -> bool: return nodes[l].tree == n.tree and int(nodes[l].tier) >= 4).size()
 		if high < ULTIMATE_NEEDS:
 			return "Requiere %d nodos de nivel IV o V" % ULTIMATE_NEEDS
 	if pa < int(n.cost):
 		return "Faltan PA (%d de %d)" % [pa, n.cost]
+	return ""
+
+
+## What still keeps a node locked by the nodes before it ("" if nothing): its own list (`requires`:
+## all of them; `requires_any`: one of them, the branch's lower skills) or, in trees without lists,
+## the previous node of its branch.
+func requirement(id: StringName) -> String:
+	var n: Dictionary = nodes[id]
+	for need in n.get("requires", []):
+		if StringName(need) not in learned:
+			return "Requiere «%s»" % nodes[StringName(need)].name
+	var any: Array = n.get("requires_any", [])
+	if not any.is_empty():
+		for need in any:
+			if StringName(need) in learned:
+				return ""
+		return "Requiere una habilidad de su rama de nivel inferior (p. ej. «%s»)" % nodes[StringName(any[0])].name
+	if n.has("requires"):
+		return ""
+	var before := previous(id)
+	if before != &"" and before not in learned:
+		return "Requiere «%s»" % nodes[before].name
 	return ""
 
 

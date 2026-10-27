@@ -295,12 +295,12 @@ def write_doors(rooms):
     if exit_id is None:
         exit_id = "900_exit"
         text = text.replace("\n[sub_resource", f'\n[ext_resource type="Script" path="res://scripts/systems/exit.gd" id="{exit_id}"]\n\n[sub_resource', 1)
-    text = text.replace("\n[sub_resource", '\n[sub_resource type="BoxShape3D" id="BoxShape3D_puerta"]\nsize = Vector3(1.4, 2.2, 0.8)\n\n[sub_resource', 1)
+    text = text.replace("\n[sub_resource", '\n[sub_resource type="BoxShape3D" id="BoxShape3D_puerta"]\nsize = Vector3(1.4, 2.2, 1.4)\n\n[sub_resource', 1)
     doors = ""
     for key, (origin, step, d) in rooms.items():
         building = INTERIORS[key]["building"]
         doors += (f'\n[node name="Puerta" type="Area3D" parent="Buildings/{building}"]\n'
-                  f"transform = {xform(step[0], 0.0, step[2] - 0.15)}\ncollision_layer = 0\ncollision_mask = 2\n"
+                  f"transform = {xform(step[0], 0.0, step[2] + 0.3)}\ncollision_layer = 0\ncollision_mask = 2\n"
                   f'script = ExtResource("{exit_id}")\ntarget_scene = "res://scenes/levels/interiors/{key}.tscn"\n'
                   f"arrival = Vector3(0, 0.1, {d - 1.6})\n"
                   f'\n[node name="Collision" type="CollisionShape3D" parent="Buildings/{building}/Puerta"]\n'

@@ -19,7 +19,8 @@
 				"push": 5.0,
 				"cast_seconds": 0.28,
 				"release_at": 0.08
-			}
+			},
+			"requires": []
 		},
 		{
 			"tier": 1,
@@ -39,6 +40,9 @@
 						"mana_cost": 12.0
 					}
 				}
+			],
+			"requires": [
+				"fuego.chispa"
 			]
 		},
 		{
@@ -59,7 +63,54 @@
 				"speed": 18.0,
 				"scale": 1.4,
 				"push": 4.0
-			}
+			},
+			"requires_any": [
+				"fuego.chispa"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 2,
+			"id": "fuego.lanza_de_fuego_mejora",
+			"name": "Lanza de fuego certera",
+			"desc": "Lanza de fuego: +30 % de daño",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.lanza_de_fuego",
+					"mul": {
+						"damage": 1.3
+					}
+				}
+			],
+			"branch_name": "Llama (proyectiles)",
+			"requires": [
+				"fuego.lanza_de_fuego"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 0,
+			"tier": 2,
+			"id": "fuego.abanico_de_brasas",
+			"name": "Abanico de brasas",
+			"desc": "14 / 3 s / 9 × 5. Cinco brasas en abanico: de cerca aciertan todas",
+			"skill": {
+				"kind": "PROJECTILE",
+				"mana_cost": 14,
+				"cooldown": 3,
+				"damage": 9,
+				"count": 5,
+				"spread_deg": 14.0,
+				"speed": 13.0,
+				"scale": 0.8
+			},
+			"cost": 2,
+			"branch_name": "Llama (proyectiles)",
+			"requires_any": [
+				"fuego.chispa"
+			]
 		},
 		{
 			"tier": 2,
@@ -78,6 +129,11 @@
 						"status": "quemadura"
 					}
 				}
+			],
+			"requires_any": [
+				"fuego.chispa",
+				"fuego.lanza_de_fuego",
+				"fuego.abanico_de_brasas"
 			]
 		},
 		{
@@ -96,6 +152,57 @@
 						"bounce": 1
 					}
 				}
+			],
+			"requires": [
+				"fuego.chispa"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 0,
+			"tier": 3,
+			"id": "fuego.bola_saltarina",
+			"name": "Bola saltarina",
+			"desc": "18 / 5 s / 20. Rebota entre tres enemigos cercanos",
+			"skill": {
+				"kind": "PROJECTILE",
+				"mana_cost": 18,
+				"cooldown": 5,
+				"damage": 20,
+				"bounce": 3,
+				"scale": 1.1,
+				"speed": 12.0
+			},
+			"cost": 2,
+			"branch_name": "Llama (proyectiles)",
+			"requires_any": [
+				"fuego.chispa",
+				"fuego.lanza_de_fuego",
+				"fuego.abanico_de_brasas"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 0,
+			"tier": 3,
+			"id": "fuego.rafaga_ignea",
+			"name": "Ráfaga ígnea",
+			"desc": "20 / 6 s / 14 × 4. Cuatro disparos seguidos hacia donde apuntas",
+			"skill": {
+				"kind": "PROJECTILE",
+				"mana_cost": 20,
+				"cooldown": 6,
+				"damage": 14,
+				"count": 4,
+				"interval": 0.12,
+				"speed": 16.0
+			},
+			"cost": 2,
+			"branch_name": "Llama (proyectiles)",
+			"requires_any": [
+				"fuego.chispa",
+				"fuego.lanza_de_fuego",
+				"fuego.abanico_de_brasas"
 			]
 		},
 		{
@@ -112,6 +219,13 @@
 					"stat": "far_pct.fuego",
 					"add": 0.2
 				}
+			],
+			"requires_any": [
+				"fuego.chispa",
+				"fuego.lanza_de_fuego",
+				"fuego.abanico_de_brasas",
+				"fuego.bola_saltarina",
+				"fuego.rafaga_ignea"
 			]
 		},
 		{
@@ -132,7 +246,83 @@
 				"scale": 2.2,
 				"explode_radius": 2.5,
 				"push": 9.0
-			}
+			},
+			"requires_any": [
+				"fuego.chispa",
+				"fuego.lanza_de_fuego",
+				"fuego.abanico_de_brasas",
+				"fuego.bola_saltarina",
+				"fuego.rafaga_ignea"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 4,
+			"id": "fuego.abanico_de_brasas_mejora",
+			"name": "Abanico de brasas certero",
+			"desc": "Abanico de brasas: +30 % de daño",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.abanico_de_brasas",
+					"mul": {
+						"damage": 1.3
+					}
+				}
+			],
+			"branch_name": "Llama (proyectiles)",
+			"requires": [
+				"fuego.abanico_de_brasas"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 4,
+			"id": "fuego.bola_saltarina_mejora",
+			"name": "Bola saltarina certera",
+			"desc": "Bola saltarina: +30 % de daño",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.bola_saltarina",
+					"mul": {
+						"damage": 1.3
+					}
+				}
+			],
+			"branch_name": "Llama (proyectiles)",
+			"requires": [
+				"fuego.bola_saltarina"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 0,
+			"tier": 4,
+			"id": "fuego.cadena_de_fuego",
+			"name": "Cadena de fuego",
+			"desc": "26 / 8 s / 22. Salta a cuatro enemigos y los quema",
+			"skill": {
+				"kind": "CHAIN",
+				"mana_cost": 26,
+				"cooldown": 8,
+				"damage": 22,
+				"count": 4,
+				"radius": 4.0,
+				"offset": 6.0,
+				"status": "quemadura"
+			},
+			"cost": 2,
+			"branch_name": "Llama (proyectiles)",
+			"requires_any": [
+				"fuego.chispa",
+				"fuego.lanza_de_fuego",
+				"fuego.abanico_de_brasas",
+				"fuego.bola_saltarina",
+				"fuego.rafaga_ignea"
+			]
 		},
 		{
 			"tier": 5,
@@ -151,6 +341,51 @@
 						"ember_damage": 10
 					}
 				}
+			],
+			"requires": [
+				"fuego.cometa"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 5,
+			"id": "fuego.cadena_de_fuego_mejora",
+			"name": "Cadena de fuego encadenada",
+			"desc": "Cadena de fuego: +2 saltos",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.cadena_de_fuego",
+					"add": {
+						"count": 2
+					}
+				}
+			],
+			"branch_name": "Llama (proyectiles)",
+			"requires": [
+				"fuego.cadena_de_fuego"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 5,
+			"id": "fuego.rafaga_ignea_mejora",
+			"name": "Ráfaga ígnea certera",
+			"desc": "Ráfaga ígnea: +30 % de daño",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.rafaga_ignea",
+					"mul": {
+						"damage": 1.3
+					}
+				}
+			],
+			"branch_name": "Llama (proyectiles)",
+			"requires": [
+				"fuego.rafaga_ignea"
 			]
 		},
 		{
@@ -170,7 +405,8 @@
 				"push": 11.0,
 				"cast_seconds": 0.5,
 				"release_at": 0.22
-			}
+			},
+			"requires": []
 		},
 		{
 			"tier": 1,
@@ -188,6 +424,52 @@
 						"scale": 1.4
 					}
 				}
+			],
+			"requires": [
+				"fuego.estallido"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 1,
+			"tier": 1,
+			"id": "fuego.latigo_igneo",
+			"name": "Látigo ígneo",
+			"desc": "12 / 3 s / 16. Latigazo de fuego en línea corta",
+			"skill": {
+				"kind": "LINE",
+				"mana_cost": 12,
+				"cooldown": 3,
+				"damage": 16,
+				"length": 4.0,
+				"count": 4,
+				"step_delay": 0.03,
+				"once": true
+			},
+			"cost": 2,
+			"branch_name": "Hoguera (áreas)",
+			"requires": []
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 1,
+			"id": "fuego.latigo_igneo_mejora",
+			"name": "Látigo ígneo largo",
+			"desc": "Látigo ígneo: +2 unidades de alcance",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.latigo_igneo",
+					"add": {
+						"length": 2.0,
+						"count": 2
+					}
+				}
+			],
+			"branch_name": "Hoguera (áreas)",
+			"requires": [
+				"fuego.latigo_igneo"
 			]
 		},
 		{
@@ -209,7 +491,58 @@
 				"radius": 1.5,
 				"offset": 1.8,
 				"status": "quemadura"
-			}
+			},
+			"requires_any": [
+				"fuego.estallido",
+				"fuego.latigo_igneo"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 2,
+			"id": "fuego.rastro_ardiente_mejora",
+			"name": "Rastro ardiente duradero",
+			"desc": "Rastro ardiente: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.rastro_ardiente",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Hoguera (áreas)",
+			"requires": [
+				"fuego.rastro_ardiente"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 1,
+			"tier": 2,
+			"id": "fuego.brasero",
+			"name": "Brasero",
+			"desc": "22 / 12 s / 5 cada 0,5 s. Un círculo de brasas te sigue 4 s y quema",
+			"skill": {
+				"kind": "ZONE",
+				"mana_cost": 22,
+				"cooldown": 12,
+				"damage": 5,
+				"duration": 4.0,
+				"tick": 0.5,
+				"radius": 1.6,
+				"offset": 0.0,
+				"follow": true,
+				"status": "quemadura"
+			},
+			"cost": 2,
+			"branch_name": "Hoguera (áreas)",
+			"requires_any": [
+				"fuego.estallido",
+				"fuego.latigo_igneo"
+			]
 		},
 		{
 			"tier": 2,
@@ -231,6 +564,12 @@
 						"radius": 1.0
 					}
 				}
+			],
+			"requires_any": [
+				"fuego.estallido",
+				"fuego.latigo_igneo",
+				"fuego.rastro_ardiente",
+				"fuego.brasero"
 			]
 		},
 		{
@@ -253,7 +592,60 @@
 				"line": 5.0,
 				"offset": 2.0,
 				"status": "quemadura"
-			}
+			},
+			"requires_any": [
+				"fuego.estallido",
+				"fuego.latigo_igneo",
+				"fuego.rastro_ardiente",
+				"fuego.brasero"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 3,
+			"id": "fuego.muro_de_llamas_mejora",
+			"name": "Muro de llamas duradero",
+			"desc": "Muro de llamas: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.muro_de_llamas",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Hoguera (áreas)",
+			"requires": [
+				"fuego.muro_de_llamas"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 1,
+			"tier": 3,
+			"id": "fuego.erupcion",
+			"name": "Erupción",
+			"desc": "30 / 11 s / 40. Tras 0,5 s, el suelo estalla a tu alrededor",
+			"skill": {
+				"kind": "STRIKE",
+				"mana_cost": 30,
+				"cooldown": 11,
+				"damage": 40,
+				"offset": 0.0,
+				"delay": 0.5,
+				"radius": 2.6,
+				"push": 9.0
+			},
+			"cost": 2,
+			"branch_name": "Hoguera (áreas)",
+			"requires_any": [
+				"fuego.estallido",
+				"fuego.latigo_igneo",
+				"fuego.rastro_ardiente",
+				"fuego.brasero"
+			]
 		},
 		{
 			"tier": 3,
@@ -272,6 +664,14 @@
 						"duration": 1.5
 					}
 				}
+			],
+			"requires_any": [
+				"fuego.estallido",
+				"fuego.latigo_igneo",
+				"fuego.rastro_ardiente",
+				"fuego.brasero",
+				"fuego.muro_de_llamas",
+				"fuego.erupcion"
 			]
 		},
 		{
@@ -292,7 +692,131 @@
 				"delay": 0.6,
 				"radius": 1.5,
 				"push": 6.0
-			}
+			},
+			"requires_any": [
+				"fuego.estallido",
+				"fuego.latigo_igneo",
+				"fuego.rastro_ardiente",
+				"fuego.brasero",
+				"fuego.muro_de_llamas",
+				"fuego.erupcion"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 4,
+			"id": "fuego.columna_ignea_mejora",
+			"name": "Columna ígnea devastadora",
+			"desc": "Columna ígnea: +30 % de daño y de radio",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.columna_ignea",
+					"mul": {
+						"damage": 1.3,
+						"radius": 1.3
+					}
+				}
+			],
+			"branch_name": "Hoguera (áreas)",
+			"requires": [
+				"fuego.columna_ignea"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 4,
+			"id": "fuego.brasero_mejora",
+			"name": "Brasero duradero",
+			"desc": "Brasero: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.brasero",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Hoguera (áreas)",
+			"requires": [
+				"fuego.brasero"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 4,
+			"id": "fuego.erupcion_mejora",
+			"name": "Erupción devastadora",
+			"desc": "Erupción: +30 % de daño y de radio",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.erupcion",
+					"mul": {
+						"damage": 1.3,
+						"radius": 1.3
+					}
+				}
+			],
+			"branch_name": "Hoguera (áreas)",
+			"requires": [
+				"fuego.erupcion"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 1,
+			"tier": 5,
+			"id": "fuego.lluvia_de_meteoros",
+			"name": "Lluvia de meteoros",
+			"desc": "42 / 18 s / 30 × 6. Seis meteoros caen sobre un área grande",
+			"skill": {
+				"kind": "RAIN",
+				"mana_cost": 42,
+				"cooldown": 18,
+				"damage": 30,
+				"count": 6,
+				"duration": 2.4,
+				"radius": 3.2,
+				"offset": 4.0,
+				"status": "quemadura"
+			},
+			"cost": 3,
+			"branch_name": "Hoguera (áreas)",
+			"requires_any": [
+				"fuego.estallido",
+				"fuego.latigo_igneo",
+				"fuego.rastro_ardiente",
+				"fuego.brasero",
+				"fuego.muro_de_llamas",
+				"fuego.erupcion",
+				"fuego.columna_ignea"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 5,
+			"id": "fuego.lluvia_de_meteoros_mejora",
+			"name": "Lluvia de meteoros torrencial",
+			"desc": "Lluvia de meteoros: +4 impactos",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.lluvia_de_meteoros",
+					"add": {
+						"count": 4
+					}
+				}
+			],
+			"branch_name": "Hoguera (áreas)",
+			"requires": [
+				"fuego.lluvia_de_meteoros"
+			]
 		},
 		{
 			"tier": 5,
@@ -308,6 +832,16 @@
 					"stat": "burning_explode",
 					"add": 15
 				}
+			],
+			"requires_any": [
+				"fuego.estallido",
+				"fuego.latigo_igneo",
+				"fuego.rastro_ardiente",
+				"fuego.brasero",
+				"fuego.muro_de_llamas",
+				"fuego.erupcion",
+				"fuego.columna_ignea",
+				"fuego.lluvia_de_meteoros"
 			]
 		},
 		{
@@ -330,7 +864,48 @@
 					"next_sword_status": 1
 				},
 				"status": "quemadura"
-			}
+			},
+			"requires": []
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 1,
+			"id": "fuego.ascua_viva_mejora",
+			"name": "Ascua viva prolongada",
+			"desc": "Ascua viva: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.ascua_viva",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Brasa interior (potenciación)",
+			"requires": [
+				"fuego.ascua_viva"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 1,
+			"id": "fuego.carga_ignea",
+			"name": "Carga ígnea",
+			"desc": "16 / 6 s / 18. Embestida de 5 unidades que deja un rastro ardiente",
+			"skill": {
+				"kind": "DASH",
+				"mana_cost": 16,
+				"cooldown": 6,
+				"damage": 18,
+				"length": 5.0,
+				"trail_status": "quemadura"
+			},
+			"cost": 2,
+			"branch_name": "Brasa interior (potenciación)",
+			"requires": []
 		},
 		{
 			"tier": 1,
@@ -346,6 +921,52 @@
 					"stat": "max_mp",
 					"add": 10
 				}
+			],
+			"requires": []
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 2,
+			"id": "fuego.carga_ignea_mejora",
+			"name": "Carga ígnea doble",
+			"desc": "Carga ígnea: Una carga más",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.carga_ignea",
+					"add": {
+						"charges": 1
+					}
+				}
+			],
+			"branch_name": "Brasa interior (potenciación)",
+			"requires": [
+				"fuego.carga_ignea"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 2,
+			"id": "fuego.escudo_de_brasas",
+			"name": "Escudo de brasas",
+			"desc": "18 / 14 s. Absorbe 25 de daño; quien lo rompe se quema",
+			"skill": {
+				"kind": "SHIELD",
+				"mana_cost": 18,
+				"cooldown": 14,
+				"damage": 0,
+				"duration": 6.0,
+				"shield": 25,
+				"thorns": 10,
+				"break_status": "quemadura"
+			},
+			"cost": 2,
+			"branch_name": "Brasa interior (potenciación)",
+			"requires_any": [
+				"fuego.ascua_viva",
+				"fuego.carga_ignea"
 			]
 		},
 		{
@@ -362,6 +983,11 @@
 					"stat": "combo_last_status",
 					"set": "quemadura"
 				}
+			],
+			"requires_any": [
+				"fuego.ascua_viva",
+				"fuego.carga_ignea",
+				"fuego.escudo_de_brasas"
 			]
 		},
 		{
@@ -378,6 +1004,11 @@
 					"stat": "mp_on_burning_hit",
 					"add": 3
 				}
+			],
+			"requires_any": [
+				"fuego.ascua_viva",
+				"fuego.carga_ignea",
+				"fuego.escudo_de_brasas"
 			]
 		},
 		{
@@ -399,7 +1030,57 @@
 					"aff_pct.fuego": 0.3,
 					"received_pct": 0.15
 				}
-			}
+			},
+			"requires_any": [
+				"fuego.ascua_viva",
+				"fuego.carga_ignea",
+				"fuego.escudo_de_brasas"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 3,
+			"id": "fuego.sobrecalentamiento_mejora",
+			"name": "Sobrecalentamiento prolongado",
+			"desc": "Sobrecalentamiento: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.sobrecalentamiento",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Brasa interior (potenciación)",
+			"requires": [
+				"fuego.sobrecalentamiento"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 3,
+			"id": "fuego.escudo_de_brasas_mejora",
+			"name": "Escudo de brasas reforzado",
+			"desc": "Escudo de brasas: +50 % de absorción y un bloqueo más",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.escudo_de_brasas",
+					"mul": {
+						"shield": 1.5
+					},
+					"add": {
+						"hits": 1
+					}
+				}
+			],
+			"branch_name": "Brasa interior (potenciación)",
+			"requires": [
+				"fuego.escudo_de_brasas"
+			]
 		},
 		{
 			"tier": 3,
@@ -415,6 +1096,86 @@
 					"stat": "thorns_status",
 					"set": "quemadura"
 				}
+			],
+			"requires_any": [
+				"fuego.ascua_viva",
+				"fuego.carga_ignea",
+				"fuego.escudo_de_brasas",
+				"fuego.sobrecalentamiento"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 4,
+			"id": "fuego.pira_purificadora",
+			"name": "Pira purificadora",
+			"desc": "30 / 25 s. Te envuelves en llamas 0,8 s y recuperas el 20 % de vida",
+			"skill": {
+				"kind": "HEAL",
+				"mana_cost": 30,
+				"cooldown": 25,
+				"damage": 0,
+				"heal_pct": 0.2,
+				"cast_seconds": 0.8,
+				"release_at": 0.75,
+				"interruptible": true
+			},
+			"cost": 2,
+			"branch_name": "Brasa interior (potenciación)",
+			"requires_any": [
+				"fuego.ascua_viva",
+				"fuego.carga_ignea",
+				"fuego.escudo_de_brasas",
+				"fuego.sobrecalentamiento"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 4,
+			"id": "fuego.ritmo_de_la_forja",
+			"name": "Ritmo de la forja",
+			"desc": "24 / 16 s. +15 % de daño y de velocidad durante 6 s",
+			"skill": {
+				"kind": "BUFF",
+				"mana_cost": 24,
+				"cooldown": 16,
+				"damage": 0,
+				"duration": 6.0,
+				"mods": {
+					"damage_pct": 0.15,
+					"move_pct": 0.15
+				}
+			},
+			"cost": 2,
+			"branch_name": "Brasa interior (potenciación)",
+			"requires_any": [
+				"fuego.ascua_viva",
+				"fuego.carga_ignea",
+				"fuego.escudo_de_brasas",
+				"fuego.sobrecalentamiento"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 4,
+			"id": "fuego.ritmo_de_la_forja_mejora",
+			"name": "Ritmo de la forja prolongado",
+			"desc": "Ritmo de la forja: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.ritmo_de_la_forja",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Brasa interior (potenciación)",
+			"requires": [
+				"fuego.ritmo_de_la_forja"
 			]
 		},
 		{
@@ -432,6 +1193,35 @@
 					"revive_pct": 0.3,
 					"cast": "fuego.estallido"
 				}
+			],
+			"requires_any": [
+				"fuego.ascua_viva",
+				"fuego.carga_ignea",
+				"fuego.escudo_de_brasas",
+				"fuego.sobrecalentamiento",
+				"fuego.pira_purificadora",
+				"fuego.ritmo_de_la_forja"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 5,
+			"id": "fuego.pira_purificadora_mejora",
+			"name": "Pira purificadora serena",
+			"desc": "Pira purificadora: −30 % de recarga",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "fuego.pira_purificadora",
+					"mul": {
+						"cooldown": 0.7
+					}
+				}
+			],
+			"branch_name": "Brasa interior (potenciación)",
+			"requires": [
+				"fuego.pira_purificadora"
 			]
 		},
 		{
@@ -448,6 +1238,14 @@
 					"stat": "regen_near_burning",
 					"add": 0.5
 				}
+			],
+			"requires_any": [
+				"fuego.ascua_viva",
+				"fuego.carga_ignea",
+				"fuego.escudo_de_brasas",
+				"fuego.sobrecalentamiento",
+				"fuego.pira_purificadora",
+				"fuego.ritmo_de_la_forja"
 			]
 		},
 		{

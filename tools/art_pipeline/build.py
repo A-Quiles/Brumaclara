@@ -538,6 +538,32 @@ def characters(only=None):
 
 # --- interface -------------------------------------------------------------------------------
 
+ICON = 22  # px, the HUD's slots and the tree's nodes
+
+
+def skill_icons():
+    """art/ai/icons_<affinity>.png (5 x 5 framed icons on black) -> assets/ui/skills/<affinity>.png,
+    a 5 x 5 sheet of 22 px icons (data/ui/skill_icons.json says which skill uses which one)."""
+    out = None
+    for src in sorted(SRC.glob("icons_*.png")):
+        rgb = px.load(src)
+        cells = sheets.cut_grid(rgb, 5, 5, inset=1)
+        icons = []
+        for row in cells:
+            for cell in row:
+                solid = cell.max(-1) > 40  # the tile, without the black around it
+                ys, xs = np.nonzero(solid)
+                tile = cell[ys.min():ys.max() + 1, xs.min():xs.max() + 1]
+                small = Image.fromarray(tile.astype(np.uint8)).resize((ICON, ICON), Image.LANCZOS)
+                icons.append(np.asarray(small).astype(np.float64))
+        solid = np.ones((ICON, ICON))
+        palette = px.kmeans_palette(np.concatenate([i.reshape(-1, 3) for i in icons]), 40)
+        sheet = Image.new("RGBA", (ICON * 5, ICON * 5))
+        for k, icon in enumerate(icons):
+            sheet.paste(px.to_image(px.snap(icon, solid, palette), solid), (k % 5 * ICON, k // 5 * ICON))
+        out = save(sheet, "ui", "skills", src.stem.replace("icons_", "") + ".png")
+    return out
+
 UI_PARTS = ["panel", "trough", "bar_hp", "trough_2", "bar_mp", "trough_3", "bar_xp",
             "icon_sword", "icon_bolt", "icon_burst", "icon_dash", "potion", "coin"]
 
@@ -975,7 +1001,7 @@ def variants():
 
 RECIPES = {"hero": hero, "heroine": heroine, "wolf": wolf, "nature": nature, "props_b": props_b, "terrain": terrain,
            "terrain_b": terrain_b, "house": house, "facades": facades, "plaza": plaza, "walls_roofs": walls_roofs,
-           "town_props": town_props, "townsfolk": townsfolk, "variants": variants, "recolors": recolors, "affinity_fx": affinity_fx, "wolf_variants": wolf_variants, "monsters": monsters, "interiors": interiors, "characters": characters, "hair_styles": hair_styles, "ui": ui, "vfx": vfx, "backdrop": backdrop, "shadow": shadow}
+           "town_props": town_props, "townsfolk": townsfolk, "variants": variants, "recolors": recolors, "affinity_fx": affinity_fx, "wolf_variants": wolf_variants, "monsters": monsters, "interiors": interiors, "characters": characters, "skill_icons": skill_icons, "hair_styles": hair_styles, "ui": ui, "vfx": vfx, "backdrop": backdrop, "shadow": shadow}
 
 if __name__ == "__main__":
     for key in sys.argv[1:] or RECIPES:

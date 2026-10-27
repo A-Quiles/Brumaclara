@@ -18,7 +18,8 @@
 				"damage": 14,
 				"status": "frio",
 				"speed": 16.0
-			}
+			},
+			"requires": []
 		},
 		{
 			"tier": 1,
@@ -37,6 +38,51 @@
 						"split_damage": 5
 					}
 				}
+			],
+			"requires": [
+				"hielo.aguja_de_escarcha"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 0,
+			"tier": 1,
+			"id": "hielo.copo_errante",
+			"name": "Copo errante",
+			"desc": "12 / 2,5 s / 16. Copo lento que estalla en área y enfría",
+			"skill": {
+				"kind": "PROJECTILE",
+				"mana_cost": 12,
+				"cooldown": 2.5,
+				"damage": 16,
+				"speed": 7.0,
+				"explode_radius": 1.6,
+				"status": "frio",
+				"scale": 1.2
+			},
+			"cost": 2,
+			"branch_name": "Escarcha (proyectiles)",
+			"requires": []
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 1,
+			"id": "hielo.copo_errante_mejora",
+			"name": "Copo errante certero",
+			"desc": "Copo errante: +30 % de daño",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.copo_errante",
+					"mul": {
+						"damage": 1.3
+					}
+				}
+			],
+			"branch_name": "Escarcha (proyectiles)",
+			"requires": [
+				"hielo.copo_errante"
 			]
 		},
 		{
@@ -58,7 +104,56 @@
 				"stacks": 2,
 				"speed": 16.0,
 				"scale": 1.4
-			}
+			},
+			"requires_any": [
+				"hielo.aguja_de_escarcha",
+				"hielo.copo_errante"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 2,
+			"id": "hielo.lanza_glacial_mejora",
+			"name": "Lanza glacial certera",
+			"desc": "Lanza glacial: +30 % de daño",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.lanza_glacial",
+					"mul": {
+						"damage": 1.3
+					}
+				}
+			],
+			"branch_name": "Escarcha (proyectiles)",
+			"requires": [
+				"hielo.lanza_glacial"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 0,
+			"tier": 2,
+			"id": "hielo.abanico_de_escarcha",
+			"name": "Abanico de escarcha",
+			"desc": "14 / 3 s / 12 × 3. Tres agujas abiertas que enfrían",
+			"skill": {
+				"kind": "PROJECTILE",
+				"mana_cost": 14,
+				"cooldown": 3,
+				"damage": 12,
+				"count": 3,
+				"spread_deg": 20.0,
+				"status": "frio",
+				"speed": 16.0
+			},
+			"cost": 2,
+			"branch_name": "Escarcha (proyectiles)",
+			"requires_any": [
+				"hielo.aguja_de_escarcha",
+				"hielo.copo_errante"
+			]
 		},
 		{
 			"tier": 2,
@@ -74,6 +169,12 @@
 					"stat": "status_add.frio",
 					"add": 2.0
 				}
+			],
+			"requires_any": [
+				"hielo.aguja_de_escarcha",
+				"hielo.copo_errante",
+				"hielo.lanza_glacial",
+				"hielo.abanico_de_escarcha"
 			]
 		},
 		{
@@ -95,7 +196,61 @@
 				"status": "frio",
 				"stacks": 2,
 				"push": 9.0
-			}
+			},
+			"requires_any": [
+				"hielo.aguja_de_escarcha",
+				"hielo.copo_errante",
+				"hielo.lanza_glacial",
+				"hielo.abanico_de_escarcha"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 3,
+			"id": "hielo.rafaga_helada_mejora",
+			"name": "Ráfaga helada devastadora",
+			"desc": "Ráfaga helada: +30 % de daño y de radio",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.rafaga_helada",
+					"mul": {
+						"damage": 1.3,
+						"radius": 1.3
+					}
+				}
+			],
+			"branch_name": "Escarcha (proyectiles)",
+			"requires": [
+				"hielo.rafaga_helada"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 0,
+			"tier": 3,
+			"id": "hielo.cadena_de_escarcha",
+			"name": "Cadena de escarcha",
+			"desc": "20 / 6 s / 18. Salta a tres enemigos y los enfría",
+			"skill": {
+				"kind": "CHAIN",
+				"mana_cost": 20,
+				"cooldown": 6,
+				"damage": 18,
+				"count": 3,
+				"radius": 4.0,
+				"offset": 6.0,
+				"status": "frio"
+			},
+			"cost": 2,
+			"branch_name": "Escarcha (proyectiles)",
+			"requires_any": [
+				"hielo.aguja_de_escarcha",
+				"hielo.copo_errante",
+				"hielo.lanza_glacial",
+				"hielo.abanico_de_escarcha"
+			]
 		},
 		{
 			"tier": 3,
@@ -111,6 +266,14 @@
 					"stat": "vs_pct.frio",
 					"add": 0.25
 				}
+			],
+			"requires_any": [
+				"hielo.aguja_de_escarcha",
+				"hielo.copo_errante",
+				"hielo.lanza_glacial",
+				"hielo.abanico_de_escarcha",
+				"hielo.rafaga_helada",
+				"hielo.cadena_de_escarcha"
 			]
 		},
 		{
@@ -131,7 +294,78 @@
 				"interval": 0.12,
 				"status": "frio",
 				"speed": 18.0
-			}
+			},
+			"requires_any": [
+				"hielo.aguja_de_escarcha",
+				"hielo.copo_errante",
+				"hielo.lanza_glacial",
+				"hielo.abanico_de_escarcha",
+				"hielo.rafaga_helada",
+				"hielo.cadena_de_escarcha"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 4,
+			"id": "hielo.tormenta_de_agujas_mejora",
+			"name": "Tormenta de agujas certera",
+			"desc": "Tormenta de agujas: +30 % de daño",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.tormenta_de_agujas",
+					"mul": {
+						"damage": 1.3
+					}
+				}
+			],
+			"branch_name": "Escarcha (proyectiles)",
+			"requires": [
+				"hielo.tormenta_de_agujas"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 4,
+			"id": "hielo.abanico_de_escarcha_mejora",
+			"name": "Abanico de escarcha certero",
+			"desc": "Abanico de escarcha: +30 % de daño",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.abanico_de_escarcha",
+					"mul": {
+						"damage": 1.3
+					}
+				}
+			],
+			"branch_name": "Escarcha (proyectiles)",
+			"requires": [
+				"hielo.abanico_de_escarcha"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 4,
+			"id": "hielo.cadena_de_escarcha_mejora",
+			"name": "Cadena de escarcha encadenada",
+			"desc": "Cadena de escarcha: +2 saltos",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.cadena_de_escarcha",
+					"add": {
+						"count": 2
+					}
+				}
+			],
+			"branch_name": "Escarcha (proyectiles)",
+			"requires": [
+				"hielo.cadena_de_escarcha"
+			]
 		},
 		{
 			"tier": 5,
@@ -147,6 +381,15 @@
 					"stat": "freeze_cdr.hielo",
 					"add": 2.0
 				}
+			],
+			"requires_any": [
+				"hielo.aguja_de_escarcha",
+				"hielo.copo_errante",
+				"hielo.lanza_glacial",
+				"hielo.abanico_de_escarcha",
+				"hielo.rafaga_helada",
+				"hielo.cadena_de_escarcha",
+				"hielo.tormenta_de_agujas"
 			]
 		},
 		{
@@ -168,7 +411,8 @@
 				"radius": 2.0,
 				"offset": 2.0,
 				"slow": 0.6
-			}
+			},
+			"requires": []
 		},
 		{
 			"tier": 1,
@@ -186,6 +430,9 @@
 						"stun_once": 0.5
 					}
 				}
+			],
+			"requires": [
+				"hielo.suelo_helado"
 			]
 		},
 		{
@@ -204,7 +451,10 @@
 				"damage": 0,
 				"duration": 2.0,
 				"hits": 1
-			}
+			},
+			"requires_any": [
+				"hielo.suelo_helado"
+			]
 		},
 		{
 			"tier": 2,
@@ -215,7 +465,63 @@
 			"branch": 1,
 			"branch_name": "Glaciar (terreno)",
 			"id": "hielo.reflejo_de_cristal",
-			"implemented": false
+			"mods": [
+				{
+					"skill": "hielo.barrera_cristalina",
+					"set": {
+						"thorns": 20
+					}
+				}
+			],
+			"requires": [
+				"hielo.barrera_cristalina"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 1,
+			"tier": 2,
+			"id": "hielo.pilar_de_hielo",
+			"name": "Pilar de hielo",
+			"desc": "18 / 7 s / 34. Un pilar brota delante tras 0,4 s y enfría dos veces",
+			"skill": {
+				"kind": "STRIKE",
+				"mana_cost": 18,
+				"cooldown": 7,
+				"damage": 34,
+				"offset": 3.5,
+				"delay": 0.4,
+				"radius": 1.4,
+				"status": "frio",
+				"stacks": 2
+			},
+			"cost": 2,
+			"branch_name": "Glaciar (terreno)",
+			"requires_any": [
+				"hielo.suelo_helado"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 2,
+			"id": "hielo.pilar_de_hielo_mejora",
+			"name": "Pilar de hielo devastador",
+			"desc": "Pilar de hielo: +30 % de daño y de radio",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.pilar_de_hielo",
+					"mul": {
+						"damage": 1.3,
+						"radius": 1.3
+					}
+				}
+			],
+			"branch_name": "Glaciar (terreno)",
+			"requires": [
+				"hielo.pilar_de_hielo"
+			]
 		},
 		{
 			"tier": 3,
@@ -236,7 +542,61 @@
 				"hits": 3,
 				"prop": "crystal",
 				"offset": 2.0
-			}
+			},
+			"requires_any": [
+				"hielo.suelo_helado",
+				"hielo.barrera_cristalina",
+				"hielo.pilar_de_hielo"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 3,
+			"id": "hielo.muro_de_hielo_mejora",
+			"name": "Muro de hielo macizo",
+			"desc": "Muro de hielo: +2 unidades y +2 golpes",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.muro_de_hielo",
+					"add": {
+						"length": 2.0,
+						"hits": 2
+					}
+				}
+			],
+			"branch_name": "Glaciar (terreno)",
+			"requires": [
+				"hielo.muro_de_hielo"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 1,
+			"tier": 3,
+			"id": "hielo.espejo_helado",
+			"name": "Espejo helado",
+			"desc": "22 / 12 s. Dos cristales que bloquean el paso y estallan (25) al romperse",
+			"skill": {
+				"kind": "WALL",
+				"mana_cost": 22,
+				"cooldown": 12,
+				"damage": 0,
+				"length": 2.0,
+				"duration": 6.0,
+				"hits": 2,
+				"prop": "crystal",
+				"offset": 2.0,
+				"shatter_damage": 25
+			},
+			"cost": 2,
+			"branch_name": "Glaciar (terreno)",
+			"requires_any": [
+				"hielo.suelo_helado",
+				"hielo.barrera_cristalina",
+				"hielo.pilar_de_hielo"
+			]
 		},
 		{
 			"tier": 3,
@@ -255,6 +615,13 @@
 						"status": "frio"
 					}
 				}
+			],
+			"requires_any": [
+				"hielo.suelo_helado",
+				"hielo.barrera_cristalina",
+				"hielo.pilar_de_hielo",
+				"hielo.muro_de_hielo",
+				"hielo.espejo_helado"
 			]
 		},
 		{
@@ -277,7 +644,108 @@
 				"once": true,
 				"status": "frio",
 				"stacks": 3
-			}
+			},
+			"requires_any": [
+				"hielo.suelo_helado",
+				"hielo.barrera_cristalina",
+				"hielo.pilar_de_hielo",
+				"hielo.muro_de_hielo",
+				"hielo.espejo_helado"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 4,
+			"id": "hielo.glaciar_mejora",
+			"name": "Glaciar largo",
+			"desc": "Glaciar: +2 unidades de alcance",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.glaciar",
+					"add": {
+						"length": 2.0,
+						"count": 2
+					}
+				}
+			],
+			"branch_name": "Glaciar (terreno)",
+			"requires": [
+				"hielo.glaciar"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 4,
+			"id": "hielo.espejo_helado_mejora",
+			"name": "Espejo helado macizo",
+			"desc": "Espejo helado: +2 unidades y +2 golpes",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.espejo_helado",
+					"add": {
+						"length": 2.0,
+						"hits": 2
+					}
+				}
+			],
+			"branch_name": "Glaciar (terreno)",
+			"requires": [
+				"hielo.espejo_helado"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 1,
+			"tier": 5,
+			"id": "hielo.ventisca",
+			"name": "Ventisca",
+			"desc": "40 / 18 s / 12 × 10. Una ventisca de 4 s golpea y enfría el área",
+			"skill": {
+				"kind": "RAIN",
+				"mana_cost": 40,
+				"cooldown": 18,
+				"damage": 12,
+				"count": 10,
+				"duration": 4.0,
+				"radius": 3.5,
+				"offset": 3.5,
+				"status": "frio"
+			},
+			"cost": 3,
+			"branch_name": "Glaciar (terreno)",
+			"requires_any": [
+				"hielo.suelo_helado",
+				"hielo.barrera_cristalina",
+				"hielo.pilar_de_hielo",
+				"hielo.muro_de_hielo",
+				"hielo.espejo_helado",
+				"hielo.glaciar"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 5,
+			"id": "hielo.ventisca_mejora",
+			"name": "Ventisca torrencial",
+			"desc": "Ventisca: +4 impactos",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.ventisca",
+					"add": {
+						"count": 4
+					}
+				}
+			],
+			"branch_name": "Glaciar (terreno)",
+			"requires": [
+				"hielo.ventisca"
+			]
 		},
 		{
 			"tier": 5,
@@ -297,7 +765,56 @@
 						"radius": 1.5
 					}
 				}
+			],
+			"requires_any": [
+				"hielo.suelo_helado",
+				"hielo.barrera_cristalina",
+				"hielo.pilar_de_hielo",
+				"hielo.muro_de_hielo",
+				"hielo.espejo_helado",
+				"hielo.glaciar",
+				"hielo.ventisca"
 			]
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 1,
+			"id": "hielo.aliento_glacial",
+			"name": "Aliento glacial",
+			"desc": "16 / 6 s / 6 cada 0,25 s. Aliento helado continuo de 1,5 s",
+			"skill": {
+				"kind": "BEAM",
+				"mana_cost": 16,
+				"cooldown": 6,
+				"damage": 6,
+				"duration": 1.5,
+				"tick": 0.25,
+				"length": 4.0,
+				"status": "frio"
+			},
+			"cost": 2,
+			"branch_name": "Sangre fría (supervivencia)",
+			"requires": []
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 1,
+			"id": "hielo.patinar",
+			"name": "Patinar",
+			"desc": "10 / 4 s / 8. Te deslizas 5 unidades y dejas hielo que enfría",
+			"skill": {
+				"kind": "DASH",
+				"mana_cost": 10,
+				"cooldown": 4,
+				"damage": 8,
+				"length": 5.0,
+				"trail_status": "frio"
+			},
+			"cost": 2,
+			"branch_name": "Sangre fría (supervivencia)",
+			"requires": []
 		},
 		{
 			"tier": 1,
@@ -313,7 +830,8 @@
 					"stat": "max_mp",
 					"add": 15
 				}
-			]
+			],
+			"requires": []
 		},
 		{
 			"tier": 1,
@@ -336,7 +854,8 @@
 						"slow": 0.6
 					}
 				}
-			]
+			],
+			"requires": []
 		},
 		{
 			"tier": 2,
@@ -355,7 +874,56 @@
 				"status": "aturdido",
 				"status_seconds": 1.5,
 				"speed": 16.0
-			}
+			},
+			"requires_any": [
+				"hielo.aliento_glacial",
+				"hielo.patinar"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 2,
+			"id": "hielo.prision_breve_mejora",
+			"name": "Prisión breve certera",
+			"desc": "Prisión breve: +30 % de daño",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.prision_breve",
+					"mul": {
+						"damage": 1.3
+					}
+				}
+			],
+			"branch_name": "Sangre fría (supervivencia)",
+			"requires": [
+				"hielo.prision_breve"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 2,
+			"id": "hielo.coraza_de_escarcha",
+			"name": "Coraza de escarcha",
+			"desc": "20 / 14 s. Absorbe 35 de daño; quien la rompe queda helado",
+			"skill": {
+				"kind": "SHIELD",
+				"mana_cost": 20,
+				"cooldown": 14,
+				"damage": 0,
+				"duration": 6.0,
+				"shield": 35,
+				"thorns": 8,
+				"break_status": "frio"
+			},
+			"cost": 2,
+			"branch_name": "Sangre fría (supervivencia)",
+			"requires_any": [
+				"hielo.aliento_glacial",
+				"hielo.patinar"
+			]
 		},
 		{
 			"tier": 2,
@@ -375,22 +943,12 @@
 					"stat": "thorns_status",
 					"set": "frio"
 				}
-			]
-		},
-		{
-			"tier": 3,
-			"name": "Mente fría",
-			"type": "pasiva",
-			"cost": 1,
-			"desc": "Congelar a un enemigo devuelve 5 de maná",
-			"branch": 2,
-			"branch_name": "Sangre fría (supervivencia)",
-			"id": "hielo.mente_fria",
-			"mods": [
-				{
-					"stat": "freeze_mp",
-					"add": 5
-				}
+			],
+			"requires_any": [
+				"hielo.aliento_glacial",
+				"hielo.patinar",
+				"hielo.prision_breve",
+				"hielo.coraza_de_escarcha"
 			]
 		},
 		{
@@ -411,7 +969,78 @@
 				"invulnerable": 2.0,
 				"cast_seconds": 2.0,
 				"release_at": 1.9
-			}
+			},
+			"requires_any": [
+				"hielo.aliento_glacial",
+				"hielo.patinar",
+				"hielo.prision_breve",
+				"hielo.coraza_de_escarcha"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 3,
+			"id": "hielo.hibernacion_mejora",
+			"name": "Hibernación serena",
+			"desc": "Hibernación: −30 % de recarga",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.hibernacion",
+					"mul": {
+						"cooldown": 0.7
+					}
+				}
+			],
+			"branch_name": "Sangre fría (supervivencia)",
+			"requires": [
+				"hielo.hibernacion"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 3,
+			"id": "hielo.patinar_mejora",
+			"name": "Patinar doble",
+			"desc": "Patinar: Una carga más",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.patinar",
+					"add": {
+						"charges": 1
+					}
+				}
+			],
+			"branch_name": "Sangre fría (supervivencia)",
+			"requires": [
+				"hielo.patinar"
+			]
+		},
+		{
+			"tier": 3,
+			"name": "Mente fría",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "Congelar a un enemigo devuelve 5 de maná",
+			"branch": 2,
+			"branch_name": "Sangre fría (supervivencia)",
+			"id": "hielo.mente_fria",
+			"mods": [
+				{
+					"stat": "freeze_mp",
+					"add": 5
+				}
+			],
+			"requires_any": [
+				"hielo.aliento_glacial",
+				"hielo.patinar",
+				"hielo.prision_breve",
+				"hielo.coraza_de_escarcha",
+				"hielo.hibernacion"
+			]
 		},
 		{
 			"tier": 4,
@@ -433,7 +1062,131 @@
 					"frio": 2.0
 				},
 				"consume": "frio"
-			}
+			},
+			"requires_any": [
+				"hielo.aliento_glacial",
+				"hielo.patinar",
+				"hielo.prision_breve",
+				"hielo.coraza_de_escarcha",
+				"hielo.hibernacion"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 4,
+			"id": "hielo.fractura_glacial_mejora",
+			"name": "Fractura glacial devastadora",
+			"desc": "Fractura glacial: +30 % de daño y de radio",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.fractura_glacial",
+					"mul": {
+						"damage": 1.3,
+						"radius": 1.3
+					}
+				}
+			],
+			"branch_name": "Sangre fría (supervivencia)",
+			"requires": [
+				"hielo.fractura_glacial"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 4,
+			"id": "hielo.aliento_glacial_mejora",
+			"name": "Aliento glacial sostenido",
+			"desc": "Aliento glacial: +1 s de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.aliento_glacial",
+					"add": {
+						"duration": 1.0
+					}
+				}
+			],
+			"branch_name": "Sangre fría (supervivencia)",
+			"requires": [
+				"hielo.aliento_glacial"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 4,
+			"id": "hielo.coraza_de_escarcha_mejora",
+			"name": "Coraza de escarcha reforzada",
+			"desc": "Coraza de escarcha: +50 % de absorción y un bloqueo más",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.coraza_de_escarcha",
+					"mul": {
+						"shield": 1.5
+					},
+					"add": {
+						"hits": 1
+					}
+				}
+			],
+			"branch_name": "Sangre fría (supervivencia)",
+			"requires": [
+				"hielo.coraza_de_escarcha"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 5,
+			"id": "hielo.corazon_helado",
+			"name": "Corazón helado",
+			"desc": "30 / 20 s. +30 % de daño de hielo y −15 % de daño recibido durante 8 s",
+			"skill": {
+				"kind": "BUFF",
+				"mana_cost": 30,
+				"cooldown": 20,
+				"damage": 0,
+				"duration": 8.0,
+				"mods": {
+					"aff_pct.hielo": 0.3,
+					"received_pct": -0.15
+				}
+			},
+			"cost": 3,
+			"branch_name": "Sangre fría (supervivencia)",
+			"requires_any": [
+				"hielo.aliento_glacial",
+				"hielo.patinar",
+				"hielo.prision_breve",
+				"hielo.coraza_de_escarcha",
+				"hielo.hibernacion",
+				"hielo.fractura_glacial"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 5,
+			"id": "hielo.corazon_helado_mejora",
+			"name": "Corazón helado prolongado",
+			"desc": "Corazón helado: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "hielo.corazon_helado",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Sangre fría (supervivencia)",
+			"requires": [
+				"hielo.corazon_helado"
+			]
 		},
 		{
 			"tier": 5,
@@ -454,6 +1207,15 @@
 						}
 					}
 				}
+			],
+			"requires_any": [
+				"hielo.aliento_glacial",
+				"hielo.patinar",
+				"hielo.prision_breve",
+				"hielo.coraza_de_escarcha",
+				"hielo.hibernacion",
+				"hielo.fractura_glacial",
+				"hielo.corazon_helado"
 			]
 		},
 		{

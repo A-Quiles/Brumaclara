@@ -19,7 +19,8 @@
 				"status": "marca_electrica",
 				"speed": 22.0,
 				"scale": 0.8
-			}
+			},
+			"requires": []
 		},
 		{
 			"tier": 1,
@@ -37,6 +38,52 @@
 						"double_every": 3
 					}
 				}
+			],
+			"requires": [
+				"rayo.descarga"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 0,
+			"tier": 1,
+			"id": "rayo.tridente",
+			"name": "Tridente",
+			"desc": "10 / 1,5 s / 8 × 3. Tres descargas rápidas en abanico cerrado",
+			"skill": {
+				"kind": "PROJECTILE",
+				"mana_cost": 10,
+				"cooldown": 1.5,
+				"damage": 8,
+				"count": 3,
+				"spread_deg": 10.0,
+				"speed": 24.0,
+				"status": "marca_electrica",
+				"scale": 0.8
+			},
+			"cost": 2,
+			"branch_name": "Descarga (ataque)",
+			"requires": []
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 1,
+			"id": "rayo.tridente_mejora",
+			"name": "Tridente certero",
+			"desc": "Tridente: +30 % de daño",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "rayo.tridente",
+					"mul": {
+						"damage": 1.3
+					}
+				}
+			],
+			"branch_name": "Descarga (ataque)",
+			"requires": [
+				"rayo.tridente"
 			]
 		},
 		{
@@ -57,7 +104,11 @@
 				"radius": 4.0,
 				"offset": 6.0,
 				"status": "marca_electrica"
-			}
+			},
+			"requires_any": [
+				"rayo.descarga",
+				"rayo.tridente"
+			]
 		},
 		{
 			"tier": 2,
@@ -75,6 +126,54 @@
 						"count": 2
 					}
 				}
+			],
+			"requires": [
+				"rayo.salto_voltaico"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 0,
+			"tier": 2,
+			"id": "rayo.bola_de_plasma",
+			"name": "Bola de plasma",
+			"desc": "16 / 5 s / 14. Esfera lenta que atraviesa y marca todo lo que toca",
+			"skill": {
+				"kind": "PROJECTILE",
+				"mana_cost": 16,
+				"cooldown": 5,
+				"damage": 14,
+				"speed": 6.0,
+				"pierce": true,
+				"scale": 1.5,
+				"status": "marca_electrica"
+			},
+			"cost": 2,
+			"branch_name": "Descarga (ataque)",
+			"requires_any": [
+				"rayo.descarga",
+				"rayo.tridente"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 2,
+			"id": "rayo.bola_de_plasma_mejora",
+			"name": "Bola de plasma certera",
+			"desc": "Bola de plasma: +30 % de daño",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "rayo.bola_de_plasma",
+					"mul": {
+						"damage": 1.3
+					}
+				}
+			],
+			"branch_name": "Descarga (ataque)",
+			"requires": [
+				"rayo.bola_de_plasma"
 			]
 		},
 		{
@@ -95,7 +194,62 @@
 				"tick": 0.25,
 				"length": 6.0,
 				"status": "marca_electrica"
-			}
+			},
+			"requires_any": [
+				"rayo.descarga",
+				"rayo.tridente",
+				"rayo.salto_voltaico",
+				"rayo.bola_de_plasma"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 3,
+			"id": "rayo.arco_persistente_mejora",
+			"name": "Arco persistente sostenido",
+			"desc": "Arco persistente: +1 s de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "rayo.arco_persistente",
+					"add": {
+						"duration": 1.0
+					}
+				}
+			],
+			"branch_name": "Descarga (ataque)",
+			"requires": [
+				"rayo.arco_persistente"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 0,
+			"tier": 3,
+			"id": "rayo.lanza_de_trueno",
+			"name": "Lanza de trueno",
+			"desc": "24 / 7 s / 30. Rayo en línea de 7 unidades tras 0,2 s",
+			"skill": {
+				"kind": "LINE",
+				"mana_cost": 24,
+				"cooldown": 7,
+				"damage": 30,
+				"length": 7.0,
+				"count": 7,
+				"step_delay": 0.0,
+				"once": true,
+				"delay": 0.2,
+				"status": "marca_electrica"
+			},
+			"cost": 2,
+			"branch_name": "Descarga (ataque)",
+			"requires_any": [
+				"rayo.descarga",
+				"rayo.tridente",
+				"rayo.salto_voltaico",
+				"rayo.bola_de_plasma"
+			]
 		},
 		{
 			"tier": 3,
@@ -111,6 +265,14 @@
 					"stat": "elec_discharge",
 					"add": 10
 				}
+			],
+			"requires_any": [
+				"rayo.descarga",
+				"rayo.tridente",
+				"rayo.salto_voltaico",
+				"rayo.bola_de_plasma",
+				"rayo.arco_persistente",
+				"rayo.lanza_de_trueno"
 			]
 		},
 		{
@@ -132,7 +294,105 @@
 				"radius": 1.2,
 				"consume": "marca_electrica",
 				"per_stack": 15
-			}
+			},
+			"requires_any": [
+				"rayo.descarga",
+				"rayo.tridente",
+				"rayo.salto_voltaico",
+				"rayo.bola_de_plasma",
+				"rayo.arco_persistente",
+				"rayo.lanza_de_trueno"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 4,
+			"id": "rayo.convergencia_mejora",
+			"name": "Convergencia devastadora",
+			"desc": "Convergencia: +30 % de daño y de radio",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "rayo.convergencia",
+					"mul": {
+						"damage": 1.3,
+						"radius": 1.3
+					}
+				}
+			],
+			"branch_name": "Descarga (ataque)",
+			"requires": [
+				"rayo.convergencia"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 0,
+			"tier": 4,
+			"id": "rayo.iman_voltaico",
+			"name": "Imán voltaico",
+			"desc": "16 / 8 s. Atrae al enemigo más cercano y lo deja aturdido 0,4 s",
+			"skill": {
+				"kind": "PULL",
+				"mana_cost": 16,
+				"cooldown": 8,
+				"damage": 0,
+				"offset": 6.0
+			},
+			"cost": 2,
+			"branch_name": "Descarga (ataque)",
+			"requires_any": [
+				"rayo.descarga",
+				"rayo.tridente",
+				"rayo.salto_voltaico",
+				"rayo.bola_de_plasma",
+				"rayo.arco_persistente",
+				"rayo.lanza_de_trueno"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 4,
+			"id": "rayo.lanza_de_trueno_mejora",
+			"name": "Lanza de trueno larga",
+			"desc": "Lanza de trueno: +2 unidades de alcance",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "rayo.lanza_de_trueno",
+					"add": {
+						"length": 2.0,
+						"count": 2
+					}
+				}
+			],
+			"branch_name": "Descarga (ataque)",
+			"requires": [
+				"rayo.lanza_de_trueno"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 5,
+			"id": "rayo.iman_voltaico_mejora",
+			"name": "Imán voltaico firme",
+			"desc": "Imán voltaico: −35 % de recarga",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "rayo.iman_voltaico",
+					"mul": {
+						"cooldown": 0.65
+					}
+				}
+			],
+			"branch_name": "Descarga (ataque)",
+			"requires": [
+				"rayo.iman_voltaico"
+			]
 		},
 		{
 			"tier": 5,
@@ -143,7 +403,17 @@
 			"branch": 0,
 			"branch_name": "Descarga (ataque)",
 			"id": "rayo.tormenta_cautiva",
-			"implemented": false
+			"implemented": false,
+			"requires_any": [
+				"rayo.descarga",
+				"rayo.tridente",
+				"rayo.salto_voltaico",
+				"rayo.bola_de_plasma",
+				"rayo.arco_persistente",
+				"rayo.lanza_de_trueno",
+				"rayo.convergencia",
+				"rayo.iman_voltaico"
+			]
 		},
 		{
 			"tier": 1,
@@ -160,7 +430,8 @@
 				"cooldown": 3,
 				"damage": 12,
 				"length": 4.0
-			}
+			},
+			"requires": []
 		},
 		{
 			"tier": 1,
@@ -178,22 +449,51 @@
 						"trail_status": "marca_electrica"
 					}
 				}
+			],
+			"requires": [
+				"rayo.paso_relampago"
 			]
 		},
 		{
-			"tier": 2,
-			"name": "Reflejos",
-			"type": "pasiva",
-			"cost": 1,
-			"desc": "−15 % de recarga de esquiva",
+			"type": "activa",
 			"branch": 1,
+			"tier": 1,
+			"id": "rayo.impulso",
+			"name": "Impulso",
+			"desc": "8 / 8 s. +40 % de velocidad durante 2,5 s",
+			"skill": {
+				"kind": "BUFF",
+				"mana_cost": 8,
+				"cooldown": 8,
+				"damage": 0,
+				"duration": 2.5,
+				"mods": {
+					"move_pct": 0.4
+				}
+			},
+			"cost": 2,
 			"branch_name": "Relámpago (movilidad)",
-			"id": "rayo.reflejos",
+			"requires": []
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 1,
+			"id": "rayo.impulso_mejora",
+			"name": "Impulso prolongado",
+			"desc": "Impulso: +50 % de duración",
+			"cost": 1,
 			"mods": [
 				{
-					"stat": "dodge_cooldown_pct",
-					"add": -0.15
+					"skill": "rayo.impulso",
+					"mul": {
+						"duration": 1.5
+					}
 				}
+			],
+			"branch_name": "Relámpago (movilidad)",
+			"requires": [
+				"rayo.impulso"
 			]
 		},
 		{
@@ -212,6 +512,73 @@
 						"charges": 2
 					}
 				}
+			],
+			"requires": [
+				"rayo.paso_relampago"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 1,
+			"tier": 2,
+			"id": "rayo.destello_galvanico",
+			"name": "Destello galvánico",
+			"desc": "16 / 6 s. Apareces detrás del enemigo marcado más cercano",
+			"skill": {
+				"kind": "BLINK",
+				"mana_cost": 16,
+				"cooldown": 6,
+				"damage": 0,
+				"offset": 8.0,
+				"on_marked": "marca_electrica"
+			},
+			"cost": 2,
+			"branch_name": "Relámpago (movilidad)",
+			"requires_any": [
+				"rayo.paso_relampago",
+				"rayo.impulso"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 2,
+			"id": "rayo.destello_galvanico_mejora",
+			"name": "Destello galvánico ágil",
+			"desc": "Destello galvánico: −35 % de recarga",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "rayo.destello_galvanico",
+					"mul": {
+						"cooldown": 0.65
+					}
+				}
+			],
+			"branch_name": "Relámpago (movilidad)",
+			"requires": [
+				"rayo.destello_galvanico"
+			]
+		},
+		{
+			"tier": 2,
+			"name": "Reflejos",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "−15 % de recarga de esquiva",
+			"branch": 1,
+			"branch_name": "Relámpago (movilidad)",
+			"id": "rayo.reflejos",
+			"mods": [
+				{
+					"stat": "dodge_cooldown_pct",
+					"add": -0.15
+				}
+			],
+			"requires_any": [
+				"rayo.paso_relampago",
+				"rayo.impulso",
+				"rayo.destello_galvanico"
 			]
 		},
 		{
@@ -233,7 +600,56 @@
 					"move_pct": 0.25,
 					"cooldown_pct": -0.25
 				}
-			}
+			},
+			"requires_any": [
+				"rayo.paso_relampago",
+				"rayo.impulso",
+				"rayo.destello_galvanico"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 3,
+			"id": "rayo.sobrecarga_mejora",
+			"name": "Sobrecarga prolongada",
+			"desc": "Sobrecarga: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "rayo.sobrecarga",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Relámpago (movilidad)",
+			"requires": [
+				"rayo.sobrecarga"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 1,
+			"tier": 3,
+			"id": "rayo.relevo",
+			"name": "Relevo",
+			"desc": "12 / 6 s / 10. Tres pasos cortos que se encadenan",
+			"skill": {
+				"kind": "DASH",
+				"mana_cost": 12,
+				"cooldown": 6,
+				"damage": 10,
+				"length": 3.0,
+				"charges": 3
+			},
+			"cost": 2,
+			"branch_name": "Relámpago (movilidad)",
+			"requires_any": [
+				"rayo.paso_relampago",
+				"rayo.impulso",
+				"rayo.destello_galvanico"
+			]
 		},
 		{
 			"tier": 3,
@@ -249,6 +665,13 @@
 					"stat": "perfect_dodge_status",
 					"set": "marca_electrica"
 				}
+			],
+			"requires_any": [
+				"rayo.paso_relampago",
+				"rayo.impulso",
+				"rayo.destello_galvanico",
+				"rayo.sobrecarga",
+				"rayo.relevo"
 			]
 		},
 		{
@@ -267,7 +690,56 @@
 				"damage": 30,
 				"length": 8.0,
 				"invulnerable": true
-			}
+			},
+			"requires_any": [
+				"rayo.paso_relampago",
+				"rayo.impulso",
+				"rayo.destello_galvanico",
+				"rayo.sobrecarga",
+				"rayo.relevo"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 4,
+			"id": "rayo.rayo_en_botella_mejora",
+			"name": "Rayo en botella doble",
+			"desc": "Rayo en botella: Una carga más",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "rayo.rayo_en_botella",
+					"add": {
+						"charges": 1
+					}
+				}
+			],
+			"branch_name": "Relámpago (movilidad)",
+			"requires": [
+				"rayo.rayo_en_botella"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 4,
+			"id": "rayo.relevo_mejora",
+			"name": "Relevo doble",
+			"desc": "Relevo: Una carga más",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "rayo.relevo",
+					"add": {
+						"charges": 1
+					}
+				}
+			],
+			"branch_name": "Relámpago (movilidad)",
+			"requires": [
+				"rayo.relevo"
+			]
 		},
 		{
 			"tier": 5,
@@ -278,22 +750,14 @@
 			"branch": 1,
 			"branch_name": "Relámpago (movilidad)",
 			"id": "rayo.velocidad_del_trueno",
-			"implemented": false
-		},
-		{
-			"tier": 1,
-			"name": "Chispazo",
-			"type": "pasiva",
-			"cost": 1,
-			"desc": "El último golpe del combo marca",
-			"branch": 2,
-			"branch_name": "Tormenta (área)",
-			"id": "rayo.chispazo",
-			"mods": [
-				{
-					"stat": "combo_last_status",
-					"set": "marca_electrica"
-				}
+			"implemented": false,
+			"requires_any": [
+				"rayo.paso_relampago",
+				"rayo.impulso",
+				"rayo.destello_galvanico",
+				"rayo.sobrecarga",
+				"rayo.relevo",
+				"rayo.rayo_en_botella"
 			]
 		},
 		{
@@ -315,7 +779,46 @@
 				"radius": 2.5,
 				"offset": 0.0,
 				"status": "marca_electrica"
-			}
+			},
+			"requires": []
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 1,
+			"id": "rayo.campo_estatico_mejora",
+			"name": "Campo estático duradero",
+			"desc": "Campo estático: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "rayo.campo_estatico",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Tormenta (área)",
+			"requires": [
+				"rayo.campo_estatico"
+			]
+		},
+		{
+			"tier": 1,
+			"name": "Chispazo",
+			"type": "pasiva",
+			"cost": 1,
+			"desc": "El último golpe del combo marca",
+			"branch": 2,
+			"branch_name": "Tormenta (área)",
+			"id": "rayo.chispazo",
+			"mods": [
+				{
+					"stat": "combo_last_status",
+					"set": "marca_electrica"
+				}
+			],
+			"requires": []
 		},
 		{
 			"tier": 2,
@@ -337,7 +840,54 @@
 				"offset": 1.0,
 				"single_target": true,
 				"status": "marca_electrica"
-			}
+			},
+			"requires_any": [
+				"rayo.campo_estatico"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 2,
+			"id": "rayo.pararrayos_mejora",
+			"name": "Pararrayos duradero",
+			"desc": "Pararrayos: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "rayo.pararrayos",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Tormenta (área)",
+			"requires": [
+				"rayo.pararrayos"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 2,
+			"id": "rayo.escudo_estatico",
+			"name": "Escudo estático",
+			"desc": "18 / 12 s. Bloquea dos golpes y descarga 15 en quien golpea",
+			"skill": {
+				"kind": "SHIELD",
+				"mana_cost": 18,
+				"cooldown": 12,
+				"damage": 0,
+				"duration": 6.0,
+				"hits": 2,
+				"thorns": 15,
+				"break_status": "marca_electrica"
+			},
+			"cost": 2,
+			"branch_name": "Tormenta (área)",
+			"requires_any": [
+				"rayo.campo_estatico"
+			]
 		},
 		{
 			"tier": 2,
@@ -356,6 +906,11 @@
 						"duration": 1.5
 					}
 				}
+			],
+			"requires_any": [
+				"rayo.campo_estatico",
+				"rayo.pararrayos",
+				"rayo.escudo_estatico"
 			]
 		},
 		{
@@ -375,7 +930,60 @@
 				"scale": 2.4,
 				"stun_if": "marca_electrica",
 				"status_seconds": 0.8
-			}
+			},
+			"requires_any": [
+				"rayo.campo_estatico",
+				"rayo.pararrayos",
+				"rayo.escudo_estatico"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 3,
+			"id": "rayo.trueno_mejora",
+			"name": "Trueno amplio",
+			"desc": "Trueno: +35 % de radio",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "rayo.trueno",
+					"mul": {
+						"scale": 1.35
+					}
+				}
+			],
+			"branch_name": "Tormenta (área)",
+			"requires": [
+				"rayo.trueno"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 3,
+			"id": "rayo.jaula_electrica",
+			"name": "Jaula eléctrica",
+			"desc": "22 / 10 s / 6 cada 0,5 s. Jaula de 3 s que frena y marca",
+			"skill": {
+				"kind": "ZONE",
+				"mana_cost": 22,
+				"cooldown": 10,
+				"damage": 6,
+				"duration": 3.0,
+				"tick": 0.5,
+				"radius": 2.2,
+				"offset": 3.0,
+				"slow": 0.5,
+				"status": "marca_electrica"
+			},
+			"cost": 2,
+			"branch_name": "Tormenta (área)",
+			"requires_any": [
+				"rayo.campo_estatico",
+				"rayo.pararrayos",
+				"rayo.escudo_estatico"
+			]
 		},
 		{
 			"tier": 3,
@@ -391,6 +999,13 @@
 					"stat": "per_marked_pct.rayo",
 					"add": 0.02
 				}
+			],
+			"requires_any": [
+				"rayo.campo_estatico",
+				"rayo.pararrayos",
+				"rayo.escudo_estatico",
+				"rayo.trueno",
+				"rayo.jaula_electrica"
 			]
 		},
 		{
@@ -411,7 +1026,131 @@
 				"duration": 6.0,
 				"radius": 3.5,
 				"offset": 3.5
-			}
+			},
+			"requires_any": [
+				"rayo.campo_estatico",
+				"rayo.pararrayos",
+				"rayo.escudo_estatico",
+				"rayo.trueno",
+				"rayo.jaula_electrica"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 4,
+			"id": "rayo.tormenta_mejora",
+			"name": "Tormenta torrencial",
+			"desc": "Tormenta: +4 impactos",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "rayo.tormenta",
+					"add": {
+						"count": 4
+					}
+				}
+			],
+			"branch_name": "Tormenta (área)",
+			"requires": [
+				"rayo.tormenta"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 4,
+			"id": "rayo.escudo_estatico_mejora",
+			"name": "Escudo estático reforzado",
+			"desc": "Escudo estático: +50 % de absorción y un bloqueo más",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "rayo.escudo_estatico",
+					"mul": {
+						"shield": 1.5
+					},
+					"add": {
+						"hits": 1
+					}
+				}
+			],
+			"branch_name": "Tormenta (área)",
+			"requires": [
+				"rayo.escudo_estatico"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 4,
+			"id": "rayo.jaula_electrica_mejora",
+			"name": "Jaula eléctrica duradera",
+			"desc": "Jaula eléctrica: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "rayo.jaula_electrica",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Tormenta (área)",
+			"requires": [
+				"rayo.jaula_electrica"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 5,
+			"id": "rayo.cielo_cargado",
+			"name": "Cielo cargado",
+			"desc": "36 / 14 s / 50. Un rayo cae sobre el enemigo más cercano y salta a los marcados",
+			"skill": {
+				"kind": "STRIKE",
+				"mana_cost": 36,
+				"cooldown": 14,
+				"damage": 50,
+				"target": "nearest",
+				"offset": 8.0,
+				"delay": 0.3,
+				"radius": 1.6,
+				"aoe_marked": 4.0
+			},
+			"cost": 3,
+			"branch_name": "Tormenta (área)",
+			"requires_any": [
+				"rayo.campo_estatico",
+				"rayo.pararrayos",
+				"rayo.escudo_estatico",
+				"rayo.trueno",
+				"rayo.jaula_electrica",
+				"rayo.tormenta"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 5,
+			"id": "rayo.cielo_cargado_mejora",
+			"name": "Cielo cargado devastador",
+			"desc": "Cielo cargado: +30 % de daño y de radio",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "rayo.cielo_cargado",
+					"mul": {
+						"damage": 1.3,
+						"radius": 1.3
+					}
+				}
+			],
+			"branch_name": "Tormenta (área)",
+			"requires": [
+				"rayo.cielo_cargado"
+			]
 		},
 		{
 			"tier": 5,
@@ -422,7 +1161,16 @@
 			"branch": 2,
 			"branch_name": "Tormenta (área)",
 			"id": "rayo.ojo_de_la_tormenta",
-			"implemented": false
+			"implemented": false,
+			"requires_any": [
+				"rayo.campo_estatico",
+				"rayo.pararrayos",
+				"rayo.escudo_estatico",
+				"rayo.trueno",
+				"rayo.jaula_electrica",
+				"rayo.tormenta",
+				"rayo.cielo_cargado"
+			]
 		},
 		{
 			"tier": 5,

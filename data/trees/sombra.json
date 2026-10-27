@@ -18,7 +18,8 @@
 				"damage": 12,
 				"status": "marca_sombra",
 				"speed": 17.0
-			}
+			},
+			"requires": []
 		},
 		{
 			"tier": 1,
@@ -38,6 +39,9 @@
 						"mana_cost": 14.0
 					}
 				}
+			],
+			"requires": [
+				"sombra.dardo_umbrio"
 			]
 		},
 		{
@@ -59,7 +63,56 @@
 				"radius": 1.2,
 				"consume": "marca_sombra",
 				"per_stack": 15
-			}
+			},
+			"requires_any": [
+				"sombra.dardo_umbrio"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 2,
+			"id": "sombra.desgarro_mejora",
+			"name": "Desgarro devastador",
+			"desc": "Desgarro: +30 % de daño y de radio",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.desgarro",
+					"mul": {
+						"damage": 1.3,
+						"radius": 1.3
+					}
+				}
+			],
+			"branch_name": "Umbra (marcas)",
+			"requires": [
+				"sombra.desgarro"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 0,
+			"tier": 2,
+			"id": "sombra.guadana",
+			"name": "Guadaña",
+			"desc": "14 / 4 s / 20. Tajo de sombra en línea corta que marca",
+			"skill": {
+				"kind": "LINE",
+				"mana_cost": 14,
+				"cooldown": 4,
+				"damage": 20,
+				"length": 3.5,
+				"count": 4,
+				"step_delay": 0.02,
+				"once": true,
+				"status": "marca_sombra"
+			},
+			"cost": 2,
+			"branch_name": "Umbra (marcas)",
+			"requires_any": [
+				"sombra.dardo_umbrio"
+			]
 		},
 		{
 			"tier": 2,
@@ -75,6 +128,11 @@
 					"stat": "shadow_dot",
 					"add": 2
 				}
+			],
+			"requires_any": [
+				"sombra.dardo_umbrio",
+				"sombra.desgarro",
+				"sombra.guadana"
 			]
 		},
 		{
@@ -92,7 +150,59 @@
 				"cooldown": 8,
 				"damage": 0,
 				"offset": 6.0
-			}
+			},
+			"requires_any": [
+				"sombra.dardo_umbrio",
+				"sombra.desgarro",
+				"sombra.guadana"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 3,
+			"id": "sombra.lazo_umbrio_mejora",
+			"name": "Lazo umbrío firme",
+			"desc": "Lazo umbrío: −35 % de recarga",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.lazo_umbrio",
+					"mul": {
+						"cooldown": 0.65
+					}
+				}
+			],
+			"branch_name": "Umbra (marcas)",
+			"requires": [
+				"sombra.lazo_umbrio"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 0,
+			"tier": 3,
+			"id": "sombra.enjambre_umbrio",
+			"name": "Enjambre umbrío",
+			"desc": "18 / 6 s / 8 × 5. Cinco dardos seguidos que marcan",
+			"skill": {
+				"kind": "PROJECTILE",
+				"mana_cost": 18,
+				"cooldown": 6,
+				"damage": 8,
+				"count": 5,
+				"interval": 0.08,
+				"speed": 18.0,
+				"status": "marca_sombra",
+				"scale": 0.8
+			},
+			"cost": 2,
+			"branch_name": "Umbra (marcas)",
+			"requires_any": [
+				"sombra.dardo_umbrio",
+				"sombra.desgarro",
+				"sombra.guadana"
+			]
 		},
 		{
 			"tier": 3,
@@ -108,6 +218,13 @@
 					"stat": "max_shadow_marks",
 					"add": 2
 				}
+			],
+			"requires_any": [
+				"sombra.dardo_umbrio",
+				"sombra.desgarro",
+				"sombra.guadana",
+				"sombra.lazo_umbrio",
+				"sombra.enjambre_umbrio"
 			]
 		},
 		{
@@ -129,7 +246,128 @@
 				"scale": 2.0,
 				"explode_radius": 2.0,
 				"status": "marca_sombra"
-			}
+			},
+			"requires_any": [
+				"sombra.dardo_umbrio",
+				"sombra.desgarro",
+				"sombra.guadana",
+				"sombra.lazo_umbrio",
+				"sombra.enjambre_umbrio"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 4,
+			"id": "sombra.eclipse_mejora",
+			"name": "Eclipse certero",
+			"desc": "Eclipse: +30 % de daño",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.eclipse",
+					"mul": {
+						"damage": 1.3
+					}
+				}
+			],
+			"branch_name": "Umbra (marcas)",
+			"requires": [
+				"sombra.eclipse"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 4,
+			"id": "sombra.enjambre_umbrio_mejora",
+			"name": "Enjambre umbrío certero",
+			"desc": "Enjambre umbrío: +30 % de daño",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.enjambre_umbrio",
+					"mul": {
+						"damage": 1.3
+					}
+				}
+			],
+			"branch_name": "Umbra (marcas)",
+			"requires": [
+				"sombra.enjambre_umbrio"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 4,
+			"id": "sombra.guadana_mejora",
+			"name": "Guadaña larga",
+			"desc": "Guadaña: +2 unidades de alcance",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.guadana",
+					"add": {
+						"length": 2.0,
+						"count": 2
+					}
+				}
+			],
+			"branch_name": "Umbra (marcas)",
+			"requires": [
+				"sombra.guadana"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 0,
+			"tier": 5,
+			"id": "sombra.lluvia_de_cuervos",
+			"name": "Lluvia de cuervos",
+			"desc": "38 / 16 s / 18 × 8. Cuervos de sombra caen sobre un área",
+			"skill": {
+				"kind": "RAIN",
+				"mana_cost": 38,
+				"cooldown": 16,
+				"damage": 18,
+				"count": 9,
+				"duration": 3.0,
+				"radius": 2.6,
+				"offset": 3.5,
+				"status": "marca_sombra"
+			},
+			"cost": 3,
+			"branch_name": "Umbra (marcas)",
+			"requires_any": [
+				"sombra.dardo_umbrio",
+				"sombra.desgarro",
+				"sombra.guadana",
+				"sombra.lazo_umbrio",
+				"sombra.enjambre_umbrio",
+				"sombra.eclipse"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 5,
+			"id": "sombra.lluvia_de_cuervos_mejora",
+			"name": "Lluvia de cuervos torrencial",
+			"desc": "Lluvia de cuervos: +4 impactos",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.lluvia_de_cuervos",
+					"add": {
+						"count": 4
+					}
+				}
+			],
+			"branch_name": "Umbra (marcas)",
+			"requires": [
+				"sombra.lluvia_de_cuervos"
+			]
 		},
 		{
 			"tier": 5,
@@ -140,7 +378,16 @@
 			"branch": 0,
 			"branch_name": "Umbra (marcas)",
 			"id": "sombra.cosecha",
-			"implemented": false
+			"implemented": false,
+			"requires_any": [
+				"sombra.dardo_umbrio",
+				"sombra.desgarro",
+				"sombra.guadana",
+				"sombra.lazo_umbrio",
+				"sombra.enjambre_umbrio",
+				"sombra.eclipse",
+				"sombra.lluvia_de_cuervos"
+			]
 		},
 		{
 			"tier": 1,
@@ -160,7 +407,8 @@
 				"mods": {
 					"invisible": 1
 				}
-			}
+			},
+			"requires": []
 		},
 		{
 			"tier": 1,
@@ -178,6 +426,95 @@
 						"next_sword_pct": 1.0
 					}
 				}
+			],
+			"requires": [
+				"sombra.velo"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 1,
+			"tier": 1,
+			"id": "sombra.paso_fantasma",
+			"name": "Paso fantasma",
+			"desc": "14 / 6 s / 10. Atraviesas 4,5 unidades sin recibir daño",
+			"skill": {
+				"kind": "DASH",
+				"mana_cost": 14,
+				"cooldown": 6,
+				"damage": 10,
+				"length": 4.5,
+				"invulnerable": 1.0
+			},
+			"cost": 2,
+			"branch_name": "Velo (sigilo y evasión)",
+			"requires": []
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 1,
+			"id": "sombra.paso_fantasma_mejora",
+			"name": "Paso fantasma doble",
+			"desc": "Paso fantasma: Una carga más",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.paso_fantasma",
+					"add": {
+						"charges": 1
+					}
+				}
+			],
+			"branch_name": "Velo (sigilo y evasión)",
+			"requires": [
+				"sombra.paso_fantasma"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 1,
+			"tier": 2,
+			"id": "sombra.espejismo",
+			"name": "Espejismo",
+			"desc": "18 / 12 s. Invisible y +30 % de velocidad durante 2 s",
+			"skill": {
+				"kind": "BUFF",
+				"mana_cost": 18,
+				"cooldown": 12,
+				"damage": 0,
+				"duration": 2.0,
+				"mods": {
+					"invisible": 1,
+					"move_pct": 0.3
+				}
+			},
+			"cost": 2,
+			"branch_name": "Velo (sigilo y evasión)",
+			"requires_any": [
+				"sombra.velo",
+				"sombra.paso_fantasma"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 2,
+			"id": "sombra.espejismo_mejora",
+			"name": "Espejismo prolongado",
+			"desc": "Espejismo: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.espejismo",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Velo (sigilo y evasión)",
+			"requires": [
+				"sombra.espejismo"
 			]
 		},
 		{
@@ -189,7 +526,12 @@
 			"branch": 1,
 			"branch_name": "Velo (sigilo y evasión)",
 			"id": "sombra.silueta",
-			"implemented": false
+			"implemented": false,
+			"requires_any": [
+				"sombra.velo",
+				"sombra.paso_fantasma",
+				"sombra.espejismo"
+			]
 		},
 		{
 			"tier": 2,
@@ -207,6 +549,11 @@
 						"move_pct": 0.2
 					}
 				}
+			],
+			"requires_any": [
+				"sombra.velo",
+				"sombra.paso_fantasma",
+				"sombra.espejismo"
 			]
 		},
 		{
@@ -218,7 +565,73 @@
 			"branch": 1,
 			"branch_name": "Velo (sigilo y evasión)",
 			"id": "sombra.doble_sombra",
-			"implemented": false
+			"skill": {
+				"kind": "BUFF",
+				"mana_cost": 25,
+				"cooldown": 14,
+				"damage": 0,
+				"duration": 5.0,
+				"mods": {
+					"extra_projectiles.sombra": 1,
+					"aff_pct.sombra": 0.4
+				}
+			},
+			"requires_any": [
+				"sombra.velo",
+				"sombra.paso_fantasma",
+				"sombra.espejismo"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 3,
+			"id": "sombra.doble_sombra_mejora",
+			"name": "Doble sombra prolongado",
+			"desc": "Doble sombra: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.doble_sombra",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Velo (sigilo y evasión)",
+			"requires": [
+				"sombra.doble_sombra"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 1,
+			"tier": 3,
+			"id": "sombra.manto_de_niebla",
+			"name": "Manto de niebla",
+			"desc": "24 / 16 s. Niebla de 4 s a tu alrededor: −25 % de daño recibido y deslumbra",
+			"skill": {
+				"kind": "ZONE",
+				"mana_cost": 24,
+				"cooldown": 16,
+				"damage": 0,
+				"duration": 4.0,
+				"tick": 1.0,
+				"radius": 2.5,
+				"offset": 0.0,
+				"follow": true,
+				"status": "deslumbrado",
+				"self_mods": {
+					"received_pct": -0.25
+				}
+			},
+			"cost": 2,
+			"branch_name": "Velo (sigilo y evasión)",
+			"requires_any": [
+				"sombra.velo",
+				"sombra.paso_fantasma",
+				"sombra.espejismo"
+			]
 		},
 		{
 			"tier": 3,
@@ -234,6 +647,13 @@
 					"stat": "show_enemy_hp",
 					"add": 1
 				}
+			],
+			"requires_any": [
+				"sombra.velo",
+				"sombra.paso_fantasma",
+				"sombra.espejismo",
+				"sombra.doble_sombra",
+				"sombra.manto_de_niebla"
 			]
 		},
 		{
@@ -252,7 +672,56 @@
 				"damage": 0,
 				"offset": 8.0,
 				"on_marked": "marca_sombra"
-			}
+			},
+			"requires_any": [
+				"sombra.velo",
+				"sombra.paso_fantasma",
+				"sombra.espejismo",
+				"sombra.doble_sombra",
+				"sombra.manto_de_niebla"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 4,
+			"id": "sombra.paso_del_vacio_mejora",
+			"name": "Paso del vacío ágil",
+			"desc": "Paso del vacío: −35 % de recarga",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.paso_del_vacio",
+					"mul": {
+						"cooldown": 0.65
+					}
+				}
+			],
+			"branch_name": "Velo (sigilo y evasión)",
+			"requires": [
+				"sombra.paso_del_vacio"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 4,
+			"id": "sombra.manto_de_niebla_mejora",
+			"name": "Manto de niebla duradero",
+			"desc": "Manto de niebla: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.manto_de_niebla",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Velo (sigilo y evasión)",
+			"requires": [
+				"sombra.manto_de_niebla"
+			]
 		},
 		{
 			"tier": 5,
@@ -270,6 +739,14 @@
 					"every": 60.0,
 					"cast": "sombra.velo"
 				}
+			],
+			"requires_any": [
+				"sombra.velo",
+				"sombra.paso_fantasma",
+				"sombra.espejismo",
+				"sombra.doble_sombra",
+				"sombra.manto_de_niebla",
+				"sombra.paso_del_vacio"
 			]
 		},
 		{
@@ -291,7 +768,52 @@
 				"radius": 1.0,
 				"mp_per_stack": 6,
 				"stack_status": "marca_sombra"
-			}
+			},
+			"requires": []
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 1,
+			"id": "sombra.drenaje_mejora",
+			"name": "Drenaje devastador",
+			"desc": "Drenaje: +30 % de daño y de radio",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.drenaje",
+					"mul": {
+						"damage": 1.3,
+						"radius": 1.3
+					}
+				}
+			],
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"requires": [
+				"sombra.drenaje"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 1,
+			"id": "sombra.maldicion",
+			"name": "Maldición",
+			"desc": "10 / 6 s / 6. Ralentiza 3 s al enemigo más cercano",
+			"skill": {
+				"kind": "STRIKE",
+				"mana_cost": 10,
+				"cooldown": 6,
+				"damage": 6,
+				"target": "nearest",
+				"offset": 7.0,
+				"radius": 1.0,
+				"status": "lento",
+				"status_seconds": 3.0
+			},
+			"cost": 2,
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"requires": []
 		},
 		{
 			"tier": 1,
@@ -307,7 +829,8 @@
 					"stat": "marked_weaken",
 					"add": 0.1
 				}
-			]
+			],
+			"requires": []
 		},
 		{
 			"tier": 2,
@@ -318,7 +841,66 @@
 			"branch": 2,
 			"branch_name": "Ruina (debilitación y drenaje)",
 			"id": "sombra.eco_oscuro",
-			"implemented": false
+			"skill": {
+				"kind": "BUFF",
+				"mana_cost": 20,
+				"cooldown": 6,
+				"damage": 0,
+				"duration": 4.0,
+				"mods": {
+					"next_sword_pct": 0.5
+				}
+			},
+			"requires_any": [
+				"sombra.drenaje",
+				"sombra.maldicion"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 2,
+			"id": "sombra.eco_oscuro_mejora",
+			"name": "Eco oscuro prolongado",
+			"desc": "Eco oscuro: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.eco_oscuro",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"requires": [
+				"sombra.eco_oscuro"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 2,
+			"id": "sombra.marchitar",
+			"name": "Marchitar",
+			"desc": "18 / 9 s / 5 cada 0,5 s. Zona de 4 s que vuelve frágiles a los enemigos",
+			"skill": {
+				"kind": "ZONE",
+				"mana_cost": 18,
+				"cooldown": 9,
+				"damage": 5,
+				"duration": 4.0,
+				"tick": 0.5,
+				"radius": 2.0,
+				"offset": 3.0,
+				"status": "fragil"
+			},
+			"cost": 2,
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"requires_any": [
+				"sombra.drenaje",
+				"sombra.maldicion"
+			]
 		},
 		{
 			"tier": 2,
@@ -336,6 +918,12 @@
 						"hp_per_stack": 3
 					}
 				}
+			],
+			"requires_any": [
+				"sombra.drenaje",
+				"sombra.maldicion",
+				"sombra.eco_oscuro",
+				"sombra.marchitar"
 			]
 		},
 		{
@@ -357,7 +945,61 @@
 				"radius": 1.2,
 				"status": "fragil",
 				"status_seconds": 6.0
-			}
+			},
+			"requires_any": [
+				"sombra.drenaje",
+				"sombra.maldicion",
+				"sombra.eco_oscuro",
+				"sombra.marchitar"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 3,
+			"id": "sombra.fragilidad_mejora",
+			"name": "Fragilidad devastadora",
+			"desc": "Fragilidad: +30 % de daño y de radio",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.fragilidad",
+					"mul": {
+						"damage": 1.3,
+						"radius": 1.3
+					}
+				}
+			],
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"requires": [
+				"sombra.fragilidad"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 3,
+			"id": "sombra.sifon",
+			"name": "Sifón",
+			"desc": "16 / 8 s / 14. Golpe a tu alrededor; si alcanza a alguien recuperas el 6 % de vida",
+			"skill": {
+				"kind": "AREA",
+				"mana_cost": 16,
+				"cooldown": 8,
+				"damage": 14,
+				"scale": 1.5,
+				"heal_pct": 0.06,
+				"heal_if_hits": 1,
+				"status": "marca_sombra"
+			},
+			"cost": 2,
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"requires_any": [
+				"sombra.drenaje",
+				"sombra.maldicion",
+				"sombra.eco_oscuro",
+				"sombra.marchitar"
+			]
 		},
 		{
 			"tier": 3,
@@ -368,7 +1010,15 @@
 			"branch": 2,
 			"branch_name": "Ruina (debilitación y drenaje)",
 			"id": "sombra.contagio",
-			"implemented": false
+			"implemented": false,
+			"requires_any": [
+				"sombra.drenaje",
+				"sombra.maldicion",
+				"sombra.eco_oscuro",
+				"sombra.marchitar",
+				"sombra.fragilidad",
+				"sombra.sifon"
+			]
 		},
 		{
 			"tier": 4,
@@ -386,7 +1036,151 @@
 				"damage": 0,
 				"hp_cost_pct": 0.15,
 				"restore_mp": true
-			}
+			},
+			"requires_any": [
+				"sombra.drenaje",
+				"sombra.maldicion",
+				"sombra.eco_oscuro",
+				"sombra.marchitar",
+				"sombra.fragilidad",
+				"sombra.sifon"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 4,
+			"id": "sombra.pacto_de_sombra_mejora",
+			"name": "Pacto de sombra sereno",
+			"desc": "Pacto de sombra: −30 % de recarga",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.pacto_de_sombra",
+					"mul": {
+						"cooldown": 0.7
+					}
+				}
+			],
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"requires": [
+				"sombra.pacto_de_sombra"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 4,
+			"id": "sombra.maldicion_mejora",
+			"name": "Maldición devastadora",
+			"desc": "Maldición: +30 % de daño y de radio",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.maldicion",
+					"mul": {
+						"damage": 1.3,
+						"radius": 1.3
+					}
+				}
+			],
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"requires": [
+				"sombra.maldicion"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 4,
+			"id": "sombra.pozo_del_vacio",
+			"name": "Pozo del vacío",
+			"desc": "28 / 12 s / 8 cada 0,5 s. Pozo de 3 s que retiene y marca",
+			"skill": {
+				"kind": "ZONE",
+				"mana_cost": 28,
+				"cooldown": 12,
+				"damage": 8,
+				"duration": 3.0,
+				"tick": 0.5,
+				"radius": 2.8,
+				"offset": 4.0,
+				"slow": 0.3,
+				"status": "marca_sombra"
+			},
+			"cost": 2,
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"requires_any": [
+				"sombra.drenaje",
+				"sombra.maldicion",
+				"sombra.eco_oscuro",
+				"sombra.marchitar",
+				"sombra.fragilidad",
+				"sombra.sifon"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 5,
+			"id": "sombra.marchitar_mejora",
+			"name": "Marchitar duradero",
+			"desc": "Marchitar: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.marchitar",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"requires": [
+				"sombra.marchitar"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 5,
+			"id": "sombra.pozo_del_vacio_mejora",
+			"name": "Pozo del vacío duradero",
+			"desc": "Pozo del vacío: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.pozo_del_vacio",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"requires": [
+				"sombra.pozo_del_vacio"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 5,
+			"id": "sombra.sifon_mejora",
+			"name": "Sifón amplio",
+			"desc": "Sifón: +35 % de radio",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "sombra.sifon",
+					"mul": {
+						"scale": 1.35
+					}
+				}
+			],
+			"branch_name": "Ruina (debilitación y drenaje)",
+			"requires": [
+				"sombra.sifon"
+			]
 		},
 		{
 			"tier": 5,
@@ -404,6 +1198,16 @@
 						"aoe_marked": 6.0
 					}
 				}
+			],
+			"requires_any": [
+				"sombra.drenaje",
+				"sombra.maldicion",
+				"sombra.eco_oscuro",
+				"sombra.marchitar",
+				"sombra.fragilidad",
+				"sombra.sifon",
+				"sombra.pacto_de_sombra",
+				"sombra.pozo_del_vacio"
 			]
 		},
 		{

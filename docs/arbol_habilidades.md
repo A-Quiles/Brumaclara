@@ -5,8 +5,14 @@ fórmulas y estados) y el GDD (secciones 11 y 12). Los números son la propuesta
 jugando y viven en las fichas de datos (`data/skills`), no en el código.
 
 El juego tiene **seis afinidades**: fuego, hielo, rayo, sombra, tierra y luz. Cada una tiene su propio
-árbol de 25 nodos. Además hay un **tronco común del aventurero** (32 nodos, sin afinidad) y un árbol
-pequeño por **gremio** (9 nodos). En total, 218 nodos; ninguna partida puede comprarlos todos.
+árbol de **51–55 nodos con 21 habilidades activas distintas, cada una con su mejora**, sus pasivas y una
+definitiva. Además hay un **tronco común del aventurero** (32 nodos, sin afinidad) y un árbol pequeño
+por **gremio** (9 nodos). En total, unos 390 nodos; ninguna partida puede comprarlos todos.
+
+La lista completa de nodos, con sus números, está en `docs/habilidades_lista.md` (generada desde los
+datos). Las secciones 3.x de este documento cuentan la idea de cada rama y sus nodos originales; las
+activas añadidas siguen las mismas reglas y aparecen en la lista. Cada habilidad tiene su icono
+(`assets/ui/skills/<afinidad>.png`; las mejoras muestran el de su habilidad con una marca dorada).
 
 ## 1. Sistema de puntos
 
@@ -43,7 +49,9 @@ Cada árbol tiene cinco niveles. Para abrir un nivel hay que haber gastado PA **
 | IV | 18 | |
 | V | 28 | La definitiva pide además 3 nodos de nivel IV o V |
 
-Dentro de cada rama, un nodo pide el anterior de la misma rama. Las mejoras piden su activa.
+Requisitos dentro de un árbol de afinidad: una activa de nivel II o más pide **cualquier** activa de su
+rama de un nivel inferior; una pasiva, una activa de su rama hasta su nivel; una mejora, su activa. Así
+cada rama se recorre por caminos distintos. En el tronco común, un nodo pide el anterior de su rama.
 
 ### Afinidad principal y secundarias
 
@@ -127,8 +135,9 @@ Sin afinidad: lo que aprende cualquier aventurero que vive de los contratos. Usa
 
 ## 3. Árboles de afinidad
 
-Cada afinidad tiene tres ramas de 8 nodos y una definitiva (25 nodos). Formato de las activas:
-**maná / recarga / daño**. Las dos activas marcadas como *(en juego)* ya están implementadas.
+Cada afinidad tiene tres ramas y una definitiva. Abajo, los nodos originales de cada rama; las activas
+nuevas (abanicos, cadenas, lluvias, escudos, embestidas, auras...) y todas las mejoras están en
+`docs/habilidades_lista.md`. Formato de las activas: **maná / recarga / daño**. Todas están implementadas.
 
 ### 3.1 Fuego — presión y daño
 

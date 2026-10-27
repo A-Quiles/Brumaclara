@@ -20,7 +20,8 @@
 				"push": 12.0,
 				"status": "fisura",
 				"scale": 1.3
-			}
+			},
+			"requires": []
 		},
 		{
 			"tier": 1,
@@ -38,6 +39,50 @@
 						"pierce": true
 					}
 				}
+			],
+			"requires": [
+				"tierra.canto_rodado"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 0,
+			"tier": 1,
+			"id": "tierra.honda",
+			"name": "Honda",
+			"desc": "10 / 2 s / 10 × 3. Tres piedras seguidas",
+			"skill": {
+				"kind": "PROJECTILE",
+				"mana_cost": 10,
+				"cooldown": 2,
+				"damage": 10,
+				"count": 3,
+				"interval": 0.15,
+				"speed": 12.0
+			},
+			"cost": 2,
+			"branch_name": "Roca (ataque)",
+			"requires": []
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 1,
+			"id": "tierra.honda_mejora",
+			"name": "Honda certera",
+			"desc": "Honda: +30 % de daño",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "tierra.honda",
+					"mul": {
+						"damage": 1.3
+					}
+				}
+			],
+			"branch_name": "Roca (ataque)",
+			"requires": [
+				"tierra.honda"
 			]
 		},
 		{
@@ -59,7 +104,58 @@
 				"step_delay": 0.05,
 				"once": true,
 				"status": "fisura"
-			}
+			},
+			"requires_any": [
+				"tierra.canto_rodado",
+				"tierra.honda"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 2,
+			"id": "tierra.puas_de_piedra_mejora",
+			"name": "Púas de piedra largo",
+			"desc": "Púas de piedra: +2 unidades de alcance",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "tierra.puas_de_piedra",
+					"add": {
+						"length": 2.0,
+						"count": 2
+					}
+				}
+			],
+			"branch_name": "Roca (ataque)",
+			"requires": [
+				"tierra.puas_de_piedra"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 0,
+			"tier": 2,
+			"id": "tierra.estalagmitas",
+			"name": "Estalagmitas",
+			"desc": "20 / 7 s / 22 × 4. Cuatro estalagmitas brotan delante",
+			"skill": {
+				"kind": "RAIN",
+				"mana_cost": 20,
+				"cooldown": 7,
+				"damage": 22,
+				"count": 4,
+				"duration": 0.8,
+				"radius": 2.2,
+				"offset": 3.0,
+				"status": "fisura"
+			},
+			"cost": 2,
+			"branch_name": "Roca (ataque)",
+			"requires_any": [
+				"tierra.canto_rodado",
+				"tierra.honda"
+			]
 		},
 		{
 			"tier": 2,
@@ -78,6 +174,12 @@
 						"push": 1.5
 					}
 				}
+			],
+			"requires_any": [
+				"tierra.canto_rodado",
+				"tierra.honda",
+				"tierra.puas_de_piedra",
+				"tierra.estalagmitas"
 			]
 		},
 		{
@@ -99,7 +201,60 @@
 				"radius": 1.8,
 				"offset": 3.5,
 				"status": "fisura"
-			}
+			},
+			"requires_any": [
+				"tierra.canto_rodado",
+				"tierra.honda",
+				"tierra.puas_de_piedra",
+				"tierra.estalagmitas"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 3,
+			"id": "tierra.lluvia_de_grava_mejora",
+			"name": "Lluvia de grava torrencial",
+			"desc": "Lluvia de grava: +4 impactos",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "tierra.lluvia_de_grava",
+					"add": {
+						"count": 4
+					}
+				}
+			],
+			"branch_name": "Roca (ataque)",
+			"requires": [
+				"tierra.lluvia_de_grava"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 0,
+			"tier": 3,
+			"id": "tierra.pedrada_explosiva",
+			"name": "Pedrada explosiva",
+			"desc": "22 / 7 s / 28. Roca que revienta en área y agrieta",
+			"skill": {
+				"kind": "PROJECTILE",
+				"mana_cost": 22,
+				"cooldown": 7,
+				"damage": 28,
+				"speed": 10.0,
+				"explode_radius": 2.0,
+				"scale": 1.4,
+				"status": "fisura"
+			},
+			"cost": 2,
+			"branch_name": "Roca (ataque)",
+			"requires_any": [
+				"tierra.canto_rodado",
+				"tierra.honda",
+				"tierra.puas_de_piedra",
+				"tierra.estalagmitas"
+			]
 		},
 		{
 			"tier": 3,
@@ -115,6 +270,14 @@
 					"stat": "vs_pct.fisura",
 					"add": 0.2
 				}
+			],
+			"requires_any": [
+				"tierra.canto_rodado",
+				"tierra.honda",
+				"tierra.puas_de_piedra",
+				"tierra.estalagmitas",
+				"tierra.lluvia_de_grava",
+				"tierra.pedrada_explosiva"
 			]
 		},
 		{
@@ -137,7 +300,57 @@
 				"status": "aturdido",
 				"status_seconds": 1.0,
 				"scale": 1.6
-			}
+			},
+			"requires_any": [
+				"tierra.canto_rodado",
+				"tierra.honda",
+				"tierra.puas_de_piedra",
+				"tierra.estalagmitas",
+				"tierra.lluvia_de_grava",
+				"tierra.pedrada_explosiva"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 4,
+			"id": "tierra.estalagmitas_mejora",
+			"name": "Estalagmitas torrencial",
+			"desc": "Estalagmitas: +4 impactos",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "tierra.estalagmitas",
+					"add": {
+						"count": 4
+					}
+				}
+			],
+			"branch_name": "Roca (ataque)",
+			"requires": [
+				"tierra.estalagmitas"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 0,
+			"tier": 4,
+			"id": "tierra.pedrada_explosiva_mejora",
+			"name": "Pedrada explosiva certera",
+			"desc": "Pedrada explosiva: +30 % de daño",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "tierra.pedrada_explosiva",
+					"mul": {
+						"damage": 1.3
+					}
+				}
+			],
+			"branch_name": "Roca (ataque)",
+			"requires": [
+				"tierra.pedrada_explosiva"
+			]
 		},
 		{
 			"tier": 5,
@@ -148,7 +361,20 @@
 			"branch": 0,
 			"branch_name": "Roca (ataque)",
 			"id": "tierra.avalancha",
-			"implemented": false
+			"mods": [
+				{
+					"skill": "tierra.meteoro_de_piedra",
+					"mul": {
+						"scale": 1.35
+					},
+					"add": {
+						"damage": 20
+					}
+				}
+			],
+			"requires": [
+				"tierra.meteoro_de_piedra"
+			]
 		},
 		{
 			"tier": 1,
@@ -169,7 +395,8 @@
 					"received_pct": -0.4,
 					"move_pct": -0.2
 				}
-			}
+			},
+			"requires": []
 		},
 		{
 			"tier": 1,
@@ -187,6 +414,9 @@
 						"no_push": 1
 					}
 				}
+			],
+			"requires": [
+				"tierra.piel_de_piedra"
 			]
 		},
 		{
@@ -208,7 +438,53 @@
 				"hits": 5,
 				"prop": "boulder",
 				"offset": 2.0
-			}
+			},
+			"requires_any": [
+				"tierra.piel_de_piedra"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 2,
+			"id": "tierra.muro_de_tierra_mejora",
+			"name": "Muro de tierra macizo",
+			"desc": "Muro de tierra: +2 unidades y +2 golpes",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "tierra.muro_de_tierra",
+					"add": {
+						"length": 2.0,
+						"hits": 2
+					}
+				}
+			],
+			"branch_name": "Bastión (defensa)",
+			"requires": [
+				"tierra.muro_de_tierra"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 1,
+			"tier": 2,
+			"id": "tierra.embestida_rocosa",
+			"name": "Embestida rocosa",
+			"desc": "16 / 6 s / 24. Embestida de 3,5 unidades que empuja muy fuerte",
+			"skill": {
+				"kind": "DASH",
+				"mana_cost": 16,
+				"cooldown": 6,
+				"damage": 24,
+				"length": 3.5,
+				"push": 14.0
+			},
+			"cost": 2,
+			"branch_name": "Bastión (defensa)",
+			"requires_any": [
+				"tierra.piel_de_piedra"
+			]
 		},
 		{
 			"tier": 2,
@@ -224,6 +500,11 @@
 					"stat": "received_pct",
 					"add": -0.08
 				}
+			],
+			"requires_any": [
+				"tierra.piel_de_piedra",
+				"tierra.muro_de_tierra",
+				"tierra.embestida_rocosa"
 			]
 		},
 		{
@@ -242,7 +523,59 @@
 				"damage": 0,
 				"duration": 10.0,
 				"hits": 3
-			}
+			},
+			"requires_any": [
+				"tierra.piel_de_piedra",
+				"tierra.muro_de_tierra",
+				"tierra.embestida_rocosa"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 3,
+			"id": "tierra.escudo_de_rocas_mejora",
+			"name": "Escudo de rocas reforzado",
+			"desc": "Escudo de rocas: +50 % de absorción y un bloqueo más",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "tierra.escudo_de_rocas",
+					"mul": {
+						"shield": 1.5
+					},
+					"add": {
+						"hits": 1
+					}
+				}
+			],
+			"branch_name": "Bastión (defensa)",
+			"requires": [
+				"tierra.escudo_de_rocas"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 1,
+			"tier": 3,
+			"id": "tierra.coraza_de_cuarzo",
+			"name": "Coraza de cuarzo",
+			"desc": "26 / 16 s. Absorbe 50 de daño durante 6 s",
+			"skill": {
+				"kind": "SHIELD",
+				"mana_cost": 26,
+				"cooldown": 16,
+				"damage": 0,
+				"duration": 6.0,
+				"shield": 50
+			},
+			"cost": 2,
+			"branch_name": "Bastión (defensa)",
+			"requires_any": [
+				"tierra.piel_de_piedra",
+				"tierra.muro_de_tierra",
+				"tierra.embestida_rocosa"
+			]
 		},
 		{
 			"tier": 3,
@@ -260,6 +593,13 @@
 						"thorns": 15
 					}
 				}
+			],
+			"requires_any": [
+				"tierra.piel_de_piedra",
+				"tierra.muro_de_tierra",
+				"tierra.embestida_rocosa",
+				"tierra.escudo_de_rocas",
+				"tierra.coraza_de_cuarzo"
 			]
 		},
 		{
@@ -284,7 +624,132 @@
 				"self_mods": {
 					"received_pct": -0.3
 				}
-			}
+			},
+			"requires_any": [
+				"tierra.piel_de_piedra",
+				"tierra.muro_de_tierra",
+				"tierra.embestida_rocosa",
+				"tierra.escudo_de_rocas",
+				"tierra.coraza_de_cuarzo"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 4,
+			"id": "tierra.fortaleza_mejora",
+			"name": "Fortaleza duradera",
+			"desc": "Fortaleza: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "tierra.fortaleza",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Bastión (defensa)",
+			"requires": [
+				"tierra.fortaleza"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 4,
+			"id": "tierra.coraza_de_cuarzo_mejora",
+			"name": "Coraza de cuarzo reforzada",
+			"desc": "Coraza de cuarzo: +50 % de absorción y un bloqueo más",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "tierra.coraza_de_cuarzo",
+					"mul": {
+						"shield": 1.5
+					},
+					"add": {
+						"hits": 1
+					}
+				}
+			],
+			"branch_name": "Bastión (defensa)",
+			"requires": [
+				"tierra.coraza_de_cuarzo"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 4,
+			"id": "tierra.embestida_rocosa_mejora",
+			"name": "Embestida rocosa doble",
+			"desc": "Embestida rocosa: Una carga más",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "tierra.embestida_rocosa",
+					"add": {
+						"charges": 1
+					}
+				}
+			],
+			"branch_name": "Bastión (defensa)",
+			"requires": [
+				"tierra.embestida_rocosa"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 1,
+			"tier": 5,
+			"id": "tierra.menhir",
+			"name": "Menhir",
+			"desc": "30 / 14 s. Un menhir aguanta 6 golpes y estalla (40) al romperse",
+			"skill": {
+				"kind": "WALL",
+				"mana_cost": 30,
+				"cooldown": 14,
+				"damage": 0,
+				"length": 1.0,
+				"duration": 8.0,
+				"hits": 6,
+				"prop": "boulder",
+				"offset": 2.0,
+				"shatter_damage": 40
+			},
+			"cost": 3,
+			"branch_name": "Bastión (defensa)",
+			"requires_any": [
+				"tierra.piel_de_piedra",
+				"tierra.muro_de_tierra",
+				"tierra.embestida_rocosa",
+				"tierra.escudo_de_rocas",
+				"tierra.coraza_de_cuarzo",
+				"tierra.fortaleza"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 1,
+			"tier": 5,
+			"id": "tierra.menhir_mejora",
+			"name": "Menhir macizo",
+			"desc": "Menhir: +2 unidades y +2 golpes",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "tierra.menhir",
+					"add": {
+						"length": 2.0,
+						"hits": 2
+					}
+				}
+			],
+			"branch_name": "Bastión (defensa)",
+			"requires": [
+				"tierra.menhir"
+			]
 		},
 		{
 			"tier": 5,
@@ -295,7 +760,16 @@
 			"branch": 1,
 			"branch_name": "Bastión (defensa)",
 			"id": "tierra.inamovible",
-			"implemented": false
+			"implemented": false,
+			"requires_any": [
+				"tierra.piel_de_piedra",
+				"tierra.muro_de_tierra",
+				"tierra.embestida_rocosa",
+				"tierra.escudo_de_rocas",
+				"tierra.coraza_de_cuarzo",
+				"tierra.fortaleza",
+				"tierra.menhir"
+			]
 		},
 		{
 			"tier": 1,
@@ -314,7 +788,8 @@
 				"scale": 1.2,
 				"status": "aturdido",
 				"status_seconds": 0.5
-			}
+			},
+			"requires": []
 		},
 		{
 			"tier": 1,
@@ -332,6 +807,52 @@
 						"repeat_after": 0.5
 					}
 				}
+			],
+			"requires": [
+				"tierra.pisoton"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 1,
+			"id": "tierra.sacudida",
+			"name": "Sacudida",
+			"desc": "12 / 5 s / 18. Golpe al suelo delante que aturde 0,6 s",
+			"skill": {
+				"kind": "STRIKE",
+				"mana_cost": 12,
+				"cooldown": 5,
+				"damage": 18,
+				"offset": 2.5,
+				"radius": 2.0,
+				"status": "aturdido",
+				"status_seconds": 0.6
+			},
+			"cost": 2,
+			"branch_name": "Temblor (control)",
+			"requires": []
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 1,
+			"id": "tierra.sacudida_mejora",
+			"name": "Sacudida devastadora",
+			"desc": "Sacudida: +30 % de daño y de radio",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "tierra.sacudida",
+					"mul": {
+						"damage": 1.3,
+						"radius": 1.3
+					}
+				}
+			],
+			"branch_name": "Temblor (control)",
+			"requires": [
+				"tierra.sacudida"
 			]
 		},
 		{
@@ -354,7 +875,33 @@
 				"once": true,
 				"status": "aturdido",
 				"status_seconds": 1.0
-			}
+			},
+			"requires_any": [
+				"tierra.pisoton",
+				"tierra.sacudida"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 2,
+			"id": "tierra.grieta_mejora",
+			"name": "Grieta larga",
+			"desc": "Grieta: +2 unidades de alcance",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "tierra.grieta",
+					"add": {
+						"length": 2.0,
+						"count": 2
+					}
+				}
+			],
+			"branch_name": "Temblor (control)",
+			"requires": [
+				"tierra.grieta"
+			]
 		},
 		{
 			"tier": 2,
@@ -365,7 +912,12 @@
 			"branch": 2,
 			"branch_name": "Temblor (control)",
 			"id": "tierra.terreno_firme",
-			"implemented": false
+			"implemented": false,
+			"requires_any": [
+				"tierra.pisoton",
+				"tierra.sacudida",
+				"tierra.grieta"
+			]
 		},
 		{
 			"tier": 3,
@@ -386,7 +938,60 @@
 				"radius": 2.0,
 				"offset": 2.5,
 				"slow": 0.4
-			}
+			},
+			"requires_any": [
+				"tierra.pisoton",
+				"tierra.sacudida",
+				"tierra.grieta"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 3,
+			"id": "tierra.arenas_movedizas_mejora",
+			"name": "Arenas movedizas duradero",
+			"desc": "Arenas movedizas: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "tierra.arenas_movedizas",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Temblor (control)",
+			"requires": [
+				"tierra.arenas_movedizas"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 3,
+			"id": "tierra.fauces_de_tierra",
+			"name": "Fauces de tierra",
+			"desc": "26 / 10 s / 45. El suelo muerde al enemigo más cercano tras 0,5 s",
+			"skill": {
+				"kind": "STRIKE",
+				"mana_cost": 26,
+				"cooldown": 10,
+				"damage": 45,
+				"target": "nearest",
+				"offset": 6.0,
+				"delay": 0.5,
+				"radius": 1.4,
+				"status": "fisura",
+				"stacks": 2
+			},
+			"cost": 2,
+			"branch_name": "Temblor (control)",
+			"requires_any": [
+				"tierra.pisoton",
+				"tierra.sacudida",
+				"tierra.grieta"
+			]
 		},
 		{
 			"tier": 3,
@@ -404,6 +1009,13 @@
 						"scale": 1.5
 					}
 				}
+			],
+			"requires_any": [
+				"tierra.pisoton",
+				"tierra.sacudida",
+				"tierra.grieta",
+				"tierra.arenas_movedizas",
+				"tierra.fauces_de_tierra"
 			]
 		},
 		{
@@ -426,7 +1038,109 @@
 				"offset": 0.0,
 				"status": "aturdido",
 				"status_seconds": 0.3
-			}
+			},
+			"requires_any": [
+				"tierra.pisoton",
+				"tierra.sacudida",
+				"tierra.grieta",
+				"tierra.arenas_movedizas",
+				"tierra.fauces_de_tierra"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 4,
+			"id": "tierra.terremoto_mejora",
+			"name": "Terremoto duradero",
+			"desc": "Terremoto: +50 % de duración",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "tierra.terremoto",
+					"mul": {
+						"duration": 1.5
+					}
+				}
+			],
+			"branch_name": "Temblor (control)",
+			"requires": [
+				"tierra.terremoto"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 4,
+			"id": "tierra.fauces_de_tierra_mejora",
+			"name": "Fauces de tierra devastador",
+			"desc": "Fauces de tierra: +30 % de daño y de radio",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "tierra.fauces_de_tierra",
+					"mul": {
+						"damage": 1.3,
+						"radius": 1.3
+					}
+				}
+			],
+			"branch_name": "Temblor (control)",
+			"requires": [
+				"tierra.fauces_de_tierra"
+			]
+		},
+		{
+			"type": "activa",
+			"branch": 2,
+			"tier": 5,
+			"id": "tierra.corrimiento",
+			"name": "Corrimiento de tierra",
+			"desc": "36 / 15 s / 26. Avalancha en línea de 8 unidades que empuja",
+			"skill": {
+				"kind": "LINE",
+				"mana_cost": 36,
+				"cooldown": 15,
+				"damage": 26,
+				"length": 8.0,
+				"count": 8,
+				"step_delay": 0.07,
+				"once": true,
+				"push": 12.0,
+				"status": "lento"
+			},
+			"cost": 3,
+			"branch_name": "Temblor (control)",
+			"requires_any": [
+				"tierra.pisoton",
+				"tierra.sacudida",
+				"tierra.grieta",
+				"tierra.arenas_movedizas",
+				"tierra.fauces_de_tierra",
+				"tierra.terremoto"
+			]
+		},
+		{
+			"type": "mejora",
+			"branch": 2,
+			"tier": 5,
+			"id": "tierra.corrimiento_mejora",
+			"name": "Corrimiento de tierra largo",
+			"desc": "Corrimiento de tierra: +2 unidades de alcance",
+			"cost": 1,
+			"mods": [
+				{
+					"skill": "tierra.corrimiento",
+					"add": {
+						"length": 2.0,
+						"count": 2
+					}
+				}
+			],
+			"branch_name": "Temblor (control)",
+			"requires": [
+				"tierra.corrimiento"
+			]
 		},
 		{
 			"tier": 5,
@@ -437,7 +1151,16 @@
 			"branch": 2,
 			"branch_name": "Temblor (control)",
 			"id": "tierra.falla",
-			"implemented": false
+			"implemented": false,
+			"requires_any": [
+				"tierra.pisoton",
+				"tierra.sacudida",
+				"tierra.grieta",
+				"tierra.arenas_movedizas",
+				"tierra.fauces_de_tierra",
+				"tierra.terremoto",
+				"tierra.corrimiento"
+			]
 		},
 		{
 			"tier": 5,
@@ -448,7 +1171,18 @@
 			"branch": -1,
 			"branch_name": "Definitiva",
 			"id": "tierra.despertar_de_la_montana",
-			"implemented": false
+			"skill": {
+				"kind": "RAIN",
+				"mana_cost": 60,
+				"cooldown": 45,
+				"damage": 30,
+				"count": 14,
+				"duration": 7.0,
+				"radius": 4.0,
+				"offset": 0.0,
+				"status": "fisura",
+				"scale": 1.3
+			}
 		}
 	]
 }

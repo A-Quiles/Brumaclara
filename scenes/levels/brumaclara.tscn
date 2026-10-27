@@ -136,7 +136,7 @@
 [ext_resource type="PackedScene" path="res://scenes/environment/props/shrine.tscn" id="200_shrine"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_puerta"]
-size = Vector3(1.4, 2.2, 0.8)
+size = Vector3(1.4, 2.2, 1.4)
 
 [sub_resource type="Environment" id="Environment_kypcr"]
 background_mode = 3
@@ -5382,8 +5382,9 @@ shape = SubResource("BoxShape3D_4hjnc")
 
 
 
+
 [node name="Puerta" type="Area3D" parent="Buildings/Posada"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.0, 4.0)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.0, 4.45)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("123_xnj2r")
@@ -5395,7 +5396,7 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 1.1, 0.0)
 shape = SubResource("BoxShape3D_puerta")
 
 [node name="Puerta" type="Area3D" parent="Buildings/SedeDelFaro"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.0, 5.84)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.0, 6.29)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("123_xnj2r")
@@ -5407,7 +5408,7 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 1.1, 0.0)
 shape = SubResource("BoxShape3D_puerta")
 
 [node name="Puerta" type="Area3D" parent="Buildings/TiendaDeNara"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.0, 4.0)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.0, 4.45)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("123_xnj2r")
@@ -5419,7 +5420,7 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 1.1, 0.0)
 shape = SubResource("BoxShape3D_puerta")
 
 [node name="Puerta" type="Area3D" parent="Buildings/CasaDeElia"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.0, 4.56)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.0, 5.01)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("123_xnj2r")

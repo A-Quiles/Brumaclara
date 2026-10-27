@@ -43,6 +43,22 @@ func _run() -> void:
 		var front: Vector3 = current_scene.get_node("Buildings/%s/Puerta" % building).global_position
 		_check(Vector2(back.global_position.x - front.x, back.global_position.z - front.z).length() < 3.5,
 				"the hero comes out in front of %s's door" % building)
+	# walking up to a door from the street is enough to go in
+	change_scene_to_file("res://scenes/levels/brumaclara.tscn")
+	await _frames(5)
+	var street: Node = current_scene
+	var hero_on_street: Node3D = street.get_node("Player")
+	var inn_door: Vector3 = street.get_node("Buildings/Posada/Puerta").global_position
+	hero_on_street.global_position = inn_door + Vector3(0, 0.3, 1.9)  # the street in front of the inn is narrow
+	await _frames(5)
+	Input.action_press("move_up")
+	for i in 240:
+		await physics_frame
+		if current_scene != street:
+			break
+	Input.action_release("move_up")
+	await _frames(3)
+	_check(current_scene.scene_file_path.ends_with("/posada.tscn"), "walking up the street into the inn's door goes in")
 	print("interior checks: %s" % ("all passed" if _failures == 0 else "%d FAILED" % _failures))
 	quit(1 if _failures else 0)
 

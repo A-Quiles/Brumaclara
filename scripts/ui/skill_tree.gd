@@ -11,7 +11,7 @@ const FONT := preload("res://assets/fonts/pixelify_sans_medium.woff")
 const GOLD := Color("ffd34a")
 const INK := Color("f4e9c8")
 const DIM := Color(0.62, 0.66, 0.8)
-const NODE := 28
+const NODE := 24
 const COLUMN := 104
 const ROW := 40
 const GRID := Vector2(96, 62)
@@ -184,10 +184,33 @@ func _node_button(n: Dictionary, at: Vector2, colour: Color) -> Button:
 	style.anti_aliasing = false
 	for state in ["normal", "hover", "pressed", "focus", "disabled"]:
 		b.add_theme_stylebox_override(state, style)
-	if n.type == "activa" and n.get("skill") != null and n.get("implemented", true):
-		b.icon = HUD.icon_for(Progress.skill(id))
+	var icon: Texture2D = null
+	var mark := ""
+	if n.type in ["activa", "definitiva"] and n.get("skill") != null and n.get("implemented", true):
+		icon = HUD.icon_for(Progress.skill(id))
+	elif n.type == "mejora" and n.get("requires", []).size() > 0:
+		var base := StringName(n.requires[0])
+		icon = SkillIcons.for_skill(base)
+		if icon == null and Progress.nodes.has(base) and Progress.nodes[base].get("skill") != null:
+			icon = HUD.icon_for(Progress.skill(base))
+		mark = "+"
+	elif n.type == "pasiva":
+		icon = SkillIcons.passive(str(n.tree), hash(n.id) % 2 == 0)
+		mark = "P" if icon == null else ""
+	if icon:
+		b.icon = icon
 		b.expand_icon = true
 		b.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		if mark != "":  # an upgrade: its skill's icon with a gold mark in the corner
+			var badge := Label.new()
+			badge.text = mark
+			badge.position = Vector2(NODE - 10, -4)
+			badge.add_theme_color_override("font_color", GOLD)
+			badge.add_theme_color_override("font_outline_color", Color(0.05, 0.03, 0.08))
+			badge.add_theme_constant_override("outline_size", 4)
+			badge.add_theme_font_size_override("font_size", 11)
+			b.add_child(badge)
+			b.self_modulate = Color(0.8, 0.8, 0.85)
 	else:
 		b.text = GLYPH.get(n.type, "·")
 		b.add_theme_color_override("font_color", INK if learned or can else DIM)
