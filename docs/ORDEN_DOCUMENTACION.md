@@ -6,6 +6,8 @@
 
 ## 1. Regla principal: diseño no significa implementación
 
+Para continuar el desarrollo con Claude, consultar obligatoriamente `docs/INSTRUCCIONES_CLAUDE.md` al inicio de cada sesión. Ese manual organiza las tareas y el flujo de trabajo; este índice sigue siendo la referencia para resolver qué documento manda en cada tema.
+
 En toda la documentación se deben distinguir estos estados:
 
 - **Implementado:** existe en el código/escenas actuales y se puede comprobar ejecutando el proyecto.
@@ -21,6 +23,7 @@ No usar una casilla [x], una tabla de diseño o el número de entradas de un cat
 | Tema | Fuente principal | Documentos de apoyo |
 |---|---|---|
 | Estado actual del juego, cómo ejecutarlo y controles | README.md, docs/estado_del_trabajo.md y project.godot | escenas y scripts reales |
+| Instrucciones de trabajo, prioridades y seguimiento para Claude | docs/INSTRUCCIONES_CLAUDE.md | este índice, estado de trabajo y documentación específica |
 | Dirección visual, cámara, escala, paleta y calidad mínima | docs/guia_de_arte.md | art/FUENTES.md, capturas de docs/screenshots/ |
 | Reutilización de sprites y optimización del trabajo artístico | docs/guia_arte_sin_tantos_sprites.md | tools/art_pipeline/, art/FUENTES.md |
 | Historia, personajes, canon y estructura de capítulos | documento narrativo maestro de GUILD ZERO y documentos de historia existentes | diálogos/misiones implementados; indicar por separado qué está jugable |
