@@ -42,6 +42,7 @@ Fractura y su guarida. Todo el contenido nuevo debe mantener este nivel visual (
 | Chispa: proyectil de fuego (8 PM) | Q o U |
 | Estallido: anillo de fuego alrededor del héroe (25 PM) | E o I |
 | Hablar / abrir un cofre | F |
+| Inventario (Intro usa el objeto) | Tab |
 
 ## Creador de personaje
 
@@ -54,11 +55,11 @@ caminando en la vista previa. Ver [docs/creador_personaje.md](docs/creador_perso
 
 ## Modo edición (desarrollo)
 
-Pulsando **F1** mientras juegas, el juego se pausa y se abre un editor para decorar el nivel: una
+Pulsando **M** mientras juegas, el juego se pausa y se abre un editor para decorar el nivel: una
 paleta con todos los sprites (incluidas imágenes nuevas sin procesar, que se recortan y se escalan
 solas), colocar, mover, girar (cambia a la vista dibujada para cada dirección), espejo, tamaño, borrar,
 duplicar, deshacer y pincel de caminos. Los cambios se guardan solos en `data/edits/` y se juegan al
-volver a pulsar F1. Ver [docs/modo_edicion.md](docs/modo_edicion.md).
+volver a pulsar M. Ver [docs/modo_edicion.md](docs/modo_edicion.md).
 
 | | |
 |---|---|
@@ -134,7 +135,7 @@ scripts/
   effects/      Comportamiento de los efectos
   environment/  Casas, cofre y fondo lejano
   systems/      Sensación de impacto, salidas, catálogo de sprites y cambios de cada nivel
-  tools/        Modo edición (F1)
+  tools/        Modo edición (M)
   ui/           Interfaz
 shaders/        Bloques de terreno, franjas de suelo y contorno
 tools/

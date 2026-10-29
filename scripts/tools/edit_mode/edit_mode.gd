@@ -1,5 +1,5 @@
 extends CanvasLayer
-## Developer edit mode. F1 (or F4) switches between playing and editing the current level: the game pauses,
+## Developer edit mode. M switches between playing and editing the current level: the game pauses,
 ## the camera flies free, and objects can be placed from a palette of every sprite in the asset
 ## folders, then selected, moved, turned (through the views drawn for each direction), mirrored,
 ## resized, raised, copied or removed; the paths on the ground can be painted. Every change is saved
@@ -63,7 +63,7 @@ func _exit_tree() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode in [KEY_F1, KEY_F4]:
+	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_M:
 		set_active(not active)
 		get_viewport().set_input_as_handled()
 		return
@@ -108,7 +108,7 @@ func set_active(on: bool) -> void:
 		_redo.clear()
 		active = true
 		_panel.open(_level.name)
-		_panel.say("F1: volver a jugar · H: ayuda")
+		_panel.say("M: volver a jugar · H: ayuda")
 	else:
 		_press = {}
 		_drop_tool()
@@ -809,4 +809,4 @@ func _describe() -> String:
 			what += " · %d°" % roundi(st.rot)
 		return "%s ×%.2f · %s · (%.1f, %.1f) · arrastra para mover · R girar · Supr borrar · Ctrl+D duplicar%s" % [
 				what, st.scale, "sólido" if st.solid else "atravesable", st.pos.x, st.pos.z, flags]
-	return "Clic: seleccionar · elige en el panel para colocar · WASD: cámara · rueda: zoom · H: ayuda · F1: jugar" + flags
+	return "Clic: seleccionar · elige en el panel para colocar · WASD: cámara · rueda: zoom · H: ayuda · M: jugar" + flags

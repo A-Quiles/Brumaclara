@@ -33,6 +33,13 @@ func _run() -> void:
 	_check(total >= 150, "the trees hold %d nodes" % total)
 	_check(types.has("activa") and types.has("pasiva") and types.has("definitiva"), "all three node types exist")
 
+	# items are counted, never go below zero and a new game empties the bag
+	_p.add_item(&"pocion_bruma", 2)
+	_p.add_item(&"pocion_bruma", -1)
+	_check(_p.items.get(&"pocion_bruma", 0) == 1, "items are added and used up")
+	_p.add_item(&"pocion_bruma", -1)
+	_check(not _p.items.has(&"pocion_bruma"), "an empty stack disappears")
+
 	# levels give points
 	_check(_p.level == 1 and _p.pa == 0, "a new game starts at level 1 with no PA")
 	var gained: int = _p.gain_xp(60)

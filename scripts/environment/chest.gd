@@ -5,6 +5,7 @@ extends StaticBody3D
 @export var orb_scene: PackedScene
 @export var orbs := 3
 @export var xp_per_orb := 15
+@export var item: StringName = &"pocion_bruma"  ## what the chest holds besides the orbs
 @export var message := "¡Un cofre escondido!"
 
 var _hero_near := false
@@ -34,6 +35,9 @@ func _open() -> void:
 	_opened = true
 	_prompt.visible = false
 	_sprite.play("open")
+	if item != &"":
+		Progress.add_item(item)
+		message += " (+ %s)" % Progress.ITEMS[item].name
 	get_tree().call_group("hud", "say", message)
 	await _sprite.animation_finished
 	for i in orbs:  # a small fan of orbs in front of the chest

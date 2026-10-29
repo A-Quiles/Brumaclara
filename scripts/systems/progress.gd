@@ -19,6 +19,10 @@ const ATTR_CAP := {"vitalidad": 999, "poder": 25, "control": 25, "agilidad": 15}
 ## level at which the Brumaclara shrine can awaken each secondary affinity (stand-in for the
 ## shrines of chapters 3 and 5, which do not exist yet)
 const SECONDARY_LEVELS := [10, 20]
+## every item: name, description, and what using it restores (hp, mp)
+const ITEMS := {
+	&"pocion_bruma": {"name": "Poción de bruma", "text": "Un frasco de niebla clara. Restaura 40 PV y 20 PM.", "hp": 40, "mp": 20},
+}
 
 var save_enabled := true  ## tests switch it off so they never touch the player's game
 
@@ -36,6 +40,8 @@ var learned: Array[StringName] = []
 var free_nodes: Array[StringName] = []  ## given with the affinity: never refunded
 var equipped: Array[StringName] = [&"", &"", &"", &""]
 var ultimate: StringName = &""
+
+var items := {}  ## item id -> how many the hero carries (ITEMS lists what exists)
 
 var _stats := {}
 var _skills := {}
@@ -69,6 +75,7 @@ func new_game() -> void:
 	free_nodes.clear()
 	equipped = [&"", &"", &"", &""]
 	ultimate = &""
+	items.clear()
 	_changed()
 
 
@@ -92,6 +99,10 @@ func load_game() -> void:
 	ultimate = StringName(data.get("ultimate", ""))
 	if ultimate not in learned:
 		ultimate = &""
+	items.clear()
+	for id in data.get("items", {}):
+		if ITEMS.has(StringName(id)):
+			items[StringName(id)] = maxi(int(data.items[id]), 0)
 	_invalidate()
 
 
@@ -102,7 +113,16 @@ func save_game() -> void:
 	if f:
 		f.store_string(JSON.stringify({"level": level, "xp": xp, "pa": pa, "attr_points": attr_points,
 				"attrs": attrs, "principal": principal, "awakened": awakened, "learned": learned,
-				"free_nodes": free_nodes, "equipped": equipped, "ultimate": ultimate}, "\t"))
+				"free_nodes": free_nodes, "equipped": equipped, "ultimate": ultimate, "items": items}, "\t"))
+
+
+# --- items -------------------------------------------------------------------------------------
+
+func add_item(id: StringName, count := 1) -> void:
+	items[id] = items.get(id, 0) + count
+	if items[id] <= 0:
+		items.erase(id)
+	_changed()
 
 
 # --- experience -------------------------------------------------------------------------------
