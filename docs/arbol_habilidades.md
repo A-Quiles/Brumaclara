@@ -7,7 +7,7 @@ jugando y viven en las fichas de datos (`data/skills`), no en el código.
 El juego tiene **seis afinidades**: fuego, hielo, rayo, sombra, tierra y luz. Cada una tiene su propio
 árbol de **51–55 nodos con 21 habilidades activas distintas, cada una con su mejora**, sus pasivas y una
 definitiva. Además hay un **tronco común del aventurero** (32 nodos, sin afinidad) y un árbol pequeño
-por **gremio** (9 nodos). En total, unos 390 nodos; ninguna partida puede comprarlos todos.
+por **gremio** (9 nodos). El catálogo generado contiene 320 nodos de afinidad y 32 del tronco común: 352 nodos en esas siete tablas. Los árboles de gremio se contabilizan aparte y no se suman aquí. Este total describe los datos documentados, no implica que todos los efectos estén implementados o equilibrados. Para recuentos exactos, prevalece siempre `docs/habilidades_lista.md`, generado desde `data/trees/*.json`.
 
 La lista completa de nodos, con sus números, está en `docs/habilidades_lista.md` (generada desde los
 datos). Las secciones 3.x de este documento cuentan la idea de cada rama y sus nodos originales; las
