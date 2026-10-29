@@ -24,9 +24,15 @@ Fractura y su guarida. Todo el contenido nuevo debe mantener este nivel visual (
 
 ## Cómo jugar
 
-1. Instala [Godot 4.7](https://godotengine.org/download) (versión estándar, no hace falta .NET).
-2. Abre Godot → *Importar* → selecciona `project.godot`.
-3. Pulsa **F5**. El juego empieza en el creador de personaje; tu elección se guarda para la próxima vez.
+1. Descarga [Godot 4.7](https://godotengine.org/download) (versión estándar, no hace falta .NET). No se
+   instala: es un `.zip` con un ejecutable que se abre tal cual.
+2. Descarga el proyecto (*Code → Download ZIP*) y descomprímelo.
+3. Abre Godot → *Importar* → selecciona `project.godot` → **F5**. El juego empieza en el creador de
+   personaje; tu elección se guarda para la próxima vez.
+
+**En el navegador:** `sh tools/web/publish.sh` exporta el juego para la web y lo sube a la rama
+`gh-pages`; con GitHub Pages activado sobre esa rama (*Settings → Pages*) se juega en
+`https://a-quiles.github.io/Brumaclara/`, sin instalar nada.
 
 | Acción | Teclas |
 |---|---|
