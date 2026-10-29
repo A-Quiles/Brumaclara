@@ -1,7 +1,6 @@
 # Cómo seguir sin generar sprites para todo, y cómo mantener el pixelado coherente
 
-Notas de producción (29 de octubre de 2026). Resumen de lo que hacen los equipos pequeños de pixel art y
-de lo que ya aplica GUILD ZERO o puede aplicar a partir de ahora.
+Notas de producción (29 de octubre de 2026). Manual operativo para reducir costes de arte, reutilizar recursos y mantener coherencia visual. Distingue siempre lo que ya existe en el repositorio de lo que es una propuesta.
 
 ## 1. Necesitar menos dibujos
 
@@ -43,8 +42,7 @@ poses y estilo.
 
 ## 2. ¿Se integra bien todo visualmente?
 
-Revisión con las capturas actuales. El juego se dibuja a **640 × 360** y se amplía por múltiplos enteros, así
-que un píxel del juego siempre ocupa el mismo cuadrado de pantalla. Lo que cambia entre piezas es cuánto
+Revisión con las capturas actuales. La configuración real de `project.godot` es **640 × 360**, con ventana objetivo de **1920 × 1080** y escalado entero. Es la configuración vigente; no la cambies sin hacer la prueba comparativa descrita al final. Lo que cambia entre piezas es cuánto
 detalle cabe en cada píxel:
 
 | Pieza | Píxeles por unidad del mundo | Cómo se ve |
@@ -88,3 +86,29 @@ fuentes en `art/ai/` sin generar nada nuevo.
 - [Pixel Art Resolution Guide — Pixnote](https://pixnote.net/en/learn/resolution)
 - [Texel Density Basics — RebusFarm](https://rebusfarm.net/blog/texel-density-basics-every-artist-should-know)
 - [How does one create flexible pixel art? — GameDev.net](https://gamedev.net/forums/topic/660334-how-does-one-create-flexible-pixel-art/5176499/)
+
+
+## 7. Prueba controlada de resolución: no cambiar por intuición
+
+La resolución interna vigente sigue siendo **640 × 360**. No adoptar 960 × 540 como nueva norma sin medirlo: el mayor número de píxeles no arregla por sí solo el estilo, la composición ni los recursos que vienen de fuentes distintas.
+
+### Protocolo A/B (propuesta, no cambio aplicado)
+
+1. Crea una rama de prueba y guarda capturas de referencia en 640 × 360 antes de tocar `project.godot`.
+2. Cambia solo la resolución interna a 960 × 540 y comprueba el escalado en 1920 × 1080 (factor entero ×2). No cambies a la vez cámara, tamaño de sprites, luces ni materiales.
+3. Usa exactamente las mismas escenas y condiciones: plaza de día y noche, calle con fachadas, afueras con hierba y lobo, interior, diálogo/HUD y efectos de las seis afinidades.
+4. Compara legibilidad del héroe, bordes de sprites, texturas, textos, oclusión, aliasing, rendimiento y consistencia de píxel. Prueba también ventana redimensionada y exportación web.
+5. Conserva 960 × 540 solo si mejora de forma visible el conjunto sin obligar a rehacer recursos ni producir escalas mixtas. Si no hay una mejora clara, vuelve a 640 × 360.
+6. Registra el resultado y la decisión en este documento y en `docs/guia_de_arte.md`.
+
+### Reglas obligatorias para ahorrar recursos
+
+- Reutiliza primero sprites, paletas, máscaras, animaciones, variantes por color y efectos procedurales ya disponibles; genera arte nuevo solo si añade una silueta, función o comportamiento que no pueda lograrse con lo existente.
+- No crees un enemigo nuevo que sea solo un recolor. Una variante debe aportar una regla de combate, patrón de movimiento, ataque o respuesta reconocible.
+- Refleja horizontalmente una vista lateral cuando la asimetría no sea narrativa; no generes dos hojas casi idénticas.
+- Construye variaciones de vestuario y color mediante máscaras/capas cuando la arquitectura actual lo permita; evita multiplicar hojas completas por cada combinación.
+- Usa partículas, anillos, destellos, estelas y cambios de intensidad del motor para efectos simples; reserva sprites únicos para siluetas o animaciones que realmente lo necesiten.
+- Genera hojas de sprites con cuadrícula y número de fotogramas definidos, fondo uniforme, escala y orientación coherentes. Inspecciona la hoja antes de integrarla y descarta celdas defectuosas; no arregles errores de dibujo a base de lógica compleja.
+- Integra cada recurso mediante `tools/art_pipeline/build.py` o la receta existente. No edites manualmente los archivos generados en `assets/` si el pipeline puede regenerarlos.
+- Registra origen, licencia/condiciones de uso, limitaciones y receta en `art/FUENTES.md`.
+- Antes de aceptar arte nuevo, compáralo dentro de la escena real, no aislado sobre fondo plano. Recházalo si rompe la silueta, densidad de píxel, paleta, iluminación o escala del resto del juego.

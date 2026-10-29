@@ -1,17 +1,19 @@
 # Estado del trabajo (octubre 2026)
 
+> Este documento es la referencia del estado implementado y de los pendientes. Los árboles, enemigos y regiones de otros documentos pueden describir contenido diseñado o previsto; no se considerarán jugables hasta verificarlos en el código y en una ejecución. El índice de fuentes de verdad está en `docs/ORDEN_DOCUMENTACION.md`.
+
 Resumen de lo que hay en el repositorio, lo que falta y cómo probarlo. Las directrices del proyecto están en
 `docs/instrucciones_del_proyecto.md`.
 
 ## Qué está hecho
 
 - **Juego jugable:** creador de personaje, pueblo de Brumaclara con personajes y diálogos, afueras con combate,
-  interiores (posada, sede del Faro, tienda, taller), árbol de habilidades con cuatro afinidades y tronco común,
+  interiores (posada, sede del Faro, tienda, taller), árbol de habilidades parcialmente implementado (consulta el estado de las afinidades en el código y el catálogo de diseño en `docs/arbol_habilidades.md`),
   progreso guardado y modo edición de niveles.
 - **Monstruos:** zona 1 completa en el juego con arte propio: roedor de bruma, jabalí espinoso y cuervo de bruma
   (Canva, marca de la Fractura). El resto de monstruos de la galería del bestiario tienen arte de la tanda anterior.
 - **Personajes de la historia:** Iven, Neris, Tovan, Rhea, Caldus, Lio y Sella, con su hoja de movimiento de 4×3.
-- **Habilidades:** 21 activas por afinidad, cada una con su mejora e icono propio (165 iconos en total).
+- **Habilidades:** el catálogo define 21 activas por afinidad, cada una con su mejora e icono propio (165 iconos en total); no se debe interpretar como prueba de que las seis afinidades estén completas en juego. El catálogo exacto está en `docs/habilidades_lista.md`.
 - **Exportación web:** `tools/web/publish.sh` exporta el juego y lo sube a la rama `gh-pages`.
 
 ## Novedades del 29 de octubre de 2026

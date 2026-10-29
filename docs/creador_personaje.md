@@ -7,9 +7,9 @@ túnica, chaleco de tela, cinturón con bolsa, brazales y botas. Sin capa ni buf
 | Opción | Qué cambia |
 |---|---|
 | Género | El modelo dibujado: hombre o mujer |
-| Peinado | Los peinados dibujados para ese género (12 modelos: por género, el original, alto, cresta, moño, largo y volumen) |
+| Peinado | 6 modelos dibujados disponibles en total: 4 masculinos y 2 femeninos (consulta `scripts/systems/hero_look.gd`, `MODELS`) |
 | Pelo | 26 colores |
-| Piel | 5 tonos (el original, clara, media, morena y oscura) |
+| Piel | 12 opciones, incluida la original |
 | Cuero / Pantalón | 10 y 9 colores para cinturón, botas y pantalón |
 | Atuendo | 19 combinaciones (antes 9) de colores para la túnica y el chaleco (Viajero, Campesino, Leñador, Marinero, Herrero, Mercader, Brasa, Bruma y Noche) |
 
@@ -37,9 +37,6 @@ un aspecto. Al empezar se guarda en `user://personaje.json` y el juego lo usa en
 ## Pendiente
 
 - **Más peinados.** Cada peinado es un juego completo de tres hojas. El siguiente previsto es un hombre
-  con pelo corto rubio. Los créditos de IA de Figma del plan Starter se agotaron el 24 de octubre de 2026
-  y vuelven el 1 de noviembre. Canva sabe editar una hoja existente cambiando solo el peinado
-  (`generate-image` con la hoja como referencia), pero la imagen a tamaño completo solo se puede bajar
-  exportando un diseño de Canva.
+  con pelo corto rubio. La cola vigente de peinados pendientes está en `tools/data/hair_queue.json`. Consulta `art/FUENTES.md` para las fuentes y limitaciones actuales; no supongas que una fecha de recarga de créditos antigua sigue vigente.
 - **Espadas finas.** En algunos fotogramas de ataque la hoja de la espada queda muy fina al reducirla al
   píxel del juego.
