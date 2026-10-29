@@ -37,7 +37,7 @@ def _texture(rgb, size, colours, band=14, saturation=1.0, value=1.0, flatten=0.0
 
 
 GROUND = {  # source -> (texture, colours, saturation, value, flatten)
-    "grass": ("grass", 22, 0.78, 0.92, 10.0),
+    "grass": ("grass_nuevo", 22, 0.78, 0.92, 10.0),  # kept for other places; the town uses the classic grass.png
     "cobble": ("cobble", 24, 0.95, 1.0, 0.0),
     "dirt": ("dirt", 20, 0.9, 1.0, 10.0),
 }

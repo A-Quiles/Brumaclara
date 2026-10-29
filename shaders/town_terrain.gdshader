@@ -13,7 +13,7 @@ uniform sampler2D forest : source_color, filter_nearest_mipmap, repeat_enable;
 uniform sampler2D paths : filter_linear;  // the mask, covering `area`
 uniform vec4 area = vec4(-44.0, -54.0, 88.0, 98.0);  // x, z, width, depth
 uniform float tile = 5.45;
-uniform float big_tile = 10.9;  // grass and cobble: the second art pass draws them at twice the size (same 20 texels per unit)
+uniform float big_tile = 10.9;  // cobble: the second art pass draws it at twice the size (same 20 texels per unit)
 uniform float texels = 20.0;
 
 varying vec3 world_pos;
@@ -40,7 +40,7 @@ void fragment() {
 	float wobble = noise(cell * 1.3) - 0.5;
 	vec2 uv = world_pos.xz / tile;
 	vec2 big = world_pos.xz / big_tile;
-	vec3 colour = texture(grass, big).rgb;
+	vec3 colour = texture(grass, uv).rgb;  // the classic grass; grass_nuevo.png is kept for other places
 	vec4 mask = texture(paths, (cell - area.xy) / area.zw);
 	float edge = 0.5 + wobble * 0.5;  // ragged borders
 	if (mask.a > edge) colour = texture(forest, uv).rgb;
