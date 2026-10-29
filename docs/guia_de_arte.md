@@ -6,15 +6,14 @@ héroe y del lobo de esa escena, no está terminado.
 
 ## 1. Objetivo
 
-Fantasía anime en píxel art: mundo 3D en perspectiva elevada de tres cuartos con personajes 2D, en la
-línea de lectura visual de los RPG de Nintendo DS como Pokémon Blanco 2 / Negro 2, con diseños propios.
+Fantasía de aventura con identidad propia: escenario 3D estilizado, cámara elevada de tres cuartos y personajes/objetos 2D en píxel art integrado. La referencia de Pokémon Blanco 2 / Negro 2 solo sirve para estudiar legibilidad, escala y lectura del mundo; NO es la plantilla estética que se debe imitar. Evitar siluetas, paletas, edificios, interfaz y composición que parezcan una copia de Pokémon. Brumaclara debe sentirse como un lugar vivido, con arquitectura irregular, materiales creíbles, paleta atmosférica y detalles propios.
 Debe leerse en una captura pequeña: héroe reconocible, profundidad, enemigos distinguibles y magia clara.
 
 ## 2. Resolución y cámara
 
 | Elemento | Valor |
 |---|---|
-| Resolución interna | 640 × 360, escalado entero ×3 a 1920 × 1080, filtrado *nearest* |
+| Resolución interna vigente | 640 × 360; ventana objetivo 1920 × 1080; escalado entero, modo `viewport`, filtrado de pixel art sin suavizado. Fuente de verdad: `project.godot`. |
 | Cámara | lente desplazada: plano de imagen vertical (las verticales se dibujan verticales, como en un píxel art pintado) y ventana desplazada hacia abajo; equivale a mirar unos 27–30° hacia abajo, hacia el norte |
 | Encuadre | el héroe a ~78 % de la altura de la pantalla; el pueblo sube por niveles hacia el fondo |
 | Escala | 1 unidad del mundo = 22,3 px a la distancia del héroe; 1 píxel de sprite = 0,0449 unidades |
