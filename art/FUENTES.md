@@ -1,5 +1,7 @@
 # Fuentes del arte
 
+> **Nota de dirección artística vigente (29 de octubre de 2026):** los prompts históricos de este registro contienen referencias a Pokémon Blanco 2 / Negro 2 porque se usaron para explicar una lectura visual de RPG de Nintendo DS. Son documentación del origen de esas imágenes, no una instrucción para el arte nuevo. La dirección actual exige una identidad visual propia y prohíbe imitar directamente siluetas, edificios, paletas, composición o interfaz de Pokémon. Para cualquier recurso nuevo mandan `docs/guia_de_arte.md` y `docs/ORDEN_DOCUMENTACION.md`. No reescribir los prompts antiguos como si fueran la dirección vigente: conservarlos como registro histórico y añadir la nueva dirección a los prompts futuros.
+
 Registro de cada imagen de origen del juego: con qué se hizo, cuándo y con qué indicación (prompt).
 Las imágenes en bruto están en `art/ai/` (Godot no las importa: la carpeta `art/` tiene `.gdignore`).
 `tools/art_pipeline/build.py` las convierte en los recursos del juego en `assets/`.
