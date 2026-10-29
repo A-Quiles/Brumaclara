@@ -2,7 +2,7 @@ extends StaticBody3D
 ## A building made of house shells and roof ornaments. It turns see-through while it stands
 ## between the camera and the hero (see occlusion_fader.gd).
 
-const FADED_ALPHA := 0.35
+const FADED_ALPHA := 0.5
 
 
 func _ready() -> void:
