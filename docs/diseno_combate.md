@@ -8,8 +8,8 @@ implementados; el resto es la propuesta de partida, para ajustar jugando. Viven 
 Documentos que lo completan:
 
 - `docs/arbol_habilidades.md`: las **seis afinidades** (fuego, hielo, rayo, sombra, tierra y luz), sus
-  árboles de 25 nodos, el tronco común del aventurero, las técnicas de gremio y el sistema de puntos.
-- `docs/bestiario.md`: los 53 enemigos, las 8 élites de contrato y los 10 jefes, zona a zona.
+  árboles con 51–55 nodos por afinidad (320 nodos de afinidad en total), el tronco común del aventurero (32 nodos), las técnicas de gremio y el sistema de puntos. El catálogo cuantitativo de referencia es `docs/habilidades_lista.md`; estos recuentos describen datos de diseño, no garantizan que cada nodo esté completamente implementado.
+- `docs/bestiario.md`: el catálogo de criaturas y jefes por zona. Sus cantidades describen el diseño documentado; consulta `README.md` y las fichas de datos antes de afirmar que todo está implementado.
 
 ## 1. Principios
 
