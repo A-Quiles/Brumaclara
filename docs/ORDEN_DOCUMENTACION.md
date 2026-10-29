@@ -20,7 +20,7 @@ No usar una casilla [x], una tabla de diseño o el número de entradas de un cat
 
 | Tema | Fuente principal | Documentos de apoyo |
 |---|---|---|
-| Estado actual del juego, cómo ejecutarlo y controles | README.md y project.godot | escenas y scripts reales |
+| Estado actual del juego, cómo ejecutarlo y controles | README.md, docs/estado_del_trabajo.md y project.godot | escenas y scripts reales |
 | Dirección visual, cámara, escala, paleta y calidad mínima | docs/guia_de_arte.md | art/FUENTES.md, capturas de docs/screenshots/ |
 | Reutilización de sprites y optimización del trabajo artístico | docs/guia_arte_sin_tantos_sprites.md | tools/art_pipeline/, art/FUENTES.md |
 | Historia, personajes, canon y estructura de capítulos | documento narrativo maestro de GUILD ZERO y documentos de historia existentes | diálogos/misiones implementados; indicar por separado qué está jugable |
@@ -65,7 +65,7 @@ El resumen generado actualmente en docs/habilidades_lista.md enumera:
 | Aventurero | 32 |
 | **Afinidades + aventurero** | **352** |
 
-Los árboles de gremio se contabilizan aparte y no se incluyen en el total de 352. Esta cifra describe el catálogo generado de datos; no certifica que cada habilidad, mejora o efecto esté plenamente implementado, equilibrado o probado. Para cambios de datos, ejecutar el generador y actualizar docs/habilidades_lista.md; no corregir esa lista manualmente.
+Los árboles de gremio se contabilizan aparte y no se incluyen en el total de 352. Esta cifra describe el catálogo generado de datos; no certifica que cada habilidad, mejora o efecto esté plenamente implementado, equilibrado o probado. El estado de trabajo documenta una implementación jugable parcial; no describir las seis afinidades como completamente implementadas sin verificarlo en el juego. Para cambios de datos, ejecutar el generador y actualizar docs/habilidades_lista.md; no corregir esa lista manualmente.
 
 ## 5. Canon narrativo aprobado
 
@@ -79,7 +79,7 @@ Las decisiones siguientes son canon de diseño y deben mantenerse al actualizar 
 6. El tono combina misterio y aventura; los personajes importantes deben tener arcos propios y consecuencias creíbles.
 7. La campaña apunta a 7–9 regiones compactas, unas 20 horas de historia principal y 25–30 horas con contenido opcional. Son objetivos de diseño, no una afirmación de que toda esa campaña esté ya construida.
 
-El protagonista debe sentirse como una persona que busca trabajo y construye su propia leyenda, no como un héroe predestinado. Mantener la coherencia entre este canon, el creador de personaje y las descripciones del arte.
+El protagonista debe sentirse como una persona que busca trabajo y construye su propia leyenda, no como un héroe predestinado. El creador de personaje tiene actualmente seis modelos dibujados en total (cuatro masculinos y dos femeninos); sus opciones deben documentarse desde `scripts/systems/hero_look.gd`, no desde una lista histórica de peinados. Mantener la coherencia entre este canon, el creador de personaje y las descripciones del arte.
 
 ## 6. Reglas de producción para ahorrar sprites
 
