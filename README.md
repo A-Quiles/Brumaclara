@@ -2,7 +2,7 @@
 
 RPG de acción y aventura de fantasía anime en píxel art, desarrollado con **Godot 4.7**.
 Este repositorio es el **juego final** en desarrollo (ya no un prototipo ni una demo). El diseño completo
-está en el GDD del proyecto (título de trabajo: *GUILD ZERO*) y en `docs/`: combate
+está en el GDD del proyecto (título de trabajo: *GUILD ZERO*) y en `docs/`. Para continuar el desarrollo con Claude, la referencia operativa obligatoria es [docs/INSTRUCCIONES_CLAUDE.md](docs/INSTRUCCIONES_CLAUDE.md); resume prioridades, estados, flujo de trabajo y registro de sesiones. El estado verificado se mantiene en [docs/estado_del_trabajo.md](docs/estado_del_trabajo.md). El diseño incluye combate
 (`diseno_combate.md`), árboles de habilidades de las seis afinidades (`arbol_habilidades.md`) y
 bestiario (`bestiario.md`).
 
