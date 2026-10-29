@@ -1,7 +1,8 @@
 extends Control
 ## The character creator shown when the game starts: gender and hairstyle (the drawn models of
-## HeroLook), hair and skin colour and outfit, with the hero walking in a preview. Arrows or WASD
-## move through the options, Enter starts the game in Brumaclara with the look saved.
+## HeroLook), hair and skin colour and outfit, with the hero standing in a preview (drag it with the
+## mouse to turn it round). Arrows or WASD move through the options, Enter starts the game in
+## Brumaclara with the look saved.
 
 const FONT := preload("res://assets/fonts/pixelify_sans_medium.woff")
 const BACKDROP := preload("res://assets/environment/backdrop/far_scenery.png")
@@ -16,12 +17,14 @@ const OPTIONS := ["Género", "Peinado", "Pelo", "Piel", "Atuendo", "Cuero", "Pan
 const ROW_RANDOM := 7
 const ROW_NEW := 8
 const ROW_CONTINUE := 9  # only with a saved game
+const PREVIEW := Rect2(60, 70, 190, 225)  # the hero's patch: dragging here turns the hero round
+const DRAG_STEP := 24.0  # pixels of drag per quarter turn
 
 var look := HeroLook.load_look()
 var _rows := 9
 var _row := 0
 var _turn := 0
-var _turn_clock := 0.0
+var _drag := -1.0  # mouse x at the last turn while dragging; -1 when not dragging
 var _hero: AnimatedSprite2D
 var _values: Array[Label] = []
 var _swatches: Array[ColorRect] = []
@@ -38,11 +41,17 @@ func _ready() -> void:
 	_refresh()
 
 
-func _process(delta: float) -> void:
-	_turn_clock += delta
-	if _turn_clock > 2.2:  # the preview turns round by itself
-		_turn_clock = 0.0
-		_turn = (_turn + 1) % TURN.size()
+## The preview only moves while the player drags it: it walks as it turns, and stands still after.
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed and PREVIEW.has_point(event.position):
+			_drag = event.position.x
+		elif not event.pressed and _drag >= 0.0:
+			_drag = -1.0
+			_play()
+	elif event is InputEventMouseMotion and _drag >= 0.0 and absf(event.position.x - _drag) >= DRAG_STEP:
+		_turn = posmod(_turn + (1 if event.position.x > _drag else -1), TURN.size())
+		_drag = event.position.x
 		_play()
 
 
@@ -139,7 +148,11 @@ func _refresh() -> void:
 
 func _play() -> void:
 	_hero.flip_h = TURN[_turn][1]
-	_hero.play(TURN[_turn][0])
+	if _drag >= 0.0:
+		_hero.play(TURN[_turn][0])
+	else:  # standing still on the first frame
+		_hero.play((TURN[_turn][0] as String).replace("walk", "idle"))
+		_hero.stop()
 
 
 func _build() -> void:
@@ -251,7 +264,7 @@ func _build() -> void:
 		_lines.append(line)
 
 	var hint := Label.new()
-	hint.text = "Flechas o WASD: elegir · Intro: confirmar"
+	hint.text = "Flechas o WASD: elegir · Intro: confirmar · Arrastra al personaje para girarlo"
 	hint.add_theme_color_override("font_color", DIM)
 	hint.position = Vector2(318, 338)
 	add_child(hint)

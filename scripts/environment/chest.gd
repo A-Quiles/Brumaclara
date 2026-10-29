@@ -1,6 +1,7 @@
 extends StaticBody3D
 ## Treasure chest: when the hero stands next to it, a prompt appears; the interact key opens it
-## (its opening frames play once) and its coins burst out as experience orbs. It stays open.
+## (its opening frames play once), its coins burst out as experience orbs and the hero takes 20 coins and
+## a potion (the inventory). It stays open.
 
 @export var orb_scene: PackedScene
 @export var orbs := 3
@@ -34,7 +35,9 @@ func _open() -> void:
 	_opened = true
 	_prompt.visible = false
 	_sprite.play("open")
-	get_tree().call_group("hud", "say", message)
+	get_tree().call_group("hud", "say", message + "  +20 monedas, Poción de vida")
+	Progress.add_item(&"monedas", 20)
+	Progress.add_item(&"pocion")
 	await _sprite.animation_finished
 	for i in orbs:  # a small fan of orbs in front of the chest
 		var orb: Node3D = orb_scene.instantiate()

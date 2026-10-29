@@ -36,17 +36,24 @@ Fractura y su guarida. Todo el contenido nuevo debe mantener este nivel visual (
 
 | Acción | Teclas |
 |---|---|
-| Moverse | WASD o flechas |
-| Espada (encadena golpes) | J o clic izquierdo |
+| Moverse (en 8 direcciones) | WASD o flechas |
+| Correr | Mayús (mantener) |
+| Espada (encadena golpes; también andando, nunca corriendo) | J o clic izquierdo |
 | Esquivar (invulnerable un instante) | Espacio o K |
-| Chispa: proyectil de fuego (8 PM) | Q o U |
-| Estallido: anillo de fuego alrededor del héroe (25 PM) | E o I |
+| Habilidades equipadas | Q, E, R, C |
+| Definitiva | X |
+| Árbol de habilidades | T |
+| Inventario (usar pociones y tónicos) | Tab |
 | Hablar / abrir un cofre | F |
+| Modo edición (desarrollo) | M |
+
+Al cruzar una puerta o la salida de un mapa, el héroe entra andando y la pantalla funde a negro. Los
+edificios solo se vuelven algo transparentes cuando tapan al héroe entero.
 
 ## Creador de personaje
 
-Al empezar eliges hombre o mujer, peinado, color de pelo, color de piel y atuendo, con el héroe
-caminando en la vista previa. Ver [docs/creador_personaje.md](docs/creador_personaje.md).
+Al empezar eliges hombre o mujer, peinado, color de pelo, color de piel y atuendo. El héroe se
+queda quieto en la vista previa; arrástralo con el ratón para girarlo. Ver [docs/creador_personaje.md](docs/creador_personaje.md).
 
 | | |
 |---|---|
@@ -54,11 +61,11 @@ caminando en la vista previa. Ver [docs/creador_personaje.md](docs/creador_perso
 
 ## Modo edición (desarrollo)
 
-Pulsando **F1** mientras juegas, el juego se pausa y se abre un editor para decorar el nivel: una
+Pulsando **M** mientras juegas, el juego se pausa y se abre un editor para decorar el nivel: una
 paleta con todos los sprites (incluidas imágenes nuevas sin procesar, que se recortan y se escalan
 solas), colocar, mover, girar (cambia a la vista dibujada para cada dirección), espejo, tamaño, borrar,
 duplicar, deshacer y pincel de caminos. Los cambios se guardan solos en `data/edits/` y se juegan al
-volver a pulsar F1. Ver [docs/modo_edicion.md](docs/modo_edicion.md).
+volver a pulsar M. Ver [docs/modo_edicion.md](docs/modo_edicion.md).
 
 | | |
 |---|---|
@@ -134,7 +141,7 @@ scripts/
   effects/      Comportamiento de los efectos
   environment/  Casas, cofre y fondo lejano
   systems/      Sensación de impacto, salidas, catálogo de sprites y cambios de cada nivel
-  tools/        Modo edición (F1)
+  tools/        Modo edición (M)
   ui/           Interfaz
 shaders/        Bloques de terreno, franjas de suelo y contorno
 tools/

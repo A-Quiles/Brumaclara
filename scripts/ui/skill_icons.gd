@@ -49,3 +49,12 @@ static func passive(affinity: String, alt := false, id: StringName = &"") -> Tex
 		return _icon(affinity, int(entry.icons[str(id)]))
 	var key := "pasiva2" if alt and entry.has("pasiva2") else "pasiva"
 	return _icon(affinity, int(entry[key])) if entry.has(key) else null
+
+
+## The icon of an inventory item (Progress.ITEMS): a cell of the adventurer's sheet or a skill's icon.
+static func item(id: StringName) -> Texture2D:
+	_load()
+	var it: Dictionary = Progress.ITEMS[id]
+	if it.has("skill_icon"):
+		return for_skill(it.skill_icon)
+	return _icon("tronco", int(it.icon))

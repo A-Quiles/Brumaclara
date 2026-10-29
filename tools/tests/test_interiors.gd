@@ -21,7 +21,11 @@ func _run() -> void:
 		var door: Area3D = town.get_node("Buildings/%s/Puerta" % building)
 		var hero: Node3D = town.get_node("Player")
 		hero.global_position = door.global_position + Vector3(0, 0.3, 0)
-		await _frames(20)
+		for i in 120:  # the hero walks in and the screen fades out first (Transition)
+			await physics_frame
+			if current_scene != town:
+				break
+		await _frames(5)
 		var room := ROOMS[building] as String
 		_check(current_scene != null and current_scene.scene_file_path.ends_with("/%s.tscn" % room),
 				"the door of %s leads into %s" % [building, room])

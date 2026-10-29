@@ -12,6 +12,8 @@ signal said(text: String)
 enum State { MOVE, ATTACK, DODGE, CAST, HURT, DEAD }
 
 const SPEED := 5.0
+const RUN := 1.65         # running speed (hold Shift) over walking; no sword while running
+const SWING_WALK := 0.8   # the hero keeps walking while swinging, a little slower
 const GRAVITY := 30.0
 const DODGE_SPEED := 13.0
 const MASK_WITH_ENEMIES := 1 | 4  # world + enemy bodies
@@ -75,9 +77,11 @@ func _ready() -> void:
 	add_to_group("player")
 	_sprite.sprite_frames = HeroLook.frames(HeroLook.load_look())  # the look from the character creator
 	_silhouette.sprite_frames = _sprite.sprite_frames
-	if Exit.pending_arrival != Vector3.INF:  # arriving through another map's exit
+	if Exit.pending_arrival != Vector3.INF:  # arriving through another map's exit: step in out of the dark
 		global_position = Exit.pending_arrival
 		Exit.pending_arrival = Vector3.INF
+		_sprite.modulate.a = 0.0
+		create_tween().tween_property(_sprite, "modulate:a", 1.0, Transition.SECONDS)
 	_spawn_point = global_position
 	_sword.from_hero = true
 	_sword.attacker = self
@@ -107,7 +111,12 @@ func _physics_process(delta: float) -> void:
 			_walk(input)
 			_read_actions(input)
 		State.ATTACK:
-			_brake(delta, 25.0)
+			if input != Vector2.ZERO:  # swinging while walking (never at a run)
+				var move := View.to_world(input) * speed() * SWING_WALK
+				velocity.x = move.x
+				velocity.z = move.z
+			else:
+				_brake(delta, 25.0)
 			_swing()
 			if Input.is_action_just_pressed("attack") and _elapsed > 0.1:
 				_queued_attack = true
@@ -145,6 +154,15 @@ func _process(delta: float) -> void:
 	else:
 		_camera.h_offset = 0.0
 		_camera.v_offset = 0.0
+
+
+## Going through a door: the hero stops answering the keys, walks on into it and fades (Transition).
+func walk_through_door(seconds: float) -> void:
+	set_physics_process(false)
+	_play("walk")
+	var tween := create_tween().set_parallel()
+	tween.tween_property(self, "global_position", global_position + facing_3d() * 0.9, seconds)
+	tween.tween_property(_sprite, "modulate:a", 0.0, seconds)
 
 
 # --- numbers ------------------------------------------------------------------------------------
@@ -231,12 +249,14 @@ var _base_scale := Vector3.ZERO
 
 
 func _walk(input: Vector2) -> void:
-	var move := View.to_world(input) * speed()  # the controls follow the screen
+	var running := input != Vector2.ZERO and Input.is_action_pressed("run")
+	var move := View.to_world(input) * speed() * (RUN if running else 1.0)  # the controls follow the screen
 	velocity.x = move.x
 	velocity.z = move.z
 	if input != Vector2.ZERO:
 		_facing = input
 	_play("walk" if input != Vector2.ZERO else "idle")
+	_sprite.speed_scale = RUN if running else 1.0  # ponytail: no running frames yet, the walk plays faster
 	_breathe(input != Vector2.ZERO)
 
 
@@ -251,7 +271,8 @@ func _breathe(walking: bool) -> void:
 
 func _read_actions(input: Vector2) -> void:
 	if Input.is_action_just_pressed("attack"):
-		_start_attack()
+		if not (input != Vector2.ZERO and Input.is_action_pressed("run")):
+			_start_attack()
 	elif Input.is_action_just_pressed("dodge") and _can_dodge():
 		_start_dodge(input)
 	elif Input.is_action_just_pressed("ultimate"):
@@ -268,6 +289,7 @@ func _begin(state: State, seconds: float, animation: String) -> void:
 	_elapsed = 0.0
 	_duration = seconds
 	_play(animation)
+	_sprite.speed_scale = 1.0
 	_sprite.frame = 0
 
 

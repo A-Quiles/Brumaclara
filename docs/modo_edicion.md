@@ -9,10 +9,10 @@ pintar los caminos del pueblo. Se juega con los cambios en cuanto se sale del mo
 ## Uso
 
 1. Ejecuta el juego desde Godot (F5).
-2. Pulsa **F1** (o **F4**) en cualquier nivel: el juego se pausa, la cámara queda libre y aparece el
+2. Pulsa **M** en cualquier nivel: el juego se pausa, la cámara queda libre y aparece el
    panel.
 3. Cambia lo que quieras. **Todo se guarda solo** en cuanto lo haces.
-4. Pulsa **F1** otra vez y sigues jugando con el nivel tal como lo has dejado.
+4. Pulsa **M** otra vez y sigues jugando con el nivel tal como lo has dejado.
 
 **H** muestra la hoja de ayuda dentro del juego.
 

@@ -19,6 +19,16 @@ const ATTR_CAP := {"vitalidad": 999, "poder": 25, "control": 25, "agilidad": 15}
 ## level at which the Brumaclara shrine can awaken each secondary affinity (stand-in for the
 ## shrines of chapters 3 and 5, which do not exist yet)
 const SECONDARY_LEVELS := [10, 20]
+## what the hero can carry (the inventory, Tab): name, description, what using it restores, and its icon
+## in the adventurer's icon sheet ("icon") or a skill's icon ("skill_icon"); "tint" colours the icon
+const ITEMS := {
+	&"pocion": {"name": "Poción de vida", "text": "Recupera 40 PV al momento.", "hp": 40, "icon": 17},
+	&"tonico": {"name": "Tónico de maná", "text": "Recupera 30 PM al momento.", "mp": 30, "icon": 18},
+	&"cristal": {"name": "Cristal de Fractura", "text": "Un fragmento violeta que dejan las criaturas tocadas por la grieta. Neris quiere estudiarlos.",
+			"skill_icon": &"hielo.barrera_cristalina", "tint": Color(0.85, 0.6, 1.0)},
+	&"monedas": {"name": "Monedas", "text": "Dinero del reino.", "icon": 26},
+}
+const START_ITEMS := {&"pocion": 3, &"tonico": 1}
 
 var save_enabled := true  ## tests switch it off so they never touch the player's game
 
@@ -36,6 +46,7 @@ var learned: Array[StringName] = []
 var free_nodes: Array[StringName] = []  ## given with the affinity: never refunded
 var equipped: Array[StringName] = [&"", &"", &"", &""]
 var ultimate: StringName = &""
+var inventory := {}  ## item id -> how many
 
 var _stats := {}
 var _skills := {}
@@ -69,6 +80,7 @@ func new_game() -> void:
 	free_nodes.clear()
 	equipped = [&"", &"", &"", &""]
 	ultimate = &""
+	inventory = START_ITEMS.duplicate()
 	_changed()
 
 
@@ -92,6 +104,12 @@ func load_game() -> void:
 	ultimate = StringName(data.get("ultimate", ""))
 	if ultimate not in learned:
 		ultimate = &""
+	inventory.clear()
+	var saved: Dictionary = data.get("inventory", START_ITEMS)  # saves from before the inventory get the starting items
+	for id in saved:
+		var item := StringName(id)
+		if ITEMS.has(item) and int(saved[id]) > 0:
+			inventory[item] = int(saved[id])
 	_invalidate()
 
 
@@ -102,7 +120,29 @@ func save_game() -> void:
 	if f:
 		f.store_string(JSON.stringify({"level": level, "xp": xp, "pa": pa, "attr_points": attr_points,
 				"attrs": attrs, "principal": principal, "awakened": awakened, "learned": learned,
-				"free_nodes": free_nodes, "equipped": equipped, "ultimate": ultimate}, "\t"))
+				"free_nodes": free_nodes, "equipped": equipped, "ultimate": ultimate, "inventory": inventory}, "\t"))
+
+
+# --- inventory --------------------------------------------------------------------------------
+
+func count(item: StringName) -> int:
+	return int(inventory.get(item, 0))
+
+
+func add_item(item: StringName, amount := 1) -> void:
+	inventory[item] = count(item) + amount
+	_changed()
+
+
+## Takes one `item` away; false if there is none.
+func take_item(item: StringName) -> bool:
+	if count(item) <= 0:
+		return false
+	inventory[item] = count(item) - 1
+	if inventory[item] == 0:
+		inventory.erase(item)
+	_changed()
+	return true
 
 
 # --- experience -------------------------------------------------------------------------------

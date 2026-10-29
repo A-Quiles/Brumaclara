@@ -113,15 +113,15 @@ func _edits() -> void:
 	print("  (barrel handle %s)" % barrel)
 
 
-## The edit mode driven by keys and mouse like a person would: F1, click a bench, drag it, turn it,
-## enlarge it, delete it, undo everything, F1 back to playing.
+## The edit mode driven by keys and mouse like a person would: M, click a bench, drag it, turn it,
+## enlarge it, delete it, undo everything, M back to playing.
 func _editing() -> void:
 	var town := _load_town()
 	current_scene = town
 	await _frames(3)
 	var em: Node = root.get_node("EditMode")
-	await _key(KEY_F1)
-	_check(em.active and paused, "F1 opens the edit mode and pauses the game")
+	await _key(KEY_M)
+	_check(em.active and paused, "M opens the edit mode and pauses the game")
 	var bench := ""
 	var spot := Vector2.ZERO
 	for y in range(80, 340, 4):  # a bench somewhere on screen
@@ -160,8 +160,8 @@ func _editing() -> void:
 	await _key(KEY_Y, true)
 	_check(em.edits.entries[bench].state.pos.distance_to(moved.pos) < 0.001, "Ctrl+Y redoes the move")
 	_check(FileAccess.file_exists(FILE), "every change is saved at once")
-	await _key(KEY_F1)
-	_check(not em.active and not paused, "F1 goes back to playing")
+	await _key(KEY_M)
+	_check(not em.active and not paused, "M goes back to playing")
 	town.free()
 	DirAccess.remove_absolute(FILE)
 	DirAccess.remove_absolute(FILE + ".bak")

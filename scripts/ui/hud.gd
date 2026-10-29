@@ -18,6 +18,7 @@ var _skill_slots: Array[TextureRect] = []
 var _ultimate_slot: TextureRect
 var _points: Label
 var _tree: SkillTree
+var _inventory: Inventory
 
 @onready var _player: Node = get_node_or_null(player_path)
 @onready var _hint: String = %Message.text
@@ -46,14 +47,37 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("open_tree") and not event.is_echo():
+	if event.is_echo():
+		return
+	if event.is_action_pressed("open_tree"):
 		open_tree(false)
 		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("inventory") and not get_tree().paused:
+		open_inventory()
+		get_viewport().set_input_as_handled()
+
+
+## The inventory screen; the game waits while it is open.
+func open_inventory() -> void:
+	if _inventory != null or _tree != null:
+		return
+	_inventory = Inventory.new()
+	_inventory.closed.connect(close_inventory)
+	add_child(_inventory)
+	get_tree().paused = true
+
+
+func close_inventory() -> void:
+	if _inventory == null:
+		return
+	_inventory.queue_free()
+	_inventory = null
+	get_tree().paused = false
 
 
 ## The skill-tree screen; the game waits while it is open. At a shrine it can also choose affinities.
 func open_tree(at_shrine := false) -> void:
-	if _tree != null:
+	if _tree != null or _inventory != null:
 		return
 	_tree = SkillTree.new()
 	_tree.at_shrine = at_shrine

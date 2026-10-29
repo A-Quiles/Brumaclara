@@ -10,7 +10,7 @@ const GOLD := Color("ffd34a")
 const INK := Color("f4e9c8")
 const SIDE_W := 168
 const BAR_H := 15
-const HELP := """MODO EDICIÓN · F1 (o F4) entra y sale: al salir juegas con los cambios. Todo se guarda solo.
+const HELP := """MODO EDICIÓN · M entra y sale: al salir juegas con los cambios. Todo se guarda solo.
 Cámara: WASD · rueda: zoom · arrastrar en un hueco o con el botón central: desplazarla
 Colocar: elige un objeto en el panel y haz clic en el mundo · clic derecho o Esc: soltarlo
 Seleccionar: clic en un objeto · arrastrar: moverlo · flechas: ajustarlo (Mayús: más)

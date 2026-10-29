@@ -185,6 +185,15 @@ func _on_struck(damage: int, push: Vector3, source: Hitbox = null) -> void:
 	_set_state(State.HURT, 0.28, "hurt")
 
 
+## Coins always (more from tougher foes); now and then a Fractura crystal or a potion (the inventory, Tab).
+func _drop_loot() -> void:
+	Progress.add_item(&"monedas", maxi(1, data.xp_reward / 8))
+	for drop: Array in [[&"cristal", 0.15], [&"pocion", 0.08]]:
+		if randf() < drop[1]:
+			Progress.add_item(drop[0])
+			get_tree().call_group("hud", "say", "Has conseguido: " + Progress.ITEMS[drop[0]].name)
+
+
 func _on_died() -> void:
 	_status.on_owner_died()
 	_set_state(State.DEAD, 0.0, "dead")
@@ -199,6 +208,7 @@ func _on_died() -> void:
 	if orb_scene:
 		var orb := _spawn(orb_scene, global_position + Vector3(0, 0, 0.2))
 		orb.amount = data.xp_reward
+		_drop_loot()
 	await create_tween().tween_property(_sprite, "modulate:a", 0.0, 0.4).finished
 	visible = false
 	if has_meta("summoned"):
