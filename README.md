@@ -1,6 +1,6 @@
 # Proyecto Brumaclara *(nombre provisional)*
 
-RPG de acción y aventura de fantasía anime en píxel art, desarrollado en solitario con **Godot 4.7**.
+RPG de acción y aventura de fantasía anime en píxel art, desarrollado con **Godot 4.7**.
 Este repositorio es el **juego final** en desarrollo (ya no un prototipo ni una demo). El diseño completo
 está en el GDD del proyecto (título de trabajo: *GUILD ZERO*) y en `docs/`: combate
 (`diseno_combate.md`), árboles de habilidades de las seis afinidades (`arbol_habilidades.md`) y
@@ -13,8 +13,7 @@ suministros, la grieta de las afueras con la Madre de la manada, Iven, Caldus y 
 Por la puerta sur (o el camino del oeste) se sale a **las afueras** (zona 1 del bestiario), y desde la
 terraza de los gremios se llega al **Patio de pruebas**, donde se puede llamar a cualquier criatura del
 bestiario para practicar el combate. Hay día y noche: al anochecer se encienden faroles y farolas.
-Todo el contenido nuevo debe mantener este nivel visual (ver la [guía de arte](docs/guia_de_arte.md) y
-[cómo seguir sin generar tantos sprites](docs/guia_arte_sin_tantos_sprites.md)).
+Todo el contenido nuevo debe respetar la dirección visual propia del proyecto (ver la [guía de arte](docs/guia_de_arte.md), la [guía para reducir sprites](docs/guia_arte_sin_tantos_sprites.md) y el [mapa de documentación y criterios de verdad](docs/ORDEN_DOCUMENTACION.md)).
 
 ![Plaza de la Fuente de día](docs/screenshots/42_plaza_dia.png)
 
@@ -202,7 +201,7 @@ xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capt
 - [x] Protagonista sin capa (viajero que busca trabajo), hombre y mujer con hojas completas
 - [x] Peinados redibujados (corto y coleta, sobre las hojas originales) y 26 colores de pelo, 12 de piel, 19 atuendos, cuero y pantalón
 - [ ] Más peinados dibujados: melena y rapado (hombre); bob, suelta, moño y trenzas (mujer) — cola en `tools/data/hair_queue.json`
-- [x] Árbol de habilidades (182 nodos, 6 afinidades), santuario, 4 huecos + definitiva
+- [x] Sistema de árboles de habilidades y seis afinidades conectado al juego; el catálogo de datos suma 320 nodos de afinidad y 32 del tronco común (consulta `docs/habilidades_lista.md`; algunos efectos siguen marcados como próximos).
 - [x] 11 tipos de lobo (élites, jefe con invocaciones, elementales) en las afueras
 - [x] 5 monstruos con arte propio: hongo errante, murciélago de cueva, esqueleto guerrero, gólem de musgo y espectro errante (`tools/art_pipeline/build.py monsters`)
 - [x] 4 versiones fracturadas (violeta, anómalas) en el claro de la Fractura: hongo, murciélago, esqueleto y gólem
@@ -216,7 +215,7 @@ xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capt
 - [x] Comerciantes y vecinos que pasean
 - [x] Diseño de combate: afinidades, talentos, técnicas de gremio, estados y bestiario (`docs/diseno_combate.md`)
 - [x] Habilidades y enemigos como fichas de datos
-- [x] Diseño de las seis afinidades con sus árboles (218 nodos) y del bestiario (53 enemigos, 10 jefes)
+- [x] Catálogo de habilidades y bestiario documentados (`docs/habilidades_lista.md`, `docs/bestiario.md`); el diseño no equivale a contenido jugable completo.
 - [x] Árbol de habilidades en juego, diálogos y misiones del capítulo 1
 - [ ] Equipo (armas y armaduras)
 
