@@ -137,6 +137,18 @@
 [ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/neris.tscn" id="901_neris"]
 [ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/tovan.tscn" id="901_tovan"]
 [ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/rhea.tscn" id="901_rhea"]
+[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/iven.tscn" id="901_iven"]
+[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/caldus.tscn" id="901_caldus"]
+[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/lio.tscn" id="901_lio"]
+[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/sella.tscn" id="901_sella"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/merchant_wagon.tscn" id="950_merchant_wagon"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/potion_stall.tscn" id="950_potion_stall"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/smith_stall.tscn" id="950_smith_stall"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/food_stall.tscn" id="950_food_stall"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/cloth_cart.tscn" id="950_cloth_cart"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/fortune_tent.tscn" id="950_fortune_tent"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/town_arch.tscn" id="950_town_arch"]
+[ext_resource type="Script" path="res://scripts/environment/fountain.gd" id="960_fountain"]
 [sub_resource type="BoxShape3D" id="BoxShape3D_puerta"]
 size = Vector3(1.4, 2.2, 1.4)
 
@@ -172,7 +184,7 @@ render_priority = 0
 shader = ExtResource("19_if0ep")
 shader_parameter/top_texture = ExtResource("3_a8ek1")
 shader_parameter/side_texture = ExtResource("20_lvdvt")
-shader_parameter/top_size = Vector2(5.45, 5.45)
+shader_parameter/top_size = Vector2(10.9, 10.9)
 shader_parameter/side_size = Vector2(5.45, 5.45)
 shader_parameter/top_local = null
 shader_parameter/tint = null
@@ -718,6 +730,12 @@ size = Vector3(36.3, 2.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jk6uc"]
 size = Vector3(0.6, 3, 4)
+
+[sub_resource type="BoxShape3D" id="ExitV2_south"]
+size = Vector3(4, 3, 0.6)
+
+[sub_resource type="BoxShape3D" id="ExitV2_arena"]
+size = Vector3(2.4, 3, 0.6)
 
 [node name="Brumaclara" type="Node3D" unique_id=139682153]
 
@@ -3735,6 +3753,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6, 0, -12.1)
 
 [node name="Fountain" type="StaticBody3D" parent="Props" unique_id=1621635357]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+script = ExtResource("960_fountain")
 
 [node name="Sprite" type="AnimatedSprite3D" parent="Props/Fountain" unique_id=635218112]
 cast_shadow = 0
@@ -4410,6 +4429,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 0, 25)
 
 [node name="TownGate" type="StaticBody3D" parent="Props" unique_id=1638952689 instance=ExtResource("103_hcc22")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 36)
+
+[node name="V2_MerchantWagon" type="StaticBody3D" parent="Props" instance=ExtResource("950_merchant_wagon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0, 0.0, 6.0)
+
+[node name="V2_PotionStall" type="StaticBody3D" parent="Props" instance=ExtResource("950_potion_stall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9, 0.0, -6.0)
+
+[node name="V2_SmithStall" type="StaticBody3D" parent="Props" instance=ExtResource("950_smith_stall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4, 0.0, -1.6)
+
+[node name="V2_FoodStall" type="StaticBody3D" parent="Props" instance=ExtResource("950_food_stall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0, 0.0, 6.0)
+
+[node name="V2_ClothCart" type="StaticBody3D" parent="Props" instance=ExtResource("950_cloth_cart")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0, 0.0, 14.0)
+
+[node name="V2_FortuneTent" type="StaticBody3D" parent="Props" instance=ExtResource("950_fortune_tent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0, 0.0, 8.0)
+
+[node name="V2_ArenaArch" type="StaticBody3D" parent="Props" instance=ExtResource("950_town_arch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.0, 2.4, -32.0)
+
+[node name="V2_ArenaSign" type="Label3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.0, 6.3, -31.7)
+billboard = 1
+pixel_size = 0.012
+font_size = 56
+outline_size = 14
+modulate = Color(1, 0.88, 0.55, 1)
+text = "Patio de pruebas"
 
 [node name="Nature" type="Node3D" parent="." unique_id=1874603315]
 
@@ -5312,22 +5361,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.04493262, -22)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 0, 34.4)
 script = ExtResource("119_hoxqx")
 lines = PackedStringArray("Bienvenido a Brumaclara, forastero. Mantén el arma envainada dentro de las murallas.", "Si buscas trabajo, sube por la plaza hasta la sede del Faro: siempre necesitan manos.")
+metadata/display_name = "Guardia"
 
 [node name="Carter" type="CharacterBody3D" parent="People" unique_id=1636902720 instance=ExtResource("120_mphe0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 20.4)
 script = ExtResource("119_hoxqx")
 lines = PackedStringArray("Algo atacó mi carro en el camino del oeste. Venía de la maleza... y brillaba.", "Hasta que alguien despeje ese camino, ninguna caravana sale del almacén.")
+metadata/display_name = "Carretero"
 
 [node name="Mara" type="CharacterBody3D" parent="People" unique_id=199557097 instance=ExtResource("121_lfsom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 2.4, -32.2)
 script = ExtResource("119_hoxqx")
 lines = PackedStringArray("Soy Mara Venn. Aquí repartimos los contratos del Faro.", "Hay un encargo sencillo: averiguar qué pasa en las afueras, al oeste. Paga poco, pero incluye cama.")
-
-[node name="Elia" type="CharacterBody3D" parent="People" unique_id=795696459 instance=ExtResource("122_thi1a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
-script = ExtResource("119_hoxqx")
-lines = PackedStringArray("Me llamo Elia. Curo lo que puedo con hierbas y paciencia.", "Desde que apareció esa grieta violeta, los animales del bosque ya no se comportan igual.")
-wander = 3.0
+metadata/display_name = "Mara Venn"
 
 [node name="Neris" type="CharacterBody3D" parent="People" instance=ExtResource("901_neris")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6, 3.6, -45.2)
@@ -5344,6 +5390,57 @@ wander = 1.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6, 2.4, -32.0)
 script = ExtResource("119_hoxqx")
 lines = PackedStringArray("Rhea Kest. Sí, la de la Brasa. No, no voy a firmarte nada.", "El Faro llama imprudente a cualquiera que no espere permiso.", "¿Quieres aprender a pelear de verdad? Sal ahí fuera y vuelve con todos los dedos.")
+
+[node name="Iven" type="CharacterBody3D" parent="People" instance=ExtResource("901_iven")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0, 2.4, -31.5)
+script = ExtResource("119_hoxqx")
+lines = PackedStringArray("Iven Rusk. Si vas a quedarte en Brumaclara, no me estorbes en el tablón.", "Un contrato bueno te da dinero. Uno difícil te da un nombre.")
+wander = 1.2
+metadata/display_name = "Iven Rusk"
+
+[node name="Caldus" type="CharacterBody3D" parent="People" instance=ExtResource("901_caldus")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0, 2.4, -31.0)
+script = ExtResource("119_hoxqx")
+lines = PackedStringArray("El Faro protege los caminos. Alguien tiene que hacerlo con orden.", "La verdad debe revelarse cuando existan medios para gestionar sus consecuencias.")
+metadata/display_name = "Caldus Renn"
+
+[node name="Lio" type="CharacterBody3D" parent="People" instance=ExtResource("901_lio")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.6, 0.0, -5.6)
+script = ExtResource("119_hoxqx")
+lines = PackedStringArray("¡Lio, guía y comerciante de la ruta oriental! Pociones frescas de Puentegris.", "Mi hermana Sella lleva las cuentas en el carromato. Yo llevo la sonrisa.")
+shop = {"pocion": 15, "tonico": 20}
+metadata/display_name = "Lio"
+
+[node name="Sella" type="CharacterBody3D" parent="People" instance=ExtResource("901_sella")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2, 0.0, 6.6)
+script = ExtResource("119_hoxqx")
+lines = PackedStringArray("Sella. Si compras, paga lo justo; si regateas, que sea con argumentos.", "Puentegris no sale en los mapas nuevos. Aun así, seguimos aquí.")
+shop = {"pocion": 14, "tonico": 18, "cristal": 30}
+metadata/display_name = "Sella"
+
+[node name="GuardPatrol" type="CharacterBody3D" parent="People" instance=ExtResource("118_5ccja")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.0, 28.0)
+script = ExtResource("119_hoxqx")
+lines = PackedStringArray("Patrulla de la tarde. Todo en calma... de momento.", "Por la noche encendemos los faroles. Las criaturas evitan la luz, dicen.")
+route = PackedVector3Array(1.5, 0, 28, 1.5, 0, 14, 2, 0, 6, 14.5, 0, 0, 30, 0, -1, 14.5, 0, 0, 2, 0, 6, 1.5, 0, 14)
+pause = 3.0
+metadata/display_name = "Guardia"
+
+[node name="GuardWest" type="CharacterBody3D" parent="People" instance=ExtResource("118_5ccja")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0, 0.0, 4.0)
+script = ExtResource("119_hoxqx")
+lines = PackedStringArray("El barrio del Camino es tranquilo. Lo raro viene de fuera.", "Si ves al carretero, dile que ya le hemos levantado la carreta.")
+route = PackedVector3Array(-3, 0, 4, -14.5, 0, 3.5, -30, 0, 3.5, -14.5, 0, 3.5)
+pause = 4.0
+metadata/display_name = "Guardia"
+
+[node name="Elia" type="CharacterBody3D" parent="People" instance=ExtResource("122_thi1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0, 0.0, 0.0)
+script = ExtResource("119_hoxqx")
+lines = PackedStringArray("Me llamo Elia. Reparo herramientas y catalizadores... y curo lo que puedo con hierbas.", "Desde que apareció esa grieta violeta, los animales del bosque ya no se comportan igual.")
+route = PackedVector3Array(-6, 0, 0, -4, 0, 6, 6, 0, 6, 8.3, 0, -0.5)
+pause = 5.0
+metadata/display_name = "Elia"
 
 [node name="Edge" type="StaticBody3D" parent="." unique_id=1254126211]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.25, 7, -8)
@@ -5392,9 +5489,6 @@ mesh = ExtResource("21_h6yhu")
 [node name="Collision" type="CollisionShape3D" parent="@StaticBody3D@11" unique_id=518578751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("BoxShape3D_4hjnc")
-
-
-
 
 [node name="Puerta" type="Area3D" parent="Buildings/Posada"]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.0, 4.45)
@@ -5459,6 +5553,30 @@ arrival = Vector3(-21, 0, -0.4)
 [node name="Collision" type="CollisionShape3D" parent="Exit" unique_id=1952123151]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_jk6uc")
+
+[node name="ExitSouth" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 36.85)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("123_xnj2r")
+target_scene = "res://scenes/levels/afueras.tscn"
+arrival = Vector3(-21, 0, -0.4)
+
+[node name="Collision" type="CollisionShape3D" parent="ExitSouth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("ExitV2_south")
+
+[node name="ExitArena" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.0, 2.4, -33.6)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("123_xnj2r")
+target_scene = "res://scenes/levels/arena.tscn"
+arrival = Vector3(0, 0, 17)
+
+[node name="Collision" type="CollisionShape3D" parent="ExitArena"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("ExitV2_arena")
 
 [node name="Backdrop" type="CanvasLayer" parent="." unique_id=188782795 instance=ExtResource("124_jm8as")]
 layer = -1

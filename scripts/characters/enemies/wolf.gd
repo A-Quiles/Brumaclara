@@ -195,6 +195,7 @@ func _drop_loot() -> void:
 
 
 func _on_died() -> void:
+	Quests.on_enemy_died(self)
 	_status.on_owner_died()
 	_set_state(State.DEAD, 0.0, "dead")
 	_bite.set_active(false)

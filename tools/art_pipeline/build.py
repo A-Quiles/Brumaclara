@@ -16,10 +16,12 @@ from PIL import Image
 
 import pixelate as px
 import sheets
+import v2
 
 ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "art" / "ai"
 OUT = ROOT / "assets"
+v2.V2, v2.OUT = SRC / "v2", OUT
 
 
 def grid(name, rows=4, cols=4, inset=6):
@@ -72,11 +74,11 @@ HERO_FRAME = (56, 56)
 HERO_ANCHOR = (28, 53)  # feet centre inside a frame
 
 
-def traveller(name, prefix, flips=None):
+def traveller(name, prefix, flips=None, folder="heroes"):
     """A player model of the character creator (art/ai/heroes/<prefix>_walk|actions|extra): a traveller
     looking for work, no cape. Side views face right; `flips` maps an animation row to the columns drawn
     facing left, which are mirrored."""
-    walk, act, extra = (grid(f"heroes/{prefix}_{n}") for n in ("walk", "actions", "extra"))
+    walk, act, extra = (grid(f"{folder}/{prefix}_{n}") for n in ("walk", "actions", "extra"))
     flips = flips or {}
     layout = {
         "walk_down": (walk, 0, range(4)),
@@ -367,6 +369,8 @@ def texture(cell, f, colours, band=None, flatten=0.0, vertical=True):
 def terrain():
     g = grid("terrain_a", 2, 2, 8)
     for (r, c), name in {(0, 0): "grass", (0, 1): "dirt", (1, 0): "cobble", (1, 1): "cliff"}.items():
+        if name in v2.replaces():  # drawn again in the second pass (v2.ground)
+            continue
         save(texture(g[r][c], 4, 20, band=14, flatten=8.0 if name == "grass" else 0.0),
              "environment", "textures", name + ".png")
     return OUT / "environment" / "textures"
@@ -461,7 +465,7 @@ def walls_roofs():
 
 
 TOWN_PROPS = {  # cell -> (name, source pixels per game pixel)
-    (0, 0): ("town_gate", 3), (0, 1): ("chimney", 5), (0, 2): ("dormer", 5), (0, 3): ("wall_lantern", 6),
+    (0, 0): ("town_arch", 3), (0, 1): ("chimney", 5), (0, 2): ("dormer", 5), (0, 3): ("wall_lantern", 6),
     (1, 0): ("training_dummy", 5), (1, 1): ("weapon_rack", 5), (1, 2): ("archery_target", 6), (1, 3): ("wagon", 4),
     (2, 0): ("horse", 4), (2, 1): ("trough", 5), (2, 2): ("hay_pile", 5), (2, 3): ("fence_gate", 5),
     (3, 1): ("rose_bush", 6), (3, 2): ("cypress_pot", 5), (3, 3): ("bread_stool", 7),
@@ -976,7 +980,8 @@ def interiors():
     """Floors, walls and rug of the interiors, and their furniture (assets/environment/props/interior)."""
     g = grid("interior_textures", 2, 2, 4)
     for (r, c), name in {(0, 0): "floor_planks", (0, 1): "wall_plaster", (1, 0): "floor_flagstone"}.items():
-        save(texture(g[r][c], 1, 20, band=8), "environment", "textures", name + ".png")
+        if name not in v2.replaces():  # drawn again in the second pass (v2.interior)
+            save(texture(g[r][c], 1, 20, band=8), "environment", "textures", name + ".png")
     rug = g[1][1]
     save(texture(rug, 1, 18), "environment", "textures", "rug_red.png")
     for sheet, names in FURNITURE.items():
@@ -990,7 +995,29 @@ def interiors():
     return OUT / "environment" / "props" / "interior"
 
 
-HAIRSTYLES = ["alto", "cresta", "mono", "largo", "volumen"]
+HAIRSTYLES = ["largo"]  # the others (alto, cresta, mono, volumen) looked wrong: replaced by HAIR_V2
+# Hairstyles drawn in Canva (art/ai/v2/heroes/<hombre|mujer>_<style>_walk|actions|extra.png, the base
+# sheets redrawn with only the hair changed): style -> side columns drawn facing left, as in traveller()
+HAIR_V2 = {
+    "hero": ("hombre", {"corto": {"walk_side": {0, 1}}, "coleta": {"walk_side": {0, 1}},
+                        "melena": {"walk_side": {0, 1}}, "rapado": {"walk_side": {0, 1}}}),
+    "heroine": ("mujer", {"bob": {"walk_side": {0}, "dodge_side": {0}}, "suelta": {"walk_side": {0}, "dodge_side": {0}},
+                          "mono": {"walk_side": {0}, "dodge_side": {0}}, "trenzas": {"walk_side": {0}, "dodge_side": {0}}}),
+}
+
+
+def hair_v2(only=None):
+    """The creator's hairstyles from the Canva sheets: assets/characters/hero/<set>__<style>.png (+ mask + frames)."""
+    for base, (prefix, styles) in HAIR_V2.items():
+        for style, flips in styles.items():
+            if (only and style not in only) or not (SRC / "v2" / "heroes" / f"{prefix}_{style}_extra.png").exists():
+                continue
+            hero_set_name = f"{base}__{style}"
+            # the redrawn sheets shade the trousers a touch violet and the vest a touch pink
+            LOOK_GROUPS[hero_set_name] = [("trousers", (200, 300), *g[2:]) if g[0] == "trousers" else
+                                          ("vest", (336, 360), *g[2:]) if g[0] == "vest" else g for g in LOOK_GROUPS[base]]
+            traveller(hero_set_name, f"{prefix}_{style}", flips, "v2/heroes")
+    return OUT / "characters" / "hero"
 
 
 def hair_styles():
@@ -1054,7 +1081,8 @@ def variants():
 
 RECIPES = {"hero": hero, "heroine": heroine, "wolf": wolf, "nature": nature, "props_b": props_b, "terrain": terrain,
            "terrain_b": terrain_b, "house": house, "facades": facades, "plaza": plaza, "walls_roofs": walls_roofs,
-           "town_props": town_props, "townsfolk": townsfolk, "variants": variants, "recolors": recolors, "affinity_fx": affinity_fx, "wolf_variants": wolf_variants, "monsters": monsters, "interiors": interiors, "characters": characters, "skill_icons": skill_icons, "hair_styles": hair_styles, "ui": ui, "vfx": vfx, "backdrop": backdrop, "shadow": shadow}
+           "town_props": town_props, "townsfolk": townsfolk, "variants": variants, "recolors": recolors, "affinity_fx": affinity_fx, "wolf_variants": wolf_variants, "monsters": monsters, "interiors": interiors, "characters": characters, "skill_icons": skill_icons, "hair_styles": hair_styles, "ui": ui, "vfx": vfx, "backdrop": backdrop, "shadow": shadow,
+           "ground_v2": v2.ground, "interior_v2": v2.interior, "stalls_v2": v2.stalls, "gate_v2": v2.gate, "hair_v2": hair_v2}
 
 if __name__ == "__main__":
     for key in sys.argv[1:] or RECIPES:

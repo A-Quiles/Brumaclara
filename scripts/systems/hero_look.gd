@@ -7,20 +7,15 @@ class_name HeroLook
 const FILE := "user://personaje.json"
 
 ## Drawn models: each hairstyle is its own sprite set (and colour mask) built by
-## tools/art_pipeline/build.py. A new hairstyle or outfit drawing is one more entry.
+## tools/art_pipeline/build.py (hair_v2: the base sheets redrawn with only the hair changed; "largo"
+## is still the pixel-added one of hair_styles). A new hairstyle or outfit drawing is one more entry.
 const MODELS := [
 	{"gender": "Hombre", "hair": "Puntas", "set": "hero"},
-	{"gender": "Hombre", "hair": "Puntas altas", "set": "hero__alto"},
-	{"gender": "Hombre", "hair": "Cresta", "set": "hero__cresta"},
-	{"gender": "Hombre", "hair": "Moño", "set": "hero__mono"},
+	{"gender": "Hombre", "hair": "Corto", "set": "hero__corto"},
+	{"gender": "Hombre", "hair": "Coleta", "set": "hero__coleta"},
 	{"gender": "Hombre", "hair": "Largo", "set": "hero__largo"},
-	{"gender": "Hombre", "hair": "Voluminoso", "set": "hero__volumen"},
 	{"gender": "Mujer", "hair": "Coleta", "set": "heroine"},
-	{"gender": "Mujer", "hair": "Coleta de puntas", "set": "heroine__alto"},
-	{"gender": "Mujer", "hair": "Cresta", "set": "heroine__cresta"},
-	{"gender": "Mujer", "hair": "Moño", "set": "heroine__mono"},
 	{"gender": "Mujer", "hair": "Suelta", "set": "heroine__largo"},
-	{"gender": "Mujer", "hair": "Voluminosa", "set": "heroine__volumen"},
 ]
 
 ## Colour choices; "" keeps the drawing's own colour.
@@ -60,6 +55,11 @@ static func default_look() -> Dictionary:
 	return {"model": 0, "hair": 0, "skin": 0, "outfit": 0, "leather": 0, "trousers": 0}
 
 
+## The models' order before the hairstyles were redrawn: looks saved then keep their gender and drawing.
+const OLD_SETS := ["hero", "hero__alto", "hero__cresta", "hero__mono", "hero__largo", "hero__volumen",
+		"heroine", "heroine__alto", "heroine__cresta", "heroine__mono", "heroine__largo", "heroine__volumen"]
+
+
 static func load_look() -> Dictionary:
 	var look := default_look()
 	var text := FileAccess.get_file_as_string(FILE)
@@ -68,13 +68,29 @@ static func load_look() -> Dictionary:
 		for key: String in look:
 			if data.has(key):
 				look[key] = int(data[key])
+		var set_name: String = data.get("set", OLD_SETS[posmod(int(data.get("model", 0)), OLD_SETS.size())])
+		look.model = model_index(set_name)
 	return clamp_look(look)
+
+
+## The model drawn as `set_name`, or the first one of the same gender if it is gone.
+static func model_index(set_name: String) -> int:
+	for i in MODELS.size():
+		if MODELS[i].set == set_name:
+			return i
+	var heroine := set_name.begins_with("heroine")
+	for i in MODELS.size():
+		if (MODELS[i].gender == "Mujer") == heroine:
+			return i
+	return 0
 
 
 static func save_look(look: Dictionary) -> void:
 	var f := FileAccess.open(FILE, FileAccess.WRITE)
 	if f:
-		f.store_string(JSON.stringify(look))
+		var data := look.duplicate()
+		data["set"] = MODELS[posmod(int(look.model), MODELS.size())].set
+		f.store_string(JSON.stringify(data))
 
 
 static func clamp_look(look: Dictionary) -> Dictionary:

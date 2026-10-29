@@ -42,11 +42,13 @@ const NAMES := {
 	"sacks": "sacos", "signpost": "poste indicador", "stall_blue": "puesto azul", "stall_green": "puesto verde",
 	"stall_red": "puesto rojo", "street_lamp": "farola", "town_gate": "puerta de la muralla",
 	"training_dummy": "muñeco de práctica", "tree_planter": "árbol en jardinera", "trough": "abrevadero",
-	"wagon": "carreta", "wall_lantern": "farol de pared", "weapon_rack": "armero", "well": "pozo",
+	"wagon": "carreta", "merchant_wagon": "carromato de mercader", "cloth_cart": "carretilla de telas",
+	"potion_stall": "puesto de pociones", "smith_stall": "puesto de herrero", "food_stall": "puesto de comida",
+	"fortune_tent": "tienda de la adivina", "wall_lantern": "farol de pared", "weapon_rack": "armero", "well": "pozo",
 	"boulder": "roca", "bush": "arbusto", "bush_berries": "arbusto con bayas", "flowers": "flores",
 	"mushrooms": "setas", "rift_bramble": "zarza de la Fractura", "rocks": "piedras", "stump": "tocón",
 	"tall_grass": "hierba alta", "tree_dead": "árbol seco", "tree_fir": "abeto", "tree_oak": "roble",
-	"tree_young": "arbolillo",
+	"tree_young": "arbolillo", "town_arch": "arco",
 }
 const MODEL_NAMES := {"grazing": "pastando", "lying": "tumbado", "tipped": "volcado", "rolled": "en rollos",
 	"upright": "de pie", "tall": "alta", "post": "poste", "alazan": "alazán"}

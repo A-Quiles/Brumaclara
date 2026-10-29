@@ -195,3 +195,35 @@ marca de la Fractura (ojos y grietas violeta, cristales).
 | `furniture_b.png` | 4×4 muebles de gremio y tienda (mostrador, tablón, vitrina, armero, yunque...). | `interiors` |
 | `iven.png`, `neris.png` | Personajes de la historia, 4×3: caminar de frente, de lado y de espaldas. | `characters` |
 | `icons_<afinidad>.png` | 5×5 iconos de habilidad (azulejo azul marino con marco dorado) por afinidad, en el orden de `tools/data/skill_icons.py`. | `skill_icons` |
+
+## Segunda pasada (Canva, 29 de octubre de 2026) — `art/ai/v2/`
+
+- **Herramienta:** generación de imágenes de Canva (cuenta del autor), exportadas a tamaño completo
+  (1264 × 1264 px; las tiendas, 1536 × 1024) desde un diseño auxiliar («Blank square game texture
+  canvas»): la miniatura que devuelve la generación mide solo 200 px y no sirve.
+- **Recetas:** `tools/art_pipeline/v2.py` (`ground_v2`, `interior_v2`, `stalls_v2`, `gate_v2`) y
+  `hair_v2` en `build.py`. Las texturas de suelo salen a 218 px (dos baldosas de las antiguas: mismo
+  tamaño de píxel, 20 por unidad, y el patrón se repite la mitad) y las de interior a 168 px.
+
+| Archivo | Contenido | Notas |
+|---|---|---|
+| `cobble.png` | Adoquines redondeados grises y ocres. | Sustituye a `cobble` de `terrain_a`. |
+| `grass.png` | Césped con matas, tréboles y florecillas. | Se baja la saturación (0,78) y se quitan las manchas grandes. Sustituye a `grass`. |
+| `floor_planks.png` | Tarima de madera clara con clavos. | Interiores (posada, tienda, taller). |
+| `wall_plaster.png` | Yeso con entramado y zócalo de madera. | Paredes de los interiores. |
+| `flagstone.png` | Losas grandes de piedra. | Suelo de la sede del Faro (`floor_flagstone`). |
+| `stalls.png` | Seis comercios ambulantes: carromato, carretilla de telas, pociones, herrero, comida y tienda de la adivina. | Recortados por manchas sobre el magenta; 56–84 px de alto. |
+| `gate.png` | Gran puerta de la muralla con dos torres, estandartes y faroles. | 190 px de alto; la puerta antigua queda como `town_arch` (entrada al patio de pruebas). |
+| `heroes/hombre_corto_*.png`, `heroes/hombre_coleta_*.png` | Las tres hojas del héroe redibujadas cambiando solo el peinado (pelo corto y coleta). | Hechas como edición de las hojas originales (imagen de referencia), así la ropa, las poses y la rejilla no cambian. |
+
+Prompt de las hojas de peinado (se cambia solo la descripción del pelo):
+
+> Edit this pixel art sprite sheet. Keep EXACTLY the same 4x4 grid, the same cell positions and sizes, the
+> same poses in every cell, the same body proportions, face, clothes, belt, bracers, boots, sword and the
+> same flat magenta background and black grid lines. Change ONLY the hair in every cell to: *(peinado)*.
+> Keep the same royal-blue hair colour. The hairstyle must be identical in every cell, seen from the front,
+> side or back as each pose requires. Crisp pixels, clean dark outline, no anti-aliasing.
+
+Quedaron pendientes (se acabó el cupo de Canva): el camino de tierra (`dirt` sigue siendo el antiguo),
+los peinados melena y rapado del héroe y los cuatro de la heroína (bob, suelta, moño, trenzas); la cola
+está en `tools/data/hair_queue.json`.

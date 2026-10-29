@@ -27,6 +27,11 @@ const ITEMS := {
 	&"cristal": {"name": "Cristal de Fractura", "text": "Un fragmento violeta que dejan las criaturas tocadas por la grieta. Neris quiere estudiarlos.",
 			"skill_icon": &"hielo.barrera_cristalina", "tint": Color(0.85, 0.6, 1.0)},
 	&"monedas": {"name": "Monedas", "text": "Dinero del reino.", "icon": 26},
+	&"caja": {"name": "Caja de suministros", "text": "Una caja sellada con el sello de la Liga del Camino. Hay que llevarla al almacén.", "icon": 25},
+	&"placa": {"name": "Placa con marcas", "text": "Una placa de piedra con tres marcas geométricas repetidas. Estaba junto a la grieta de las afueras.", "icon": 30},
+	&"restos": {"name": "Restos de la grieta", "text": "Polvo y astillas violeta que quedaron cuando la grieta se cerró.",
+			"skill_icon": &"hielo.barrera_cristalina", "tint": Color(0.6, 0.4, 0.9)},
+	&"insignia": {"name": "Insignia de rango cero", "text": "La insignia de los aventureros de la sede de Brumaclara. Rango cero: oficial.", "icon": 32},
 }
 const START_ITEMS := {&"pocion": 3, &"tonico": 1}
 
@@ -47,6 +52,7 @@ var free_nodes: Array[StringName] = []  ## given with the affinity: never refund
 var equipped: Array[StringName] = [&"", &"", &"", &""]
 var ultimate: StringName = &""
 var inventory := {}  ## item id -> how many
+var quest := {"stage": 0, "flags": {}}  ## the story so far (quests.gd)
 
 var _stats := {}
 var _skills := {}
@@ -81,6 +87,7 @@ func new_game() -> void:
 	equipped = [&"", &"", &"", &""]
 	ultimate = &""
 	inventory = START_ITEMS.duplicate()
+	quest = {"stage": 0, "flags": {}}
 	_changed()
 
 
@@ -110,6 +117,8 @@ func load_game() -> void:
 		var item := StringName(id)
 		if ITEMS.has(item) and int(saved[id]) > 0:
 			inventory[item] = int(saved[id])
+	var q: Variant = data.get("quest", null)
+	quest = {"stage": int(q.get("stage", 0)), "flags": q.get("flags", {})} if q is Dictionary else {"stage": 0, "flags": {}}
 	_invalidate()
 
 
@@ -120,7 +129,7 @@ func save_game() -> void:
 	if f:
 		f.store_string(JSON.stringify({"level": level, "xp": xp, "pa": pa, "attr_points": attr_points,
 				"attrs": attrs, "principal": principal, "awakened": awakened, "learned": learned,
-				"free_nodes": free_nodes, "equipped": equipped, "ultimate": ultimate, "inventory": inventory}, "\t"))
+				"free_nodes": free_nodes, "equipped": equipped, "ultimate": ultimate, "inventory": inventory, "quest": quest}, "\t"))
 
 
 # --- inventory --------------------------------------------------------------------------------
@@ -135,10 +144,10 @@ func add_item(item: StringName, amount := 1) -> void:
 
 
 ## Takes one `item` away; false if there is none.
-func take_item(item: StringName) -> bool:
-	if count(item) <= 0:
+func take_item(item: StringName, amount := 1) -> bool:
+	if count(item) < amount:
 		return false
-	inventory[item] = count(item) - 1
+	inventory[item] = count(item) - amount
 	if inventory[item] == 0:
 		inventory.erase(item)
 	_changed()

@@ -23,6 +23,7 @@ MATERIALS = ROOT / "materials" / "interior"
 ROOMS = ROOT / "scenes" / "levels" / "interiors"
 TOWN = ROOT / "scenes" / "levels" / "brumaclara.tscn"
 TILE = 84 * PX  # one texture tile (84 px) in world units
+BIG = 2 * TILE  # the second art pass draws the floors and the plaster at 168 px (same pixel size)
 
 FLAT = {"alfombrilla"}  # lie on the floor
 LIGHT = {"chimenea": ("ff9a3c", 2.2, 6.0), "fogon": ("ff9a3c", 1.4, 4.0), "candelabro": ("ffd27a", 1.0, 4.0),
@@ -124,9 +125,9 @@ def write_props():
 def write_materials():
     MATERIALS.mkdir(parents=True, exist_ok=True)
     for name, top, side, side_size in (
-            ("floor_planks", "floor_planks", "floor_planks", (TILE, TILE)),
-            ("floor_flagstone", "floor_flagstone", "floor_flagstone", (TILE, TILE)),
-            ("wall_plaster", "floor_planks", "wall_plaster", (TILE, TILE)),
+            ("floor_planks", "floor_planks", "floor_planks", (BIG, BIG)),
+            ("floor_flagstone", "floor_flagstone", "floor_flagstone", (BIG, BIG)),
+            ("wall_plaster", "floor_planks", "wall_plaster", (BIG, BIG)),
     ):
         text = f'''[gd_resource type="ShaderMaterial" load_steps=4 format=3]
 
@@ -139,7 +140,7 @@ render_priority = 0
 shader = ExtResource("1_s")
 shader_parameter/top_texture = ExtResource("2_t")
 shader_parameter/side_texture = ExtResource("3_s")
-shader_parameter/top_size = Vector2({TILE:.4f}, {TILE:.4f})
+shader_parameter/top_size = Vector2({BIG:.4f}, {BIG:.4f})
 shader_parameter/side_size = Vector2({side_size[0]:.4f}, {side_size[1]:.4f})
 shader_parameter/top_local = true
 shader_parameter/tint = Color(1, 1, 1, 1)

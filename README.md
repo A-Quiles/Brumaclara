@@ -7,12 +7,22 @@ está en el GDD del proyecto (título de trabajo: *GUILD ZERO*) y en `docs/`: co
 bestiario (`bestiario.md`).
 
 El juego empieza en **el pueblo de Brumaclara** (plaza de la Fuente, terraza de los gremios, calle del
-Mercado, barrio de viviendas, establos y puerta sur; ver `docs/diseno_pueblo.md`) con sus primeros
-habitantes. Por el camino del oeste se sale a **las afueras** (zona 1 del bestiario), con el lobo de la
-Fractura y su guarida. Todo el contenido nuevo debe mantener este nivel visual (ver la
-[guía de arte](docs/guia_de_arte.md)).
+Mercado, barrio de viviendas, establos y la gran puerta sur; ver `docs/diseno_pueblo.md`) y se puede
+jugar entero su **capítulo 1, «El precio de una noche»**: el primer contrato de Mara, la caja de
+suministros, la grieta de las afueras con la Madre de la manada, Iven, Caldus y el rango cero oficial.
+Por la puerta sur (o el camino del oeste) se sale a **las afueras** (zona 1 del bestiario), y desde la
+terraza de los gremios se llega al **Patio de pruebas**, donde se puede llamar a cualquier criatura del
+bestiario para practicar el combate. Hay día y noche: al anochecer se encienden faroles y farolas.
+Todo el contenido nuevo debe mantener este nivel visual (ver la [guía de arte](docs/guia_de_arte.md) y
+[cómo seguir sin generar tantos sprites](docs/guia_arte_sin_tantos_sprites.md)).
 
-![Plaza de la Fuente](docs/screenshots/05_plaza.png)
+![Plaza de la Fuente de día](docs/screenshots/42_plaza_dia.png)
+
+| | |
+|---|---|
+| ![La plaza de noche](docs/screenshots/43_plaza_noche.png) | ![La puerta de la ciudad al atardecer](docs/screenshots/44_puerta_de_la_ciudad.png) |
+| ![Mara en la caja de diálogo](docs/screenshots/46_dialogo.png) | ![Poderes de las seis afinidades](docs/screenshots/41_poderes.png) |
+| ![Comerciantes ambulantes](docs/screenshots/47_mercaderes.png) | ![Entrada al patio de pruebas](docs/screenshots/45_entrada_patio.png) |
 
 | | |
 |---|---|
@@ -44,7 +54,8 @@ Fractura y su guarida. Todo el contenido nuevo debe mantener este nivel visual (
 | Definitiva | X |
 | Árbol de habilidades | T |
 | Inventario (usar pociones y tónicos) | Tab |
-| Hablar / abrir un cofre | F |
+| Hablar (avanza el diálogo; flechas para elegir) / abrir un cofre / tablón del patio | F |
+| Saltar al siguiente atardecer o amanecer | N |
 | Modo edición (desarrollo) | M |
 
 Para entrar por una puerta hay que andar hacia ella (pasar por delante no te mete dentro); el héroe
@@ -84,8 +95,18 @@ no se puede subir, a propósito).
 
 ## Qué hay ya en el juego
 
+- **Capítulo 1 jugable de principio a fin** con objetivos en pantalla (arriba a la derecha), caja de
+  diálogo con elecciones que se guardan (la caja: cerrada, abierta, repartida o revisada por Elia; el
+  tono con Iven; a quién dar los restos de la grieta) y recompensas. Ver `scripts/systems/quests.gd`.
+- **Día y noche** (un día dura 8 minutos; N salta al siguiente atardecer o amanecer): la luz se vuelve
+  azul y las farolas, faroles y la gran puerta proyectan charcos de luz cálida.
+- **Patio de pruebas**: el tablón (F) llama a cualquier enemigo del bestiario por zonas, en grupo, en
+  oleada o al jefe; «Limpiar» los retira.
+- **Comerciantes**: Lio y Sella venden pociones, tónicos y cristales con las monedas que sueltan los
+  monstruos; seis comercios ambulantes nuevos en la calle del Mercado.
+- **Vecinos que pasean**: dos guardias patrullan y Elia va y viene entre la plaza y el mercado.
 - **Protagonista** en cuatro direcciones (reposo, caminar, combo de espada, esquiva con estela, daño,
-  hechizos y derrota) y **creador de personaje** con 12 peinados y decenas de colores.
+  hechizos y derrota) y **creador de personaje** con 6 peinados dibujados y decenas de colores.
 - **El pueblo de Brumaclara** con sus barrios, gremios y habitantes, y **cuatro interiores** a los que
   se entra por la puerta: la Posada del Cruce, la Sede del Faro, la Tienda de Nara y el Taller de Elia,
   amueblados (32 muebles) y con luz propia.
@@ -96,6 +117,9 @@ no se puede subir, a propósito).
   versiones **fracturadas**, y del Bosque de los Susurros el **sporíneo** (abanico de esporas), el
   **guardián de raíces** (golpe en área), la **polilla lumínica** y el **espectro de la Fractura**.
   Cada enemigo avisa antes de atacar: salto, golpe en área o disparos.
+- **Poderes vistosos**: cada habilidad suma partículas en los colores de su afinidad (el fuego sube,
+  el hielo cae, el rayo restalla, la sombra gira, la tierra salta en cascotes, la luz asciende), un
+  anillo de choque, un destello de luz, estelas en los proyectiles y auras en el héroe.
 - **Combate**: golpes con retroceso, invulnerabilidad tras recibir daño, congelación breve en cada
   impacto, temblor de cámara, destellos, números de daño y estados (quemadura, frío, marcas...).
 - **Árbol de habilidades** (T, o en el santuario): seis afinidades con **21 habilidades activas
@@ -163,6 +187,8 @@ godot --headless --path . --script res://tools/tests/test_edit_mode.gd
 godot --headless --path . --script res://tools/tests/test_hero_look.gd
 godot --headless --path . --script res://tools/tests/test_climb.gd      # escaleras y rampas
 godot --headless --path . --script res://tools/tests/test_data.gd       # fichas de habilidades y enemigos
+godot --headless --path . --script res://tools/tests/test_story.gd      # capítulo 1 entero, tienda y patio de pruebas
+python3 tools/levels/people.py && python3 tools/levels/town_v2.py      # habitantes, comercios, salidas del pueblo
 xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capturas (necesita pantalla)
 ```
 
@@ -174,18 +200,25 @@ xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capt
 - [x] Modo edición para decorar los niveles dentro del juego
 - [x] Creador de personaje (hombre y mujer, colores de pelo, piel y atuendo)
 - [x] Protagonista sin capa (viajero que busca trabajo), hombre y mujer con hojas completas
-- [x] Más peinados (12 modelos), 26 colores de pelo, 12 de piel, 19 atuendos, cuero y pantalón
+- [x] Peinados redibujados (corto y coleta, sobre las hojas originales) y 26 colores de pelo, 12 de piel, 19 atuendos, cuero y pantalón
+- [ ] Más peinados dibujados: melena y rapado (hombre); bob, suelta, moño y trenzas (mujer) — cola en `tools/data/hair_queue.json`
 - [x] Árbol de habilidades (182 nodos, 6 afinidades), santuario, 4 huecos + definitiva
 - [x] 11 tipos de lobo (élites, jefe con invocaciones, elementales) en las afueras
 - [x] 5 monstruos con arte propio: hongo errante, murciélago de cueva, esqueleto guerrero, gólem de musgo y espectro errante (`tools/art_pipeline/build.py monsters`)
 - [x] 4 versiones fracturadas (violeta, anómalas) en el claro de la Fractura: hongo, murciélago, esqueleto y gólem
 - [ ] Espectro fracturado y los monstruos de la zona 2 (Guardián de raíces, Polilla lumínica, Araña de musgo, Ciervo de cuerno cristal, Enredadera): faltan por generar (cuota de Canva agotada)
-- [ ] Más especies (hoy son 11 lobos y 5 monstruos); el arte sale de Canva a 200 px, hay que rehacerlo a más resolución con Figma
-- [ ] Interiores, caja de diálogo y minimapa
+- [ ] Más especies: el arte de Canva se exporta ahora a tamaño completo (`art/FUENTES.md`), falta cupo para generarlas
+- [x] Interiores y caja de diálogo con elecciones
+- [ ] Minimapa
+- [x] Capítulo 1 jugable con misiones, decisiones guardadas y final
+- [x] Día y noche con iluminación de faroles
+- [x] Patio de pruebas con todo el bestiario
+- [x] Comerciantes y vecinos que pasean
 - [x] Diseño de combate: afinidades, talentos, técnicas de gremio, estados y bestiario (`docs/diseno_combate.md`)
 - [x] Habilidades y enemigos como fichas de datos
 - [x] Diseño de las seis afinidades con sus árboles (218 nodos) y del bestiario (53 enemigos, 10 jefes)
-- [ ] Árbol de habilidades en juego, equipo, diálogos y misiones
+- [x] Árbol de habilidades en juego, diálogos y misiones del capítulo 1
+- [ ] Equipo (armas y armaduras)
 
 El prototipo anterior de la plaza del pueblo (arte dibujado por código) se conserva como referencia en la
 rama `prototipo-plaza`.

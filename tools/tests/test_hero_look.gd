@@ -28,7 +28,7 @@ func _initialize() -> void:
 							others += 1
 			_check(own > 100 and others == 0, "%s: %s colour repaints only its own group (%d, %d)" % [set_name, HeroLook.GROUPS[group], own, others])
 	var kept := FileAccess.get_file_as_string(HeroLook.FILE)  # the developer's own look is put back
-	var look := {"model": 7, "hair": 3, "skin": 2, "outfit": 4, "leather": 2, "trousers": 5}
+	var look := {"model": 5, "hair": 3, "skin": 2, "outfit": 4, "leather": 2, "trousers": 5}
 	HeroLook.save_look(look)
 	_check(HeroLook.load_look() == look, "the chosen look is saved")
 	DirAccess.remove_absolute(HeroLook.FILE)

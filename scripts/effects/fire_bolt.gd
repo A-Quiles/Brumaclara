@@ -59,6 +59,7 @@ func _burst() -> void:
 		fx.sprite_frames = Affinity.frames(fx.sprite_frames, affinity)
 		get_parent().add_child(fx)
 		fx.global_position = at + Vector3(0, -0.3, 0.05)
+	Vfx.burst(get_parent(), at + Vector3(0, -0.9, 0), affinity, 0.55)
 	if skill and attacker and is_instance_valid(attacker):
 		var floor_at := Vector3(at.x, attacker.global_position.y, at.z)
 		if skill.explode_radius > 0.0:

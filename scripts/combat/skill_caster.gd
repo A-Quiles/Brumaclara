@@ -115,6 +115,7 @@ static func cast(hero: Node3D, s: SkillData) -> void:
 			_puff(hero, at, s.affinity)
 		SkillData.Kind.HEAL:
 			hero.heal_skill(s)
+			_puff(hero, at, s.affinity if s.affinity != &"" else &"luz")
 		SkillData.Kind.WALL:
 			wall(hero, s, at + face * s.offset, face)
 	if s.repeat_after > 0.0:
@@ -135,6 +136,7 @@ static func projectile(hero: Node3D, s: SkillData, from: Vector3, dir: Vector3, 
 	bolt.direction = dir
 	hero.get_parent().add_child(bolt)
 	bolt.global_position = from
+	Vfx.trail(bolt, skill.affinity, skill.scale)
 
 
 static func area(hero: Node3D, s: SkillData, at: Vector3, dmg: int) -> void:
@@ -146,6 +148,7 @@ static func area(hero: Node3D, s: SkillData, at: Vector3, dmg: int) -> void:
 	burst.scale = Vector3.ONE * s.scale
 	hero.get_parent().add_child(burst)
 	burst.global_position = at + Vector3(0, 0, 0.1)
+	Vfx.burst(hero.get_parent(), at, s.affinity, 1.8 * s.scale)
 	burst.landed.connect(func(_t: Hurtbox) -> void: GameFeel.hitstop(0.04))
 	if s.heal_if_hits > 0:
 		var count := [0]
@@ -186,6 +189,7 @@ static func explosion(hero: Node3D, at: Vector3, dmg: int, affinity: StringName,
 		blast.warning = _warning_mark(hero, at, 1.2 * size, affinity)
 	hero.get_parent().add_child(blast)
 	blast.global_position = at + Vector3(0, 0, 0.05)
+	Vfx.burst(hero.get_parent(), at, affinity, size, delay)
 
 
 static func zone(hero: Node3D, s: SkillData, at: Vector3, face: Vector3, dmg: int) -> Hitbox:
@@ -338,6 +342,7 @@ static func enemy_blast(enemy: Node3D, at: Vector3, dmg: int, affinity: StringNa
 	blast.add_child(sprite)
 	enemy.get_parent().add_child(blast)
 	blast.global_position = at + Vector3(0, 0, 0.05)
+	Vfx.burst(enemy.get_parent(), at, affinity, radius / 1.2)
 
 
 ## An enemy's shot: flies straight and hurts only the hero; walls stop it.
@@ -355,6 +360,7 @@ static func enemy_bolt(enemy: Node3D, from: Vector3, direction: Vector3, dmg: in
 	bolt.collision_mask = HERO_HURTBOX | 1
 	bolt.get_node("Sprite").sprite_frames = Affinity.frames(bolt.get_node("Sprite").sprite_frames, affinity)
 	bolt.global_position = from
+	Vfx.trail(bolt, affinity, 0.8)
 
 
 static func _setup(hb: Hitbox, hero: Node3D, s: SkillData, dmg: int) -> void:
@@ -385,6 +391,7 @@ static func _puff(hero: Node3D, at: Vector3, affinity: StringName) -> void:
 	spark.sprite_frames = Affinity.frames(spark.sprite_frames, affinity)
 	hero.get_parent().add_child(spark)
 	spark.global_position = at + Vector3(0, 0.9, 0.1)
+	Vfx.aura(hero.get_parent(), at, affinity)
 
 
 static func _warning_mark(hero: Node3D, at: Vector3, radius: float, affinity: StringName) -> Node3D:

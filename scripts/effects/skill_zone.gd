@@ -37,7 +37,7 @@ func _ready() -> void:
 		shape.shape = cyl
 	shape.position.y = 0.8
 	add_child(shape)
-	var glow := Sprite3D.new()  # placeholder look until the zone effects are drawn: a tinted glow on the ground
+	var glow := Sprite3D.new()  # a tinted glow on the ground, with rising motes on top (Vfx.zone)
 	glow.texture = preload("res://assets/environment/textures/blob_shadow.png")
 	glow.axis = Vector3.AXIS_Y
 	glow.modulate = Color(Affinity.color(affinity), 0.55)
@@ -49,6 +49,7 @@ func _ready() -> void:
 	glow.scale = Vector3(1.0, 1.0, size.y / size.x * glow.texture.get_width() / glow.texture.get_height())
 	glow.position.y = 0.04
 	add_child(glow)
+	Vfx.zone(self, affinity, size)
 	_fire()
 
 

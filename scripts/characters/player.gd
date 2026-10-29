@@ -348,10 +348,16 @@ func _start_attack() -> void:
 ## Turns a swing in progress toward `input`: same frame of the attack in the new direction, and the
 ## blade's reach moves with it.
 func _turn_swing(input: Vector2) -> void:
+	var before := _sprite.animation
+	var flip := _sprite.flip_h
 	_facing = input
+	var dir := _dir_name()
+	if before == &"attack_" + dir and flip == (dir == "side" and input.x < 0.0):
+		return  # same way: let the swing play on (setting the frame every step would freeze it)
 	var frame := _sprite.frame
+	var progress := _sprite.frame_progress
 	_play("attack")
-	_sprite.frame = frame
+	_sprite.set_frame_and_progress(frame, progress)
 	var reach := facing_3d() * 0.85
 	_sword.position = Vector3(reach.x, 0.8, reach.z)
 

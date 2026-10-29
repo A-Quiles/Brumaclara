@@ -1,0 +1,18 @@
+{
+ "refs": {"hombre_walk": "MAHZZBgmE4U", "hombre_actions": "MAHZZP2hj5I", "hombre_extra": "MAHZZBj9o_E",
+          "mujer_walk": "MAHZZK0tems", "mujer_actions": "MAHZZELrJbg", "mujer_extra": "MAHZZHCuMcU"},
+ "styles": {
+  "hombre": {
+   "corto": "a short messy textured crop, short at the sides and back, a small uneven fringe on the forehead",
+   "coleta": "long hair tied in a low ponytail that hangs down to the shoulder blades, with two loose strands framing the face",
+   "melena": "loose shoulder-length slightly wavy hair parted in the middle, covering the ears",
+   "rapado": "a very short buzz cut close to the scalp with a sharp hairline"
+  },
+  "mujer": {
+   "bob": "a short chin-length bob with a straight full fringe",
+   "suelta": "very long straight loose hair falling down the back to the waist, with a side fringe",
+   "mono": "hair gathered in a round high bun on top of the head with a few loose strands at the temples",
+   "trenzas": "two long braids hanging over the shoulders, with a short fringe"
+  }
+ }
+}

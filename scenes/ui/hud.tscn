@@ -172,6 +172,6 @@ layout_mode = 0
 offset_left = 8.0
 offset_right = 632.0
 offset_bottom = 18.0
-text = "WASD: mover · Mayús: correr · J: espada · Espacio: esquivar · QERC: habilidades · X: definitiva · T: árbol · Tab: inventario"
+text = "WASD: mover · Mayús: correr · J: espada · Espacio: esquivar · QERC/X: habilidades · F: hablar · T: árbol · Tab: inventario"
 label_settings = SubResource("LabelSettings_qmm8d")
 vertical_alignment = 1

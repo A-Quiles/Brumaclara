@@ -1,0 +1,71 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/arena.gd" id="1_arena"]
+[ext_resource type="Script" path="res://scripts/systems/exit.gd" id="2_exit"]
+[ext_resource type="PackedScene" path="res://scenes/environment/backdrop.tscn" id="3_backdrop"]
+[ext_resource type="Script" path="res://scripts/environment/backdrop.gd" id="4_backdrop"]
+[ext_resource type="PackedScene" path="res://scenes/characters/player.tscn" id="5_player"]
+[ext_resource type="Script" path="res://scripts/characters/player.gd" id="6_player"]
+[ext_resource type="PackedScene" path="res://scenes/effects/dust.tscn" id="7_dust"]
+[ext_resource type="PackedScene" path="res://scenes/effects/floating_text.tscn" id="8_text"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="9_hud"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="10_hud"]
+
+[sub_resource type="Environment" id="Environment_arena"]
+background_mode = 3
+background_canvas_max_layer = -1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_exit"]
+size = Vector3(4, 3, 0.6)
+
+[node name="PatioDePruebas" type="Node3D"]
+script = ExtResource("1_arena")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_arena")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8433914, 0.40550515, -0.35250026, 0, 0.656059, 0.75470954, 0.53729963, -0.63651556, 0.55331457, 0, 0, 0)
+light_energy = 0.105
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_normal_bias = 1.0
+directional_shadow_mode = 0
+directional_shadow_max_distance = 80.0
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Exit" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21.4)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_exit")
+target_scene = "res://scenes/levels/brumaclara.tscn"
+arrival = Vector3(-42, 2.4, -30.4)
+
+[node name="Collision" type="CollisionShape3D" parent="Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_exit")
+
+[node name="Backdrop" type="CanvasLayer" parent="." instance=ExtResource("3_backdrop")]
+layer = -1
+script = ExtResource("4_backdrop")
+
+[node name="Player" type="CharacterBody3D" parent="." instance=ExtResource("5_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+collision_layer = 2
+collision_mask = 5
+floor_max_angle = 0.87266463
+floor_snap_length = 0.4
+script = ExtResource("6_player")
+dust_scene = ExtResource("7_dust")
+text_scene = ExtResource("8_text")
+
+[node name="HUD" type="CanvasLayer" parent="." groups=["hud"] instance=ExtResource("9_hud")]
+script = ExtResource("10_hud")
+player_path = NodePath("../Player")

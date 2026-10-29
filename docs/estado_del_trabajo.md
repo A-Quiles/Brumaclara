@@ -14,6 +14,21 @@ Resumen de lo que hay en el repositorio, lo que falta y cómo probarlo. Las dire
 - **Habilidades:** 21 activas por afinidad, cada una con su mejora e icono propio (165 iconos en total).
 - **Exportación web:** `tools/web/publish.sh` exporta el juego y lo sube a la rama `gh-pages`.
 
+## Novedades del 29 de octubre de 2026
+
+- **Brumaclara se juega entera:** capítulo 1 con misiones (`scripts/systems/quests.gd`), caja de diálogo con
+  elecciones, objetivo en pantalla, recompensas y final con la insignia de rango cero.
+- **Día y noche** (`scripts/systems/day_night.gd`, N salta al atardecer o al amanecer) con charcos de luz en
+  farolas, faroles y la puerta.
+- **Gran puerta de la ciudad** (Canva) como entrada desde las afueras.
+- **Patio de pruebas** (`scenes/levels/arena.tscn`): llama a cualquier enemigo del bestiario.
+- **Comerciantes** (Lio y Sella venden) y seis comercios ambulantes nuevos; guardias y Elia pasean por rutas.
+- **Texturas nuevas** de césped y adoquín (suelo) y de tarima, yeso con entramado y losas (interiores).
+- **Poderes vistosos** con partículas, anillos y luz por afinidad (`scripts/effects/vfx.gd`).
+- **Fuente fluida** (agua con partículas sobre el dibujo a pleno caudal).
+- **Ataque andando** arreglado: la animación del espadazo ya no se congela al andar.
+- **Peinados redibujados** (corto y coleta del héroe); fuera los peinados raros añadidos por código.
+
 ## Qué falta
 
 - **Monstruos por generar (19):** saqueador; arana de musgo, ciervo de cristal y enredadera (zona 2); rana cornuda,
@@ -24,6 +39,10 @@ Resumen de lo que hay en el repositorio, lo que falta y cómo probarlo. Las dire
 - **Movimiento en 8 direcciones y correr:** el juego usa solo 3 filas por personaje (abajo, lado, arriba). Hace
   falta una hoja nueva con 5 filas y otra para correr.
 - **Vídeo de jugabilidad:** el script `tools/capture/make_video.sh` está listo; falta grabarlo.
+- **Peinados pendientes:** melena y rapado del héroe; bob, suelta, moño y trenzas de la heroína
+  (`tools/data/hair_queue.json`, prompt en `art/FUENTES.md`).
+- **Textura de tierra nueva** (el camino de tierra sigue con la textura antigua).
+- **Paleta maestra** y regla de detalle para unificar el pixelado (`docs/guia_arte_sin_tantos_sprites.md`).
 - **Activar GitHub Pages** sobre la rama `gh-pages` (Settings → Pages), para jugar en el navegador.
 
 ## Probarlo
