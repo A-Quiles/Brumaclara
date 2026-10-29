@@ -83,7 +83,7 @@ func _select(index: int) -> void:
 
 func _build() -> void:
 	var shade := ColorRect.new()
-	shade.color = Color(0.03, 0.04, 0.09, 0.95)
+	shade.color = Color(0.03, 0.04, 0.09, 0.985)  # as the skill tree: the HUD line must not show through
 	shade.size = size
 	add_child(shade)
 	add_child(_label("INVENTARIO", Vector2(10, 6), GOLD, 14))
