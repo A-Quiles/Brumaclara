@@ -1,8 +1,6 @@
 # Árbol de aprendizaje y habilidades
 
-Sistema de progresión de habilidades del juego final. Completa `docs/diseno_combate.md` (recursos,
-fórmulas y estados) y el GDD (secciones 11 y 12). Los números son la propuesta de partida; se ajustan
-jugando y viven en las fichas de datos (`data/skills`), no en el código.
+Sistema de progresión diseñado para el juego. Completa `docs/diseno_combate.md` (recursos, fórmulas y estados) y el GDD (secciones 11 y 12). Este documento describe el catálogo de diseño; no implica que todos los árboles o efectos estén implementados. Para el estado jugable actual, consulta `docs/estado_del_trabajo.md`. Los números son la propuesta de partida; se ajustan jugando y viven en las fichas de datos (`data/trees/*.json`), no en el código.
 
 El juego tiene **seis afinidades**: fuego, hielo, rayo, sombra, tierra y luz. Cada una tiene su propio
 árbol de **51–55 nodos con 21 habilidades activas distintas, cada una con su mejora**, sus pasivas y una
