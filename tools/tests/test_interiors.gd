@@ -21,10 +21,14 @@ func _run() -> void:
 		var door: Area3D = town.get_node("Buildings/%s/Puerta" % building)
 		var hero: Node3D = town.get_node("Player")
 		hero.global_position = door.global_position + Vector3(0, 0.3, 0)
+		await _frames(10)
+		_check(current_scene == town, "standing in %s's doorway without walking into it stays outside" % building)
+		Input.action_press("move_up")
 		for i in 120:  # the hero walks in and the screen fades out first (Transition)
 			await physics_frame
 			if current_scene != town:
 				break
+		Input.action_release("move_up")
 		await _frames(5)
 		var room := ROOMS[building] as String
 		_check(current_scene != null and current_scene.scene_file_path.ends_with("/%s.tscn" % room),
@@ -63,6 +67,19 @@ func _run() -> void:
 	Input.action_release("move_up")
 	await _frames(3)
 	_check(current_scene.scene_file_path.ends_with("/posada.tscn"), "walking up the street into the inn's door goes in")
+	# walking along the street past a door does not go in
+	change_scene_to_file("res://scenes/levels/brumaclara.tscn")
+	await _frames(5)
+	var past: Node = current_scene
+	var walker: Node3D = past.get_node("Player")
+	var shop_door: Vector3 = past.get_node("Buildings/TiendaDeNara/Puerta").global_position
+	walker.global_position = shop_door + Vector3(-2.5, 0.3, 0.6)
+	await _frames(5)
+	Input.action_press("move_right")
+	await _frames(70)
+	Input.action_release("move_right")
+	await _frames(40)
+	_check(current_scene == past, "walking past the shop's door stays in the street")
 	print("interior checks: %s" % ("all passed" if _failures == 0 else "%d FAILED" % _failures))
 	quit(1 if _failures else 0)
 

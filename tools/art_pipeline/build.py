@@ -89,6 +89,7 @@ def traveller(name, prefix, flips=None):
         "dodge_side": (extra, 1, range(4)),
         "dodge_up": (extra, 2, range(3)),
         "misc": (act, 3, range(4)),  # hurt front, hurt side, knocked out, casting
+        "stand": (walk, 3, range(3)),  # standing still: front, side, back (the idle poses)
     }
     layout = {k: v + (flips[k],) if k in flips else v for k, v in layout.items()}
     # the actions sheet has no plain standing pose: it is drawn at the size of the dodge sheet's
@@ -96,11 +97,11 @@ def traveller(name, prefix, flips=None):
 
 
 def hero():
-    return traveller("hero", "hombre", {"attack_side": {2, 3}})
+    return traveller("hero", "hombre", {"walk_side": {0, 1}})
 
 
 def heroine():
-    return traveller("heroine", "mujer", {"walk_side": {0}})
+    return traveller("heroine", "mujer", {"walk_side": {0}, "dodge_side": {0}})
 
 
 # Colour groups of the character creator (scripts/systems/hero_look.gd): each set says which
@@ -200,9 +201,9 @@ def hero_set(name, sources, standing, layout, clean=False):
     r = {key: i for i, key in enumerate(rows)}
     cells = lambda key, n: [(c, r[key]) for c in range(n)]
     animations = [
-        ("idle_down", [(0, r["walk_down"])], 1, True),
-        ("idle_side", [(0, r["walk_side"])], 1, True),
-        ("idle_up", [(0, r["walk_up"])], 1, True),
+        ("idle_down", [(0, r["stand"])], 1, True),
+        ("idle_side", [(1, r["stand"])], 1, True),
+        ("idle_up", [(2, r["stand"])], 1, True),
         ("walk_down", cells("walk_down", 4), 8, True),
         ("walk_side", cells("walk_side", 4), 8, True),
         ("walk_up", cells("walk_up", 4), 8, True),

@@ -46,7 +46,8 @@ var _was_paused := false
 
 
 func _ready() -> void:
-	if not OS.is_debug_build() or not ProjectSettings.get_setting("brumaclara/modo_edicion", true):
+	# the browser version (a release build) keeps it too: its edits are saved in the browser (LevelEdits)
+	if not (OS.is_debug_build() or OS.has_feature("web")) or not ProjectSettings.get_setting("brumaclara/modo_edicion", true):
 		queue_free()
 		return
 	layer = 100

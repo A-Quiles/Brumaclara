@@ -40,6 +40,13 @@ func _run() -> void:
 	await _frames(12)
 	_check(_hero.global_position.distance_to(start) > 0.6, "the hero keeps walking during the swing")
 	Input.action_release("move_left")
+	await _tap("attack")
+	Input.action_press("move_right")  # turning round in the middle of a swing
+	await _frames(4)
+	var spr: AnimatedSprite3D = _hero.get_node("Sprite")
+	_check(int(_hero.get("_state")) != 1 or (spr.animation == &"attack_side" and not spr.flip_h),
+			"a swing turns to face the way the hero walks (%s, flip %s)" % [spr.animation, spr.flip_h])
+	Input.action_release("move_right")
 	await _frames(30)
 
 	# no sword while running

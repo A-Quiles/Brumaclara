@@ -9,6 +9,7 @@ extends Node
 ## added ones. Its state is {key, pos, rot, scale, flip, solid}; null when it has been removed.
 
 const DIR := "res://data/edits/"
+const BROWSER_DIR := "user://edits/"  ## in a browser the game's files can't be written: edits stay in the browser
 const ADDED := "Colocados"  ## where added objects go
 ## the parts of a level whose children can be edited
 const CONTAINERS := ["Buildings", "Props", "Nature", "People", "Enemies", ADDED]
@@ -30,7 +31,7 @@ var _backed_up := false
 func _ready() -> void:
 	level = get_parent() as Node3D
 	if file == "":
-		file = DIR + level.scene_file_path.get_file().get_basename() + ".json"
+		file = (BROWSER_DIR if OS.has_feature("web") else DIR) + level.scene_file_path.get_file().get_basename() + ".json"
 	for box_name in CONTAINERS:
 		var box := level.get_node_or_null(NodePath(box_name))
 		if box:
@@ -228,9 +229,12 @@ func to_doc() -> Dictionary:
 
 
 func load_edits() -> void:
-	if not FileAccess.file_exists(file):
+	var source := file
+	if not FileAccess.file_exists(source):  # in a browser, before any edit there: the edits the game came with
+		source = DIR + file.get_file()
+	if not FileAccess.file_exists(source):
 		return
-	var doc: Variant = JSON.parse_string(FileAccess.get_file_as_string(file))
+	var doc: Variant = JSON.parse_string(FileAccess.get_file_as_string(source))
 	if not doc is Dictionary:
 		push_warning("Level edits in %s can't be read" % file)
 		return

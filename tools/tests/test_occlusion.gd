@@ -25,6 +25,8 @@ func _run() -> void:
 	var behind := 0
 	var edge_faded := 0
 	var count := 0
+	var silhouette_missing := 0
+	var edge_silhouette := 0
 	for b in get_nodes_in_group("occluder"):
 		var box := _box(b)
 		if box.size.x < 3.0:
@@ -36,6 +38,8 @@ func _run() -> void:
 			await physics_frame
 		if fader._faded.has(b):
 			behind += 1
+			if not hero.get_node("Silhouette").visible:
+				silhouette_missing += 1
 		else:
 			print("  stays opaque: ", b.name)
 		hero.global_position = _ground(Vector3(box.end.x, 0, box.position.z - 0.6))
@@ -43,10 +47,14 @@ func _run() -> void:
 			await physics_frame
 		if fader._faded.has(b):
 			edge_faded += 1
+		if hero.get_node("Silhouette").visible and not fader.hidden:  # (another building may hide it all here)
+			edge_silhouette += 1
 	print("buildings: %d · fade with the hero hidden behind: %d · fade with the hero half in view: %d" % [count, behind, edge_faded])
 	_check(count > 0, "the town has buildings")
 	_check(behind * 2 >= count, "most buildings fade while they hide the hero")
 	_check(edge_faded == 0, "no building fades while the hero is half in view")
+	_check(silhouette_missing == 0, "the hero's silhouette shows while a building hides it (%d missing)" % silhouette_missing)
+	_check(edge_silhouette == 0, "no silhouette while nothing hides the hero completely (%d)" % edge_silhouette)
 	print("occlusion checks: " + ("FAILED" if _failed else "all passed"))
 	quit(1 if _failed else 0)
 

@@ -5403,6 +5403,7 @@ collision_mask = 2
 script = ExtResource("123_xnj2r")
 target_scene = "res://scenes/levels/interiors/posada.tscn"
 arrival = Vector3(0, 0.1, 9.4)
+push = Vector3(0, 0, -1)
 
 [node name="Collision" type="CollisionShape3D" parent="Buildings/Posada/Puerta"]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 1.1, 0.0)
@@ -5415,6 +5416,7 @@ collision_mask = 2
 script = ExtResource("123_xnj2r")
 target_scene = "res://scenes/levels/interiors/sede_faro.tscn"
 arrival = Vector3(0, 0.1, 8.4)
+push = Vector3(0, 0, -1)
 
 [node name="Collision" type="CollisionShape3D" parent="Buildings/SedeDelFaro/Puerta"]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 1.1, 0.0)
@@ -5427,6 +5429,7 @@ collision_mask = 2
 script = ExtResource("123_xnj2r")
 target_scene = "res://scenes/levels/interiors/tienda_nara.tscn"
 arrival = Vector3(0, 0.1, 7.4)
+push = Vector3(0, 0, -1)
 
 [node name="Collision" type="CollisionShape3D" parent="Buildings/TiendaDeNara/Puerta"]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 1.1, 0.0)
@@ -5439,6 +5442,7 @@ collision_mask = 2
 script = ExtResource("123_xnj2r")
 target_scene = "res://scenes/levels/interiors/taller_elia.tscn"
 arrival = Vector3(0, 0.1, 7.4)
+push = Vector3(0, 0, -1)
 
 [node name="Collision" type="CollisionShape3D" parent="Buildings/CasaDeElia/Puerta"]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 1.1, 0.0)

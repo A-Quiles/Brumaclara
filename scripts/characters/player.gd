@@ -66,7 +66,7 @@ var _regen_hp := 0.0
 var _tinted := false
 
 @onready var _sprite: AnimatedSprite3D = $Sprite
-@onready var _silhouette: AnimatedSprite3D = $Silhouette  ## shows the hero through trees and walls
+@onready var _silhouette: AnimatedSprite3D = $Silhouette  ## the hero drawn on top while something hides it completely
 @onready var _health: Health = $Health
 @onready var _hurtbox: Hurtbox = $Hurtbox
 @onready var _sword: Hitbox = $Sword
@@ -111,10 +111,11 @@ func _physics_process(delta: float) -> void:
 			_walk(input)
 			_read_actions(input)
 		State.ATTACK:
-			if input != Vector2.ZERO:  # swinging while walking (never at a run)
+			if input != Vector2.ZERO:  # swinging while walking (never at a run), facing the way it walks
 				var move := View.to_world(input) * speed() * SWING_WALK
 				velocity.x = move.x
 				velocity.z = move.z
+				_turn_swing(input)
 			else:
 				_brake(delta, 25.0)
 			_swing()
@@ -142,7 +143,10 @@ func _process(delta: float) -> void:
 	if tint != Color.WHITE or _tinted:  # (a hit's white flash owns the sprite's colour otherwise)
 		_sprite.modulate = tint
 	_tinted = tint != Color.WHITE
-	_silhouette.visible = _sprite.visible
+	# the silhouette only while the hero is hidden completely (behind a building or a big prop); never
+	# through part of something, so a horse or a fence in front still hides the legs
+	_silhouette.visible = _sprite.visible and _camera.get("hidden") == true
+	_silhouette.scale = _sprite.scale
 	_silhouette.animation = _sprite.animation
 	_silhouette.frame = _sprite.frame
 	_silhouette.flip_h = _sprite.flip_h
@@ -337,6 +341,17 @@ func _start_attack() -> void:
 	_sword.stacks = 1
 	_begin(State.ATTACK, 0.3, "attack")
 	velocity = facing_3d() * 2.5  # a small step into the swing
+	var reach := facing_3d() * 0.85
+	_sword.position = Vector3(reach.x, 0.8, reach.z)
+
+
+## Turns a swing in progress toward `input`: same frame of the attack in the new direction, and the
+## blade's reach moves with it.
+func _turn_swing(input: Vector2) -> void:
+	_facing = input
+	var frame := _sprite.frame
+	_play("attack")
+	_sprite.frame = frame
 	var reach := facing_3d() * 0.85
 	_sword.position = Vector3(reach.x, 0.8, reach.z)
 

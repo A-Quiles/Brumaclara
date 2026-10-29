@@ -47,8 +47,10 @@ Fractura y su guarida. Todo el contenido nuevo debe mantener este nivel visual (
 | Hablar / abrir un cofre | F |
 | Modo edición (desarrollo) | M |
 
-Al cruzar una puerta o la salida de un mapa, el héroe entra andando y la pantalla funde a negro. Los
-edificios solo se vuelven algo transparentes cuando tapan al héroe entero.
+Para entrar por una puerta hay que andar hacia ella (pasar por delante no te mete dentro); el héroe
+entra andando y la pantalla funde a negro. Un edificio o un objeto (árbol, carro, caballo...) solo se
+vuelve transparente cuando tapa al héroe entero, y entonces su silueta se ve encima; si lo tapa a medias,
+sigue opaco. En la versión del navegador, lo que cambies con el modo edición (M) se guarda en ese navegador.
 
 ## Creador de personaje
 

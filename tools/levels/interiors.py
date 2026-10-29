@@ -311,7 +311,7 @@ def write_doors(rooms):
         doors += (f'\n[node name="Puerta" type="Area3D" parent="Buildings/{building}"]\n'
                   f"transform = {xform(step[0], 0.0, step[2] + 0.3)}\ncollision_layer = 0\ncollision_mask = 2\n"
                   f'script = ExtResource("{exit_id}")\ntarget_scene = "res://scenes/levels/interiors/{key}.tscn"\n'
-                  f"arrival = Vector3(0, 0.1, {d - 1.6})\n"
+                  f"arrival = Vector3(0, 0.1, {d - 1.6})\npush = Vector3(0, 0, -1)\n"
                   f'\n[node name="Collision" type="CollisionShape3D" parent="Buildings/{building}/Puerta"]\n'
                   f"transform = {xform(y=1.1)}\n" + 'shape = SubResource("BoxShape3D_puerta")\n')
     anchor = '\n[node name="Exit" type="Area3D" parent="."'
