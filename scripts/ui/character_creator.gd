@@ -13,6 +13,7 @@ const INK := Color("f4e9c8")
 const DIM := Color(0.62, 0.66, 0.8)
 const TURN := [["walk_down", false], ["walk_side", false], ["walk_up", false], ["walk_side", true]]
 const OPTIONS := ["Género", "Peinado", "Pelo", "Piel", "Atuendo", "Cuero", "Pantalón"]
+const PREVIEW := Rect2(60, 100, 185, 195)  # where the hero is drawn
 const ROW_RANDOM := 7
 const ROW_NEW := 8
 const ROW_CONTINUE := 9  # only with a saved game
@@ -21,7 +22,7 @@ var look := HeroLook.load_look()
 var _rows := 9
 var _row := 0
 var _turn := 0
-var _turn_clock := 0.0
+var _drag := 0.0  # mouse travel since the preview last turned
 var _hero: AnimatedSprite2D
 var _values: Array[Label] = []
 var _swatches: Array[ColorRect] = []
@@ -38,15 +39,14 @@ func _ready() -> void:
 	_refresh()
 
 
-func _process(delta: float) -> void:
-	_turn_clock += delta
-	if _turn_clock > 2.2:  # the preview turns round by itself
-		_turn_clock = 0.0
-		_turn = (_turn + 1) % TURN.size()
-		_play()
-
-
 func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion and event.button_mask & MOUSE_BUTTON_MASK_LEFT and PREVIEW.has_point(event.position):
+		_drag += event.relative.x  # dragging over the hero turns him, one side per 30 px
+		if absf(_drag) >= 30.0:
+			_turn = posmod(_turn + (1 if _drag < 0.0 else -1), TURN.size())
+			_drag = 0.0
+			_play()
+		return
 	if not event.is_pressed() or event.is_echo():
 		return
 	if event.is_action("move_up"):
@@ -139,7 +139,9 @@ func _refresh() -> void:
 
 func _play() -> void:
 	_hero.flip_h = TURN[_turn][1]
-	_hero.play(TURN[_turn][0])
+	_hero.animation = TURN[_turn][0]  # still pose: he only moves when the player turns him
+	_hero.stop()
+	_hero.frame = 0
 
 
 func _build() -> void:
@@ -251,9 +253,9 @@ func _build() -> void:
 		_lines.append(line)
 
 	var hint := Label.new()
-	hint.text = "Flechas o WASD: elegir · Intro: confirmar"
+	hint.text = "Flechas o WASD: elegir · Intro: confirmar\nArrastra con el ratón sobre el héroe para girarlo"
 	hint.add_theme_color_override("font_color", DIM)
-	hint.position = Vector2(318, 338)
+	hint.position = Vector2(318, 328)
 	add_child(hint)
 
 

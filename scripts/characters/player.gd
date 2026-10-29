@@ -107,7 +107,12 @@ func _physics_process(delta: float) -> void:
 			_walk(input)
 			_read_actions(input)
 		State.ATTACK:
-			_brake(delta, 25.0)
+			if input == Vector2.ZERO:
+				_brake(delta, 25.0)
+			else:  # the sword can be swung while walking (not while dodging)
+				var step := View.to_world(input) * speed()
+				velocity.x = step.x
+				velocity.z = step.z
 			_swing()
 			if Input.is_action_just_pressed("attack") and _elapsed > 0.1:
 				_queued_attack = true
