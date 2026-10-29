@@ -2,8 +2,7 @@
 
 > Este documento es la referencia del estado implementado y de los pendientes. Los árboles, enemigos y regiones de otros documentos pueden describir contenido diseñado o previsto; no se considerarán jugables hasta verificarlos en el código y en una ejecución. El índice de fuentes de verdad está en `docs/ORDEN_DOCUMENTACION.md`.
 
-Resumen de lo que hay en el repositorio, lo que falta y cómo probarlo. Las directrices del proyecto están en
-`docs/instrucciones_del_proyecto.md`.
+Resumen de lo que hay en el repositorio, lo que falta y cómo probarlo. Para trabajar con Claude, consultar al inicio de cada sesión `docs/INSTRUCCIONES_CLAUDE.md`, que define el orden de prioridades y el registro de tareas. Las directrices generales del proyecto están en `docs/instrucciones_del_proyecto.md`.
 
 ## Qué está hecho
 
