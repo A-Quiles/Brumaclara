@@ -201,7 +201,7 @@ xvfb-run godot --path . --script res://tools/capture/screenshot_tour.gd   # capt
 - [x] Protagonista sin capa (viajero que busca trabajo), hombre y mujer con hojas completas
 - [x] Peinados redibujados (corto y coleta, sobre las hojas originales) y 26 colores de pelo, 12 de piel, 19 atuendos, cuero y pantalón
 - [ ] Más peinados dibujados: melena y rapado (hombre); bob, suelta, moño y trenzas (mujer) — cola en `tools/data/hair_queue.json`
-- [x] Sistema de árboles de habilidades y seis afinidades conectado al juego; el catálogo de datos suma 320 nodos de afinidad y 32 del tronco común (consulta `docs/habilidades_lista.md`; algunos efectos siguen marcados como próximos).
+- [x] Catálogo de diseño de seis afinidades y tronco común; la implementación jugable es parcial y se detalla en `docs/estado_del_trabajo.md`. El catálogo de datos suma 320 nodos de afinidad y 32 del tronco común (consulta `docs/habilidades_lista.md`; algunos efectos siguen marcados como próximos).
 - [x] 11 tipos de lobo (élites, jefe con invocaciones, elementales) en las afueras
 - [x] 5 monstruos con arte propio: hongo errante, murciélago de cueva, esqueleto guerrero, gólem de musgo y espectro errante (`tools/art_pipeline/build.py monsters`)
 - [x] 4 versiones fracturadas (violeta, anómalas) en el claro de la Fractura: hongo, murciélago, esqueleto y gólem
