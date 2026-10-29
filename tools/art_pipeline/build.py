@@ -832,9 +832,12 @@ MONSTERS = {
     # touched by the Fractura
     "hongo_f": (28, 0), "murcielago_f": (28, 10), "esqueleto_f": (28, 0), "golem_f": (28, 0), "espectro_f": (28, 6),
     "sporineo": (28, 0), "guardian_raices": (28, 0), "polilla_luminica": (24, 12),
+    # zone 1
+    "roedor_bruma": (28, 0), "jabali_espinoso": (28, 0), "cuervo_bruma": (28, 12),
 }
 KEY_TOL = {"murcielago_f": 45.0, "esqueleto_f": 45.0, "sporineo": 55.0}  # violet art close to the magenta backdrop
 PURPLE_CLEAN = {"hongo", "murcielago", "esqueleto", "golem"}  # no violet in the art: purple is backdrop spill
+GREEN_CLEAN = {"roedor_bruma", "jabali_espinoso", "cuervo_bruma"}  # drawn on green with no green in the art: green fringes are backdrop spill
 
 
 def _unbackdrop(im):
@@ -907,7 +910,8 @@ def monsters(only=None):
             continue
         g = sheets.cut_grid(px.load(SRC / f"{name}.png"), 4, 4, inset=2)
         clean = _unbackdrop if name in PURPLE_CLEAN else (lambda im: im)
-        rows = {key: [clean(flood_key(g[r][c], KEY_TOL.get(name, 100.0))) for c in range(4)]
+        spill = "all" if name in GREEN_CLEAN else False
+        rows = {key: [clean(flood_key(g[r][c], KEY_TOL.get(name, 100.0), spill=spill)) for c in range(4)]
                 for r, key in enumerate(["idle", "run", "attack", "fall"])}
         palette = palette_for([im for row in rows.values() for im in row], ncol)
         snapped = [sheets.snap_all(row, palette) for row in rows.values()]
@@ -942,11 +946,14 @@ def monsters(only=None):
 
 
 def _set_offset(name, offset):
-    """Writes where the feet are (Sprite3D offset) into the enemy's data, if it exists."""
+    """Writes where the feet are (Sprite3D offset) into the enemy's data; a new enemy gets a bare data
+    file that tools/data/enemies.py fills in later (keeping this offset)."""
     data = ROOT / "data" / "enemies" / f"{name}.tres"
-    if not data.exists():
-        return
-    text = data.read_text()
+    text = data.read_text() if data.exists() else (
+        '[gd_resource type="Resource" script_class="EnemyData" format=3]\n\n'
+        '[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_data"]\n'
+        f'[ext_resource type="SpriteFrames" path="res://assets/characters/enemies/{name}_frames.tres" id="2_frames"]\n\n'
+        '[resource]\nscript = ExtResource("1_data")\nframes = ExtResource("2_frames")\n')
     line = f"sprite_offset = Vector2({offset[0]}, {offset[1]})"
     if "sprite_offset" in text:
         text = re.sub(r"sprite_offset = Vector2\([^)]*\)", line, text)

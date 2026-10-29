@@ -94,6 +94,9 @@
 [ext_resource type="Resource" path="res://data/enemies/guardian_raices.tres" id="903_guardian_raices"]
 [ext_resource type="Resource" path="res://data/enemies/polilla_luminica.tres" id="903_polilla_luminica"]
 [ext_resource type="Resource" path="res://data/enemies/espectro_f.tres" id="903_espectro_f"]
+[ext_resource type="Resource" path="res://data/enemies/roedor_bruma.tres" id="904_roedor_bruma"]
+[ext_resource type="Resource" path="res://data/enemies/jabali_espinoso.tres" id="904_jabali_espinoso"]
+[ext_resource type="Resource" path="res://data/enemies/cuervo_bruma.tres" id="904_cuervo_bruma"]
 [ext_resource type="Script" path="res://scripts/systems/level_edits.gd" id="75_8x18h"]
 
 [sub_resource type="Environment" id="Environment_hlfps"]
@@ -1799,6 +1802,76 @@ collision_layer = 4
 collision_mask = 7
 script = ExtResource("62_gkhel")
 data = ExtResource("903_espectro_f")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Bestia_roedor_bruma0" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 4)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("904_roedor_bruma")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Bestia_roedor_bruma1" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 6)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("904_roedor_bruma")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Bestia_roedor_bruma2" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 0, 5.5)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("904_roedor_bruma")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Bestia_jabali_espinoso0" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 8)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("904_jabali_espinoso")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Bestia_jabali_espinoso1" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 10)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("904_jabali_espinoso")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Bestia_cuervo_bruma0" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 9)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("904_cuervo_bruma")
+orb_scene = ExtResource("56_vadvj")
+death_effect = ExtResource("63_7y0p2")
+text_scene = ExtResource("64_efuy5")
+
+[node name="Bestia_cuervo_bruma1" type="CharacterBody3D" parent="Enemies" instance=ExtResource("61_uikkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 12)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("62_gkhel")
+data = ExtResource("904_cuervo_bruma")
 orb_scene = ExtResource("56_vadvj")
 death_effect = ExtResource("63_7y0p2")
 text_scene = ExtResource("64_efuy5")

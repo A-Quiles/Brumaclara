@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_data"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/enemies/roedor_bruma_frames.tres" id="2_frames"]
+
+[resource]
+script = ExtResource("1_data")
+display_name = "Roedor de bruma"
+frames = ExtResource("2_frames")
+sprite_offset = Vector2(-25, -5)
+max_hp = 12
+damage = 5
+push = 4.0
+speed = 5.4
+attack_speed = 14.0
+attack_range = 2.6
+windup_seconds = 0.4
+xp_reward = 8
+respawn_seconds = 14
+weak = Array[StringName]([&"fuego"])
+resist = Array[StringName]([])

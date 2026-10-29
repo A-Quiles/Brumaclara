@@ -11,7 +11,7 @@
 		"kind": "icons",
 		"aspect": "SQUARE_1_1",
 		"prompt": "Pixel art RPG skill icon sheet, 6 columns x 6 rows grid of 36 separate square icons on a flat solid black background, every icon is a dark navy square tile with a thin gold border and one bold symbol inside, adventurer techniques theme, steel silver, leather brown and warm gold, crisp pixels, no text. Icons in order: glowing sharpened sword blade, sword thrust lunge, sword hitting a stunned foe, three slash marks combo, heavy two-handed sword strike, spinning sword whirlwind, finishing blow on a skull, crossed swords with laurel, running boots with wind, light feather, dodging silhouette, two afterimages of a dodge, watchful eye with exclamation, roll arrow with sword, hourglass, ghostly figure, leather armor, two red potions, deep breath wind, green cross heart, cracked heart with a flame, antidote vial with a leaf, heart with a shield, unbreakable shield, magnifying glass over footprints, belt pouches, coins and a gem, handshake with a coin, map with compass, mortar and pestle, circling clock arrows, golden star badge, guild badge, backpack, campfire, crown",
-		"done": false
+		"done": true
 	},
 	{
 		"name": "roedor_bruma",
@@ -19,7 +19,7 @@
 		"aspect": "SQUARE_1_1",
 		"prompt": "Pixel art sprite sheet, 4 columns x 4 rows grid on flat solid bright green background, a single fantasy monster \"mist rat (roedor de bruma), a plump grey-violet rat with misty fur and a long pink tail, corrupted by a dimensional rift: glowing violet eyes, small violet crystals growing from its body and faint glowing violet cracks\", all frames facing right, three-quarter top-down view, black outlines, limited palette. Row 1 idle (4 frames), row 2 scurry (4 frames), row 3 attack (crouch and squeak as warning, leap, bite, recover), row 4 hurt/collapse/dissolve. Same size in every cell, centered, no text, no ground shadow.",
 		"lift": 0,
-		"done": false
+		"done": true
 	},
 	{
 		"name": "jabali_espinoso",
@@ -27,7 +27,7 @@
 		"aspect": "SQUARE_1_1",
 		"prompt": "Pixel art sprite sheet, 4 columns x 4 rows grid on flat solid bright green background, a single fantasy monster \"spined boar (jabalí espinoso), a dark brown wild boar with bone-white quills along its back and big tusks, corrupted by a dimensional rift: glowing violet eyes, small violet crystals growing from its body and faint glowing violet cracks\", all frames facing right, three-quarter top-down view, black outlines, limited palette. Row 1 idle (4 frames), row 2 run (4 frames), row 3 attack (paw the ground as warning, charge, charge with tusks forward, skid), row 4 hurt/collapse/dissolve. Same size in every cell, centered, no text, no ground shadow.",
 		"lift": 0,
-		"done": false
+		"done": true
 	},
 	{
 		"name": "cuervo_bruma",
@@ -35,7 +35,7 @@
 		"aspect": "SQUARE_1_1",
 		"prompt": "Pixel art sprite sheet, 4 columns x 4 rows grid on flat solid bright green background, a single fantasy monster \"mist crow (cuervo de bruma), a large black crow with misty trailing feathers, corrupted by a dimensional rift: glowing violet eyes, small violet crystals growing from its body and faint glowing violet cracks\", all frames facing right, three-quarter top-down view, black outlines, limited palette. Row 1 idle (4 frames), row 2 flying (4 frames), row 3 attack (hover screeching as warning, dive, dive with open beak, rise), row 4 hurt/collapse/dissolve. Same size in every cell, centered, no text, no ground shadow.",
 		"lift": 12,
-		"done": false
+		"done": true
 	},
 	{
 		"name": "saqueador",
@@ -73,7 +73,7 @@
 		"name": "rana_cornuda",
 		"kind": "monster",
 		"aspect": "SQUARE_1_1",
-		"prompt": "Pixel art sprite sheet, 4 columns x 4 rows grid on flat solid bright green background, a single fantasy monster \"horned frog (rana cornuda), a big swamp frog with two curved horns and a throat sac, corrupted by a dimensional rift: glowing violet eyes, small violet crystals growing from its body and faint glowing violet cracks\", all frames facing right, three-quarter top-down view, black outlines, limited palette. Row 1 idle (4 frames), row 2 hop (4 frames), row 3 attack (inflate the throat as warning, tongue lashes out, long tongue hit, retract), row 4 hurt/collapse/dissolve. Same size in every cell, centered, no text, no ground shadow.",
+		"prompt": "Pixel art sprite sheet, 4 columns x 4 rows grid on flat solid bright green background, a single fantasy monster \"horned frog (rana cornuda), a big ochre-brown swamp frog with two curved horns and a pale yellow throat sac, corrupted by a dimensional rift: glowing violet eyes, small violet crystals growing from its body and faint glowing violet cracks\", all frames facing right, three-quarter top-down view, black outlines, limited palette. Row 1 idle (4 frames), row 2 hop (4 frames), row 3 attack (inflate the throat as warning, tongue lashes out, long tongue hit, retract), row 4 hurt/collapse/dissolve. Same size in every cell, centered, no text, no ground shadow.",
 		"lift": 0,
 		"done": false
 	},
@@ -97,7 +97,7 @@
 		"name": "tortuga_lodo",
 		"kind": "monster",
 		"aspect": "SQUARE_1_1",
-		"prompt": "Pixel art sprite sheet, 4 columns x 4 rows grid on flat solid bright green background, a single fantasy monster \"mud turtle (tortuga de lodo), a heavy turtle with a mud-caked shell and moss, corrupted by a dimensional rift: glowing violet eyes, small violet crystals growing from its body and faint glowing violet cracks\", all frames facing right, three-quarter top-down view, black outlines, limited palette. Row 1 idle (4 frames), row 2 walk (4 frames), row 3 attack (pull the head in as warning, ram, ram with dust, recover), row 4 hurt/collapse/dissolve. Same size in every cell, centered, no text, no ground shadow.",
+		"prompt": "Pixel art sprite sheet, 4 columns x 4 rows grid on flat solid bright green background, a single fantasy monster \"mud turtle (tortuga de lodo), a heavy grey-brown turtle with a brown mud-caked shell and dried reeds, corrupted by a dimensional rift: glowing violet eyes, small violet crystals growing from its body and faint glowing violet cracks\", all frames facing right, three-quarter top-down view, black outlines, limited palette. Row 1 idle (4 frames), row 2 walk (4 frames), row 3 attack (pull the head in as warning, ram, ram with dust, recover), row 4 hurt/collapse/dissolve. Same size in every cell, centered, no text, no ground shadow.",
 		"lift": 0,
 		"done": false
 	},
@@ -169,7 +169,7 @@
 		"name": "arbol_susurra",
 		"kind": "monster",
 		"aspect": "SQUARE_1_1",
-		"prompt": "Pixel art sprite sheet, 4 columns x 4 rows grid on flat solid bright green background, a single fantasy monster \"the Whispering Tree (el Árbol que susurra), an ancient gnarled tree with a face in its bark, glowing violet runes and crystals, roots spread on the ground\", all frames facing right, three-quarter top-down view, black outlines, limited palette. Row 1 idle (4 frames), row 2 swaying (4 frames), row 3 attack (roots rise as warning, roots sweep, spores burst, recover), row 4 hurt/collapse/wither and fall apart. Same size in every cell, centered, no text, no ground shadow.",
+		"prompt": "Pixel art sprite sheet, 4 columns x 4 rows grid on flat solid bright green background, a single fantasy monster \"the Whispering Tree (el Árbol que susurra), an ancient leafless gnarled tree with grey-brown bark and a face in its bark, glowing violet runes and crystals, roots spread on the ground\", all frames facing right, three-quarter top-down view, black outlines, limited palette. Row 1 idle (4 frames), row 2 swaying (4 frames), row 3 attack (roots rise as warning, roots sweep, spores burst, recover), row 4 hurt/collapse/wither and fall apart. Same size in every cell, centered, no text, no ground shadow.",
 		"lift": 0,
 		"done": false
 	},
@@ -177,7 +177,7 @@
 		"name": "caparazon_vigilia",
 		"kind": "monster",
 		"aspect": "SQUARE_1_1",
-		"prompt": "Pixel art sprite sheet, 4 columns x 4 rows grid on flat solid bright green background, a single fantasy monster \"the Vigil Shell (caparazón de Vigilia), a colossal turtle whose shell is covered in tall pale blue barrier crystals\", all frames facing right, three-quarter top-down view, black outlines, limited palette. Row 1 idle (4 frames), row 2 heavy walk (4 frames), row 3 attack (crystals glow as warning, rear up, slam, crystal shockwave), row 4 hurt/collapse/sink and stop. Same size in every cell, centered, no text, no ground shadow.",
+		"prompt": "Pixel art sprite sheet, 4 columns x 4 rows grid on flat solid bright green background, a single fantasy monster \"the Vigil Shell (caparazón de Vigilia), a colossal dark slate grey turtle whose shell is covered in tall pale blue barrier crystals\", all frames facing right, three-quarter top-down view, black outlines, limited palette. Row 1 idle (4 frames), row 2 heavy walk (4 frames), row 3 attack (crystals glow as warning, rear up, slam, crystal shockwave), row 4 hurt/collapse/sink and stop. Same size in every cell, centered, no text, no ground shadow.",
 		"lift": 0,
 		"done": false
 	},

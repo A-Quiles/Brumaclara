@@ -71,14 +71,16 @@ QUEUE_ITEMS = [
             f"tendrils and a pale bulb with a whispering mouth, {RIFT}", move="swaying", attack="leaves tremble as warning, "
             "tendrils lash out, tendrils grab, recover", death="wither and dissolve"),
     # zone 3
-    monster("rana_cornuda", f"horned frog (rana cornuda), a big swamp frog with two curved horns and a throat sac, {RIFT}",
+    monster("rana_cornuda", f"horned frog (rana cornuda), a big ochre-brown swamp frog with two curved horns and a pale yellow "
+            f"throat sac, {RIFT}",
             bg="green", move="hop", attack="inflate the throat as warning, tongue lashes out, long tongue hit, retract"),
     monster("garza_alterada", f"altered heron (garza alterada), a tall grey heron with a long spear beak, {RIFT}", bg="green",
             move="wade walk", attack="stretch the neck as warning, fast peck, long peck, recover"),
     monster("sanguijuela_cristal", "crystal leech (sanguijuela de cristal), a fat dark leech with violet crystal plates along its "
             "back and a round sucker mouth", bg="green", move="crawl", attack="glow under the skin as warning, lunge, latch "
             "on, recover"),
-    monster("tortuga_lodo", f"mud turtle (tortuga de lodo), a heavy turtle with a mud-caked shell and moss, {RIFT}", bg="green",
+    monster("tortuga_lodo", f"mud turtle (tortuga de lodo), a heavy grey-brown turtle with a brown mud-caked shell and dried "
+            f"reeds, {RIFT}", bg="green",
             move="walk", attack="pull the head in as warning, ram, ram with dust, recover"),
     monster("fuego_fatuo", "will-o-wisp (fuego fatuo), a floating ball of pale violet ghost flame with a small sad face and "
             "trailing sparks", bg="green", move="drifting", attack="blink faster and faster as warning, swell, explode, smoke",
@@ -102,10 +104,12 @@ QUEUE_ITEMS = [
             bg="green", move="spinning flight", attack="hum and vibrate as warning, spin attack, spin hit, recover",
             death="fall and break", lift=8),
     # bosses
-    monster("arbol_susurra", f"the Whispering Tree (el Árbol que susurra), an ancient gnarled tree with a face in its bark, "
+    monster("arbol_susurra", f"the Whispering Tree (el Árbol que susurra), an ancient leafless gnarled tree with grey-brown "
+            f"bark and a face in its bark, "
             f"glowing violet runes and crystals, roots spread on the ground", bg="green", move="swaying",
             attack="roots rise as warning, roots sweep, spores burst, recover", death="wither and fall apart"),
-    monster("caparazon_vigilia", "the Vigil Shell (caparazón de Vigilia), a colossal turtle whose shell is covered in tall pale "
+    monster("caparazon_vigilia", "the Vigil Shell (caparazón de Vigilia), a colossal dark slate grey turtle whose shell is "
+            "covered in tall pale "
             "blue barrier crystals", bg="green", move="heavy walk", attack="crystals glow as warning, rear up, slam, crystal "
             "shockwave", death="sink and stop"),
     monster("taladro_trama", "the Weave Drill (taladro de la Trama), a giant ancient mining automaton with a huge drill arm, "

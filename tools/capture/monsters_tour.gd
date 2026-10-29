@@ -31,5 +31,16 @@ func _run() -> void:
 	await RenderingServer.frame_post_draw
 	var image := root.get_texture().get_image()
 	image.save_png("res://docs/screenshots/24_monstruos.png")
+	# the zone-1 beasts of the bestiary (25_bestias_zona1.png)
+	x = -24.0  # the west meadow, away from the first group
+	for m in enemies.get_children():
+		if m.name.begins_with("Bestia_") and m.name.ends_with("0"):
+			m.global_position = Vector3(x, 0.0, 5.0)
+			x += 3.5
+	hero.global_position = Vector3(-20.0, 0.5, 9.0)
+	for i in 45:
+		await process_frame
+	await RenderingServer.frame_post_draw
+	root.get_texture().get_image().save_png("res://docs/screenshots/25_bestias_zona1.png")
 	print("saved")
 	quit()
