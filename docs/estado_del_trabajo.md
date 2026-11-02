@@ -41,10 +41,13 @@ Resumen de lo que hay en el repositorio, lo que falta y cómo probarlo. Las dire
 - Arreglado: el césped clásico se veía a doble píxel en las afueras y el patio; el ciclo día-noche podía
   tocar luces ya borradas tras cambiar de escena.
 
+- **Objetos de frente** (lote 2): puerta de la ciudad simétrica, arco del patio, comercios, 21 objetos de calle,
+  cofre y 32 muebles redibujados de frente con Figma; ya no se ven torcidos junto a las casas.
+
 ## Qué falta
 
-- **Redibujar a tamaño completo** los 7 vecinos y 16 monstruos que salen de miniaturas de 200 px y la puerta
-  de la ciudad de frente (necesita cupo de Canva; ver `art/revision/no_encajan/LEEME.md`).
+- **Redibujar a tamaño completo** los 7 vecinos y 16 monstruos que salen de miniaturas de 200 px
+  (ver `art/revision/no_encajan/LEEME.md`).
 
 - **Monstruos por generar (19):** saqueador; arana de musgo, ciervo de cristal y enredadera (zona 2); rana cornuda,
   garza alterada, sanguijuela de cristal, tortuga de lodo, fuego fatuo y caimán de la barrera (zona 3); jabalí de

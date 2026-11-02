@@ -61,10 +61,10 @@ Archivos: `caldus.png`, `iven.png`, `lio.png`, `neris.png`, `rhea.png`, `sella.p
 
 Archivos: `cuervo_bruma.png`, `espectro.png`, `espectro_f.png`, `esqueleto.png`, `esqueleto_f.png`, `golem.png`, `golem_f.png`, `guardian_raices.png`, `hongo.png`, `hongo_f.png`, `jabali_espinoso.png`, `murcielago.png`, `murcielago_f.png`, `polilla_luminica.png`, `roedor_bruma.png`, `sporineo.png`
 
-## Puerta de la ciudad (pendientes)
+## Objetos dibujados en diagonal (se veían torcidos) (rehechos)
 
-**Problema:** Dibujada en tres cuartos: la torre izquierda más cercana y los tejados en diagonal; se ve torcida frente a la cámara. Además, más ruido que su familia.
+**Problema:** Dibujados en vista isométrica o en tres cuartos girados (la puerta, con la torre izquierda más cercana). La cámara mira al norte con las verticales rectas, así que junto a las casas, de frente, se veían torcidos.
 
-**Acción:** Generar una vista de frente (prompt preparado) cuando haya cupo.
+**Acción:** Redibujados de frente con Figma (art/ai/frente), a su tamaño real y en la paleta maestra; los muebles y los comercios ambulantes, también. Sprites recentrados con tools/levels/fit_offsets.py.
 
-Archivos: `town_gate.png`
+Archivos: `town_gate.png`, `bench.png`, `crate.png`, `notice_board.png`, `planter.png`, `trough.png`, `low_wall.png`, `flower_cart.png`, `hay_cart.png`, `well.png`, `firewood.png`, `fence.png`, `fence_gate.png`, `chalkboard.png`, `barrel_stack.png`, `weapon_rack.png`, `town_arch.png`, `dormer.png`, `chimney.png`, `wall_lantern.png`, `hay_bale.png`, `sacks.png`, `chest.png`

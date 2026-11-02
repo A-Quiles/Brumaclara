@@ -804,7 +804,7 @@ shape = SubResource("BoxShape3D_2v4je")
 [node name="Dormer" type="Sprite3D" parent="Buildings/SedeDelFaro" unique_id=879443152]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.483333, 6.6869617, 1.54)
 centered = false
-offset = Vector2(-18.5, 0)
+offset = Vector2(-16, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -813,7 +813,7 @@ texture = ExtResource("16_fff3e")
 [node name="Chimney" type="Sprite3D" parent="Buildings/SedeDelFaro" unique_id=1614018872]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6133332, 6.997522, -1.75)
 centered = false
-offset = Vector2(-12.5, 0)
+offset = Vector2(-13.5, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -963,7 +963,7 @@ shape = SubResource("BoxShape3D_kighh")
 [node name="Chimney" type="Sprite3D" parent="Buildings/CasaDeLaBrasa" unique_id=1909091769]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6833333, 6.63, -1.5)
 centered = false
-offset = Vector2(-12.5, 0)
+offset = Vector2(-13.5, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -1045,7 +1045,7 @@ shape = SubResource("BoxShape3D_jip1i")
 [node name="Dormer" type="Sprite3D" parent="Buildings/OficinaDeLaLiga" unique_id=2120742708]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 6.8433332, 1.32)
 centered = false
-offset = Vector2(-18.5, 0)
+offset = Vector2(-16, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -1169,7 +1169,7 @@ shape = SubResource("BoxShape3D_jmddw")
 [node name="Chimney" type="Sprite3D" parent="Buildings/CasaDelArchivero" unique_id=263421318]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32, 9.843766, -1.25)
 centered = false
-offset = Vector2(-12.5, 0)
+offset = Vector2(-13.5, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -1589,7 +1589,7 @@ shape = SubResource("BoxShape3D_53tn1")
 [node name="Dormer" type="Sprite3D" parent="Buildings/Posada" unique_id=982793280]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3166666, 5.9666667, 1.1)
 centered = false
-offset = Vector2(-18.5, 0)
+offset = Vector2(-16, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -1598,7 +1598,7 @@ texture = ExtResource("16_fff3e")
 [node name="Chimney" type="Sprite3D" parent="Buildings/Posada" unique_id=1390743200]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14, 6.3, -1.25)
 centered = false
-offset = Vector2(-12.5, 0)
+offset = Vector2(-13.5, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -1679,7 +1679,7 @@ shape = SubResource("BoxShape3D_rrv8k")
 [node name="Chimney" type="Sprite3D" parent="Buildings/TiendaDeNara" unique_id=987267229]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7833333, 6.3, -1.25)
 centered = false
-offset = Vector2(-12.5, 0)
+offset = Vector2(-13.5, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -1761,7 +1761,7 @@ shape = SubResource("BoxShape3D_oxyvn")
 [node name="Chimney" type="Sprite3D" parent="Buildings/CasaDeElia" unique_id=390579556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 7.2343283, -1.25)
 centered = false
-offset = Vector2(-12.5, 0)
+offset = Vector2(-13.5, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -1904,7 +1904,7 @@ shape = SubResource("BoxShape3D_byciq")
 [node name="Chimney" type="Sprite3D" parent="Buildings/CasaDelBoticario" unique_id=1475937292]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.98, 6.9104333, -1.25)
 centered = false
-offset = Vector2(-12.5, 0)
+offset = Vector2(-13.5, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -2028,7 +2028,7 @@ shape = SubResource("BoxShape3D_i84e8")
 [node name="Chimney" type="Sprite3D" parent="Buildings/CasaVerde" unique_id=1847723620]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 9.549999, -1.25)
 centered = false
-offset = Vector2(-12.5, 0)
+offset = Vector2(-13.5, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -2309,7 +2309,7 @@ shape = SubResource("BoxShape3D_lo3cq")
 [node name="Chimney" type="Sprite3D" parent="Buildings/CasaDelTejedor" unique_id=1242736203]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3866667, 9.736381, -1.25)
 centered = false
-offset = Vector2(-12.5, 0)
+offset = Vector2(-13.5, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -2350,7 +2350,7 @@ shape = SubResource("BoxShape3D_x1jh2")
 [node name="DoorLantern" type="Sprite3D" parent="Buildings/CasaDelTejedor" unique_id=49390669]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.1, 1.6, 2.65)
 centered = false
-offset = Vector2(-9, 0)
+offset = Vector2(-10, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -2406,7 +2406,7 @@ shape = SubResource("BoxShape3D_2agy4")
 [node name="Chimney" type="Sprite3D" parent="Buildings/CasaDelPanadero" unique_id=1478989752]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14, 6.7000003, -1)
 centered = false
-offset = Vector2(-12.5, 0)
+offset = Vector2(-13.5, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -2548,7 +2548,7 @@ shape = SubResource("BoxShape3D_6t610")
 [node name="Chimney" type="Sprite3D" parent="Buildings/Herreria" unique_id=618060004]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4533334, 6.44, -1.25)
 centered = false
-offset = Vector2(-12.5, 0)
+offset = Vector2(-13.5, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -2611,7 +2611,7 @@ shape = SubResource("BoxShape3D_vg255")
 [node name="Chimney" type="Sprite3D" parent="Buildings/CasaRoja" unique_id=152676552]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3866667, 10.336381, -1.25)
 centered = false
-offset = Vector2(-12.5, 0)
+offset = Vector2(-13.5, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -2860,7 +2860,7 @@ shape = SubResource("BoxShape3D_wejnf")
 [node name="DoorLantern" type="Sprite3D" parent="Buildings/CasaAmarilla" unique_id=1239853662]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.1, 2.8, 2.65)
 centered = false
-offset = Vector2(-9, 0)
+offset = Vector2(-10, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -3062,7 +3062,7 @@ shape = SubResource("BoxShape3D_wh288")
 [node name="DoorLantern" type="Sprite3D" parent="Buildings/AlmacenDeCaravanas" unique_id=517815587]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.1, 1.9, 3.15)
 centered = false
-offset = Vector2(-9, 0)
+offset = Vector2(-10, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -3098,7 +3098,7 @@ shape = SubResource("BoxShape3D_fikvx")
 [node name="Chimney" type="Sprite3D" parent="Buildings/CasaVerdeSur" unique_id=1211129998]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 9.15, -1.25)
 centered = false
-offset = Vector2(-12.5, 0)
+offset = Vector2(-13.5, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -3254,7 +3254,7 @@ shape = SubResource("BoxShape3D_gnehj")
 [node name="DoorLantern" type="Sprite3D" parent="Buildings/CasaAzulSur" unique_id=45856937]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.1, 2.1, 2.65)
 centered = false
-offset = Vector2(-9, 0)
+offset = Vector2(-10, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -3290,7 +3290,7 @@ shape = SubResource("BoxShape3D_71p58")
 [node name="Chimney" type="Sprite3D" parent="Buildings/CasaRojaSur" unique_id=252592104]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3866667, 9.736381, -1.25)
 centered = false
-offset = Vector2(-12.5, 0)
+offset = Vector2(-13.5, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -3353,7 +3353,7 @@ shape = SubResource("BoxShape3D_56k1u")
 [node name="Chimney" type="Sprite3D" parent="Buildings/CasaDelGuarda" unique_id=1456298928]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.88, 7.1343284, -1.125)
 centered = false
-offset = Vector2(-12.5, 0)
+offset = Vector2(-13.5, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0
@@ -3578,7 +3578,7 @@ shape = SubResource("BoxShape3D_tpbip")
 [node name="DoorLantern" type="Sprite3D" parent="Buildings/CasaDelCampo" unique_id=505869915]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.1, 2.2, 2.65)
 centered = false
-offset = Vector2(-9, 0)
+offset = Vector2(-10, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0

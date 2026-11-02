@@ -227,3 +227,28 @@ Prompt de las hojas de peinado (se cambia solo la descripción del pelo):
 Quedaron pendientes (se acabó el cupo de Canva): el camino de tierra (`dirt` sigue siendo el antiguo),
 los peinados melena y rapado del héroe y los cuatro de la heroína (bob, suelta, moño, trenzas); la cola
 está en `tools/data/hair_queue.json`.
+
+
+## Objetos de frente (Figma, 2 de noviembre de 2026) — `art/ai/frente/`
+
+- **Herramienta:** Figma AI (`gemini-3.1-flash-image`, 1024 × 1024 px), archivo «Brumaclara — Arte del
+  juego (objetos de frente)» del autor (nodos 1:2 a 1:6). Canva seguía sin cupo.
+- **Motivo:** muchos objetos estaban dibujados en diagonal (isométricos o en tres cuartos girados) y se
+  veían torcidos junto a las casas: la cámara mira al norte con las verticales rectas (`docs/guia_de_arte.md`).
+- **Receta:** `frente` en `tools/art_pipeline/build.py` (y los muebles, `interiors`): recorte sobre el
+  magenta (también el de los huecos), reducción a la altura real (`FRENTE_HEIGHT`, `FURNITURE_HEIGHT`,
+  25 px por metro) y paleta maestra. Después, `tools/levels/fit_offsets.py --changed` recentra los sprites.
+
+Frase común de cámara añadida a la plantilla (va en todos los prompts de objetos a partir de ahora):
+
+> EVERY object is seen from the FRONT and slightly above: the camera looks north and down about 28
+> degrees, so the front face of each object faces the viewer squarely, top surfaces show as narrow
+> foreshortened strips, vertical edges stay perfectly vertical and horizontal edges perfectly horizontal.
+> NO isometric view, NO diagonal or three-quarter rotation, nothing turned sideways.
+
+| Archivo | Contenido | Notas de revisión |
+|---|---|---|
+| `objetos_calle.png` | Banco, caja, cofre, tablón, jardinera, abrevadero, muro bajo, carretilla de flores, carro de heno, pozo, leña, valla, cancela, pizarra, barriles y cajas, armero. | El cofre suelto no se usa (el animado sale de `puestos.png`). |
+| `puestos.png` | Carromato, carretilla de telas, pociones, herrero, comida, tienda de la adivina, arco de piedra, buhardilla, chimenea, farol de pared, paca de heno, sacos y el cofre abriéndose en 4 fotogramas. | Todo aprovechable. |
+| `puerta.png` | Gran puerta de la ciudad, simétrica y de frente. | Sustituye a la de tres cuartos, que se veía torcida. |
+| `muebles_a.png`, `muebles_b.png` | Los 32 muebles de interior, en el orden de `FURNITURE`. | La barra sale en L; se acepta. |

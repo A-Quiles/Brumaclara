@@ -981,10 +981,10 @@ FURNITURE_HEIGHT = {
     "cajas_mercancia": 30, "sacos_harina": 24, "estante_pociones": 42, "estandarte_gremio": 42,
     "cofre_tesoro": 22, "candelabro": 34,
 }
-FURNITURE = {  # sheet -> the props in its 4 x 4 cells, row by row
-    "furniture_a": ["mesa_redonda", "silla", "mesa_larga", "barra", "estante_botellas", "chimenea", "cama", "armario",
+FURNITURE = {  # sheet -> the props in its 4 x 4 cells, row by row (drawn from the front: art/ai/frente)
+    "frente/muebles_a": ["mesa_redonda", "silla", "mesa_larga", "barra", "estante_botellas", "chimenea", "cama", "armario",
                     "barril_grifo", "fogon", "estanteria", "escritorio", "alfombrilla", "planta", "farol_poste", "arcon"],
-    "furniture_b": ["mostrador_registro", "tablon_contratos", "vitrina_pociones", "armero", "maniqui_cota", "yunque",
+    "frente/muebles_b": ["mostrador_registro", "tablon_contratos", "vitrina_pociones", "armero", "maniqui_cota", "yunque",
                     "banco_trabajo", "mesa_mapas", "estante_pergaminos", "lampara_cristal", "cajas_mercancia",
                     "sacos_harina", "estante_pociones", "estandarte_gremio", "cofre_tesoro", "candelabro"],
 }
@@ -1002,12 +1002,62 @@ def interiors():
         rgb = px.load(SRC / f"{sheet}.png")
         bg = px.dominant_border_colour(rgb)
         cells = sheets.cut_grid(rgb, 4, 4, inset=2)
-        images = [flood_key(cells[i // 4][i % 4], 70.0, bg=bg, main_only=True, spill=True) for i in range(16)]
+        images = [flood_key(cells[i // 4][i % 4], 70.0, bg=bg, main_only=True, spill="all") for i in range(16)]
         for name, im in zip(names, images):  # at its real size next to the hero, in the master palette
             im = unify.shrink(cropped(im), FURNITURE_HEIGHT[name])
             save(unify.master(im, saturation=0.7, value=1.05, keep=FIRE), "environment", "props", "interior", name + ".png")
     return OUT / "environment" / "props" / "interior"
 
+
+
+# --- objects drawn from the front (art/ai/frente, 2 de noviembre de 2026) -------------------------
+# The camera looks north with vertical edges kept vertical (docs/guia_de_arte.md, 2): objects drawn in a
+# diagonal or isometric view looked crooked next to the houses. These sheets redraw them facing the
+# camera; each is shrunk to its height in game px (25 px per metre) and snapped to the master palette.
+FRENTE = {
+    "objetos_calle": ["bench", "crate", None, "notice_board", "planter", "trough", "low_wall", "flower_cart",
+                      "hay_cart", "well", "firewood", "fence", "fence_gate", "chalkboard", "barrel_stack", "weapon_rack"],
+    "puestos": ["merchant_wagon", "cloth_cart", "potion_stall", "smith_stall", "food_stall", "fortune_tent",
+                "town_arch", "dormer", "chimney", "wall_lantern", "hay_bale", "sacks",
+                "chest:0", "chest:1", "chest:2", "chest:3"],
+}
+FRENTE_HEIGHT = {
+    "bench": 24, "crate": 22, "notice_board": 44, "planter": 18, "trough": 20, "low_wall": 22, "flower_cart": 30,
+    "hay_cart": 32, "well": 50, "firewood": 22, "fence": 24, "fence_gate": 28, "chalkboard": 27, "barrel_stack": 30,
+    "weapon_rack": 40, "merchant_wagon": 74, "cloth_cart": 46, "potion_stall": 72, "smith_stall": 66,
+    "food_stall": 70, "fortune_tent": 80, "town_arch": 77, "dormer": 40, "chimney": 43, "wall_lantern": 26,
+    "hay_bale": 24, "sacks": 22, "chest": 30, "town_gate": 190,
+}
+
+
+def frente():
+    chest = {}
+    for sheet, names in FRENTE.items():
+        rgb = px.load(SRC / "frente" / f"{sheet}.png")
+        bg = px.dominant_border_colour(rgb)
+        cells = sheets.cut_grid(rgb, 4, 4, inset=2)
+        for i, name in enumerate(names):
+            if name is None:
+                continue
+            im = cropped(flood_key(cells[i // 4][i % 4], 70.0, bg=bg, main_only=True, spill="all"))  # "all": the magenta in gaps too
+            if name.startswith("chest:"):
+                chest[int(name[6:])] = im
+                continue
+            im = unify.master(unify.shrink(im, FRENTE_HEIGHT[name]), keep=FIRE)
+            save(im, "environment", "props", name + ".png")
+    rgb = px.load(SRC / "frente" / "puerta.png")
+    gate = cropped(flood_key(rgb, 70.0, bg=px.dominant_border_colour(rgb), main_only=True, spill="all"))
+    save(unify.master(unify.shrink(gate, FRENTE_HEIGHT["town_gate"]), keep=FIRE), "environment", "props", "town_gate.png")
+    # the chest opens in four frames, all at one scale (the tallest frame, lid up, sets it) and on one base line
+    scale = FRENTE_HEIGHT["chest"] / max(im.height for im in chest.values())
+    frames = [unify.master(unify.shrink(chest[i], max(1, round(chest[i].height * scale))), keep=FIRE) for i in range(4)]
+    w = max(im.width for im in frames) + 2
+    h = max(im.height for im in frames) + 1
+    placed = [sheets.place(im, w, h, w // 2, h - 1, bottom=im.height) for im in frames]
+    path = save(sheets.assemble([placed], w, h), "environment", "props", "chest.png")
+    sheets.write_sprite_frames(path.with_name("chest_frames.tres"), "res://assets/environment/props/chest.png", w, h, [
+        ("closed", [(0, 0)], 1, False), ("open", [(1, 0), (2, 0)], 6, False), ("empty", [(3, 0)], 1, False)])
+    return OUT / "environment" / "props"
 
 HAIRSTYLES = ["largo"]  # the others (alto, cresta, mono, volumen) looked wrong: replaced by HAIR_V2
 # Hairstyles drawn in Canva (art/ai/v2/heroes/<hombre|mujer>_<style>_walk|actions|extra.png, the base
@@ -1096,7 +1146,8 @@ def variants():
 RECIPES = {"hero": hero, "heroine": heroine, "wolf": wolf, "nature": nature, "props_b": props_b, "terrain": terrain,
            "terrain_b": terrain_b, "house": house, "facades": facades, "plaza": plaza, "walls_roofs": walls_roofs,
            "town_props": town_props, "townsfolk": townsfolk, "variants": variants, "recolors": recolors, "affinity_fx": affinity_fx, "wolf_variants": wolf_variants, "monsters": monsters, "interiors": interiors, "characters": characters, "skill_icons": skill_icons, "hair_styles": hair_styles, "ui": ui, "vfx": vfx, "backdrop": backdrop, "shadow": shadow,
-           "ground_v2": v2.ground, "interior_v2": v2.interior, "stalls_v2": v2.stalls, "gate_v2": v2.gate, "hair_v2": hair_v2}
+           "ground_v2": v2.ground, "interior_v2": v2.interior, "stalls_v2": v2.stalls, "gate_v2": v2.gate, "hair_v2": hair_v2,
+           "frente": frente}
 
 if __name__ == "__main__":
     for key in sys.argv[1:] or RECIPES:

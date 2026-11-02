@@ -19,7 +19,7 @@ orb_scene = ExtResource("2_j76la")
 [node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=1519404444]
 cast_shadow = 0
 centered = false
-offset = Vector2(-19, -1)
+offset = Vector2(-14, -1)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0

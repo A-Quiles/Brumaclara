@@ -160,4 +160,5 @@ antes de integrarlo en el pipeline.
 - [ ] ¿Tiene contorno oscuro de 1 px?
 - [ ] ¿Sus fotogramas están alineados por los pies y a la velocidad de la tabla?
 - [ ] ¿Sus vistas y modelos siguen el convenio de nombres (`__s`, `__e`, `__grazing`…)?
+- [ ] ¿El objeto base está dibujado **de frente** (vista `s`: cara principal hacia la cámara, verticales rectas, sin giro isométrico)? Las vistas giradas solo existen como `__sw`, `__se`… para orientarlo según la calle.
 - [ ] ¿Está registrado en `art/FUENTES.md`?

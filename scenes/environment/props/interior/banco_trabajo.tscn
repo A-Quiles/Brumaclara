@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" path="res://assets/environment/textures/blob_shadow.png" id="2_r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1"]
-size = Vector3(1.107, 1.4, 0.9)
+size = Vector3(1.069, 1.4, 0.9)
 
 [node name="Banco_trabajo" type="StaticBody3D"]
 
@@ -19,7 +19,7 @@ texture = ExtResource("1_r")
 [node name="Shadow" type="Sprite3D" parent="."]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.02, -0.05)
 cast_shadow = 0
-pixel_size = 0.0448
+pixel_size = 0.0432
 axis = 1
 texture_filter = 0
 modulate = Color(1.000, 1.000, 1.000, 0.8)

@@ -60,11 +60,15 @@ ENTRIES = [
      [f"characters/enemies/{n}.png" for n in MONSTERS],
      "Misma causa: miniaturas de 200 px. Ruido y bordes de distinto grosor que el lobo (fuente Figma de 1024 px).",
      "Redibujar a tamaño completo cuando haya cupo; hasta entonces se mantienen."),
-    ("pendientes", "Puerta de la ciudad",
-     ["environment/props/town_gate.png"],
-     "Dibujada en tres cuartos: la torre izquierda más cercana y los tejados en diagonal; se ve torcida frente a la "
-     "cámara. Además, más ruido que su familia.",
-     "Generar una vista de frente (prompt preparado) cuando haya cupo."),
+    ("rehechos", "Objetos dibujados en diagonal (se veían torcidos)",
+     ["environment/props/town_gate.png"] + [f"environment/props/{n}.png" for n in (
+         "bench", "crate", "notice_board", "planter", "trough", "low_wall", "flower_cart", "hay_cart", "well",
+         "firewood", "fence", "fence_gate", "chalkboard", "barrel_stack", "weapon_rack", "town_arch", "dormer",
+         "chimney", "wall_lantern", "hay_bale", "sacks", "chest")],
+     "Dibujados en vista isométrica o en tres cuartos girados (la puerta, con la torre izquierda más cercana). La "
+     "cámara mira al norte con las verticales rectas, así que junto a las casas, de frente, se veían torcidos.",
+     "Redibujados de frente con Figma (art/ai/frente), a su tamaño real y en la paleta maestra; los muebles y los "
+     "comercios ambulantes, también. Sprites recentrados con tools/levels/fit_offsets.py."),
 ]
 
 

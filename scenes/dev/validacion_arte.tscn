@@ -153,7 +153,7 @@ shape = SubResource("BoxShape3D_vg255")
 [node name="Chimney" type="Sprite3D" parent="Buildings/CasaRoja" unique_id=152676552]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3866667, 10.336381, -1.25)
 centered = false
-offset = Vector2(-12.5, 0)
+offset = Vector2(-13.5, 0)
 pixel_size = 0.0449
 alpha_cut = 1
 texture_filter = 0

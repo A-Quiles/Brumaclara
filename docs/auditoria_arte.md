@@ -62,6 +62,21 @@ antes/después) y todas las capturas en `docs/screenshots/validacion/`.
 Las 13 pruebas automáticas pasan. Las versiones que no encajaban están en
 `art/revision/no_encajan/` con su motivo; el registro de aprobación, en `art/revision/registro.md`.
 
+## Lote 2: objetos de frente (implementado y probado)
+
+Muchos objetos estaban dibujados en **diagonal** (isométricos o en tres cuartos girados): la puerta de la
+ciudad con una torre más cerca que la otra, el arco del patio, los seis comercios ambulantes, bancos,
+cajas, el tablón, la jardinera, el abrevadero, el muro bajo, las carretillas, el pozo, las vallas y casi
+todos los muebles de interior. Con la cámara mirando al norte y las verticales rectas, junto a las
+casas de frente se veían torcidos. Se redibujaron **de frente** con Figma (la misma herramienta y modelo
+de las fuentes aprobadas, plantilla de `art/FUENTES.md` con una frase de cámara obligatoria): 21
+objetos de calle, el cofre animado, los 6 comercios, la puerta y los 32 muebles, a su tamaño real y en
+la paleta maestra. `tools/levels/fit_offsets.py` recentró los sprites en todas las escenas; la puerta
+tiene ahora las torres y los faroles donde están en el dibujo.
+
+Capturas en `docs/screenshots/frente/`. Las vistas giradas de `art/ai/variants` (`__sw`, `__se`…) se
+mantienen: existen precisamente para orientar un objeto según una calle en diagonal.
+
 ## Diseñado (herramientas listas)
 
 - **Paleta maestra** (`art/paleta/maestra.png`, `.gpl` para Aseprite/GIMP/Krita, `.json`): 69
@@ -79,8 +94,8 @@ Las 13 pruebas automáticas pasan. Las versiones que no encajaban están en
 
 ## Pendiente
 
-- **Redibujar a tamaño completo** (necesita cupo de Canva): 7 vecinos y 16 monstruos que salen de
-  miniaturas de 200 px, y la puerta de la ciudad de frente. Siguen en el juego hasta entonces.
+- **Redibujar a tamaño completo**: 7 vecinos y 16 monstruos que salen de miniaturas de 200 px. Siguen en
+  el juego hasta entonces.
 - **Lote 2 sin generar**: revisar con la escena de validación los iconos de habilidad (también de
   200 px), las vistas extra de objetos hechas con Gemini y los textos 3D (no usan la fuente pixel).
 - **Interfaz**: revisión de legibilidad (plan, P1).
