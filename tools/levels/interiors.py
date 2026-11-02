@@ -23,7 +23,7 @@ MATERIALS = ROOT / "materials" / "interior"
 ROOMS = ROOT / "scenes" / "levels" / "interiors"
 TOWN = ROOT / "scenes" / "levels" / "brumaclara.tscn"
 TILE = 84 * PX  # one texture tile (84 px) in world units
-BIG = 2 * TILE  # the second art pass draws the floors and the plaster at 168 px (same pixel size)
+BIG = TILE  # floors and plaster: 84 px a tile, like the facades' detail (art/revision/no_encajan/LEEME.md)
 
 FLAT = {"alfombrilla"}  # lie on the floor
 LIGHT = {"chimenea": ("ff9a3c", 2.2, 6.0), "fogon": ("ff9a3c", 1.4, 4.0), "candelabro": ("ffd27a", 1.0, 4.0),
@@ -156,45 +156,47 @@ shader_parameter/edge_width = 0.07
 # (prop, x, z) with z = 0 the back wall's foot and growing toward the door; people: (scene, x, z, lines)
 INTERIORS = {
     "posada": dict(
-        title="Posada del Cruce", building="Posada", floor="floor_planks", size=(16.0, 11.0), ambient=0.85,
-        props=[("chimenea", -4.0, 0.45), ("alfombrilla", -4.0, 2.6), ("barra", 4.6, 1.6), ("estante_botellas", 3.4, 0.4),
-               ("estante_botellas", 5.6, 0.4), ("barril_grifo", 7.0, 1.2), ("barril_grifo", 7.0, 2.7),
-               ("mesa_redonda", -4.5, 5.6), ("silla", -6.2, 5.4), ("silla", -2.9, 5.4), ("mesa_redonda", 1.0, 5.0),
-               ("silla", -0.6, 4.8), ("silla", 2.6, 4.8), ("mesa_larga", 4.5, 7.6), ("candelabro", 1.0, 4.5),
-               ("planta", -7.2, 0.6), ("planta", 7.3, 9.6), ("farol_poste", -6.8, 9.3), ("armario", -1.0, 0.45),
-               ("fogon", 0.9, 0.45)],
-        people=[("lio", -2.6, 6.8, ["¡Eh, tú! Lio, guía de la ruta oriental. Si vas hacia Puentegris, conozco atajos que no salen en ningún mapa.",
+        title="Posada del Cruce", building="Posada", floor="floor_planks", size=(12.0, 8.5), ambient=0.85,
+        props=[("chimenea", -3.6, 0.45), ("alfombrilla", -3.6, 2.2), ("armario", -1.2, 0.45), ("fogon", 0.4, 0.45),
+               ("sacos_harina", -0.4, 1.4), ("estante_botellas", 2.8, 0.4), ("estante_botellas", 4.2, 0.4),
+               ("barra", 3.5, 1.8), ("barril_grifo", 5.3, 1.0), ("barril_grifo", 5.3, 2.3), ("candelabro", 1.9, 1.3),
+               ("mesa_redonda", -3.4, 4.6), ("silla", -4.6, 4.5), ("silla", -2.2, 4.5), ("silla", -3.4, 3.8),
+               ("mesa_redonda", 0.4, 4.4), ("silla", -0.8, 4.3), ("silla", 1.6, 4.3),
+               ("mesa_larga", 3.6, 5.7), ("silla", 2.3, 5.6), ("silla", 4.9, 5.6), ("cajas_mercancia", 5.4, 3.6),
+               ("planta", -5.4, 0.6), ("planta", 5.4, 7.6), ("farol_poste", -5.3, 7.3)],
+        people=[("lio", -2.2, 5.9, ["¡Eh, tú! Lio, guía de la ruta oriental. Si vas hacia Puentegris, conozco atajos que no salen en ningún mapa.",
                                    "Mi hermana Sella dice que soy un imprudente. Yo digo que llegar tarde también es un riesgo.",
                                    "Desde que se abrió la grieta, el puente oriental cruje de una forma que no me gusta nada."]),
-                ("sella", -0.8, 7.2, ["Sella. Llevo las cuentas de Puentegris. Alguien tiene que hacerlo mientras mi hermano busca atajos.",
+                ("sella", -0.6, 6.2, ["Sella. Llevo las cuentas de Puentegris. Alguien tiene que hacerlo mientras mi hermano busca atajos.",
                                       "Cada caravana que no llega es un mes más difícil para nosotros.",
                                       "Si de verdad vas a ayudar, apúntalo. Las promesas sin apuntar se las lleva el viento."])],
     ),
     "sede_faro": dict(
-        title="Sede del Faro", building="SedeDelFaro", floor="floor_flagstone", size=(14.0, 10.0), ambient=0.8,
-        props=[("mostrador_registro", 0.0, 2.0), ("tablon_contratos", -3.6, 0.4), ("estante_pergaminos", 3.4, 0.4),
-               ("estandarte_gremio", -1.8, 0.6), ("estandarte_gremio", 1.8, 0.6), ("mesa_mapas", 4.6, 5.2),
-               ("candelabro", 3.0, 4.6), ("lampara_cristal", -5.8, 0.6), ("lampara_cristal", 5.8, 0.6),
-               ("armero", -5.4, 4.0), ("cofre_tesoro", -5.6, 6.8), ("alfombrilla", 0.0, 5.6), ("estanteria", -0.0, 0.4)],
-        people=[("iven", -3.4, 2.6, ["¿Tú también vienes por contratos? Llegas tarde: los buenos ya los he cogido yo.",
+        title="Sede del Faro", building="SedeDelFaro", floor="floor_flagstone", size=(11.0, 8.0), ambient=0.8,
+        props=[("mostrador_registro", 0.0, 1.8), ("tablon_contratos", -3.0, 0.4), ("estante_pergaminos", 3.0, 0.4),
+               ("estandarte_gremio", -1.6, 0.6), ("estandarte_gremio", 1.6, 0.6), ("estanteria", 0.0, 0.4),
+               ("lampara_cristal", -4.6, 0.6), ("lampara_cristal", 4.6, 0.6), ("mesa_mapas", 3.4, 4.6),
+               ("silla", 2.4, 4.5), ("silla", 4.4, 4.5), ("candelabro", 2.2, 3.6), ("armero", -4.4, 3.2),
+               ("cofre_tesoro", -4.4, 5.4), ("arcon", -3.2, 5.6), ("alfombrilla", 0.0, 4.6)],
+        people=[("iven", -2.6, 2.6, ["¿Tú también vienes por contratos? Llegas tarde: los buenos ya los he cogido yo.",
                                      "Un contrato bueno te da dinero. Uno difícil te da un nombre.",
                                      "No te confundas: no soy tu enemigo. Solo no pienso volver a ser el prescindible de nadie."]),
-                ("caldus", 2.6, 3.0, ["Ser Caldus Renn, del Faro. Mientras yo dirija esta sede, nadie sale sin saber a qué se enfrenta.",
+                ("caldus", 2.0, 2.6, ["Ser Caldus Renn, del Faro. Mientras yo dirija esta sede, nadie sale sin saber a qué se enfrenta.",
                                       "La verdad hay que contarla cuando existan medios para gestionar lo que provoque.",
                                       "Las afueras no son lugar para valientes sin preparación. Habla con Mara antes de salir."])],
     ),
     "tienda_nara": dict(
-        title="Tienda de Nara", building="TiendaDeNara", floor="floor_planks", size=(12.0, 9.0), ambient=0.9,
-        props=[("vitrina_pociones", 0.0, 2.2), ("estante_pociones", -2.0, 0.4), ("estante_botellas", 2.0, 0.4),
-               ("estanteria", 4.4, 0.4), ("cajas_mercancia", -4.6, 1.2), ("sacos_harina", -4.4, 3.4),
-               ("barril_grifo", 4.8, 3.2), ("planta", -5.0, 7.2), ("alfombrilla", 0.0, 6.0), ("candelabro", 2.2, 2.0),
-               ("armario", -4.4, 0.45)],
+        title="Tienda de Nara", building="TiendaDeNara", floor="floor_planks", size=(9.5, 7.0), ambient=0.9,
+        props=[("vitrina_pociones", 0.0, 2.0), ("estante_pociones", -1.6, 0.4), ("estante_botellas", 1.6, 0.4),
+               ("estanteria", 3.3, 0.4), ("armario", -3.4, 0.45), ("cajas_mercancia", -3.6, 1.9), ("sacos_harina", -3.6, 3.2),
+               ("barril_grifo", 3.8, 2.6), ("candelabro", 1.7, 1.8), ("planta", -3.9, 5.8), ("alfombrilla", 0.0, 4.8)],
     ),
     "taller_elia": dict(
-        title="Taller de Elia", building="CasaDeElia", floor="floor_planks", size=(12.0, 9.0), ambient=0.85,
-        props=[("banco_trabajo", -2.4, 0.9), ("yunque", 0.4, 2.6), ("armero", -4.6, 0.6), ("maniqui_cota", 1.6, 0.8),
-               ("fogon", 3.6, 0.45), ("cama", 4.4, 4.6), ("arcon", 4.4, 6.9), ("estanteria", 0.0, 0.4),
-               ("escritorio", -4.2, 4.4), ("planta", -5.0, 7.3), ("alfombrilla", 1.0, 5.6), ("lampara_cristal", -1.2, 4.2)],
+        title="Taller de Elia", building="CasaDeElia", floor="floor_planks", size=(9.5, 7.0), ambient=0.85,
+        props=[("banco_trabajo", -2.0, 0.9), ("estanteria", -0.2, 0.4), ("maniqui_cota", 1.4, 0.8), ("fogon", 3.0, 0.45),
+               ("armero", -3.6, 0.6), ("yunque", 0.4, 2.4), ("cama", 3.6, 3.8), ("arcon", 3.6, 5.6),
+               ("escritorio", -3.4, 3.8), ("silla", -3.4, 4.7), ("lampara_cristal", -1.0, 3.6),
+               ("alfombrilla", 0.8, 4.6), ("planta", -3.9, 5.8)],
     ),
 }
 

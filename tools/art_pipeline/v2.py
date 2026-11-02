@@ -4,6 +4,7 @@ import numpy as np
 from PIL import Image
 
 import pixelate as px
+import unify
 import sheets
 
 V2 = None  # set by build.py: art/ai/v2
@@ -38,7 +39,8 @@ def _texture(rgb, size, colours, band=14, saturation=1.0, value=1.0, flatten=0.0
 
 GROUND = {  # source -> (texture, colours, saturation, value, flatten)
     "grass": ("grass_nuevo", 22, 0.78, 0.92, 10.0),  # kept for other places; the town uses the classic grass.png
-    "cobble": ("cobble", 24, 0.95, 1.0, 0.0),
+    # cobble: the second pass's stones were blurry and dark next to the facades; the classic one is back
+    # (art/revision/no_encajan/LEEME.md)
     "dirt": ("dirt", 20, 0.9, 1.0, 10.0),
 }
 
@@ -56,15 +58,18 @@ def ground():
     return OUT / "environment" / "textures"
 
 
-INTERIOR_TILE = 168  # px: two of the old 84 px interior tiles (tools/levels/interiors.py doubles their size)
-INTERIOR = {"floor_planks": ("floor_planks", 20, 0.85), "wall_plaster": ("wall_plaster", 22, 0.9),
-            "flagstone": ("floor_flagstone", 22, 0.9)}
+# 84 px a tile, the size of the facades' detail: at 168 the beams were 10 px wide and read smoother than
+# the outside (art/revision/no_encajan/LEEME.md)
+INTERIOR_TILE = 84
+INTERIOR = {"floor_planks": ("floor_planks", 12, 0.62, 0.95), "wall_plaster": ("wall_plaster", 10, 0.5, 1.12),
+            "flagstone": ("floor_flagstone", 14, 0.85, 1.0)}
 
 
 def interior():
-    for src, (name, colours, sat) in INTERIOR.items():
+    for src, (name, colours, sat, val) in INTERIOR.items():
         if (V2 / f"{src}.png").exists():
-            _save(_texture(_load(src), INTERIOR_TILE, colours, saturation=sat), "environment", "textures", name + ".png")
+            tile = _texture(_load(src), INTERIOR_TILE, colours, saturation=sat, value=val)
+            _save(unify.master(tile), "environment", "textures", name + ".png")
     return OUT / "environment" / "textures"
 
 
@@ -93,7 +98,7 @@ def _objects(rgb, min_area=4000):
     return [(rgb[box], mask) for box, mask in out]
 
 
-def _sprite(rgb, mask, height, colours):
+def _sprite(rgb, mask, height, colours, tone=None):
     """A crisp sprite `height` game px tall: magenta fringe turned to outline, palette `colours`."""
     h, w = mask.shape
     width = max(1, round(w * height / h))
@@ -107,17 +112,21 @@ def _sprite(rgb, mask, height, colours):
     colour[fringe] = (38, 26, 24)
     colour = np.clip(colour, 0, 255)
     palette = px.kmeans_palette(colour[solid > 0], colours)
-    return px.to_image(px.snap(colour, solid, palette), solid)
+    image = px.to_image(px.snap(colour, solid, palette), solid)
+    return unify.master(image, **tone) if tone else image
 
 
 STALLS = [("merchant_wagon", 78), ("cloth_cart", 56), ("potion_stall", 74), ("smith_stall", 70), ("food_stall", 72),
           ("fortune_tent", 84)]  # left to right, top to bottom; game px tall
 
 
+STALL_TONE = {"saturation": 0.8, "value": 1.3}  # they came out darker and more saturated than the plaza's stalls
+
+
 def stalls():
     parts = _objects(_load("stalls"))
     for (rgb, mask), (name, height) in zip(parts, STALLS):
-        _save(_sprite(rgb, mask, height, 40), "environment", "props", name + ".png")
+        _save(_sprite(rgb, mask, height, 40, STALL_TONE), "environment", "props", name + ".png")
     return OUT / "environment" / "props"
 
 

@@ -1,0 +1,73 @@
+GIMP Palette
+Name: GUILD ZERO maestra
+Columns: 12
+#
+ 14  12  11 contorno y sombra
+ 27  16  25 contorno y sombra
+ 32  23  21 contorno y sombra
+ 39  30  24 contorno y sombra
+ 47  32  34 madera y tierra
+ 55  41  33 madera y tierra
+ 67  45  40 madera y tierra
+ 83  57  45 madera y tierra
+ 96  65  47 madera y tierra
+107  75  55 madera y tierra
+115  79  55 madera y tierra
+127  88  62 madera y tierra
+146 102  68 madera y tierra
+178 125  74 madera y tierra
+158 139 119 madera y tierra
+228 176  75 madera y tierra
+185 151 114 yeso y tierra clara
+186 168 145 yeso y tierra clara
+210 189 159 yeso y tierra clara
+228 213 179 yeso y tierra clara
+236 223 186 yeso y tierra clara
+238 226 197 yeso y tierra clara
+ 59  61  65 piedra y metal
+ 88  91  94 piedra y metal
+108 109 108 piedra y metal
+122 123 122 piedra y metal
+140 139 129 piedra y metal
+134 141 140 piedra y metal
+164 163 151 piedra y metal
+160 166 163 piedra y metal
+212 206 187 piedra y metal
+231 233 230 piedra y metal
+ 28  46  32 vegetación
+ 41  67  34 vegetación
+ 56  72  48 vegetación
+ 38  76  54 vegetación
+ 54  83  42 vegetación
+ 60  95  44 vegetación
+ 52  97  59 vegetación
+ 62 114  60 vegetación
+ 70 124  64 vegetación
+ 85 140  64 vegetación
+ 92 140  81 vegetación
+115 176  91 vegetación
+ 41  10  40 tejidos cálidos y tejas
+ 58  36  29 tejidos cálidos y tejas
+ 68  42  36 tejidos cálidos y tejas
+ 84  51  43 tejidos cálidos y tejas
+114  39  47 tejidos cálidos y tejas
+107  68  53 tejidos cálidos y tejas
+191  65  51 tejidos cálidos y tejas
+ 44  44  63 tejidos fríos y pizarra
+ 30  56  58 tejidos fríos y pizarra
+ 50  62 112 tejidos fríos y pizarra
+ 72  76  90 tejidos fríos y pizarra
+ 76  99 175 tejidos fríos y pizarra
+ 89 116 140 tejidos fríos y pizarra
+106 135 157 tejidos fríos y pizarra
+128 170 207 tejidos fríos y pizarra
+255 138  28 magia
+143 216 255 magia
+180 184 255 magia
+168 122 224 magia
+255 232 128 magia
+124  78 210 magia
+214 184 255 magia
+255 242 168 fuego y luz
+255 201  60 fuego y luz
+226  69  28 fuego y luz

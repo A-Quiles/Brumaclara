@@ -11,3 +11,5 @@ __pycache__/
 
 # backups the edit mode keeps of the level edits
 data/edits/*.bak
+tools/art_audit/tmp/
+tools/art_audit/out/*.png

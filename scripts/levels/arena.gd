@@ -129,7 +129,7 @@ func _block(pos: Vector3, size: Vector3, top: Texture2D) -> StaticBody3D:
 	mat.shader = BLOCK
 	mat.set_shader_parameter("top_texture", top)
 	mat.set_shader_parameter("side_texture", CLIFF)
-	mat.set_shader_parameter("top_size", Vector2(10.9, 10.9))
+	mat.set_shader_parameter("top_size", Vector2.ONE * top.get_width() / 20.0)  # 20 texels per unit, whatever the tile size
 	mat.set_shader_parameter("side_size", Vector2(5.45, 5.45))
 	mesh.material_override = mat
 	body.add_child(mesh)

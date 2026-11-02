@@ -1,0 +1,312 @@
+family,asset,reference,score,reasons
+edificios,assets/environment/buildings/roof_red.png,False,6.3,sombreado plano; más saturado que su familia
+edificios,assets/environment/buildings/facade_home_yellow_gable.png,True,4.4,ruido de píxeles sueltos
+edificios,assets/environment/buildings/roof_shingle.png,False,4.4,"sombreado degradado, se lee como pintura y no como píxel"
+edificios,assets/environment/buildings/facade_league_gable.png,True,4.1,ruido de píxeles sueltos
+edificios,assets/environment/buildings/facade_archive_gable.png,True,4.0,ruido de píxeles sueltos
+edificios,assets/environment/buildings/facade_brasa_gable.png,True,3.9,ruido de píxeles sueltos
+edificios,assets/environment/buildings/facade_home_blue_gable.png,True,3.3,ruido de píxeles sueltos
+edificios,assets/environment/buildings/roof_orange.png,False,3.3,más saturado que su familia
+edificios,assets/environment/buildings/facade_home_green_gable.png,True,3.1,ruido de píxeles sueltos
+edificios,assets/environment/buildings/facade_stable_gable.png,True,3.1,ruido de píxeles sueltos
+edificios,assets/environment/buildings/facade_home_red_gable.png,True,2.9,ruido de píxeles sueltos
+edificios,assets/environment/buildings/facade_smithy_gable.png,True,2.7,más oscuro que su familia
+edificios,assets/environment/buildings/facade_smithy_wall.png,True,2.7,más oscuro que su familia
+edificios,assets/environment/buildings/facade_smithy_wall_tall.png,True,2.7,más oscuro que su familia
+edificios,assets/environment/buildings/facade_stable_wall.png,True,2.6,"sombreado degradado, se lee como pintura y no como píxel"
+edificios,assets/environment/buildings/facade_stable_wall_tall.png,True,2.5,
+edificios,assets/environment/buildings/side_timber.png,True,2.3,
+edificios,assets/environment/buildings/facade_guild_gable.png,True,2.2,
+edificios,assets/environment/buildings/house_side.png,True,2.2,
+edificios,assets/environment/buildings/facade_inn_gable.png,True,2.1,
+edificios,assets/environment/buildings/facade_shop_gable.png,True,1.9,
+edificios,assets/environment/buildings/house_gable.png,True,1.9,
+edificios,assets/environment/buildings/house_front.png,True,1.7,
+edificios,assets/environment/buildings/roof_slate.png,False,1.7,
+edificios,assets/environment/buildings/side_timber_tall.png,True,1.7,
+edificios,assets/environment/buildings/facade_home_red_wall.png,True,1.6,
+edificios,assets/environment/buildings/facade_home_red_wall_tall.png,True,1.6,
+edificios,assets/environment/buildings/facade_home_yellow_wall_tall.png,True,1.6,
+edificios,assets/environment/buildings/facade_home_yellow_wall.png,True,1.4,
+edificios,assets/environment/buildings/facade_brasa_wall_tall.png,True,1.2,
+edificios,assets/environment/buildings/facade_home_blue_wall.png,True,1.2,
+edificios,assets/environment/buildings/facade_home_green_wall.png,True,1.2,
+edificios,assets/environment/buildings/facade_league_wall_tall.png,True,1.2,
+edificios,assets/environment/buildings/facade_archive_wall_tall.png,True,1.0,
+edificios,assets/environment/buildings/facade_brasa_wall.png,True,1.0,
+edificios,assets/environment/buildings/facade_home_blue_wall_tall.png,True,1.0,
+edificios,assets/environment/buildings/facade_home_green_wall_tall.png,True,1.0,
+edificios,assets/environment/buildings/facade_league_wall.png,True,1.0,
+edificios,assets/environment/buildings/facade_archive_wall.png,True,0.8,
+edificios,assets/environment/buildings/facade_guild_wall.png,True,0.8,
+edificios,assets/environment/buildings/facade_inn_wall_tall.png,True,0.7,
+edificios,assets/environment/buildings/facade_inn_wall.png,True,0.6,
+edificios,assets/environment/buildings/facade_guild_wall_tall.png,True,0.5,
+edificios,assets/environment/buildings/facade_shop_wall.png,True,0.5,
+edificios,assets/environment/buildings/facade_shop_wall_tall.png,True,0.5,
+efectos,assets/effects/affinity/rayo_spark.png,False,10.5,más apagado que su familia; más claro que su familia
+efectos,assets/effects/spark.png,True,10.3,más apagado que su familia; más claro que su familia
+efectos,assets/effects/dust.png,False,9.2,más apagado que su familia; más claro que su familia
+efectos,assets/effects/affinity/hielo_spark.png,False,8.7,más apagado que su familia; más claro que su familia
+efectos,assets/effects/affinity/luz_spark.png,False,8.0,más apagado que su familia; más claro que su familia
+efectos,assets/effects/affinity/rayo_bolt.png,False,7.3,demasiadas líneas duras; más apagado que su familia
+efectos,assets/effects/affinity/sombra_spark.png,False,7.2,demasiadas líneas duras; más apagado que su familia
+efectos,assets/effects/affinity/tierra_spark.png,False,6.8,más apagado que su familia
+efectos,assets/effects/affinity/rayo_explosion.png,False,6.7,más apagado que su familia
+efectos,assets/effects/affinity/hielo_bolt.png,False,5.7,demasiadas líneas duras; más apagado que su familia
+efectos,assets/effects/affinity/sombra_bolt.png,False,5.7,demasiadas líneas duras; más apagado que su familia
+efectos,assets/effects/affinity/tierra_bolt.png,False,5.5,demasiadas líneas duras; más apagado que su familia
+efectos,assets/effects/affinity/sombra_explosion.png,False,5.0,más apagado que su familia; más oscuro que su familia
+efectos,assets/effects/affinity/tierra_explosion.png,False,5.0,más apagado que su familia
+efectos,assets/effects/affinity/hielo_explosion.png,False,4.8,más apagado que su familia
+efectos,assets/effects/affinity/luz_bolt.png,False,4.7,más apagado que su familia
+efectos,assets/effects/affinity/luz_explosion.png,False,3.7,más apagado que su familia
+efectos,assets/effects/bolt.png,True,3.7,demasiadas líneas duras
+efectos,assets/effects/orb.png,False,3.7,ruido de píxeles sueltos
+efectos,assets/effects/explosion.png,True,0.7,
+objetos,assets/environment/props/horse__negro__ne.png,False,6.9,"sombreado degradado, se lee como pintura y no como píxel; detalle sobredimensionado: pocos bordes, parece ampliado; más apagado que su familia; más oscuro que su familia"
+objetos,assets/environment/props/horse__negro__se.png,False,6.7,"sombreado degradado, se lee como pintura y no como píxel; más apagado que su familia; más oscuro que su familia"
+objetos,assets/environment/props/horse__negro_grazing.png,False,6.5,"sombreado degradado, se lee como pintura y no como píxel; más apagado que su familia; más oscuro que su familia"
+objetos,assets/environment/props/horse__negro__n.png,False,6.3,"sombreado degradado, se lee como pintura y no como píxel; detalle sobredimensionado: pocos bordes, parece ampliado; más apagado que su familia; más oscuro que su familia"
+objetos,assets/environment/props/horse__negro_lying.png,False,6.3,"sombreado degradado, se lee como pintura y no como píxel; más apagado que su familia; más oscuro que su familia"
+objetos,assets/environment/props/horse__negro__s.png,False,5.9,"sombreado degradado, se lee como pintura y no como píxel; más apagado que su familia; más oscuro que su familia"
+objetos,assets/environment/props/horse__blanco_lying.png,False,5.2,más apagado que su familia; más claro que su familia
+objetos,assets/environment/props/rune_stone.png,False,4.9,más apagado que su familia
+objetos,assets/environment/props/horse__blanco__s.png,False,4.8,más apagado que su familia; más claro que su familia
+objetos,assets/environment/props/chimney.png,False,4.7,más apagado que su familia
+objetos,assets/environment/props/horse__blanco__se.png,False,4.7,más apagado que su familia; más claro que su familia
+objetos,assets/environment/props/horse__tordo_lying.png,False,4.7,más apagado que su familia
+objetos,assets/environment/props/horse__tordo__ne.png,False,4.6,más apagado que su familia
+objetos,assets/environment/props/horse__tordo__s.png,False,4.6,más apagado que su familia
+objetos,assets/environment/props/horse__tordo__se.png,False,4.6,más apagado que su familia
+objetos,assets/environment/props/horse__tordo_grazing.png,False,4.6,más apagado que su familia
+objetos,assets/environment/props/horse__blanco.png,False,4.5,más apagado que su familia; más claro que su familia
+objetos,assets/environment/props/horse__blanco__ne.png,False,4.5,más apagado que su familia; más claro que su familia
+objetos,assets/environment/props/horse__blanco_grazing.png,False,4.5,más apagado que su familia; más claro que su familia
+objetos,assets/environment/props/horse__tordo__n.png,False,4.5,más apagado que su familia
+objetos,assets/environment/props/barrel_stack__b.png,False,4.4,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/barrel_stack__c.png,False,4.3,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/hay_pile.png,False,4.3,más claro que su familia
+objetos,assets/environment/props/horse__blanco__n.png,False,4.3,más apagado que su familia; más claro que su familia
+objetos,assets/environment/props/horse__tordo.png,False,4.3,más apagado que su familia
+objetos,assets/environment/props/low_wall.png,False,4.3,más apagado que su familia; más claro que su familia
+objetos,assets/environment/props/horse__negro.png,False,4.0,"sombreado degradado, se lee como pintura y no como píxel; más apagado que su familia; más oscuro que su familia"
+objetos,assets/environment/props/horse__palomino_lying.png,False,4.0,más claro que su familia
+objetos,assets/environment/props/pillar.png,False,4.0,más apagado que su familia; más claro que su familia
+objetos,assets/environment/nature/bush.png,True,3.9,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/nature/boulder__b.png,False,3.8,más apagado que su familia
+objetos,assets/environment/props/barrel__tipped.png,False,3.6,ruido de píxeles sueltos
+objetos,assets/environment/props/notice_board__nw.png,False,3.6,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/nature/tree_fir.png,True,3.5,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/fountain.png,False,3.5,más claro que su familia
+objetos,assets/environment/props/horse__ne.png,False,3.5,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/horse__palomino.png,False,3.5,más claro que su familia
+objetos,assets/environment/props/horse__palomino__n.png,False,3.5,más claro que su familia
+objetos,assets/environment/props/horse__palomino__s.png,False,3.5,más claro que su familia
+objetos,assets/environment/props/horse__palomino_grazing.png,False,3.5,más claro que su familia
+objetos,assets/environment/props/town_arch.png,False,3.5,más apagado que su familia
+objetos,assets/environment/nature/boulder__c.png,False,3.4,más apagado que su familia
+objetos,assets/environment/nature/tree_oak.png,True,3.4,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/horse__n.png,False,3.4,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/chalkboard__sw.png,False,3.3,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/horse__palomino__ne.png,False,3.3,más claro que su familia
+objetos,assets/environment/props/horse__palomino__se.png,False,3.3,más claro que su familia
+objetos,assets/environment/props/crate__tall.png,False,3.1,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/interior/maniqui_cota.png,False,3.1,más apagado que su familia
+objetos,assets/environment/nature/boulder__d.png,False,3.0,más apagado que su familia
+objetos,assets/environment/nature/rocks.png,True,3.0,más apagado que su familia
+objetos,assets/environment/props/archery_target.png,False,3.0,más claro que su familia
+objetos,assets/environment/props/crate__se.png,False,3.0,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/hay_bale.png,True,3.0,más claro que su familia
+objetos,assets/environment/props/horse__grazing.png,False,3.0,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/notice_board__n.png,False,3.0,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/notice_board__se.png,False,3.0,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/notice_board__sw.png,False,3.0,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/chalkboard__n.png,False,2.9,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/horse__lying.png,False,2.9,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/horse__se.png,False,2.9,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/rift_crystals.png,False,2.9,sombreado plano
+objetos,assets/environment/nature/boulder.png,True,2.8,más apagado que su familia
+objetos,assets/environment/props/chalkboard__se.png,False,2.8,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/rift_crack.png,False,2.8,sombreado plano
+objetos,assets/environment/props/rose_bush.png,False,2.8,sombreado plano
+objetos,assets/environment/props/archery_target__n.png,False,2.7,"sombreado degradado, se lee como pintura y no como píxel; más oscuro que su familia"
+objetos,assets/environment/props/chalkboard__ne.png,False,2.7,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/hay_cart__w.png,False,2.7,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/horse__s.png,False,2.7,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/hay_cart__n.png,False,2.6,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/hay_cart__nw.png,False,2.6,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/nature/flowers.png,False,2.5,demasiadas líneas duras
+objetos,assets/environment/props/chalkboard__e.png,False,2.5,
+objetos,assets/environment/props/hay_bale__rolled.png,False,2.5,más claro que su familia
+objetos,assets/environment/props/hay_cart__ne.png,False,2.5,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/hay_cart__s.png,False,2.5,
+objetos,assets/environment/props/interior/arcon.png,False,2.5,"sombreado degradado, se lee como pintura y no como píxel"
+objetos,assets/environment/props/interior/mesa_larga.png,False,2.5,
+objetos,assets/environment/props/interior/yunque.png,False,2.5,
+objetos,assets/environment/nature/mushrooms.png,False,2.4,
+objetos,assets/environment/props/trough.png,True,2.4,
+objetos,assets/environment/nature/tree_dead.png,False,2.3,
+objetos,assets/environment/props/archery_target__e.png,False,2.3,
+objetos,assets/environment/props/archery_target__sw.png,False,2.3,
+objetos,assets/environment/props/bench__e.png,False,2.3,
+objetos,assets/environment/props/bench__w.png,False,2.3,
+objetos,assets/environment/props/crystal.png,False,2.3,
+objetos,assets/environment/props/interior/fogon.png,False,2.3,
+objetos,assets/environment/props/town_gate.png,False,2.3,
+objetos,assets/environment/props/wall_lantern.png,False,2.3,
+objetos,assets/environment/props/archery_target__se.png,False,2.2,
+objetos,assets/environment/props/fence__sw.png,False,2.2,
+objetos,assets/environment/props/hay_bale__e.png,False,2.2,
+objetos,assets/environment/props/horse__alazan__se.png,False,2.2,
+objetos,assets/environment/props/interior/estante_botellas.png,False,2.2,
+objetos,assets/environment/props/interior/estante_pociones.png,False,2.2,
+objetos,assets/environment/props/interior/farol_poste.png,False,2.2,
+objetos,assets/environment/props/banner.png,False,2.1,
+objetos,assets/environment/props/banner__se.png,False,2.1,
+objetos,assets/environment/props/bench__n.png,False,2.1,
+objetos,assets/environment/props/horse__alazan__ne.png,False,2.1,
+objetos,assets/environment/props/interior/alfombrilla.png,False,2.1,
+objetos,assets/environment/nature/tree_young.png,True,2.0,
+objetos,assets/environment/props/bench__nw.png,False,2.0,
+objetos,assets/environment/props/bench__s.png,False,2.0,
+objetos,assets/environment/props/firewood.png,True,2.0,
+objetos,assets/environment/props/horse__alazan_grazing.png,False,2.0,
+objetos,assets/environment/props/interior/banco_trabajo.png,False,2.0,
+objetos,assets/environment/props/interior/barril_grifo.png,False,2.0,
+objetos,assets/environment/props/interior/cajas_mercancia.png,False,2.0,
+objetos,assets/environment/props/interior/estante_pergaminos.png,False,2.0,
+objetos,assets/environment/props/interior/planta.png,False,2.0,
+objetos,assets/environment/props/banner__n.png,False,1.9,
+objetos,assets/environment/props/barrel__lying.png,False,1.9,
+objetos,assets/environment/props/bench__se.png,False,1.9,
+objetos,assets/environment/props/chest.png,False,1.9,
+objetos,assets/environment/props/cypress_pot.png,False,1.9,
+objetos,assets/environment/props/dormer.png,False,1.9,
+objetos,assets/environment/props/horse__alazan.png,False,1.9,
+objetos,assets/environment/props/horse__alazan_lying.png,False,1.9,
+objetos,assets/environment/props/wagon.png,True,1.9,
+objetos,assets/environment/props/weapon_rack.png,True,1.9,
+objetos,assets/environment/props/well.png,True,1.9,
+objetos,assets/environment/nature/bush_berries.png,False,1.8,
+objetos,assets/environment/nature/rift_bramble.png,False,1.8,
+objetos,assets/environment/props/banner__sw.png,False,1.8,
+objetos,assets/environment/props/chalkboard.png,False,1.8,
+objetos,assets/environment/props/fence__post.png,False,1.8,
+objetos,assets/environment/props/flower_bed.png,False,1.8,
+objetos,assets/environment/props/fortune_tent.png,False,1.8,
+objetos,assets/environment/props/horse__alazan__n.png,False,1.8,
+objetos,assets/environment/props/horse__alazan__s.png,False,1.8,
+objetos,assets/environment/props/interior/estanteria.png,False,1.8,
+objetos,assets/environment/props/lantern__sw.png,False,1.8,
+objetos,assets/environment/props/notice_board__e.png,False,1.8,
+objetos,assets/environment/props/potion_stall.png,False,1.8,
+objetos,assets/environment/props/sacks.png,True,1.8,
+objetos,assets/environment/props/signpost.png,True,1.8,
+objetos,assets/environment/props/stall_blue.png,True,1.8,
+objetos,assets/environment/props/stall_green.png,True,1.8,
+objetos,assets/environment/props/street_lamp.png,True,1.8,
+objetos,assets/environment/props/fence_gate.png,False,1.7,
+objetos,assets/environment/props/hay_bale__upright.png,False,1.7,
+objetos,assets/environment/props/interior/armario.png,False,1.7,
+objetos,assets/environment/props/interior/candelabro.png,False,1.7,
+objetos,assets/environment/props/interior/estandarte_gremio.png,False,1.7,
+objetos,assets/environment/props/training_dummy.png,True,1.7,
+objetos,assets/environment/props/fence.png,True,1.6,
+objetos,assets/environment/props/notice_board.png,True,1.6,
+objetos,assets/environment/nature/tall_grass.png,False,1.5,
+objetos,assets/environment/props/banner__e.png,False,1.5,
+objetos,assets/environment/props/barrel_stack.png,False,1.5,
+objetos,assets/environment/props/interior/barra.png,False,1.5,
+objetos,assets/environment/props/interior/lampara_cristal.png,False,1.5,
+objetos,assets/environment/props/interior/vitrina_pociones.png,False,1.5,
+objetos,assets/environment/props/stall_red.png,True,1.5,
+objetos,assets/environment/props/hay_cart.png,False,1.4,
+objetos,assets/environment/props/tree_planter.png,False,1.4,
+objetos,assets/environment/props/bread_stool.png,False,1.3,
+objetos,assets/environment/props/bucket.png,True,1.3,
+objetos,assets/environment/props/interior/mesa_redonda.png,False,1.3,
+objetos,assets/environment/props/interior/silla.png,False,1.3,
+objetos,assets/environment/props/wagon__verde.png,False,1.3,
+objetos,assets/environment/props/banner__ne.png,False,1.2,
+objetos,assets/environment/props/banner__nw.png,False,1.2,
+objetos,assets/environment/props/food_stall.png,False,1.2,
+objetos,assets/environment/props/interior/cofre_tesoro.png,False,1.2,
+objetos,assets/environment/props/interior/escritorio.png,False,1.2,
+objetos,assets/environment/props/interior/tablon_contratos.png,False,1.2,
+objetos,assets/environment/props/lantern.png,True,1.2,
+objetos,assets/environment/props/lantern__e.png,False,1.2,
+objetos,assets/environment/props/bench.png,True,1.1,
+objetos,assets/environment/props/cloth_cart.png,False,1.1,
+objetos,assets/environment/props/horse.png,False,1.1,
+objetos,assets/environment/props/interior/chimenea.png,False,1.1,
+objetos,assets/environment/props/interior/mesa_mapas.png,False,1.1,
+objetos,assets/environment/props/planter.png,True,1.1,
+objetos,assets/environment/props/wagon__rojo.png,False,1.1,
+objetos,assets/environment/nature/stump.png,True,1.0,
+objetos,assets/environment/props/interior/armero.png,False,1.0,
+objetos,assets/environment/props/smith_stall.png,False,1.0,
+objetos,assets/environment/props/wagon__azul.png,False,1.0,
+objetos,assets/environment/props/interior/cama.png,False,0.9,
+objetos,assets/environment/props/barrel.png,True,0.8,
+objetos,assets/environment/props/crate.png,True,0.7,
+objetos,assets/environment/props/flower_cart.png,True,0.7,
+objetos,assets/environment/props/interior/mostrador_registro.png,False,0.7,
+objetos,assets/environment/props/interior/sacos_harina.png,False,0.7,
+objetos,assets/environment/props/merchant_wagon.png,False,0.6,
+personajes,assets/characters/enemies/wolf__sacro.png,False,8.5,más apagado que su familia; más claro que su familia
+personajes,assets/characters/enemies/wolf__escarcha.png,False,7.5,más apagado que su familia; más claro que su familia
+personajes,assets/characters/enemies/wolf__gris.png,False,6.2,más apagado que su familia; más claro que su familia
+personajes,assets/characters/enemies/polilla_luminica.png,False,6.0,demasiadas líneas duras; más claro que su familia
+personajes,assets/characters/townsfolk/lio.png,False,5.7,más saturado que su familia
+personajes,assets/characters/enemies/wolf__umbral.png,False,5.5,"sombreado degradado, se lee como pintura y no como píxel"
+personajes,assets/characters/townsfolk/elia.png,False,5.2,demasiadas líneas duras; más claro que su familia
+personajes,assets/characters/enemies/wolf__madre.png,False,4.2,"sombreado degradado, se lee como pintura y no como píxel"
+personajes,assets/characters/townsfolk/caldus.png,False,4.0,demasiadas líneas duras; más apagado que su familia
+personajes,assets/characters/townsfolk/iven.png,False,4.0,más apagado que su familia; más claro que su familia
+personajes,assets/characters/enemies/cuervo_bruma.png,False,3.9,"sombreado degradado, se lee como pintura y no como píxel"
+personajes,assets/characters/enemies/wolf__pedrero.png,False,3.7,más claro que su familia
+personajes,assets/characters/enemies/wolf__brasa.png,False,3.3,más saturado que su familia
+personajes,assets/characters/enemies/wolf__tormenta.png,False,3.3,más claro que su familia
+personajes,assets/characters/townsfolk/rhea.png,False,3.3,ruido de píxeles sueltos; más saturado que su familia
+personajes,assets/characters/enemies/murcielago_f.png,False,3.2,más saturado que su familia
+personajes,assets/characters/enemies/murcielago.png,False,3.0,"sombreado degradado, se lee como pintura y no como píxel"
+personajes,assets/characters/townsfolk/tovan.png,False,2.8,más saturado que su familia
+personajes,assets/characters/enemies/golem_f.png,False,2.6,ruido de píxeles sueltos
+personajes,assets/characters/enemies/jabali_espinoso.png,False,2.6,ruido de píxeles sueltos
+personajes,assets/characters/enemies/esqueleto.png,False,2.5,ruido de píxeles sueltos
+personajes,assets/characters/enemies/guardian_raices.png,False,2.5,
+personajes,assets/characters/enemies/esqueleto_f.png,False,2.4,
+personajes,assets/characters/townsfolk/guard.png,False,2.4,
+personajes,assets/characters/townsfolk/sella.png,False,2.3,
+personajes,assets/characters/enemies/hongo.png,False,2.2,
+personajes,assets/characters/enemies/wolf__alfa.png,False,2.2,
+personajes,assets/characters/enemies/espectro.png,False,2.0,
+personajes,assets/characters/enemies/roedor_bruma.png,False,2.0,
+personajes,assets/characters/enemies/golem.png,False,1.8,
+personajes,assets/characters/enemies/hongo_f.png,False,1.8,
+personajes,assets/characters/enemies/sporineo.png,False,1.8,
+personajes,assets/characters/enemies/wolf.png,False,1.8,
+personajes,assets/characters/townsfolk/mara.png,False,1.8,
+personajes,assets/characters/hero/heroine__largo.png,True,1.6,
+personajes,assets/characters/hero/heroine.png,True,1.5,
+personajes,assets/characters/townsfolk/neris.png,False,1.5,
+personajes,assets/characters/enemies/espectro_f.png,False,1.3,
+personajes,assets/characters/townsfolk/carter.png,False,1.3,
+personajes,assets/characters/hero/hero__coleta.png,True,0.7,
+personajes,assets/characters/hero/hero__corto.png,True,0.6,
+personajes,assets/characters/hero/hero.png,True,0.5,
+personajes,assets/characters/hero/hero__largo.png,True,0.5,
+suelos,assets/environment/textures/floor_flagstone.png,False,7.9,sombreado plano
+suelos,assets/environment/textures/grass_nuevo.png,False,5.8,ruido de píxeles sueltos
+suelos,assets/environment/textures/wall_plaster.png,False,4.8,sombreado plano
+suelos,assets/environment/textures/floor_planks.png,False,4.7,sombreado plano
+suelos,assets/environment/textures/rug_red.png,False,3.9,sombreado plano; ruido de píxeles sueltos
+suelos,assets/environment/textures/stone_wall.png,True,2.0,
+suelos,assets/environment/textures/dirt.png,True,1.9,
+suelos,assets/environment/textures/forest_floor.png,True,1.8,
+suelos,assets/environment/textures/grass.png,True,1.8,
+suelos,assets/environment/textures/cliff.png,True,1.7,
+suelos,assets/environment/textures/cobble.png,False,1.5,
+suelos,assets/environment/textures/garden_soil.png,True,1.5,
+suelos,assets/environment/textures/rift_ground.png,True,1.0,

@@ -62,6 +62,8 @@ static func night_at(h: float) -> float:
 func set_hour(h: float) -> void:
 	hour = fposmod(h, 24.0)
 	_skip_to = -1.0
+	if get_tree().current_scene != _scene:  # right after a scene change: never touch the old scene's lights
+		_bind(get_tree().current_scene)
 	if _env:
 		_apply(night() * _strength)
 
@@ -98,7 +100,7 @@ func _apply(n: float) -> void:
 		_sun.light_energy = lerpf(_sun_energy, _sun_energy * 0.6, n)
 		_sun.light_color = _sun_colour.lerp(Color(0.6, 0.7, 1.0), n).lerp(Color(1.0, 0.6, 0.35), dusk * 0.6)
 	for l in _lights:
-		var light: Light3D = l.light
+		var light = l.light  # untyped: a freed light must be skipped, not assigned
 		if is_instance_valid(light):
 			light.light_energy = l.energy * lerpf(0.35, 2.4, n)
 			if light is OmniLight3D:
@@ -135,6 +137,8 @@ func _bind(scene: Node) -> void:
 		if _strength < 1.0:
 			break  # indoors the hearths and candles keep their own light
 		var light := node as OmniLight3D
+		if light.has_meta("transient"):
+			continue  # a spell's flash, about to go
 		_lights.append({"light": light, "energy": light.light_energy, "range": light.omni_range})
 		_add_glow(light.get_parent() as Node3D, light.position, light.light_color)
 	for node in scene.find_children("*", "Sprite3D", true, false):

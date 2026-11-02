@@ -78,6 +78,21 @@ detalle cabe en cada píxel:
 Los puntos 1 y 2 se pueden hacer en `tools/art_pipeline` cuando quieras: rehacen todos los assets desde las
 fuentes en `art/ai/` sin generar nada nuevo.
 
+## 3. Aplicado el 2 de noviembre de 2026 (`docs/auditoria_arte.md`)
+
+- **Paleta maestra** con rampas por material (`art/paleta/`) y paso de unificación (`tools/art_pipeline/unify.py`).
+- **Rehacer desde la fuente, no generar**: paredes y suelos de interior, 32 muebles, 6 comercios y dos tejados
+  se rehicieron desde las imágenes que ya teníamos (reducir a su tamaño real promediando también limpia el
+  ruido). Cero imágenes nuevas.
+- **Efectos dibujados por el motor al píxel del juego**: anillos, destellos, marcas de aviso y zonas se
+  generan por código a cualquier tamaño sin ampliar píxeles; crecen redibujándose más grandes.
+- **Piezas en vez de sprites nuevos**: una explosión grande son varias explosiones normales alrededor del
+  centro, no un sprite ampliado ni uno nuevo dibujado a otra escala.
+- **Composición reutilizada**: la escena de validación copia la luz, el suelo, la cámara y una casa de
+  Brumaclara con un script (`tools/levels/validation.py`); no hay nada dibujado para ella.
+- **Un mueble, varias salas**: las cuatro salas comparten los mismos 32 muebles, colocados con intención
+  (sillas alrededor de cada mesa, barriles junto a la barra).
+
 ## Fuentes
 
 - [Universal LPC Spritesheet (capas de personaje)](https://github.com/makrohn/Universal-LPC-spritesheet)

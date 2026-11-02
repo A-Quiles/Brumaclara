@@ -37,16 +37,9 @@ func _ready() -> void:
 		shape.shape = cyl
 	shape.position.y = 0.8
 	add_child(shape)
-	var glow := Sprite3D.new()  # a tinted glow on the ground, with rising motes on top (Vfx.zone)
-	glow.texture = preload("res://assets/environment/textures/blob_shadow.png")
-	glow.axis = Vector3.AXIS_Y
-	glow.modulate = Color(Affinity.color(affinity), 0.55)
-	glow.shaded = false
-	glow.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	glow.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
 	var size := Vector2(line_length if line_length > 0.0 else radius * 2.0, radius * 2.0)
-	glow.pixel_size = size.x / glow.texture.get_width()
-	glow.scale = Vector3(1.0, 1.0, size.y / size.x * glow.texture.get_width() / glow.texture.get_height())
+	var glow := Vfx.ground_patch(size)  # a tinted patch on the ground at the game's pixel, motes on top (Vfx.zone)
+	glow.modulate = Color(Affinity.color(affinity), 0.55)
 	glow.position.y = 0.04
 	add_child(glow)
 	Vfx.zone(self, affinity, size)

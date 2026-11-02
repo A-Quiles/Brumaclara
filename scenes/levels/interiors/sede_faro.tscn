@@ -7,24 +7,26 @@
 [ext_resource type="PackedScene" path="res://scenes/environment/props/interior/tablon_contratos.tscn" id="5_r"]
 [ext_resource type="PackedScene" path="res://scenes/environment/props/interior/estante_pergaminos.tscn" id="6_r"]
 [ext_resource type="PackedScene" path="res://scenes/environment/props/interior/estandarte_gremio.tscn" id="7_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/mesa_mapas.tscn" id="8_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/candelabro.tscn" id="9_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/lampara_cristal.tscn" id="10_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/armero.tscn" id="11_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/cofre_tesoro.tscn" id="12_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/alfombrilla.tscn" id="13_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/estanteria.tscn" id="14_r"]
-[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/iven.tscn" id="15_r"]
-[ext_resource type="Script" path="res://scripts/characters/townsfolk.gd" id="16_r"]
-[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/caldus.tscn" id="17_r"]
-[ext_resource type="Script" path="res://scripts/systems/exit.gd" id="18_r"]
-[ext_resource type="PackedScene" path="res://scenes/characters/player.tscn" id="19_r"]
-[ext_resource type="Script" path="res://scripts/characters/player.gd" id="20_r"]
-[ext_resource type="PackedScene" path="res://scenes/effects/dust.tscn" id="21_r"]
-[ext_resource type="PackedScene" path="res://scenes/effects/floating_text.tscn" id="22_r"]
-[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="23_r"]
-[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="24_r"]
-[ext_resource type="Script" path="res://scripts/systems/level_edits.gd" id="25_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/estanteria.tscn" id="8_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/lampara_cristal.tscn" id="9_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/mesa_mapas.tscn" id="10_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/silla.tscn" id="11_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/candelabro.tscn" id="12_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/armero.tscn" id="13_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/cofre_tesoro.tscn" id="14_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/arcon.tscn" id="15_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/alfombrilla.tscn" id="16_r"]
+[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/iven.tscn" id="17_r"]
+[ext_resource type="Script" path="res://scripts/characters/townsfolk.gd" id="18_r"]
+[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/caldus.tscn" id="19_r"]
+[ext_resource type="Script" path="res://scripts/systems/exit.gd" id="20_r"]
+[ext_resource type="PackedScene" path="res://scenes/characters/player.tscn" id="21_r"]
+[ext_resource type="Script" path="res://scripts/characters/player.gd" id="22_r"]
+[ext_resource type="PackedScene" path="res://scenes/effects/dust.tscn" id="23_r"]
+[ext_resource type="PackedScene" path="res://scenes/effects/floating_text.tscn" id="24_r"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="25_r"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="26_r"]
+[ext_resource type="Script" path="res://scripts/systems/level_edits.gd" id="27_r"]
 
 [sub_resource type="Environment" id="Environment_1"]
 background_mode = 1
@@ -34,25 +36,25 @@ ambient_light_color = Color(1.000, 0.902, 0.784, 1.0)
 ambient_light_energy = 0.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2"]
-size = Vector3(15.2, 1.0, 10.6)
+size = Vector3(12.2, 1.0, 8.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3"]
 size = Vector3(2.4, 1.0, 2.0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4"]
-size = Vector3(15.2, 4.2, 0.6)
+size = Vector3(12.2, 4.2, 0.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5"]
-size = Vector3(0.6, 4.2, 10.6)
+size = Vector3(0.6, 4.2, 8.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6"]
-size = Vector3(0.6, 4.2, 10.6)
+size = Vector3(0.6, 4.2, 8.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7"]
-size = Vector3(6.3999999999999995, 0.7, 0.6)
+size = Vector3(4.8999999999999995, 0.7, 0.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8"]
-size = Vector3(6.3999999999999995, 0.7, 0.6)
+size = Vector3(4.8999999999999995, 0.7, 0.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_9"]
 size = Vector3(2.4, 3, 1.2)
@@ -70,10 +72,10 @@ shadow_enabled = true
 [node name="Buildings" type="Node3D" parent="."]
 
 [node name="Floor" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, -1.0, 5.3)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, -1.0, 4.3)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/Floor"]
-transform = Transform3D(15.2, 0, 0, 0, 1.0, 0, 0, 0, 10.6, 0, 0.5, 0)
+transform = Transform3D(12.2, 0, 0, 0, 1.0, 0, 0, 0, 8.6, 0, 0.5, 0)
 material_override = ExtResource("1_r")
 mesh = ExtResource("3_r")
 
@@ -82,7 +84,7 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_2")
 
 [node name="Threshold" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, -1.0, 11.6)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, -1.0, 9.6)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/Threshold"]
 transform = Transform3D(2.4, 0, 0, 0, 1.0, 0, 0, 0, 2.0, 0, 0.5, 0)
@@ -97,7 +99,7 @@ shape = SubResource("BoxShape3D_3")
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0, -0.3)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/BackWall"]
-transform = Transform3D(15.2, 0, 0, 0, 4.2, 0, 0, 0, 0.6, 0, 2.1, 0)
+transform = Transform3D(12.2, 0, 0, 0, 4.2, 0, 0, 0, 0.6, 0, 2.1, 0)
 material_override = ExtResource("2_r")
 mesh = ExtResource("3_r")
 
@@ -106,10 +108,10 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 2.1, 0)
 shape = SubResource("BoxShape3D_4")
 
 [node name="WestWall" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -7.3, 0, 5.0)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.8, 0, 4.0)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/WestWall"]
-transform = Transform3D(0.6, 0, 0, 0, 4.2, 0, 0, 0, 10.6, 0, 2.1, 0)
+transform = Transform3D(0.6, 0, 0, 0, 4.2, 0, 0, 0, 8.6, 0, 2.1, 0)
 material_override = ExtResource("2_r")
 mesh = ExtResource("3_r")
 
@@ -118,10 +120,10 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 2.1, 0)
 shape = SubResource("BoxShape3D_5")
 
 [node name="EastWall" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 7.3, 0, 5.0)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 5.8, 0, 4.0)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/EastWall"]
-transform = Transform3D(0.6, 0, 0, 0, 4.2, 0, 0, 0, 10.6, 0, 2.1, 0)
+transform = Transform3D(0.6, 0, 0, 0, 4.2, 0, 0, 0, 8.6, 0, 2.1, 0)
 material_override = ExtResource("2_r")
 mesh = ExtResource("3_r")
 
@@ -130,10 +132,10 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 2.1, 0)
 shape = SubResource("BoxShape3D_6")
 
 [node name="FrontWest" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -4.3999999999999995, 0, 10.3)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.6499999999999995, 0, 8.3)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/FrontWest"]
-transform = Transform3D(6.3999999999999995, 0, 0, 0, 0.7, 0, 0, 0, 0.6, 0, 0.35, 0)
+transform = Transform3D(4.8999999999999995, 0, 0, 0, 0.7, 0, 0, 0, 0.6, 0, 0.35, 0)
 material_override = ExtResource("2_r")
 mesh = ExtResource("3_r")
 
@@ -142,10 +144,10 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.35, 0)
 shape = SubResource("BoxShape3D_7")
 
 [node name="FrontEast" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.3999999999999995, 0, 10.3)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 3.6499999999999995, 0, 8.3)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/FrontEast"]
-transform = Transform3D(6.3999999999999995, 0, 0, 0, 0.7, 0, 0, 0, 0.6, 0, 0.35, 0)
+transform = Transform3D(4.8999999999999995, 0, 0, 0, 0.7, 0, 0, 0, 0.6, 0, 0.35, 0)
 material_override = ExtResource("2_r")
 mesh = ExtResource("3_r")
 
@@ -156,61 +158,70 @@ shape = SubResource("BoxShape3D_8")
 [node name="Props" type="Node3D" parent="."]
 
 [node name="mostrador_registro1" parent="Props" instance=ExtResource("4_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0, 2.0)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0, 1.8)
 
 [node name="tablon_contratos1" parent="Props" instance=ExtResource("5_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.6, 0, 0.4)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.0, 0, 0.4)
 
 [node name="estante_pergaminos1" parent="Props" instance=ExtResource("6_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 3.4, 0, 0.4)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 3.0, 0, 0.4)
 
 [node name="estandarte_gremio1" parent="Props" instance=ExtResource("7_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -1.8, 0, 0.6)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -1.6, 0, 0.6)
 
 [node name="estandarte_gremio2" parent="Props" instance=ExtResource("7_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 1.8, 0, 0.6)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 1.6, 0, 0.6)
 
-[node name="mesa_mapas1" parent="Props" instance=ExtResource("8_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, 0, 5.2)
+[node name="estanteria1" parent="Props" instance=ExtResource("8_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0, 0.4)
 
-[node name="candelabro1" parent="Props" instance=ExtResource("9_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 3.0, 0, 4.6)
+[node name="lampara_cristal1" parent="Props" instance=ExtResource("9_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -4.6, 0, 0.6)
 
-[node name="lampara_cristal1" parent="Props" instance=ExtResource("10_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.8, 0, 0.6)
+[node name="lampara_cristal2" parent="Props" instance=ExtResource("9_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, 0, 0.6)
 
-[node name="lampara_cristal2" parent="Props" instance=ExtResource("10_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 5.8, 0, 0.6)
+[node name="mesa_mapas1" parent="Props" instance=ExtResource("10_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 3.4, 0, 4.6)
 
-[node name="armero1" parent="Props" instance=ExtResource("11_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.4, 0, 4.0)
+[node name="silla1" parent="Props" instance=ExtResource("11_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 2.4, 0, 4.5)
 
-[node name="cofre_tesoro1" parent="Props" instance=ExtResource("12_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.6, 0, 6.8)
+[node name="silla2" parent="Props" instance=ExtResource("11_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.4, 0, 4.5)
 
-[node name="alfombrilla1" parent="Props" instance=ExtResource("13_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0, 5.6)
+[node name="candelabro1" parent="Props" instance=ExtResource("12_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 2.2, 0, 3.6)
 
-[node name="estanteria1" parent="Props" instance=ExtResource("14_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -0.0, 0, 0.4)
+[node name="armero1" parent="Props" instance=ExtResource("13_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -4.4, 0, 3.2)
+
+[node name="cofre_tesoro1" parent="Props" instance=ExtResource("14_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -4.4, 0, 5.4)
+
+[node name="arcon1" parent="Props" instance=ExtResource("15_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.2, 0, 5.6)
+
+[node name="alfombrilla1" parent="Props" instance=ExtResource("16_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0, 4.6)
 
 [node name="People" type="Node3D" parent="."]
 
-[node name="Iven" type="CharacterBody3D" parent="People" instance=ExtResource("15_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.4, 0.1, 2.6)
-script = ExtResource("16_r")
+[node name="Iven" type="CharacterBody3D" parent="People" instance=ExtResource("17_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -2.6, 0.1, 2.6)
+script = ExtResource("18_r")
 lines = PackedStringArray("¿Tú también vienes por contratos? Llegas tarde: los buenos ya los he cogido yo.", "Un contrato bueno te da dinero. Uno difícil te da un nombre.", "No te confundas: no soy tu enemigo. Solo no pienso volver a ser el prescindible de nadie.")
 
-[node name="Caldus" type="CharacterBody3D" parent="People" instance=ExtResource("17_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 2.6, 0.1, 3.0)
-script = ExtResource("16_r")
+[node name="Caldus" type="CharacterBody3D" parent="People" instance=ExtResource("19_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 2.0, 0.1, 2.6)
+script = ExtResource("18_r")
 lines = PackedStringArray("Ser Caldus Renn, del Faro. Mientras yo dirija esta sede, nadie sale sin saber a qué se enfrenta.", "La verdad hay que contarla cuando existan medios para gestionar lo que provoque.", "Las afueras no son lugar para valientes sin preparación. Habla con Mara antes de salir.")
 
 [node name="Exit" type="Area3D" parent="."]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0, 11.799999999999999)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0, 9.799999999999999)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("18_r")
+script = ExtResource("20_r")
 target_scene = "res://scenes/levels/brumaclara.tscn"
 arrival = Vector3(0.00, 3.00, -31.71)
 
@@ -218,26 +229,26 @@ arrival = Vector3(0.00, 3.00, -31.71)
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 1.5, 0.0)
 shape = SubResource("BoxShape3D_9")
 
-[node name="Doormat" parent="Props" instance=ExtResource("13_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0, 9.3)
+[node name="Doormat" parent="Props" instance=ExtResource("16_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0, 7.3)
 
-[node name="Player" type="CharacterBody3D" parent="." instance=ExtResource("19_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.1, 8.4)
+[node name="Player" type="CharacterBody3D" parent="." instance=ExtResource("21_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.1, 6.4)
 collision_layer = 2
 collision_mask = 5
 floor_max_angle = 0.87266463
 floor_snap_length = 0.4
-script = ExtResource("20_r")
-dust_scene = ExtResource("21_r")
-text_scene = ExtResource("22_r")
+script = ExtResource("22_r")
+dust_scene = ExtResource("23_r")
+text_scene = ExtResource("24_r")
 
 [node name="Camera" parent="Player"]
 top_level = true
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 24.764, 49.034)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 24.764, 47.034)
 
-[node name="HUD" type="CanvasLayer" parent="." groups=["hud"] instance=ExtResource("23_r")]
-script = ExtResource("24_r")
+[node name="HUD" type="CanvasLayer" parent="." groups=["hud"] instance=ExtResource("25_r")]
+script = ExtResource("26_r")
 player_path = NodePath("../Player")
 
 [node name="LevelEdits" type="Node" parent="."]
-script = ExtResource("25_r")
+script = ExtResource("27_r")

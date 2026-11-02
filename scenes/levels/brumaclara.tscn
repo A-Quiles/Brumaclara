@@ -184,7 +184,7 @@ render_priority = 0
 shader = ExtResource("19_if0ep")
 shader_parameter/top_texture = ExtResource("3_a8ek1")
 shader_parameter/side_texture = ExtResource("20_lvdvt")
-shader_parameter/top_size = Vector2(10.9, 10.9)
+shader_parameter/top_size = Vector2(5.45, 5.45)
 shader_parameter/side_size = Vector2(5.45, 5.45)
 shader_parameter/top_local = null
 shader_parameter/tint = null
@@ -5490,13 +5490,14 @@ mesh = ExtResource("21_h6yhu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("BoxShape3D_4hjnc")
 
+
 [node name="Puerta" type="Area3D" parent="Buildings/Posada"]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.0, 4.45)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("123_xnj2r")
 target_scene = "res://scenes/levels/interiors/posada.tscn"
-arrival = Vector3(0, 0.1, 9.4)
+arrival = Vector3(0, 0.1, 6.9)
 push = Vector3(0, 0, -1)
 
 [node name="Collision" type="CollisionShape3D" parent="Buildings/Posada/Puerta"]
@@ -5509,7 +5510,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("123_xnj2r")
 target_scene = "res://scenes/levels/interiors/sede_faro.tscn"
-arrival = Vector3(0, 0.1, 8.4)
+arrival = Vector3(0, 0.1, 6.4)
 push = Vector3(0, 0, -1)
 
 [node name="Collision" type="CollisionShape3D" parent="Buildings/SedeDelFaro/Puerta"]
@@ -5522,7 +5523,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("123_xnj2r")
 target_scene = "res://scenes/levels/interiors/tienda_nara.tscn"
-arrival = Vector3(0, 0.1, 7.4)
+arrival = Vector3(0, 0.1, 5.4)
 push = Vector3(0, 0, -1)
 
 [node name="Collision" type="CollisionShape3D" parent="Buildings/TiendaDeNara/Puerta"]
@@ -5535,7 +5536,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("123_xnj2r")
 target_scene = "res://scenes/levels/interiors/taller_elia.tscn"
-arrival = Vector3(0, 0.1, 7.4)
+arrival = Vector3(0, 0.1, 5.4)
 push = Vector3(0, 0, -1)
 
 [node name="Collision" type="CollisionShape3D" parent="Buildings/CasaDeElia/Puerta"]

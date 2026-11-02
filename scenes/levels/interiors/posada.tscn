@@ -5,28 +5,30 @@
 [ext_resource type="BoxMesh" path="res://materials/blocks/unit_box.tres" id="3_r"]
 [ext_resource type="PackedScene" path="res://scenes/environment/props/interior/chimenea.tscn" id="4_r"]
 [ext_resource type="PackedScene" path="res://scenes/environment/props/interior/alfombrilla.tscn" id="5_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/barra.tscn" id="6_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/estante_botellas.tscn" id="7_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/barril_grifo.tscn" id="8_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/mesa_redonda.tscn" id="9_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/silla.tscn" id="10_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/mesa_larga.tscn" id="11_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/armario.tscn" id="6_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/fogon.tscn" id="7_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/sacos_harina.tscn" id="8_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/estante_botellas.tscn" id="9_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/barra.tscn" id="10_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/barril_grifo.tscn" id="11_r"]
 [ext_resource type="PackedScene" path="res://scenes/environment/props/interior/candelabro.tscn" id="12_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/planta.tscn" id="13_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/farol_poste.tscn" id="14_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/armario.tscn" id="15_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/fogon.tscn" id="16_r"]
-[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/lio.tscn" id="17_r"]
-[ext_resource type="Script" path="res://scripts/characters/townsfolk.gd" id="18_r"]
-[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/sella.tscn" id="19_r"]
-[ext_resource type="Script" path="res://scripts/systems/exit.gd" id="20_r"]
-[ext_resource type="PackedScene" path="res://scenes/characters/player.tscn" id="21_r"]
-[ext_resource type="Script" path="res://scripts/characters/player.gd" id="22_r"]
-[ext_resource type="PackedScene" path="res://scenes/effects/dust.tscn" id="23_r"]
-[ext_resource type="PackedScene" path="res://scenes/effects/floating_text.tscn" id="24_r"]
-[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="25_r"]
-[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="26_r"]
-[ext_resource type="Script" path="res://scripts/systems/level_edits.gd" id="27_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/mesa_redonda.tscn" id="13_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/silla.tscn" id="14_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/mesa_larga.tscn" id="15_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/cajas_mercancia.tscn" id="16_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/planta.tscn" id="17_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/farol_poste.tscn" id="18_r"]
+[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/lio.tscn" id="19_r"]
+[ext_resource type="Script" path="res://scripts/characters/townsfolk.gd" id="20_r"]
+[ext_resource type="PackedScene" path="res://scenes/characters/townsfolk/sella.tscn" id="21_r"]
+[ext_resource type="Script" path="res://scripts/systems/exit.gd" id="22_r"]
+[ext_resource type="PackedScene" path="res://scenes/characters/player.tscn" id="23_r"]
+[ext_resource type="Script" path="res://scripts/characters/player.gd" id="24_r"]
+[ext_resource type="PackedScene" path="res://scenes/effects/dust.tscn" id="25_r"]
+[ext_resource type="PackedScene" path="res://scenes/effects/floating_text.tscn" id="26_r"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="27_r"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="28_r"]
+[ext_resource type="Script" path="res://scripts/systems/level_edits.gd" id="29_r"]
 
 [sub_resource type="Environment" id="Environment_1"]
 background_mode = 1
@@ -36,25 +38,25 @@ ambient_light_color = Color(1.000, 0.902, 0.784, 1.0)
 ambient_light_energy = 0.85
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2"]
-size = Vector3(17.2, 1.0, 11.6)
+size = Vector3(13.2, 1.0, 9.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3"]
 size = Vector3(2.4, 1.0, 2.0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4"]
-size = Vector3(17.2, 4.2, 0.6)
+size = Vector3(13.2, 4.2, 0.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5"]
-size = Vector3(0.6, 4.2, 11.6)
+size = Vector3(0.6, 4.2, 9.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6"]
-size = Vector3(0.6, 4.2, 11.6)
+size = Vector3(0.6, 4.2, 9.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7"]
-size = Vector3(7.3999999999999995, 0.7, 0.6)
+size = Vector3(5.3999999999999995, 0.7, 0.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8"]
-size = Vector3(7.3999999999999995, 0.7, 0.6)
+size = Vector3(5.3999999999999995, 0.7, 0.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_9"]
 size = Vector3(2.4, 3, 1.2)
@@ -72,10 +74,10 @@ shadow_enabled = true
 [node name="Buildings" type="Node3D" parent="."]
 
 [node name="Floor" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, -1.0, 5.8)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, -1.0, 4.55)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/Floor"]
-transform = Transform3D(17.2, 0, 0, 0, 1.0, 0, 0, 0, 11.6, 0, 0.5, 0)
+transform = Transform3D(13.2, 0, 0, 0, 1.0, 0, 0, 0, 9.1, 0, 0.5, 0)
 material_override = ExtResource("1_r")
 mesh = ExtResource("3_r")
 
@@ -84,7 +86,7 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_2")
 
 [node name="Threshold" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, -1.0, 12.6)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, -1.0, 10.1)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/Threshold"]
 transform = Transform3D(2.4, 0, 0, 0, 1.0, 0, 0, 0, 2.0, 0, 0.5, 0)
@@ -99,7 +101,7 @@ shape = SubResource("BoxShape3D_3")
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0, -0.3)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/BackWall"]
-transform = Transform3D(17.2, 0, 0, 0, 4.2, 0, 0, 0, 0.6, 0, 2.1, 0)
+transform = Transform3D(13.2, 0, 0, 0, 4.2, 0, 0, 0, 0.6, 0, 2.1, 0)
 material_override = ExtResource("2_r")
 mesh = ExtResource("3_r")
 
@@ -108,10 +110,10 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 2.1, 0)
 shape = SubResource("BoxShape3D_4")
 
 [node name="WestWall" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -8.3, 0, 5.5)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -6.3, 0, 4.25)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/WestWall"]
-transform = Transform3D(0.6, 0, 0, 0, 4.2, 0, 0, 0, 11.6, 0, 2.1, 0)
+transform = Transform3D(0.6, 0, 0, 0, 4.2, 0, 0, 0, 9.1, 0, 2.1, 0)
 material_override = ExtResource("2_r")
 mesh = ExtResource("3_r")
 
@@ -120,10 +122,10 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 2.1, 0)
 shape = SubResource("BoxShape3D_5")
 
 [node name="EastWall" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 8.3, 0, 5.5)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 6.3, 0, 4.25)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/EastWall"]
-transform = Transform3D(0.6, 0, 0, 0, 4.2, 0, 0, 0, 11.6, 0, 2.1, 0)
+transform = Transform3D(0.6, 0, 0, 0, 4.2, 0, 0, 0, 9.1, 0, 2.1, 0)
 material_override = ExtResource("2_r")
 mesh = ExtResource("3_r")
 
@@ -132,10 +134,10 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 2.1, 0)
 shape = SubResource("BoxShape3D_6")
 
 [node name="FrontWest" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -4.8999999999999995, 0, 11.3)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.8999999999999995, 0, 8.8)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/FrontWest"]
-transform = Transform3D(7.3999999999999995, 0, 0, 0, 0.7, 0, 0, 0, 0.6, 0, 0.35, 0)
+transform = Transform3D(5.3999999999999995, 0, 0, 0, 0.7, 0, 0, 0, 0.6, 0, 0.35, 0)
 material_override = ExtResource("2_r")
 mesh = ExtResource("3_r")
 
@@ -144,10 +146,10 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.35, 0)
 shape = SubResource("BoxShape3D_7")
 
 [node name="FrontEast" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.8999999999999995, 0, 11.3)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 3.8999999999999995, 0, 8.8)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/FrontEast"]
-transform = Transform3D(7.3999999999999995, 0, 0, 0, 0.7, 0, 0, 0, 0.6, 0, 0.35, 0)
+transform = Transform3D(5.3999999999999995, 0, 0, 0, 0.7, 0, 0, 0, 0.6, 0, 0.35, 0)
 material_override = ExtResource("2_r")
 mesh = ExtResource("3_r")
 
@@ -158,82 +160,97 @@ shape = SubResource("BoxShape3D_8")
 [node name="Props" type="Node3D" parent="."]
 
 [node name="chimenea1" parent="Props" instance=ExtResource("4_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -4.0, 0, 0.45)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.6, 0, 0.45)
 
 [node name="alfombrilla1" parent="Props" instance=ExtResource("5_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -4.0, 0, 2.6)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.6, 0, 2.2)
 
-[node name="barra1" parent="Props" instance=ExtResource("6_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, 0, 1.6)
+[node name="armario1" parent="Props" instance=ExtResource("6_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -1.2, 0, 0.45)
 
-[node name="estante_botellas1" parent="Props" instance=ExtResource("7_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 3.4, 0, 0.4)
+[node name="fogon1" parent="Props" instance=ExtResource("7_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.4, 0, 0.45)
 
-[node name="estante_botellas2" parent="Props" instance=ExtResource("7_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 5.6, 0, 0.4)
+[node name="sacos_harina1" parent="Props" instance=ExtResource("8_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -0.4, 0, 1.4)
 
-[node name="barril_grifo1" parent="Props" instance=ExtResource("8_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 7.0, 0, 1.2)
+[node name="estante_botellas1" parent="Props" instance=ExtResource("9_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 2.8, 0, 0.4)
 
-[node name="barril_grifo2" parent="Props" instance=ExtResource("8_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 7.0, 0, 2.7)
+[node name="estante_botellas2" parent="Props" instance=ExtResource("9_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.2, 0, 0.4)
 
-[node name="mesa_redonda1" parent="Props" instance=ExtResource("9_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -4.5, 0, 5.6)
+[node name="barra1" parent="Props" instance=ExtResource("10_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 3.5, 0, 1.8)
 
-[node name="silla1" parent="Props" instance=ExtResource("10_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -6.2, 0, 5.4)
+[node name="barril_grifo1" parent="Props" instance=ExtResource("11_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 5.3, 0, 1.0)
 
-[node name="silla2" parent="Props" instance=ExtResource("10_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -2.9, 0, 5.4)
-
-[node name="mesa_redonda2" parent="Props" instance=ExtResource("9_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 1.0, 0, 5.0)
-
-[node name="silla3" parent="Props" instance=ExtResource("10_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -0.6, 0, 4.8)
-
-[node name="silla4" parent="Props" instance=ExtResource("10_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 2.6, 0, 4.8)
-
-[node name="mesa_larga1" parent="Props" instance=ExtResource("11_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.5, 0, 7.6)
+[node name="barril_grifo2" parent="Props" instance=ExtResource("11_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 5.3, 0, 2.3)
 
 [node name="candelabro1" parent="Props" instance=ExtResource("12_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 1.0, 0, 4.5)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 1.9, 0, 1.3)
 
-[node name="planta1" parent="Props" instance=ExtResource("13_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -7.2, 0, 0.6)
+[node name="mesa_redonda1" parent="Props" instance=ExtResource("13_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.4, 0, 4.6)
 
-[node name="planta2" parent="Props" instance=ExtResource("13_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 7.3, 0, 9.6)
+[node name="silla1" parent="Props" instance=ExtResource("14_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -4.6, 0, 4.5)
 
-[node name="farol_poste1" parent="Props" instance=ExtResource("14_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -6.8, 0, 9.3)
+[node name="silla2" parent="Props" instance=ExtResource("14_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -2.2, 0, 4.5)
 
-[node name="armario1" parent="Props" instance=ExtResource("15_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -1.0, 0, 0.45)
+[node name="silla3" parent="Props" instance=ExtResource("14_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.4, 0, 3.8)
 
-[node name="fogon1" parent="Props" instance=ExtResource("16_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.9, 0, 0.45)
+[node name="mesa_redonda2" parent="Props" instance=ExtResource("13_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.4, 0, 4.4)
+
+[node name="silla4" parent="Props" instance=ExtResource("14_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -0.8, 0, 4.3)
+
+[node name="silla5" parent="Props" instance=ExtResource("14_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 1.6, 0, 4.3)
+
+[node name="mesa_larga1" parent="Props" instance=ExtResource("15_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 3.6, 0, 5.7)
+
+[node name="silla6" parent="Props" instance=ExtResource("14_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 2.3, 0, 5.6)
+
+[node name="silla7" parent="Props" instance=ExtResource("14_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.9, 0, 5.6)
+
+[node name="cajas_mercancia1" parent="Props" instance=ExtResource("16_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 5.4, 0, 3.6)
+
+[node name="planta1" parent="Props" instance=ExtResource("17_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.4, 0, 0.6)
+
+[node name="planta2" parent="Props" instance=ExtResource("17_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 5.4, 0, 7.6)
+
+[node name="farol_poste1" parent="Props" instance=ExtResource("18_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.3, 0, 7.3)
 
 [node name="People" type="Node3D" parent="."]
 
-[node name="Lio" type="CharacterBody3D" parent="People" instance=ExtResource("17_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -2.6, 0.1, 6.8)
-script = ExtResource("18_r")
+[node name="Lio" type="CharacterBody3D" parent="People" instance=ExtResource("19_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -2.2, 0.1, 5.9)
+script = ExtResource("20_r")
 lines = PackedStringArray("¡Eh, tú! Lio, guía de la ruta oriental. Si vas hacia Puentegris, conozco atajos que no salen en ningún mapa.", "Mi hermana Sella dice que soy un imprudente. Yo digo que llegar tarde también es un riesgo.", "Desde que se abrió la grieta, el puente oriental cruje de una forma que no me gusta nada.")
 
-[node name="Sella" type="CharacterBody3D" parent="People" instance=ExtResource("19_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -0.8, 0.1, 7.2)
-script = ExtResource("18_r")
+[node name="Sella" type="CharacterBody3D" parent="People" instance=ExtResource("21_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -0.6, 0.1, 6.2)
+script = ExtResource("20_r")
 lines = PackedStringArray("Sella. Llevo las cuentas de Puentegris. Alguien tiene que hacerlo mientras mi hermano busca atajos.", "Cada caravana que no llega es un mes más difícil para nosotros.", "Si de verdad vas a ayudar, apúntalo. Las promesas sin apuntar se las lleva el viento.")
 
 [node name="Exit" type="Area3D" parent="."]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0, 12.799999999999999)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0, 10.299999999999999)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("20_r")
+script = ExtResource("22_r")
 target_scene = "res://scenes/levels/brumaclara.tscn"
 arrival = Vector3(-9.50, 0.60, -8.05)
 
@@ -242,25 +259,25 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 1.5, 0.0)
 shape = SubResource("BoxShape3D_9")
 
 [node name="Doormat" parent="Props" instance=ExtResource("5_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0, 10.3)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0, 7.8)
 
-[node name="Player" type="CharacterBody3D" parent="." instance=ExtResource("21_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.1, 9.4)
+[node name="Player" type="CharacterBody3D" parent="." instance=ExtResource("23_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.1, 6.9)
 collision_layer = 2
 collision_mask = 5
 floor_max_angle = 0.87266463
 floor_snap_length = 0.4
-script = ExtResource("22_r")
-dust_scene = ExtResource("23_r")
-text_scene = ExtResource("24_r")
+script = ExtResource("24_r")
+dust_scene = ExtResource("25_r")
+text_scene = ExtResource("26_r")
 
 [node name="Camera" parent="Player"]
 top_level = true
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 24.764, 50.034)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 24.764, 47.534)
 
-[node name="HUD" type="CanvasLayer" parent="." groups=["hud"] instance=ExtResource("25_r")]
-script = ExtResource("26_r")
+[node name="HUD" type="CanvasLayer" parent="." groups=["hud"] instance=ExtResource("27_r")]
+script = ExtResource("28_r")
 player_path = NodePath("../Player")
 
 [node name="LevelEdits" type="Node" parent="."]
-script = ExtResource("27_r")
+script = ExtResource("29_r")

@@ -16,6 +16,7 @@ from PIL import Image
 
 import pixelate as px
 import sheets
+import unify
 import v2
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -403,7 +404,7 @@ def house():
     palette = palette_for(list(parts.values()), 24)
     for name, im in parts.items():
         save(sheets.snap_all([im], palette)[0], "environment", "buildings", "house_" + name + ".png")
-    save(texture(g[1][0], 4, 12, band=12), "environment", "buildings", "roof_orange.png")
+    save(unify.toned(texture(g[1][0], 4, 12, band=12), **ROOF_TONE), "environment", "buildings", "roof_orange.png")
     save(texture(g[1][1], 4, 12, band=12), "environment", "buildings", "roof_slate.png")
     return OUT / "environment" / "buildings"
 
@@ -451,6 +452,9 @@ def facades():
     return OUT / "environment" / "buildings"
 
 
+ROOF_TONE = {"saturation": 0.78, "value": 0.94}  # red and orange tiles: toned to sit with the slate and shingle (plan 3.3)
+
+
 def walls_roofs():
     """Side wall of the town houses, the stone of the retaining walls and two more roofs."""
     g = grid("walls_roofs", 2, 2, 8)
@@ -459,7 +463,7 @@ def walls_roofs():
     save(side, "environment", "buildings", "side_timber.png")
     save(add_storey(side), "environment", "buildings", "side_timber_tall.png")
     save(texture(g[0][1], 4, 16, band=12), "environment", "textures", "stone_wall.png")
-    save(texture(g[1][0], 4, 12, band=12), "environment", "buildings", "roof_red.png")
+    save(unify.toned(texture(g[1][0], 4, 12, band=12), **ROOF_TONE), "environment", "buildings", "roof_red.png")
     save(texture(g[1][1], 4, 12, band=12), "environment", "buildings", "roof_shingle.png")
     return OUT / "environment"
 
@@ -967,6 +971,16 @@ def _set_offset(name, offset):
     data.write_text(text)
 
 
+# height in game px (25 per metre, the hero is 44): the source cells drew every piece the same size
+FURNITURE_HEIGHT = {
+    "mesa_redonda": 22, "silla": 26, "mesa_larga": 24, "barra": 30, "estante_botellas": 44, "chimenea": 44,
+    "cama": 28, "armario": 46, "barril_grifo": 28, "fogon": 36, "estanteria": 44, "escritorio": 28,
+    "alfombrilla": 20, "planta": 26, "farol_poste": 40, "arcon": 22, "mostrador_registro": 30,
+    "tablon_contratos": 40, "vitrina_pociones": 30, "armero": 38, "maniqui_cota": 40, "yunque": 20,
+    "banco_trabajo": 28, "mesa_mapas": 28, "estante_pergaminos": 44, "lampara_cristal": 30,
+    "cajas_mercancia": 30, "sacos_harina": 24, "estante_pociones": 42, "estandarte_gremio": 42,
+    "cofre_tesoro": 22, "candelabro": 34,
+}
 FURNITURE = {  # sheet -> the props in its 4 x 4 cells, row by row
     "furniture_a": ["mesa_redonda", "silla", "mesa_larga", "barra", "estante_botellas", "chimenea", "cama", "armario",
                     "barril_grifo", "fogon", "estanteria", "escritorio", "alfombrilla", "planta", "farol_poste", "arcon"],
@@ -989,9 +1003,9 @@ def interiors():
         bg = px.dominant_border_colour(rgb)
         cells = sheets.cut_grid(rgb, 4, 4, inset=2)
         images = [flood_key(cells[i // 4][i % 4], 70.0, bg=bg, main_only=True, spill=True) for i in range(16)]
-        palette = palette_for(images, 40, FIRE)
-        for name, im in zip(names, sheets.snap_all(images, palette)):
-            save(cropped(im), "environment", "props", "interior", name + ".png")
+        for name, im in zip(names, images):  # at its real size next to the hero, in the master palette
+            im = unify.shrink(cropped(im), FURNITURE_HEIGHT[name])
+            save(unify.master(im, saturation=0.7, value=1.05, keep=FIRE), "environment", "props", "interior", name + ".png")
     return OUT / "environment" / "props" / "interior"
 
 

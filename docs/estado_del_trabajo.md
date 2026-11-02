@@ -29,7 +29,22 @@ Resumen de lo que hay en el repositorio, lo que falta y cómo probarlo. Las dire
 - **Ataque andando** arreglado: la animación del espadazo ya no se congela al andar.
 - **Peinados redibujados** (corto y coleta del héroe); fuera los peinados raros añadidos por código.
 
+## Novedades del 2 de noviembre de 2026: unificación artística (fase P0)
+
+- **Plan de unificación artística** incorporado como norma (`docs/plan_unificacion_artistica.md`).
+- **Auditoría medible** de los 347 recursos (`tools/art_audit/`, informe en `docs/auditoria_arte.md`).
+- **Paleta maestra** con rampas por material y **escena de validación** con la cámara y la luz reales.
+- **Lote 1 rehecho sin generar imágenes**: interiores (paredes, suelos, 32 muebles a su tamaño real y salas
+  amuebladas de nuevo), comercios ambulantes, tejados rojo y naranja, vuelta del adoquín clásico, efectos
+  y explosiones al píxel del juego.
+- **Apartados** en `art/revision/no_encajan/` (rehechos y pendientes) con su motivo.
+- Arreglado: el césped clásico se veía a doble píxel en las afueras y el patio; el ciclo día-noche podía
+  tocar luces ya borradas tras cambiar de escena.
+
 ## Qué falta
+
+- **Redibujar a tamaño completo** los 7 vecinos y 16 monstruos que salen de miniaturas de 200 px y la puerta
+  de la ciudad de frente (necesita cupo de Canva; ver `art/revision/no_encajan/LEEME.md`).
 
 - **Monstruos por generar (19):** saqueador; arana de musgo, ciervo de cristal y enredadera (zona 2); rana cornuda,
   garza alterada, sanguijuela de cristal, tortuga de lodo, fuego fatuo y caimán de la barrera (zona 3); jabalí de

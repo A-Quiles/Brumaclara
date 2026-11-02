@@ -179,7 +179,9 @@ static func explosion(hero: Node3D, at: Vector3, dmg: int, affinity: StringName,
 	sprite.name = "Sprite"
 	sprite.sprite_frames = Affinity.frames(_explosion_frames(), affinity)
 	sprite.animation = &"burst"
-	sprite.pixel_size = 0.0449 * size
+	sprite.pixel_size = 0.0449  # the game's pixel: a bigger blast adds explosions instead (skill_blast.gd)
+	blast.set("extra", clampi(roundi((size - 1.0) * 4.0), 0, 6))
+	blast.set("extra_radius", 0.55 * size)
 	sprite.offset = Vector2(0, 16)
 	sprite.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
 	sprite.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
@@ -335,7 +337,9 @@ static func enemy_blast(enemy: Node3D, at: Vector3, dmg: int, affinity: StringNa
 	sprite.name = "Sprite"
 	sprite.sprite_frames = Affinity.frames(_explosion_frames(), affinity)
 	sprite.animation = &"burst"
-	sprite.pixel_size = 0.0449 * radius / 1.2
+	sprite.pixel_size = 0.0449
+	blast.set("extra", clampi(roundi((radius / 1.2 - 1.0) * 4.0), 0, 6))
+	blast.set("extra_radius", 0.55 * radius / 1.2)
 	sprite.offset = Vector2(0, 16)
 	sprite.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
 	sprite.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
@@ -395,13 +399,8 @@ static func _puff(hero: Node3D, at: Vector3, affinity: StringName) -> void:
 
 
 static func _warning_mark(hero: Node3D, at: Vector3, radius: float, affinity: StringName) -> Node3D:
-	var mark := Sprite3D.new()
-	mark.texture = preload("res://assets/environment/textures/blob_shadow.png")
-	mark.axis = Vector3.AXIS_Y
+	var mark := Vfx.ground_patch(Vector2(radius, radius) * 2.0)
 	mark.modulate = Color(Affinity.color(affinity), 0.6)
-	mark.shaded = false
-	mark.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	mark.pixel_size = radius * 2.0 / mark.texture.get_width()
 	hero.get_parent().add_child(mark)
 	mark.global_position = Vector3(at.x, hero.global_position.y + 0.05, at.z)
 	return mark

@@ -143,6 +143,12 @@ píxeles de la imagen a un píxel del juego, ajusta la paleta de cada familia de
 fotogramas sobre su ancla y escribe las animaciones de Godot. El código solo carga, anima e integra
 esos recursos.
 
+**Unificación artística** (obligatoria: `docs/plan_unificacion_artistica.md`): todo recurso nuevo o
+rehecho pasa por la paleta maestra (`art/paleta/`), se mide con `tools/art_audit/` y se prueba en la
+escena de validación (`scenes/dev/validacion_arte.tscn`, capturas con `tools/capture/validacion_arte.sh`)
+antes de entrar en la ciudad. Lo que no encaja se aparta en `art/revision/no_encajan/`; la auditoría
+y lo rehecho están en `docs/auditoria_arte.md`.
+
 ## Estructura
 
 ```

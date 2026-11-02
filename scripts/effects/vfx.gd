@@ -22,10 +22,12 @@ const MOTION := {
 	&"": [-6.0, 5.0, 90.0, 1.0, 0.5],
 }
 
+const PX := 0.0449  ## the game's pixel: rings, glows and bits are drawn at it, whatever their size
 static var _quads := {}
 static var _ramps := {}
-static var _ring: Texture2D
-static var _glow: Texture2D
+static var _rings := {}  # radius in px -> texture
+static var _glows := {}
+static var _discs := {}
 
 
 ## An explosion's dressing at `at` (feet level); `size` 1 is about 1.2 units of radius.
@@ -57,43 +59,46 @@ static func burst(parent: Node, at: Vector3, affinity: StringName, size := 1.0, 
 	p.emitting = true
 	_free_later(p, m[4] + 0.3)
 	ring(parent, at, affinity, 1.4 * size)
-	glow(parent, at + Vector3(0, 0.7, 0.2), affinity, 1.6 * size)
+	glow(parent, at + Vector3(0, 0.7, 0.2), affinity, 1.1 * size)  # smaller core: it must not hide whoever stands there (plan 4, «Efectos»)
 	if size >= 0.7:  # the small ones (beams, rains) would light up the screen all the time
 		flash(parent, at, affinity, 1.6 + size)
 
 
-## A shock ring on the ground that grows and fades.
+## A shock ring on the ground that grows and fades. It grows by adding pixels, never by enlarging
+## them (docs/plan_unificacion_artistica.md, 3.5): each step is a ring drawn at the game's pixel.
 static func ring(parent: Node, at: Vector3, affinity: StringName, radius: float, seconds := 0.35) -> void:
 	var s := Sprite3D.new()
-	s.texture = _ring_texture()
+	var full := maxi(4, roundi(radius / PX))
+	s.texture = _ring_texture(maxi(3, roundi(full * 0.3)))
 	s.axis = Vector3.AXIS_Y
 	s.shaded = false
 	s.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
 	s.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	s.alpha_cut = SpriteBase3D.ALPHA_CUT_DISABLED
 	s.modulate = RAMPS.get(affinity, RAMPS[&""])[1]
-	s.pixel_size = radius * 2.0 / s.texture.get_width()
+	s.pixel_size = PX
 	parent.add_child(s)
 	s.global_position = at + Vector3(0, 0.06, 0)
-	s.scale = Vector3.ONE * 0.3
 	var t := s.create_tween().set_parallel()
-	t.tween_property(s, "scale", Vector3.ONE, seconds).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	t.tween_method(func(f: float) -> void: s.texture = _ring_texture(maxi(3, roundi(full * f))), 0.3, 1.0, seconds) \
+			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	t.tween_property(s, "modulate:a", 0.0, seconds).set_delay(seconds * 0.3)
 	t.chain().tween_callback(s.queue_free)
 
 
-## A soft bright core that swells and fades (additive): the punch of an impact.
+## A bright core that swells and fades (additive): the punch of an impact. Stepped bands at the game's
+## pixel; it swells by redrawing at a bigger radius.
 static func glow(parent: Node, at: Vector3, affinity: StringName, radius: float, seconds := 0.25) -> void:
 	var s := Sprite3D.new()
-	s.texture = _glow_texture()
+	var full := maxi(3, roundi(radius / PX))
+	s.texture = _glow_texture(maxi(2, roundi(full * 0.4)))
 	s.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	s.pixel_size = radius * 2.0 / s.texture.get_width()
+	s.pixel_size = PX
 	var mat := StandardMaterial3D.new()
 	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	mat.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
 	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	mat.billboard_mode = BaseMaterial3D.BILLBOARD_ENABLED
-	mat.albedo_texture = s.texture
 	mat.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
 	mat.vertex_color_use_as_albedo = true
 	s.material_override = mat
@@ -101,11 +106,26 @@ static func glow(parent: Node, at: Vector3, affinity: StringName, radius: float,
 	s.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	parent.add_child(s)
 	s.global_position = at
-	s.scale = Vector3.ONE * 0.4
 	var t := s.create_tween().set_parallel()
-	t.tween_property(s, "scale", Vector3.ONE, seconds * 0.5)
+	mat.albedo_texture = s.texture  # the override material draws the texture, not the sprite
+	t.tween_method(func(f: float) -> void:
+		s.texture = _glow_texture(maxi(2, roundi(full * f)))
+		mat.albedo_texture = s.texture, 0.4, 1.0, seconds * 0.5)
 	t.tween_property(s, "modulate:a", 0.0, seconds).set_delay(seconds * 0.3)
 	t.chain().tween_callback(s.queue_free)
+
+
+## A soft-edged oval patch on the ground, `size` world units, at the game's pixel (warning marks and
+## the glow under ground zones): the edge is dithered in two steps instead of blurred.
+static func ground_patch(size: Vector2) -> Sprite3D:
+	var s := Sprite3D.new()
+	s.texture = _disc_texture(maxi(2, roundi(size.x / PX / 2.0)), maxi(2, roundi(size.y / PX / 2.0)))
+	s.axis = Vector3.AXIS_Y
+	s.pixel_size = PX
+	s.shaded = false
+	s.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+	s.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	return s
 
 
 ## A short flash of the affinity's light (lights the ground and whoever stands near).
@@ -115,6 +135,7 @@ static func flash(parent: Node, at: Vector3, affinity: StringName, reach := 3.0,
 	l.light_energy = 2.6
 	l.omni_range = reach
 	l.shadow_enabled = false
+	l.set_meta("transient", true)  # DayNight leaves it alone
 	parent.add_child(l)
 	l.global_position = at + Vector3(0, 1.0, 0.3)
 	var t := l.create_tween()
@@ -182,8 +203,6 @@ static func _particles(affinity: StringName, amount: int, life: float, size: flo
 	p.lifetime = life
 	p.mesh = _quad(size)
 	p.color_ramp = _ramp(affinity)
-	p.scale_amount_min = 0.6
-	p.scale_amount_max = 1.3
 	p.emitting = false
 	return p
 
@@ -192,9 +211,9 @@ static func _free_later(node: Node, seconds: float) -> void:
 	node.get_tree().create_timer(seconds, false).timeout.connect(node.queue_free)
 
 
-## A square of `size` units: at the game's scale, a few pixels, so the bits stay pixel art.
+## A square of `size` units snapped to whole game pixels, so the bits stay pixel art.
 static func _quad(size: float) -> QuadMesh:
-	var key := snappedf(size, 0.01)
+	var key := maxf(2.0, roundf(size / PX)) * PX
 	if _quads.has(key):
 		return _quads[key]
 	var q := QuadMesh.new()
@@ -220,27 +239,43 @@ static func _ramp(affinity: StringName) -> Gradient:
 	return g
 
 
-## A hard-edged pixel ring (two pixels thick on 32): stays crisp like the rest of the art.
-static func _ring_texture() -> Texture2D:
-	if _ring == null:
-		var img := Image.create(32, 32, false, Image.FORMAT_RGBA8)
-		for y in 32:
-			for x in 32:
-				var d := Vector2(x + 0.5 - 16.0, y + 0.5 - 16.0).length()
-				if d >= 13.0 and d < 15.5:
-					img.set_pixel(x, y, Color(1, 1, 1, 1.0 if d >= 14.0 else 0.55))
-		_ring = ImageTexture.create_from_image(img)
-	return _ring
+## A hard-edged ring `r` pixels across the radius, two pixels thick.
+static func _ring_texture(r: int) -> Texture2D:
+	if not _rings.has(r):
+		var size := r * 2 + 2
+		var img := Image.create(size, size, false, Image.FORMAT_RGBA8)
+		for y in size:
+			for x in size:
+				var d := Vector2(x + 0.5 - size / 2.0, y + 0.5 - size / 2.0).length()
+				if d >= r - 2.0 and d < r:
+					img.set_pixel(x, y, Color(1, 1, 1, 1.0 if d >= r - 1.0 else 0.55))
+		_rings[r] = ImageTexture.create_from_image(img)
+	return _rings[r]
 
 
-## A round glow in steps of 16 px (stepped, not smooth, so it stays pixel art when it is big).
-static func _glow_texture() -> Texture2D:
-	if _glow == null:
-		var img := Image.create(16, 16, false, Image.FORMAT_RGBA8)
-		for y in 16:
-			for x in 16:
-				var d := Vector2(x + 0.5 - 8.0, y + 0.5 - 8.0).length() / 8.0
+## A round glow `r` pixels across the radius in three stepped bands (not smooth: stays pixel art).
+static func _glow_texture(r: int) -> Texture2D:
+	if not _glows.has(r):
+		var size := r * 2
+		var img := Image.create(size, size, false, Image.FORMAT_RGBA8)
+		for y in size:
+			for x in size:
+				var d := Vector2(x + 0.5 - r, y + 0.5 - r).length() / r
 				var a := 1.0 if d < 0.35 else (0.6 if d < 0.65 else (0.25 if d < 0.95 else 0.0))
 				img.set_pixel(x, y, Color(1, 1, 1, a))
-		_glow = ImageTexture.create_from_image(img)
-	return _glow
+		_glows[r] = ImageTexture.create_from_image(img)
+	return _glows[r]
+
+
+## A filled oval (rx, ry pixels) whose outer band is a checkerboard dither: soft without blur.
+static func _disc_texture(rx: int, ry: int) -> Texture2D:
+	var key := Vector2i(rx, ry)
+	if not _discs.has(key):
+		var img := Image.create(rx * 2, ry * 2, false, Image.FORMAT_RGBA8)
+		for y in ry * 2:
+			for x in rx * 2:
+				var d := Vector2((x + 0.5 - rx) / rx, (y + 0.5 - ry) / ry).length()
+				if d < 0.8 or (d < 1.0 and (x + y) % 2 == 0):
+					img.set_pixel(x, y, Color(1, 1, 1, 1.0 if d < 0.8 else 0.7))
+		_discs[key] = ImageTexture.create_from_image(img)
+	return _discs[key]
