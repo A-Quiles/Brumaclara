@@ -94,6 +94,17 @@ igualados en 2,5-2,8 m, **árboles** de 3,6 a 5 m, y los muebles y objetos largo
 valla, abrevadero) medidos por su largo. Tabla completa en `docs/guia_de_arte.md` («Escala única del
 mundo»). Capturas en `docs/screenshots/escala/`.
 
+## Lote 4: un solo ángulo y un solo tamaño de piedra (implementado y probado)
+
+- **Ángulo**: la mesa larga, la barra en L, el banco de trabajo, la mesa de mapas, la cama, la mesa
+  redonda, el escritorio, la silla y el banco de la calle estaban dibujados desde más arriba que la
+  cámara (se veía la tabla entera). Redibujados con la cámara baja (tablas como franjas finas). La
+  alfombra, que se tumba en el suelo, ahora está dibujada en planta (antes se acortaba dos veces).
+- **Piedra**: la puerta, el pozo, las chimeneas y la chimenea de interior tenían sillares de 6 × 3 px, el
+  arco de 15 × 8 y la roca de los taludes de 25 × 20, frente a los 10 × 5 de las casas y la muralla.
+  Puerta, arco, pozo, chimeneas y muro redibujados con un solo tamaño de sillar; la roca, rehecha desde
+  su fuente a la mitad de tamaño.
+
 ## Diseñado (herramientas listas)
 
 - **Paleta maestra** (`art/paleta/maestra.png`, `.gpl` para Aseprite/GIMP/Krita, `.json`): 69

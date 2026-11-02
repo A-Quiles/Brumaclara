@@ -252,3 +252,16 @@ Frase común de cámara añadida a la plantilla (va en todos los prompts de obje
 | `puestos.png` | Carromato, carretilla de telas, pociones, herrero, comida, tienda de la adivina, arco de piedra, buhardilla, chimenea, farol de pared, paca de heno, sacos y el cofre abriéndose en 4 fotogramas. | Todo aprovechable. |
 | `puerta.png` | Gran puerta de la ciudad, simétrica y de frente. | Sustituye a la de tres cuartos, que se veía torcida. |
 | `muebles_a.png`, `muebles_b.png` | Los 32 muebles de interior, en el orden de `FURNITURE`. | La barra sale en L; se acepta. |
+
+Segunda ronda (mismo día, nodos 2:2 a 2:5), para igualar el ángulo de los muebles y el tamaño de la piedra:
+
+| Archivo | Contenido | Notas de revisión |
+|---|---|---|
+| `muebles_c.png` (3 × 3) | Barra recta, banco de trabajo, escritorio, banco de calle y silla con la cámara baja (tablas como franjas finas). | La mesa larga, la de mapas, la cama y la mesa redonda salieron vistas desde más arriba: se rehicieron en `muebles_d`. |
+| `muebles_d.png` (2 × 2) | Mesa larga con banco, mesa de mapas, cama vista desde los pies y mesa redonda de pie central, en alzado casi frontal. | Todo aprovechable. |
+| `piedra.png` (2 × 3) | Arco de piedra, pozo, chimenea, chimenea de interior, alfombra vista desde arriba y muro bajo, con sillares de un solo tamaño. | La alfombra se dibuja en planta porque se tumba en el suelo. |
+| `puerta.png` | La puerta otra vez, con sillares grandes (unas 16 hiladas por torre), como la planta baja de piedra de las casas. | Sustituye a la de la mañana, de ladrillo menudo. |
+
+Frases añadidas a la plantilla: para muebles, *«every horizontal surface appears as a THIN foreshortened strip,
+much less tall than the piece's legs or front panel»*; para piedra, *«small rectangular warm grey stone blocks
+about twice as wide as tall, laid in regular courses, like the stone ground floor of a timber-framed house»*.

@@ -376,6 +376,14 @@ def terrain():
     for (r, c), name in {(0, 0): "grass", (0, 1): "dirt", (1, 0): "cobble", (1, 1): "cliff"}.items():
         if name in v2.replaces():  # drawn again in the second pass (v2.ground)
             continue
+        if name == "cliff":  # its rocks came out 25 px across, twice the houses' stones: half the size, 2 x 2 in a tile
+            rock = texture(g[r][c], 8, 20, band=7)
+            tile = Image.new("RGBA", (rock.width * 2, rock.height * 2))
+            for x in (0, rock.width):
+                for y in (0, rock.height):
+                    tile.paste(rock, (x, y))
+            save(tile, "environment", "textures", "cliff.png")
+            continue
         save(texture(g[r][c], 4, 20, band=14, flatten=8.0 if name == "grass" else 0.0),
              "environment", "textures", name + ".png")
     return OUT / "environment" / "textures"
@@ -1032,13 +1040,19 @@ def interiors():
 # The camera looks north with vertical edges kept vertical (docs/guia_de_arte.md, 2): objects drawn in a
 # diagonal or isometric view looked crooked next to the houses. These sheets redraw them facing the
 # camera; each is shrunk to its height in game px (25 px per metre) and snapped to the master palette.
-FRENTE = {
+FRENTE = {  # sheet -> its cells row by row (4 x 4 unless FRENTE_GRID says otherwise); later sheets win
     "objetos_calle": ["bench", "crate", None, "notice_board", "planter", "trough", "low_wall", "flower_cart",
                       "hay_cart", "well", "firewood", "fence", "fence_gate", "chalkboard", "barrel_stack", "weapon_rack"],
     "puestos": ["merchant_wagon", "cloth_cart", "potion_stall", "smith_stall", "food_stall", "fortune_tent",
                 "town_arch", "dormer", "chimney", "wall_lantern", "hay_bale", "sacks",
                 "chest:0", "chest:1", "chest:2", "chest:3"],
+    # 2 de noviembre, second round: the same camera angle for every piece (tops as thin strips) and the
+    # same stone size as the houses' ground floors (about 10 x 5 px a block)
+    "muebles_c": [None, "barra", "banco_trabajo", None, None, "escritorio", None, "bench", "silla"],
+    "muebles_d": ["mesa_larga", "mesa_mapas", "cama", "mesa_redonda"],
+    "piedra": ["town_arch", "well", "chimney", "chimenea", "alfombrilla", "low_wall"],
 }
+FRENTE_GRID = {"muebles_c": (3, 3), "muebles_d": (2, 2), "piedra": (2, 3)}
 FRENTE_HEIGHT = {
     "bench": 24, "crate": 22, "notice_board": 50, "planter": 18, "trough": 20, "low_wall": 22, "flower_cart": 30,
     "hay_cart": 32, "well": 50, "firewood": 22, "fence": 24, "fence_gate": 28, "chalkboard": 27, "barrel_stack": 30,
@@ -1065,16 +1079,20 @@ def frente():
     for sheet, names in FRENTE.items():
         rgb = px.load(SRC / "frente" / f"{sheet}.png")
         bg = px.dominant_border_colour(rgb)
-        cells = sheets.cut_grid(rgb, 4, 4, inset=2)
+        rows, cols = FRENTE_GRID.get(sheet, (4, 4))
+        cells = sheets.cut_grid(rgb, rows, cols, inset=2)
         for i, name in enumerate(names):
             if name is None:
                 continue
-            im = cropped(flood_key(cells[i // 4][i % 4], 70.0, bg=bg, main_only=True, spill="all"))  # "all": the magenta in gaps too
+            im = cropped(flood_key(cells[i // cols][i % cols], 70.0, bg=bg, main_only=True, spill="all"))  # "all": the magenta in gaps too
             if name.startswith("chest:"):
                 chest[int(name[6:])] = im
                 continue
-            im = unify.master(_sized(im, name, FRENTE_HEIGHT, FRENTE_WIDTH), keep=FIRE)
-            save(im, "environment", "props", name + ".png")
+            if name in FURNITURE_HEIGHT:  # a piece of furniture redrawn here: interior folder and sizes
+                save(unify.master(_sized(im, name, FURNITURE_HEIGHT, FURNITURE_WIDTH), saturation=0.7, value=1.05, keep=FIRE),
+                     "environment", "props", "interior", name + ".png")
+                continue
+            save(unify.master(_sized(im, name, FRENTE_HEIGHT, FRENTE_WIDTH), keep=FIRE), "environment", "props", name + ".png")
     rgb = px.load(SRC / "frente" / "puerta.png")
     gate = cropped(flood_key(rgb, 70.0, bg=px.dominant_border_colour(rgb), main_only=True, spill="all"))
     save(unify.master(unify.shrink(gate, FRENTE_HEIGHT["town_gate"]), keep=FIRE), "environment", "props", "town_gate.png")

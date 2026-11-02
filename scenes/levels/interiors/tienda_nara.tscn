@@ -183,7 +183,7 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 1.7, 0, 1.8)
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.9, 0, 5.8)
 
 [node name="alfombrilla1" parent="Props" instance=ExtResource("14_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0, 4.8)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0, 3.4)
 
 [node name="People" type="Node3D" parent="."]
 

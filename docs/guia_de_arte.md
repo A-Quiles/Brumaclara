@@ -193,3 +193,13 @@ Alturas de referencia (con la cara superior que se ve desde la cámara):
 Las recetas aplican estas medidas (`SIZE_FIX`, `FRENTE_HEIGHT`, `FRENTE_WIDTH`, `FURNITURE_HEIGHT`,
 `FURNITURE_WIDTH` en `tools/art_pipeline/build.py`): un objeto crece reduciendo menos la fuente (más
 píxeles), nunca agrandando el sprite.
+
+**Ángulo único.** La cámara baja unos 28°: una superficie horizontal se ve con la mitad de su fondo
+(sen 28° ≈ 0,47) y una vertical casi entera (cos 28° ≈ 0,88). Por eso el tablero de una mesa, el asiento
+de un banco o el colchón de una cama son **franjas finas**, más bajas que las patas o el frente; si se ve la
+tabla entera, el dibujo está hecho desde más arriba y no casa. Lo que se tumba en el suelo (alfombras,
+grietas) se dibuja **en planta**: la cámara ya lo acorta.
+
+**Un solo tamaño de piedra.** Sillares y ladrillos de unos **10 × 5 px** (40 × 20 cm), como la planta baja
+de las casas y la muralla, en todo lo que sea de piedra: puertas, torres, arcos, pozos, chimeneas, muros y
+la roca de los taludes (piedras de unos 12 px).

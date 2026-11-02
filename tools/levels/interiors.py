@@ -189,14 +189,14 @@ INTERIORS = {
         title="Tienda de Nara", building="TiendaDeNara", floor="floor_planks", size=(9.5, 7.0), ambient=0.9,
         props=[("vitrina_pociones", 0.0, 2.0), ("estante_pociones", -1.6, 0.4), ("estante_botellas", 1.6, 0.4),
                ("estanteria", 3.3, 0.4), ("armario", -3.4, 0.45), ("cajas_mercancia", -3.6, 1.9), ("sacos_harina", -3.6, 3.2),
-               ("barril_grifo", 3.8, 2.6), ("candelabro", 1.7, 1.8), ("planta", -3.9, 5.8), ("alfombrilla", 0.0, 4.8)],
+               ("barril_grifo", 3.8, 2.6), ("candelabro", 1.7, 1.8), ("planta", -3.9, 5.8), ("alfombrilla", 0.0, 3.4)],
     ),
     "taller_elia": dict(
         title="Taller de Elia", building="CasaDeElia", floor="floor_planks", size=(9.5, 7.0), ambient=0.85,
         props=[("banco_trabajo", -2.0, 0.9), ("estanteria", -0.2, 0.4), ("maniqui_cota", 1.4, 0.8), ("fogon", 3.0, 0.45),
                ("armero", -3.6, 0.6), ("yunque", 0.4, 2.4), ("cama", 3.6, 3.8), ("arcon", 3.6, 5.6),
                ("escritorio", -3.4, 3.8), ("silla", -3.4, 4.7), ("lampara_cristal", -1.0, 3.6),
-               ("alfombrilla", 0.8, 4.6), ("planta", -3.9, 5.8)],
+               ("alfombrilla", 0.8, 3.5), ("planta", -3.9, 5.8)],
     ),
 }
 
