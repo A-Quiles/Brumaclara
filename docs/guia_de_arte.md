@@ -187,6 +187,7 @@ Alturas de referencia (con la cara superior que se ve desde la cámara):
 | Muralla | 2,2 m | Puerta de la ciudad (torres) | 6 m (150 px) |
 | Barril | 1 m | Banco | 0,9 m, 1,7 m de largo |
 | Silla | 1 m | Mesa larga | 2 m de largo |
+| Pared interior (una planta) | 2,7 m (3 unidades) | Escalera | una planta: 10 peldaños de 27 cm |
 | Armario, estantería | 1,8 m | Barra | 2,4 m de largo |
 | Roble | 5 m | Abeto | 5 m |
 
