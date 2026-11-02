@@ -266,6 +266,10 @@ def wolf():
 # --- nature and props ----------------------------------------------------------------------
 
 TREES = {(0, 0): "tree_oak", (0, 1): "tree_fir", (1, 0): "tree_young", (1, 1): "tree_dead"}
+# Real-size fixes (25 px per metre; docs/auditoria_arte.md, «tamaños»): the source is enlarged before the
+# reduction, so the object grows with more pixels, never fatter ones. Lamps 3 m, stalls 2.5 m, trees 3.4-5 m.
+SIZE_FIX = {"tree_oak": 1.4, "tree_fir": 1.4, "tree_young": 1.4, "tree_dead": 1.4, "lantern": 1.3, "street_lamp": 1.3,
+            "stall_red": 1.23, "stall_green": 1.23, "stall_blue": 1.23, "banner": 1.25, "signpost": 1.2}
 # cell -> (name, source pixels per game pixel): f sets each object's size next to the hero
 PROPS = {
     (0, 0): ("bush", 6), (0, 1): ("bush_berries", 6), (0, 2): ("flowers", 6), (0, 3): ("tall_grass", 6),
@@ -277,9 +281,9 @@ PROPS = {
 
 def nature():
     trees, props = grid("trees", 2, 2, 10), grid("props")
-    images = {name: cropped(sheets.pixelate_cell(trees[r][c], 5)) for (r, c), name in TREES.items()}
+    images = {name: cropped(sheets.pixelate_cell(trees[r][c], 5, SIZE_FIX.get(name, 1.0))) for (r, c), name in TREES.items()}
     for (r, c), (name, f, *tol) in PROPS.items():  # the lantern's pink glow needs a wider key
-        images[name] = cropped(sheets.pixelate_cell(props[r][c], f, tol=tol[0] if tol else 100.0))
+        images[name] = cropped(sheets.pixelate_cell(props[r][c], f, SIZE_FIX.get(name, 1.0), tol=tol[0] if tol else 100.0))
     palette = palette_for(list(images.values()), 48, FIRE + RIFT)
     own = {"crystal": palette_for([images["crystal"]], 14)}  # its violets would be lost in the shared palette
     for (name, im) in images.items():
@@ -333,7 +337,7 @@ PLAZA = {  # cell -> (name, source pixels per game pixel); the fountain row (0, 
 
 def plaza():
     g = grid("plaza_props")
-    images = {name: cropped(sheets.pixelate_cell(g[r][c], f)) for (r, c), (name, f) in PLAZA.items()}
+    images = {name: cropped(sheets.pixelate_cell(g[r][c], f, SIZE_FIX.get(name, 1.0))) for (r, c), (name, f) in PLAZA.items()}
     water = [sheets.pixelate_cell(g[0][c], 4) for c in range(3)]
     palette = palette_for(list(images.values()) + water, 40, FIRE)
     for name, im in images.items():
@@ -428,6 +432,18 @@ def add_storey(wall):
     return Image.fromarray(np.concatenate([a[:floor], a[:floor], a[floor:]]), "RGBA")
 
 
+# The houses are built at 15 texels per unit from these drawings; the game's pixel is 22.27 per unit
+# (docs/auditoria_arte.md): the source is enlarged by the ratio before the 4:1 reduction, so a facade
+# keeps its size in the world and its pixels match the hero's.
+FACADE_SCALE = 22.27 / 15.0
+
+
+def _enlarged(rgb, scale):
+    h, w = rgb.shape[:2]
+    big = Image.fromarray(np.clip(rgb, 0, 255).astype(np.uint8)).resize((round(w * scale), round(h * scale)), Image.LANCZOS)
+    return np.asarray(big).astype(np.float64)
+
+
 def facades():
     """Front walls and gables of the town's buildings. Each drawing is split at its eave (its
     widest row in the upper part) and both halves are cropped to the wall's width."""
@@ -436,7 +452,7 @@ def facades():
         g = grid(sheet, 2, 2, 8)
         parts = {}
         for (r, c), name in cells.items():
-            cell = g[r][c]
+            cell = _enlarged(g[r][c], FACADE_SCALE)
             solid = ~px.background_mask(cell, magenta, 110)
             eave = int(np.argmax(solid.sum(1)[: int(len(cell) * 0.6)]))
             xs = np.nonzero(solid[int(len(cell) * 0.9)])[0]
@@ -981,6 +997,8 @@ FURNITURE_HEIGHT = {
     "cajas_mercancia": 30, "sacos_harina": 24, "estante_pociones": 42, "estandarte_gremio": 42,
     "cofre_tesoro": 22, "candelabro": 34,
 }
+FURNITURE_WIDTH = {"mesa_larga": 50, "barra": 60, "escritorio": 34, "mesa_mapas": 40, "banco_trabajo": 40,
+                   "alfombrilla": 50, "cama": 26, "mostrador_registro": 50}  # long pieces: by width
 FURNITURE = {  # sheet -> the props in its 4 x 4 cells, row by row (drawn from the front: art/ai/frente)
     "frente/muebles_a": ["mesa_redonda", "silla", "mesa_larga", "barra", "estante_botellas", "chimenea", "cama", "armario",
                     "barril_grifo", "fogon", "estanteria", "escritorio", "alfombrilla", "planta", "farol_poste", "arcon"],
@@ -1004,7 +1022,7 @@ def interiors():
         cells = sheets.cut_grid(rgb, 4, 4, inset=2)
         images = [flood_key(cells[i // 4][i % 4], 70.0, bg=bg, main_only=True, spill="all") for i in range(16)]
         for name, im in zip(names, images):  # at its real size next to the hero, in the master palette
-            im = unify.shrink(cropped(im), FURNITURE_HEIGHT[name])
+            im = _sized(cropped(im), name, FURNITURE_HEIGHT, FURNITURE_WIDTH)
             save(unify.master(im, saturation=0.7, value=1.05, keep=FIRE), "environment", "props", "interior", name + ".png")
     return OUT / "environment" / "props" / "interior"
 
@@ -1022,12 +1040,24 @@ FRENTE = {
                 "chest:0", "chest:1", "chest:2", "chest:3"],
 }
 FRENTE_HEIGHT = {
-    "bench": 24, "crate": 22, "notice_board": 44, "planter": 18, "trough": 20, "low_wall": 22, "flower_cart": 30,
+    "bench": 24, "crate": 22, "notice_board": 50, "planter": 18, "trough": 20, "low_wall": 22, "flower_cart": 30,
     "hay_cart": 32, "well": 50, "firewood": 22, "fence": 24, "fence_gate": 28, "chalkboard": 27, "barrel_stack": 30,
-    "weapon_rack": 40, "merchant_wagon": 74, "cloth_cart": 46, "potion_stall": 72, "smith_stall": 66,
-    "food_stall": 70, "fortune_tent": 80, "town_arch": 77, "dormer": 40, "chimney": 43, "wall_lantern": 26,
-    "hay_bale": 24, "sacks": 22, "chest": 30, "town_gate": 190,
+    "weapon_rack": 40, "merchant_wagon": 72, "cloth_cart": 44, "potion_stall": 66, "smith_stall": 64,
+    "food_stall": 66, "fortune_tent": 76, "town_arch": 77, "dormer": 40, "chimney": 43, "wall_lantern": 26,
+    "hay_bale": 24, "sacks": 22, "chest": 30,
+    "town_gate": 150,  # towers about 6 m over a 2.2 m town wall; the arch still lets the hero through
 }
+
+
+# long pieces are sized by their width instead (game px; 25 per metre)
+FRENTE_WIDTH = {"bench": 42, "trough": 45, "low_wall": 50, "fence": 50, "fence_gate": 50, "planter": 38}
+
+
+def _sized(im, name, heights, widths):
+    """`im` shrunk to its real size: by width for long pieces, by height for the rest."""
+    if name in widths:
+        return unify.shrink(im, max(1, round(widths[name] * im.height / im.width)))
+    return unify.shrink(im, heights[name])
 
 
 def frente():
@@ -1043,7 +1073,7 @@ def frente():
             if name.startswith("chest:"):
                 chest[int(name[6:])] = im
                 continue
-            im = unify.master(unify.shrink(im, FRENTE_HEIGHT[name]), keep=FIRE)
+            im = unify.master(_sized(im, name, FRENTE_HEIGHT, FRENTE_WIDTH), keep=FIRE)
             save(im, "environment", "props", name + ".png")
     rgb = px.load(SRC / "frente" / "puerta.png")
     gate = cropped(flood_key(rgb, 70.0, bg=px.dominant_border_colour(rgb), main_only=True, spill="all"))

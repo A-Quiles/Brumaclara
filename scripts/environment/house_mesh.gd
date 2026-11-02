@@ -31,6 +31,10 @@ extends MeshInstance3D
 @export var roof_texture: Texture2D  ## one slope, ridge at the top edge, eave at the bottom edge
 
 const FULL_UV := [Vector2(0, 1), Vector2(1, 1), Vector2(1, 0), Vector2(0, 0)]
+## The game's pixel in texels per world unit (sprites: 1 / 0.0449). Plain walls (textures named side_*)
+## repeat sideways at this density instead of being stretched over the face, so their pixels stay
+## square and as big as everyone else's (docs/auditoria_arte.md).
+const TEXELS := 22.27
 
 
 func _ready() -> void:
@@ -59,9 +63,15 @@ func _add_walls(out: ArrayMesh) -> void:
 		[left_texture if left_texture else side_tex, [Vector3(-w, 0, -d), Vector3(-w, 0, d), Vector3(-w, h, d), Vector3(-w, h, -d)], Vector3.LEFT],
 	]
 	for wall in walls:
+		var tex: Texture2D = wall[0]
+		var tiles := tex != null and tex.resource_path.get_file().begins_with("side_")
+		var uvs := FULL_UV
+		if tiles:
+			var u: float = (wall[1][0] as Vector3).distance_to(wall[1][1]) * TEXELS / tex.get_width()
+			uvs = [Vector2(0, 1), Vector2(u, 1), Vector2(u, 0), Vector2(0, 0)]
 		var st := _begin()
-		_quad(st, wall[1], FULL_UV, wall[2])
-		_commit(out, st, wall[0], false)
+		_quad(st, wall[1], uvs, wall[2])
+		_commit(out, st, tex, tiles)
 
 
 func _add_gables(out: ArrayMesh) -> void:

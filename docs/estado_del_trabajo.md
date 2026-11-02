@@ -44,6 +44,9 @@ Resumen de lo que hay en el repositorio, lo que falta y cómo probarlo. Las dire
 - **Objetos de frente** (lote 2): puerta de la ciudad simétrica, arco del patio, comercios, 21 objetos de calle,
   cofre y 32 muebles redibujados de frente con Figma; ya no se ven torcidos junto a las casas.
 
+- **Escala única** (lote 3): fachadas, paredes, tejados y suelos al mismo píxel que los personajes; puerta de
+  la ciudad a 6 m sobre una muralla de 2,2 m; farolas, puestos, árboles y muebles a su tamaño real.
+
 ## Qué falta
 
 - **Redibujar a tamaño completo** los 7 vecinos y 16 monstruos que salen de miniaturas de 200 px

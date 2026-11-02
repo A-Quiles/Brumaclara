@@ -77,6 +77,23 @@ tiene ahora las torres y los faroles donde están en el dibujo.
 Capturas en `docs/screenshots/frente/`. Las vistas giradas de `art/ai/variants` (`__sw`, `__se`…) se
 mantienen: existen precisamente para orientar un objeto según una calle en diagonal.
 
+## Lote 3: un solo tamaño de píxel y medidas reales (implementado y probado)
+
+Midiendo cada cara de cada edificio aparecieron las diferencias que quedaban:
+
+| Superficie | Antes (píxel frente al del héroe) | Después |
+|---|---|---|
+| Fachadas y hastiales | 1,48 (píxeles casi el doble de gordos) | 1,0: fachadas rehechas con 1,48 veces más píxeles desde las mismas fuentes |
+| Paredes laterales | de 0,54 a 1,26, y distinto a lo ancho que a lo alto (píxeles rectangulares) | 1,0: se repiten a lo ancho en vez de estirarse |
+| Tejados | 1,29 | 1,0 |
+| Suelos | 1,11 | 1,0 |
+
+Y los tamaños, contra la escala del héroe (25 px por metro): la **puerta de la ciudad** medía 7,6 m
+sobre una muralla de 1,3 m; ahora tiene 6 m y la muralla 2,2 m. **Farolas** de 2,3 a 3 m, **puestos**
+igualados en 2,5-2,8 m, **árboles** de 3,6 a 5 m, y los muebles y objetos largos (mesa, barra, banco,
+valla, abrevadero) medidos por su largo. Tabla completa en `docs/guia_de_arte.md` («Escala única del
+mundo»). Capturas en `docs/screenshots/escala/`.
+
 ## Diseñado (herramientas listas)
 
 - **Paleta maestra** (`art/paleta/maestra.png`, `.gpl` para Aseprite/GIMP/Krita, `.json`): 69

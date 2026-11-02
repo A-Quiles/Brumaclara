@@ -162,3 +162,34 @@ antes de integrarlo en el pipeline.
 - [ ] ¿Sus vistas y modelos siguen el convenio de nombres (`__s`, `__e`, `__grazing`…)?
 - [ ] ¿El objeto base está dibujado **de frente** (vista `s`: cara principal hacia la cámara, verticales rectas, sin giro isométrico)? Las vistas giradas solo existen como `__sw`, `__se`… para orientarlo según la calle.
 - [ ] ¿Está registrado en `art/FUENTES.md`?
+
+
+## Escala única del mundo (2 de noviembre de 2026)
+
+Todo se mide contra el héroe: **44 px = 1,75 m, es decir, 25 px por metro**, y el píxel del juego es
+`0,0449` unidades (22,27 texels por unidad). Ninguna superficie puede tener píxeles más gordos o más finos:
+
+| Superficie | Cómo cumple el píxel del juego |
+|---|---|
+| Sprites (personajes, objetos, muebles) | `pixel_size 0.0449` |
+| Fachadas y hastiales | se reducen desde la fuente con `FACADE_SCALE` (1,48) para que, estiradas sobre la casa, den 22,27 texels por unidad |
+| Paredes lisas de las casas (`side_*`) | se repiten a lo ancho a 22,27 texels por unidad (`house_mesh.gd`), nunca se estiran |
+| Tejados | `roof_tile = 5.03` (112 px) |
+| Suelos exteriores | baldosas de 109 px cada 4,894 unidades (`tile`), bordes cada 1/22,27 |
+| Paredes y suelos interiores | baldosas de 84 px cada 3,77 unidades |
+
+Alturas de referencia (con la cara superior que se ve desde la cámara):
+
+| Objeto | Altura | Objeto | Altura |
+|---|---|---|---|
+| Héroe | 1,75 m (44 px) | Farola | 3 m (75 px) |
+| Puerta de casa | ~2 m | Puesto de mercado | 2,5-2,8 m |
+| Muralla | 2,2 m | Puerta de la ciudad (torres) | 6 m (150 px) |
+| Barril | 1 m | Banco | 0,9 m, 1,7 m de largo |
+| Silla | 1 m | Mesa larga | 2 m de largo |
+| Armario, estantería | 1,8 m | Barra | 2,4 m de largo |
+| Roble | 5 m | Abeto | 5 m |
+
+Las recetas aplican estas medidas (`SIZE_FIX`, `FRENTE_HEIGHT`, `FRENTE_WIDTH`, `FURNITURE_HEIGHT`,
+`FURNITURE_WIDTH` en `tools/art_pipeline/build.py`): un objeto crece reduciendo menos la fuente (más
+píxeles), nunca agrandando el sprite.

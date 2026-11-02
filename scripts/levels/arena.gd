@@ -110,7 +110,7 @@ func _build_ground() -> void:
 	mat.shader = STRIP
 	mat.set_shader_parameter("surface", DIRT)
 	mat.set_shader_parameter("size", RING)
-	mat.set_shader_parameter("tile", 5.45)
+	mat.set_shader_parameter("tile", 4.894)  # 109 px at the game's pixel
 	mat.set_shader_parameter("oval", true)
 	mat.set_shader_parameter("ragged", 0.8)
 	sand.material_override = mat
@@ -129,8 +129,8 @@ func _block(pos: Vector3, size: Vector3, top: Texture2D) -> StaticBody3D:
 	mat.shader = BLOCK
 	mat.set_shader_parameter("top_texture", top)
 	mat.set_shader_parameter("side_texture", CLIFF)
-	mat.set_shader_parameter("top_size", Vector2.ONE * top.get_width() / 20.0)  # 20 texels per unit, whatever the tile size
-	mat.set_shader_parameter("side_size", Vector2(5.45, 5.45))
+	mat.set_shader_parameter("top_size", Vector2.ONE * top.get_width() / 22.27)  # the game's pixel, whatever the tile size
+	mat.set_shader_parameter("side_size", Vector2(4.894, 4.894))
 	mesh.material_override = mat
 	body.add_child(mesh)
 	var shape := CollisionShape3D.new()

@@ -5,8 +5,8 @@ render_mode diffuse_lambert, specular_disabled;
 
 uniform sampler2D surface : source_color, filter_nearest_mipmap, repeat_enable;
 uniform vec2 size = vec2(4.0, 4.0);  // plane size in world units (x, z)
-uniform float tile = 5.45;           // world size of one texture repeat
-uniform float texels = 20.0;         // texels per world unit
+uniform float tile = 4.894;          // world size of one texture repeat: 109 px at the game's pixel (22.27 texels per unit)
+uniform float texels = 22.27;         // texels per world unit
 uniform float ragged = 0.4;          // how far inward the border wanders, in world units
 uniform bool across = false;         // rotate the texture 90 degrees (ruts running along x)
 uniform bool oval = false;           // an oval patch instead of a strip

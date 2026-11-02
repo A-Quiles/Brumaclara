@@ -12,8 +12,8 @@ uniform sampler2D soil : source_color, filter_nearest_mipmap, repeat_enable;
 uniform sampler2D forest : source_color, filter_nearest_mipmap, repeat_enable;
 uniform sampler2D paths : filter_linear;  // the mask, covering `area`
 uniform vec4 area = vec4(-44.0, -54.0, 88.0, 98.0);  // x, z, width, depth
-uniform float tile = 5.45;
-uniform float texels = 20.0;
+uniform float tile = 4.894;  // 109 px tiles at the game's pixel (22.27 texels per unit)
+uniform float texels = 22.27;
 
 varying vec3 world_pos;
 varying vec3 world_normal;
