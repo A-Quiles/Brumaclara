@@ -203,3 +203,11 @@ grietas) se dibuja **en planta**: la cámara ya lo acorta.
 **Un solo tamaño de piedra.** Sillares y ladrillos de unos **10 × 5 px** (40 × 20 cm), como la planta baja
 de las casas y la muralla, en todo lo que sea de piedra: puertas, torres, arcos, pozos, chimeneas, muros y
 la roca de los taludes (piedras de unos 12 px).
+
+**Un mismo tono.** Fachadas, objetos, muebles y personajes van de saturación 0,3 a 0,45 y luz 0,4 a 0,5.
+El suelo puede ser algo más claro (para que los personajes destaquen), pero no plano ni chillón; los
+tejados no deben ser lo más saturado de la escena; la vegetación no puede ir mucho más oscura que el
+suelo en que está. `WORLD_TONE` en `tools/art_pipeline/build.py` guarda el ajuste de cada recurso.
+
+**Texturas sin dirección.** Una textura de suelo que se usa en caminos de cualquier orientación no puede
+tener marcas que vayan en un solo sentido (roderas, tablas, surcos); si las tiene, se quitan en la receta.

@@ -105,6 +105,29 @@ mundo»). Capturas en `docs/screenshots/escala/`.
   Puerta, arco, pozo, chimeneas y muro redibujados con un solo tamaño de sillar; la roca, rehecha desde
   su fuente a la mitad de tamaño.
 
+## Lote 5: un mismo tono, caminos sin roderas y plantas altas (implementado y probado)
+
+**Tono.** Medido por familias (saturación y luz media de sus píxeles):
+
+| Familia | Antes | Problema |
+|---|---|---|
+| Fachadas, objetos, muebles, personajes | sat. 0,32-0,46, luz 0,39-0,51 | referencia |
+| Césped y tierra | luz 0,70-0,71, contraste muy bajo | mucho más claros y planos que todo lo demás |
+| Tejados | sat. 0,55 | lo más saturado de la ciudad |
+| Árboles | luz 0,34 | muy oscuros sobre un césped muy claro |
+
+`WORLD_TONE` (en `tools/art_pipeline/build.py`) ajusta saturación y luz de esas familias al guardarlas,
+conservando sus colores: suelo algo más oscuro y apagado, tejados más contenidos, árboles y arbustos un
+poco más claros. Comparación en `docs/screenshots/tono/antes_despues.png`.
+
+**Caminos de tierra.** La textura tenía roderas verticales y en los caminos horizontales se veían como
+rayas que los cruzaban. Las columnas de rodera de la fuente toman el suelo limpio más cercano: la tierra
+ya no tiene dirección.
+
+**Plantas altas.** Las cuatro casas con interior tienen escalera (hecha con bloques, sin sprites nuevos) y
+planta alta con su hueco: dormitorios de la posada, archivo del Faro y viviendas de Nara y de Elia
+(`docs/screenshots/tono/plantas.png`). Prueba automática de subir y bajar en todas.
+
 ## Diseñado (herramientas listas)
 
 - **Paleta maestra** (`art/paleta/maestra.png`, `.gpl` para Aseprite/GIMP/Krita, `.json`): 69

@@ -95,6 +95,8 @@ no se puede subir, a propósito).
 
 ## Qué hay ya en el juego
 
+- Interiores de dos plantas: la escalera de la posada, la sede del Faro, la tienda de Nara y el taller de Elia sube a la planta alta.
+
 - **Capítulo 1 jugable de principio a fin** con objetivos en pantalla (arriba a la derecha), caja de
   diálogo con elecciones que se guardan (la caja: cerrada, abierta, repartida o revisada por Elia; el
   tono con Iven; a quién dar los restos de la grieta) y recompensas. Ver `scripts/systems/quests.gd`.

@@ -46,7 +46,22 @@ def palette_for(images, n, extra=()):
     return np.vstack([pal, np.asarray(extra, np.float64)]) if len(extra) else pal
 
 
+# One world, one tone (docs/auditoria_arte.md, «tono»): (saturation, value) applied to these assets as they
+# are saved, keeping their own colours. Measured against the facades, props and characters (saturation
+# 0.3-0.45, value 0.4-0.5): the ground was brighter and flatter, the roofs the most saturated thing in
+# town and the trees much darker than the grass they stand on.
+WORLD_TONE = {
+    "grass": (0.82, 0.88), "dirt": (0.85, 0.88), "cobble": (0.95, 0.93), "garden_soil": (0.9, 1.0),
+    "roof_slate": (0.75, 0.95), "roof_shingle": (0.85, 1.0), "roof_red": (0.85, 1.0), "roof_orange": (0.85, 1.0),
+    "tree_oak": (0.9, 1.12), "tree_fir": (0.9, 1.15), "tree_young": (0.9, 1.1), "tree_dead": (1.0, 1.05),
+    "bush": (0.88, 1.06), "bush_berries": (0.88, 1.06), "tall_grass": (0.85, 1.0),
+}
+
+
 def save(image, *parts):
+    name = parts[-1].rsplit(".", 1)[0]
+    if name in WORLD_TONE:
+        image = unify.toned(image, *WORLD_TONE[name])
     path = OUT.joinpath(*parts)
     path.parent.mkdir(parents=True, exist_ok=True)
     image.save(path)

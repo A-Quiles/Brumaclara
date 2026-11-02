@@ -47,6 +47,9 @@ Resumen de lo que hay en el repositorio, lo que falta y cómo probarlo. Las dire
 - **Escala única** (lote 3): fachadas, paredes, tejados y suelos al mismo píxel que los personajes; puerta de
   la ciudad a 6 m sobre una muralla de 2,2 m; farolas, puestos, árboles y muebles a su tamaño real.
 
+- **Plantas altas** en la posada, la sede del Faro, la tienda de Nara y el taller de Elia, con escalera.
+- **Un mismo tono** en suelo, tejados y vegetación; caminos de tierra sin roderas.
+
 ## Qué falta
 
 - **Redibujar a tamaño completo** los 7 vecinos y 16 monstruos que salen de miniaturas de 200 px
