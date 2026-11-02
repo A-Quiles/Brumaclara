@@ -223,7 +223,7 @@ INTERIORS = {
     ),
 }
 
-WALL_H = 4.2
+WALL_H = 3.0  # 2.7 m, a storey next to the 1.75 m hero (4.2 made the rooms look built for giants)
 WALL_T = 0.6
 FRONT_H = 0.7
 DOOR_W = 2.4
@@ -239,9 +239,9 @@ def building_door(name):
     return origin, step
 
 
-# the staircase climbs a whole storey (the walls' height, WALL_H): 14 steps of 0.28 x 0.3 rising toward the
-# back wall, from z = 4.52 to z = 0.6
-STEPS = 14
+# the staircase climbs a whole storey (the walls' height, WALL_H): 10 steps of 0.28 x 0.3 rising toward the
+# back wall, from z = 3.4 to z = 0.6
+STEPS = 10
 STEP_RUN, STEP_RISE, STAIR_W, STAIR_TOP = 0.28, 0.3, 1.4, 0.6
 STAIR_FOOT = STAIR_TOP + STEPS * STEP_RUN
 
