@@ -160,7 +160,7 @@ INTERIORS = {
         props=[("chimenea", -3.6, 0.45), ("alfombrilla", -3.6, 2.2), ("armario", -1.2, 0.45), ("fogon", 0.4, 0.45),
                ("sacos_harina", -0.4, 1.4), ("estante_botellas", 2.8, 0.4), ("estante_botellas", 4.2, 0.4),
                ("barra", 3.2, 1.8), ("barril_grifo", 5.3, 1.0), ("barril_grifo", 5.3, 2.3), ("candelabro", 1.0, 1.4),
-               ("mesa_redonda", -3.4, 4.6), ("silla", -4.6, 4.5), ("silla", -2.2, 4.5), ("silla", -3.4, 3.8),
+               ("mesa_redonda", -3.4, 4.6), ("silla", -3.4, 5.3), ("silla", -2.2, 4.5), ("silla", -3.4, 3.8),
                ("mesa_redonda", 0.4, 4.4), ("silla", -0.8, 4.3), ("silla", 1.6, 4.3),
                ("mesa_larga", 3.4, 6.0), ("silla", 1.8, 5.9), ("silla", 5.0, 5.9), ("cajas_mercancia", 5.4, 3.6),
                ("planta", 5.4, 7.6), ("farol_poste", -5.3, 7.3)],
@@ -181,8 +181,8 @@ INTERIORS = {
         title="Sede del Faro", building="SedeDelFaro", floor="floor_flagstone", size=(11.0, 8.0), ambient=0.8,
         props=[("mostrador_registro", 0.0, 1.8), ("tablon_contratos", -3.0, 0.4), ("estante_pergaminos", 3.0, 0.4),
                ("estandarte_gremio", -1.6, 0.6), ("estandarte_gremio", 1.6, 0.6), ("estanteria", 0.0, 0.4),
-               ("lampara_cristal", -4.6, 0.6), ("mesa_mapas", 3.0, 4.8),
-               ("silla", 2.0, 4.7), ("silla", 4.0, 4.7), ("candelabro", 1.9, 3.6), ("armero", -4.4, 3.2),
+               ("lampara_cristal", -4.6, 0.6), ("mesa_mapas", 2.4, 5.2),
+               ("silla", 1.4, 5.1), ("silla", 3.4, 5.1), ("candelabro", 1.6, 3.6), ("armero", -4.4, 3.2),
                ("cofre_tesoro", -4.4, 5.4), ("arcon", -3.2, 5.6), ("alfombrilla", 0.0, 4.6)],
         people=[("iven", -2.6, 2.6, ["¿Tú también vienes por contratos? Llegas tarde: los buenos ya los he cogido yo.",
                                      "Un contrato bueno te da dinero. Uno difícil te da un nombre.",
@@ -194,14 +194,14 @@ INTERIORS = {
         upstairs=dict(title="Sede del Faro, archivo", props=[
             ("estante_pergaminos", -3.4, 0.4), ("estante_pergaminos", -1.9, 0.4), ("estanteria", -0.4, 0.4),
             ("estanteria", 1.1, 0.4), ("estandarte_gremio", 2.5, 0.6), ("mesa_mapas", -1.2, 3.6), ("silla", -2.2, 3.5),
-            ("silla", -0.2, 3.5), ("escritorio", 2.0, 5.2), ("silla", 2.0, 6.0), ("cofre_tesoro", -4.3, 5.8),
-            ("lampara_cristal", -4.6, 0.6), ("alfombrilla", -1.2, 5.6), ("candelabro", 3.2, 4.6)]),
+            ("silla", -0.2, 3.5), ("escritorio", 1.6, 5.6), ("silla", 1.6, 6.4), ("cofre_tesoro", -4.3, 5.8),
+            ("lampara_cristal", -4.6, 0.6), ("alfombrilla", -1.2, 5.6), ("candelabro", 2.9, 5.2)]),
     ),
     "tienda_nara": dict(
         title="Tienda de Nara", building="TiendaDeNara", floor="floor_planks", size=(9.5, 7.0), ambient=0.9,
         props=[("vitrina_pociones", 0.0, 2.0), ("estante_pociones", -1.6, 0.4), ("estante_botellas", 1.6, 0.4),
                ("armario", -3.4, 0.45), ("cajas_mercancia", -3.6, 1.9), ("sacos_harina", -3.6, 3.2),
-               ("barril_grifo", 3.7, 4.4), ("candelabro", 1.7, 1.8), ("planta", -3.9, 5.8), ("alfombrilla", 0.0, 3.4)],
+               ("barril_grifo", 2.6, 5.6), ("candelabro", 1.7, 1.8), ("planta", -3.9, 5.8), ("alfombrilla", 0.0, 3.4)],
         stairs=4.05,
         upstairs=dict(title="Tienda de Nara, vivienda", props=[
             ("cama", -2.8, 0.9), ("arcon", -2.8, 2.3), ("armario", -1.2, 0.45), ("estanteria", 0.4, 0.4),
@@ -212,7 +212,7 @@ INTERIORS = {
     "taller_elia": dict(
         title="Taller de Elia", building="CasaDeElia", floor="floor_planks", size=(9.5, 7.0), ambient=0.85,
         props=[("banco_trabajo", -2.0, 0.9), ("estanteria", -0.2, 0.4), ("maniqui_cota", 1.4, 0.8), ("fogon", 3.0, 0.45),
-               ("armero", -3.6, 0.6), ("yunque", 0.4, 2.4), ("cajas_mercancia", 3.7, 4.6),
+               ("armero", -3.6, 0.6), ("yunque", 0.4, 2.4), ("cajas_mercancia", 2.6, 5.6),
                ("escritorio", -3.4, 3.8), ("silla", -3.4, 4.7), ("lampara_cristal", -1.0, 3.6),
                ("alfombrilla", 0.8, 3.5), ("planta", -3.9, 5.8)],
         stairs=4.05,
@@ -239,8 +239,11 @@ def building_door(name):
     return origin, step
 
 
-STEPS = 8  # the staircase: 8 steps of 0.3 x 0.26, rising toward the back wall from z = 3.2 to z = 0.8
-STEP_RUN, STEP_RISE, STAIR_W, STAIR_TOP, STAIR_FOOT = 0.3, 0.26, 1.4, 0.8, 3.2
+# the staircase climbs a whole storey (the walls' height, WALL_H): 14 steps of 0.28 x 0.3 rising toward the
+# back wall, from z = 4.52 to z = 0.6
+STEPS = 14
+STEP_RUN, STEP_RISE, STAIR_W, STAIR_TOP = 0.28, 0.3, 1.4, 0.6
+STAIR_FOOT = STAIR_TOP + STEPS * STEP_RUN
 
 
 def stairs(sx, upper):

@@ -36,10 +36,10 @@ size = Vector3(10.0, 1.0, 8.6)
 size = Vector3(0.7999999999999998, 1.0, 8.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4"]
-size = Vector3(1.4, 1.0, 0.8)
+size = Vector3(1.4, 1.0, 0.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5"]
-size = Vector3(1.4, 1.0, 5.3999999999999995)
+size = Vector3(1.4, 1.0, 4.079999999999999)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6"]
 size = Vector3(12.2, 4.2, 0.6)
@@ -54,10 +54,10 @@ size = Vector3(0.6, 4.2, 8.6)
 size = Vector3(12.2, 0.7, 0.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_10"]
-size = Vector3(1.4, 1.0, 2.4000000000000004)
+size = Vector3(1.4, 1.0, 3.9200000000000004)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_11"]
-size = Vector3(1.2, 2, 1.6000000000000003)
+size = Vector3(1.2, 2, 3.12)
 
 [node name="SededelFaroarchivo" type="Node3D"]
 
@@ -96,10 +96,10 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_3")
 
 [node name="FloorBack" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -1.0, 0.4)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -1.0, 0.3)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/FloorBack"]
-transform = Transform3D(1.4, 0, 0, 0, 1.0, 0, 0, 0, 0.8, 0, 0.5, 0)
+transform = Transform3D(1.4, 0, 0, 0, 1.0, 0, 0, 0, 0.6, 0, 0.5, 0)
 material_override = ExtResource("1_r")
 mesh = ExtResource("3_r")
 
@@ -108,10 +108,10 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_4")
 
 [node name="FloorFront" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -1.0, 5.8999999999999995)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -1.0, 6.56)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/FloorFront"]
-transform = Transform3D(1.4, 0, 0, 0, 1.0, 0, 0, 0, 5.3999999999999995, 0, 0.5, 0)
+transform = Transform3D(1.4, 0, 0, 0, 1.0, 0, 0, 0, 4.079999999999999, 0, 0.5, 0)
 material_override = ExtResource("1_r")
 mesh = ExtResource("3_r")
 
@@ -168,71 +168,119 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.35, 0)
 shape = SubResource("BoxShape3D_9")
 
 [node name="Step0" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -2.66, 0.9500000000000001)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -2.6999999999999997, 0.74)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/Step0"]
-transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.3, 0, 1.2, 0)
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.28, 0, 1.2, 0)
 material_override = ExtResource("1_r")
 mesh = ExtResource("3_r")
 
 [node name="Step1" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -2.92, 1.25)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -3.0, 1.02)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/Step1"]
-transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.3, 0, 1.2, 0)
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.28, 0, 1.2, 0)
 material_override = ExtResource("1_r")
 mesh = ExtResource("3_r")
 
 [node name="Step2" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -3.1799999999999997, 1.55)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -3.3, 1.3)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/Step2"]
-transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.3, 0, 1.2, 0)
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.28, 0, 1.2, 0)
 material_override = ExtResource("1_r")
 mesh = ExtResource("3_r")
 
 [node name="Step3" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -3.44, 1.85)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -3.5999999999999996, 1.58)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/Step3"]
-transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.3, 0, 1.2, 0)
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.28, 0, 1.2, 0)
 material_override = ExtResource("1_r")
 mesh = ExtResource("3_r")
 
 [node name="Step4" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -3.7, 2.15)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -3.9, 1.8600000000000003)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/Step4"]
-transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.3, 0, 1.2, 0)
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.28, 0, 1.2, 0)
 material_override = ExtResource("1_r")
 mesh = ExtResource("3_r")
 
 [node name="Step5" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -3.96, 2.45)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -4.199999999999999, 2.14)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/Step5"]
-transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.3, 0, 1.2, 0)
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.28, 0, 1.2, 0)
 material_override = ExtResource("1_r")
 mesh = ExtResource("3_r")
 
 [node name="Step6" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -4.22, 2.75)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -4.5, 2.4200000000000004)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/Step6"]
-transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.3, 0, 1.2, 0)
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.28, 0, 1.2, 0)
 material_override = ExtResource("1_r")
 mesh = ExtResource("3_r")
 
 [node name="Step7" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -4.48, 3.05)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -4.8, 2.7)
 
 [node name="Mesh" type="MeshInstance3D" parent="Buildings/Step7"]
-transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.3, 0, 1.2, 0)
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.28, 0, 1.2, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step8" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -5.1, 2.9800000000000004)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step8"]
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.28, 0, 1.2, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step9" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -5.4, 3.2600000000000002)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step9"]
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.28, 0, 1.2, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step10" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -5.699999999999999, 3.5400000000000005)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step10"]
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.28, 0, 1.2, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step11" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -6.0, 3.8200000000000003)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step11"]
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.28, 0, 1.2, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step12" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -6.3, 4.1000000000000005)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step12"]
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.28, 0, 1.2, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step13" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -6.6, 4.38)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step13"]
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.28, 0, 1.2, 0)
 material_override = ExtResource("1_r")
 mesh = ExtResource("3_r")
 
 [node name="StairwellFloor" type="StaticBody3D" parent="Buildings"]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -1.0, 2.0)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, -1.0, 2.56)
 
 [node name="Collision" type="CollisionShape3D" parent="Buildings/StairwellFloor"]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.5, 0)
@@ -265,10 +313,10 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -2.2, 0, 3.5)
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -0.2, 0, 3.5)
 
 [node name="escritorio1" parent="Props" instance=ExtResource("9_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 2.0, 0, 5.2)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 1.6, 0, 5.6)
 
 [node name="silla3" parent="Props" instance=ExtResource("8_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 2.0, 0, 6.0)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 1.6, 0, 6.4)
 
 [node name="cofre_tesoro1" parent="Props" instance=ExtResource("10_r")]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -4.3, 0, 5.8)
@@ -280,17 +328,17 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -4.6, 0, 0.6)
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -1.2, 0, 5.6)
 
 [node name="candelabro1" parent="Props" instance=ExtResource("13_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 3.2, 0, 4.6)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 2.9, 0, 5.2)
 
 [node name="People" type="Node3D" parent="."]
 
 [node name="Bajada" type="Area3D" parent="."]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, 0, 2.4)
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.6, 0, 2.96)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("14_r")
 target_scene = "res://scenes/levels/interiors/sede_faro.tscn"
-arrival = Vector3(4.60, 0.10, 4.00)
+arrival = Vector3(4.60, 0.10, 5.32)
 
 [node name="Collision" type="CollisionShape3D" parent="Bajada"]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 1.0, 0.0)

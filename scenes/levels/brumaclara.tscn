@@ -5494,6 +5494,7 @@ shape = SubResource("BoxShape3D_4hjnc")
 
 
 
+
 [node name="Puerta" type="Area3D" parent="Buildings/Posada"]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 0.0, 4.45)
 collision_layer = 0
