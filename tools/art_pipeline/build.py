@@ -355,10 +355,26 @@ def plaza():
 
 # --- ground and building textures ------------------------------------------------------------
 
-def texture(cell, f, colours, band=None, flatten=0.0, vertical=True):
+def _without_ruts(cell):
+    """The dirt road's wheel ruts run one way only, so on a path that turns sideways they showed as
+    stripes across it. Columns that are mostly rut take the ground of the nearest clean column."""
+    lum = cell.mean(-1)
+    dark = lum < np.median(lum) - 10
+    rut = dark.mean(0) > 0.35
+    rut = np.convolve(rut, np.ones(9), "same") > 0  # the ruts' lighter rims too
+    clean = np.nonzero(~rut)[0]
+    out = cell.copy()
+    for x in np.nonzero(rut)[0]:
+        out[:, x] = cell[:, clean[np.argmin(np.abs(clean - x))]]
+    return out
+
+
+def texture(cell, f, colours, band=None, flatten=0.0, vertical=True, ruts=False):
     """Opaque tileable texture. `flatten` (blur radius in game pixels) removes large light/dark
     blotches that would show as a repeating pattern, keeping the small details. vertical=False
     only wraps it sideways."""
+    if ruts:
+        cell = _without_ruts(cell)
     small, _ = px.downscale(cell, np.ones(cell.shape[:2]), f)
     if flatten:
         from scipy import ndimage
@@ -384,7 +400,7 @@ def terrain():
                     tile.paste(rock, (x, y))
             save(tile, "environment", "textures", "cliff.png")
             continue
-        save(texture(g[r][c], 4, 20, band=14, flatten=8.0 if name == "grass" else 0.0),
+        save(texture(g[r][c], 4, 20, band=14, flatten=8.0 if name == "grass" else 0.0, ruts=name == "dirt"),
              "environment", "textures", name + ".png")
     return OUT / "environment" / "textures"
 

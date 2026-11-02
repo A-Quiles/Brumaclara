@@ -9,21 +9,20 @@
 [ext_resource type="PackedScene" path="res://scenes/environment/props/interior/fogon.tscn" id="7_r"]
 [ext_resource type="PackedScene" path="res://scenes/environment/props/interior/armero.tscn" id="8_r"]
 [ext_resource type="PackedScene" path="res://scenes/environment/props/interior/yunque.tscn" id="9_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/cama.tscn" id="10_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/arcon.tscn" id="11_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/escritorio.tscn" id="12_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/silla.tscn" id="13_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/lampara_cristal.tscn" id="14_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/alfombrilla.tscn" id="15_r"]
-[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/planta.tscn" id="16_r"]
-[ext_resource type="Script" path="res://scripts/systems/exit.gd" id="17_r"]
-[ext_resource type="PackedScene" path="res://scenes/characters/player.tscn" id="18_r"]
-[ext_resource type="Script" path="res://scripts/characters/player.gd" id="19_r"]
-[ext_resource type="PackedScene" path="res://scenes/effects/dust.tscn" id="20_r"]
-[ext_resource type="PackedScene" path="res://scenes/effects/floating_text.tscn" id="21_r"]
-[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="22_r"]
-[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="23_r"]
-[ext_resource type="Script" path="res://scripts/systems/level_edits.gd" id="24_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/cajas_mercancia.tscn" id="10_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/escritorio.tscn" id="11_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/silla.tscn" id="12_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/lampara_cristal.tscn" id="13_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/alfombrilla.tscn" id="14_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/planta.tscn" id="15_r"]
+[ext_resource type="Script" path="res://scripts/systems/exit.gd" id="16_r"]
+[ext_resource type="PackedScene" path="res://scenes/characters/player.tscn" id="17_r"]
+[ext_resource type="Script" path="res://scripts/characters/player.gd" id="18_r"]
+[ext_resource type="PackedScene" path="res://scenes/effects/dust.tscn" id="19_r"]
+[ext_resource type="PackedScene" path="res://scenes/effects/floating_text.tscn" id="20_r"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="21_r"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="22_r"]
+[ext_resource type="Script" path="res://scripts/systems/level_edits.gd" id="23_r"]
 
 [sub_resource type="Environment" id="Environment_1"]
 background_mode = 1
@@ -54,7 +53,13 @@ size = Vector3(4.1499999999999995, 0.7, 0.6)
 size = Vector3(4.1499999999999995, 0.7, 0.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_9"]
+size = Vector3(1.4, 2.2, 1.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_10"]
 size = Vector3(2.4, 3, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_11"]
+size = Vector3(1.4, 2.4, 1.0)
 
 [node name="TallerdeElia" type="Node3D"]
 
@@ -152,6 +157,77 @@ mesh = ExtResource("3_r")
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.35, 0)
 shape = SubResource("BoxShape3D_8")
 
+[node name="Step0" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.05, 0, 3.0500000000000003)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step0"]
+transform = Transform3D(1.4, 0, 0, 0, 0.26, 0, 0, 0, 0.3, 0, 0.13, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step1" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.05, 0, 2.75)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step1"]
+transform = Transform3D(1.4, 0, 0, 0, 0.52, 0, 0, 0, 0.3, 0, 0.26, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step2" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.05, 0, 2.45)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step2"]
+transform = Transform3D(1.4, 0, 0, 0, 0.78, 0, 0, 0, 0.3, 0, 0.39, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step3" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.05, 0, 2.1500000000000004)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step3"]
+transform = Transform3D(1.4, 0, 0, 0, 1.04, 0, 0, 0, 0.3, 0, 0.52, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step4" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.05, 0, 1.8500000000000003)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step4"]
+transform = Transform3D(1.4, 0, 0, 0, 1.3, 0, 0, 0, 0.3, 0, 0.65, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step5" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.05, 0, 1.5500000000000003)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step5"]
+transform = Transform3D(1.4, 0, 0, 0, 1.56, 0, 0, 0, 0.3, 0, 0.78, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step6" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.05, 0, 1.2500000000000002)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step6"]
+transform = Transform3D(1.4, 0, 0, 0, 1.82, 0, 0, 0, 0.3, 0, 0.91, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step7" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.05, 0, 0.9500000000000002)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step7"]
+transform = Transform3D(1.4, 0, 0, 0, 2.08, 0, 0, 0, 0.3, 0, 1.04, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="StairBulk" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.05, 0, 1.7)
+
+[node name="Collision" type="CollisionShape3D" parent="Buildings/StairBulk"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 1.1, 0)
+shape = SubResource("BoxShape3D_9")
+
 [node name="Props" type="Node3D" parent="."]
 
 [node name="banco_trabajo1" parent="Props" instance=ExtResource("4_r")]
@@ -172,25 +248,22 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.6, 0, 0.6)
 [node name="yunque1" parent="Props" instance=ExtResource("9_r")]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.4, 0, 2.4)
 
-[node name="cama1" parent="Props" instance=ExtResource("10_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 3.6, 0, 3.8)
+[node name="cajas_mercancia1" parent="Props" instance=ExtResource("10_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 3.7, 0, 4.6)
 
-[node name="arcon1" parent="Props" instance=ExtResource("11_r")]
-transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 3.6, 0, 5.6)
-
-[node name="escritorio1" parent="Props" instance=ExtResource("12_r")]
+[node name="escritorio1" parent="Props" instance=ExtResource("11_r")]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.4, 0, 3.8)
 
-[node name="silla1" parent="Props" instance=ExtResource("13_r")]
+[node name="silla1" parent="Props" instance=ExtResource("12_r")]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.4, 0, 4.7)
 
-[node name="lampara_cristal1" parent="Props" instance=ExtResource("14_r")]
+[node name="lampara_cristal1" parent="Props" instance=ExtResource("13_r")]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -1.0, 0, 3.6)
 
-[node name="alfombrilla1" parent="Props" instance=ExtResource("15_r")]
+[node name="alfombrilla1" parent="Props" instance=ExtResource("14_r")]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.8, 0, 3.5)
 
-[node name="planta1" parent="Props" instance=ExtResource("16_r")]
+[node name="planta1" parent="Props" instance=ExtResource("15_r")]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.9, 0, 5.8)
 
 [node name="People" type="Node3D" parent="."]
@@ -199,34 +272,47 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.9, 0, 5.8)
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0, 8.799999999999999)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("17_r")
+script = ExtResource("16_r")
 target_scene = "res://scenes/levels/brumaclara.tscn"
 arrival = Vector3(-12.00, 0.60, 2.01)
 
 [node name="Collision" type="CollisionShape3D" parent="Exit"]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 1.5, 0.0)
-shape = SubResource("BoxShape3D_9")
+shape = SubResource("BoxShape3D_10")
 
-[node name="Doormat" parent="Props" instance=ExtResource("15_r")]
+[node name="Doormat" parent="Props" instance=ExtResource("14_r")]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0, 6.3)
 
-[node name="Player" type="CharacterBody3D" parent="." instance=ExtResource("18_r")]
+[node name="Subida" type="Area3D" parent="."]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 4.05, 0, 2.9000000000000004)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("16_r")
+target_scene = "res://scenes/levels/interiors/taller_elia_alta.tscn"
+arrival = Vector3(2.65, 0.10, 1.30)
+push = Vector3(0, 0, -1)
+
+[node name="Collision" type="CollisionShape3D" parent="Subida"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 1.2, 0.0)
+shape = SubResource("BoxShape3D_11")
+
+[node name="Player" type="CharacterBody3D" parent="." instance=ExtResource("17_r")]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.1, 5.4)
 collision_layer = 2
 collision_mask = 5
 floor_max_angle = 0.87266463
 floor_snap_length = 0.4
-script = ExtResource("19_r")
-dust_scene = ExtResource("20_r")
-text_scene = ExtResource("21_r")
+script = ExtResource("18_r")
+dust_scene = ExtResource("19_r")
+text_scene = ExtResource("20_r")
 
 [node name="Camera" parent="Player"]
 top_level = true
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 24.764, 46.034)
 
-[node name="HUD" type="CanvasLayer" parent="." groups=["hud"] instance=ExtResource("22_r")]
-script = ExtResource("23_r")
+[node name="HUD" type="CanvasLayer" parent="." groups=["hud"] instance=ExtResource("21_r")]
+script = ExtResource("22_r")
 player_path = NodePath("../Player")
 
 [node name="LevelEdits" type="Node" parent="."]
-script = ExtResource("24_r")
+script = ExtResource("23_r")

@@ -1,0 +1,326 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/interior/floor_planks.tres" id="1_r"]
+[ext_resource type="Material" path="res://materials/interior/wall_plaster.tres" id="2_r"]
+[ext_resource type="BoxMesh" path="res://materials/blocks/unit_box.tres" id="3_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/cama.tscn" id="4_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/arcon.tscn" id="5_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/armario.tscn" id="6_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/candelabro.tscn" id="7_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/mesa_redonda.tscn" id="8_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/silla.tscn" id="9_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/alfombrilla.tscn" id="10_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/planta.tscn" id="11_r"]
+[ext_resource type="PackedScene" path="res://scenes/environment/props/interior/escritorio.tscn" id="12_r"]
+[ext_resource type="Script" path="res://scripts/systems/exit.gd" id="13_r"]
+[ext_resource type="PackedScene" path="res://scenes/characters/player.tscn" id="14_r"]
+[ext_resource type="Script" path="res://scripts/characters/player.gd" id="15_r"]
+[ext_resource type="PackedScene" path="res://scenes/effects/dust.tscn" id="16_r"]
+[ext_resource type="PackedScene" path="res://scenes/effects/floating_text.tscn" id="17_r"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="18_r"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="19_r"]
+[ext_resource type="Script" path="res://scripts/systems/level_edits.gd" id="20_r"]
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 1
+background_color = Color(0.02, 0.015, 0.02, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1.000, 0.902, 0.784, 1.0)
+ambient_light_energy = 0.85
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2"]
+size = Vector3(0.6999999999999993, 1.0, 9.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3"]
+size = Vector3(11.1, 1.0, 9.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4"]
+size = Vector3(1.4, 1.0, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5"]
+size = Vector3(1.4, 1.0, 5.8999999999999995)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6"]
+size = Vector3(13.2, 4.2, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7"]
+size = Vector3(0.6, 4.2, 9.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8"]
+size = Vector3(0.6, 4.2, 9.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_9"]
+size = Vector3(13.2, 0.7, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_10"]
+size = Vector3(1.4, 1.0, 2.4000000000000004)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_11"]
+size = Vector3(1.2, 2, 1.6000000000000003)
+
+[node name="PosadadelCruceplantaalta" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8433914, 0.40550515, -0.35250026, 0, 0.656059, 0.75470954, 0.53729963, -0.63651556, 0.55331457, 0, 0, 0)
+light_energy = 0.05
+shadow_enabled = true
+
+[node name="Buildings" type="Node3D" parent="."]
+
+[node name="FloorW" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -6.25, -1.0, 4.55)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/FloorW"]
+transform = Transform3D(0.6999999999999993, 0, 0, 0, 1.0, 0, 0, 0, 9.1, 0, 0.5, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Collision" type="CollisionShape3D" parent="Buildings/FloorW"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_2")
+
+[node name="FloorE" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 1.0499999999999998, -1.0, 4.55)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/FloorE"]
+transform = Transform3D(11.1, 0, 0, 0, 1.0, 0, 0, 0, 9.1, 0, 0.5, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Collision" type="CollisionShape3D" parent="Buildings/FloorE"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_3")
+
+[node name="FloorBack" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.2, -1.0, 0.4)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/FloorBack"]
+transform = Transform3D(1.4, 0, 0, 0, 1.0, 0, 0, 0, 0.8, 0, 0.5, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Collision" type="CollisionShape3D" parent="Buildings/FloorBack"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_4")
+
+[node name="FloorFront" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.2, -1.0, 6.1499999999999995)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/FloorFront"]
+transform = Transform3D(1.4, 0, 0, 0, 1.0, 0, 0, 0, 5.8999999999999995, 0, 0.5, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Collision" type="CollisionShape3D" parent="Buildings/FloorFront"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_5")
+
+[node name="BackWall" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0, -0.3)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/BackWall"]
+transform = Transform3D(13.2, 0, 0, 0, 4.2, 0, 0, 0, 0.6, 0, 2.1, 0)
+material_override = ExtResource("2_r")
+mesh = ExtResource("3_r")
+
+[node name="Collision" type="CollisionShape3D" parent="Buildings/BackWall"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 2.1, 0)
+shape = SubResource("BoxShape3D_6")
+
+[node name="WestWall" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -6.3, 0, 4.25)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/WestWall"]
+transform = Transform3D(0.6, 0, 0, 0, 4.2, 0, 0, 0, 9.1, 0, 2.1, 0)
+material_override = ExtResource("2_r")
+mesh = ExtResource("3_r")
+
+[node name="Collision" type="CollisionShape3D" parent="Buildings/WestWall"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 2.1, 0)
+shape = SubResource("BoxShape3D_7")
+
+[node name="EastWall" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 6.3, 0, 4.25)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/EastWall"]
+transform = Transform3D(0.6, 0, 0, 0, 4.2, 0, 0, 0, 9.1, 0, 2.1, 0)
+material_override = ExtResource("2_r")
+mesh = ExtResource("3_r")
+
+[node name="Collision" type="CollisionShape3D" parent="Buildings/EastWall"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 2.1, 0)
+shape = SubResource("BoxShape3D_8")
+
+[node name="Front" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0, 8.8)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Front"]
+transform = Transform3D(13.2, 0, 0, 0, 0.7, 0, 0, 0, 0.6, 0, 0.35, 0)
+material_override = ExtResource("2_r")
+mesh = ExtResource("3_r")
+
+[node name="Collision" type="CollisionShape3D" parent="Buildings/Front"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.35, 0)
+shape = SubResource("BoxShape3D_9")
+
+[node name="Step0" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.2, -2.66, 0.9500000000000001)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step0"]
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.3, 0, 1.2, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step1" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.2, -2.92, 1.25)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step1"]
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.3, 0, 1.2, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step2" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.2, -3.1799999999999997, 1.55)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step2"]
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.3, 0, 1.2, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step3" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.2, -3.44, 1.85)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step3"]
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.3, 0, 1.2, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step4" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.2, -3.7, 2.15)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step4"]
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.3, 0, 1.2, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step5" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.2, -3.96, 2.45)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step5"]
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.3, 0, 1.2, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step6" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.2, -4.22, 2.75)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step6"]
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.3, 0, 1.2, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="Step7" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.2, -4.48, 3.05)
+
+[node name="Mesh" type="MeshInstance3D" parent="Buildings/Step7"]
+transform = Transform3D(1.4, 0, 0, 0, 2.4, 0, 0, 0, 0.3, 0, 1.2, 0)
+material_override = ExtResource("1_r")
+mesh = ExtResource("3_r")
+
+[node name="StairwellFloor" type="StaticBody3D" parent="Buildings"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.2, -1.0, 2.0)
+
+[node name="Collision" type="CollisionShape3D" parent="Buildings/StairwellFloor"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_10")
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="cama1" parent="Props" instance=ExtResource("4_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -2.6, 0, 0.9)
+
+[node name="arcon1" parent="Props" instance=ExtResource("5_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -2.6, 0, 2.3)
+
+[node name="cama2" parent="Props" instance=ExtResource("4_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.4, 0, 0.9)
+
+[node name="arcon2" parent="Props" instance=ExtResource("5_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.4, 0, 2.3)
+
+[node name="cama3" parent="Props" instance=ExtResource("4_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 3.4, 0, 0.9)
+
+[node name="arcon3" parent="Props" instance=ExtResource("5_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 3.4, 0, 2.3)
+
+[node name="armario1" parent="Props" instance=ExtResource("6_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 5.2, 0, 0.45)
+
+[node name="candelabro1" parent="Props" instance=ExtResource("7_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -1.1, 0, 0.8)
+
+[node name="candelabro2" parent="Props" instance=ExtResource("7_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 1.9, 0, 0.8)
+
+[node name="mesa_redonda1" parent="Props" instance=ExtResource("8_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 2.0, 0, 5.4)
+
+[node name="silla1" parent="Props" instance=ExtResource("9_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.9, 0, 5.3)
+
+[node name="silla2" parent="Props" instance=ExtResource("9_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 3.1, 0, 5.3)
+
+[node name="alfombrilla1" parent="Props" instance=ExtResource("10_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -1.0, 0, 4.6)
+
+[node name="planta1" parent="Props" instance=ExtResource("11_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.3, 0, 7.3)
+
+[node name="planta2" parent="Props" instance=ExtResource("11_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 5.3, 0, 7.3)
+
+[node name="escritorio1" parent="Props" instance=ExtResource("12_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.4, 0, 6.4)
+
+[node name="silla3" parent="Props" instance=ExtResource("9_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.4, 0, 7.2)
+
+[node name="People" type="Node3D" parent="."]
+
+[node name="Bajada" type="Area3D" parent="."]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -5.2, 0, 2.4)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("13_r")
+target_scene = "res://scenes/levels/interiors/posada.tscn"
+arrival = Vector3(-5.20, 0.10, 4.00)
+
+[node name="Collision" type="CollisionShape3D" parent="Bajada"]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.0, 1.0, 0.0)
+shape = SubResource("BoxShape3D_11")
+
+[node name="Player" type="CharacterBody3D" parent="." instance=ExtResource("14_r")]
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -3.8000000000000003, 0.1, 1.3)
+collision_layer = 2
+collision_mask = 5
+floor_max_angle = 0.87266463
+floor_snap_length = 0.4
+script = ExtResource("15_r")
+dust_scene = ExtResource("16_r")
+text_scene = ExtResource("17_r")
+
+[node name="Camera" parent="Player"]
+top_level = true
+transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0, 24.764, 47.534)
+
+[node name="HUD" type="CanvasLayer" parent="." groups=["hud"] instance=ExtResource("18_r")]
+script = ExtResource("19_r")
+player_path = NodePath("../Player")
+
+[node name="LevelEdits" type="Node" parent="."]
+script = ExtResource("20_r")

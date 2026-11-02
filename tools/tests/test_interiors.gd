@@ -1,6 +1,7 @@
 extends SceneTree
 ## Headless checks of the interiors: the doors of the town lead inside, the hero arrives by the
-## door, and walking out through the door brings it back to the town in front of the building.
+## door, and walking out through the door brings it back to the town in front of the building; the
+## stairs of every room lead to its upper floor and the stairwell up there leads back down.
 ## Run: godot --headless --fixed-fps 60 --path . --script res://tools/tests/test_interiors.gd
 
 const ROOMS := {"Posada": "posada", "SedeDelFaro": "sede_faro", "TiendaDeNara": "tienda_nara", "CasaDeElia": "taller_elia"}
@@ -80,6 +81,37 @@ func _run() -> void:
 	Input.action_release("move_right")
 	await _frames(40)
 	_check(current_scene == past, "walking past the shop's door stays in the street")
+	# every room has a floor above: up the stairs and back down through the stairwell
+	for room in ROOMS.values():
+		change_scene_to_file("res://scenes/levels/interiors/%s.tscn" % room)
+		await _frames(5)
+		var below := current_scene
+		var up: Area3D = below.get_node("Subida")
+		(below.get_node("Player") as Node3D).global_position = up.global_position + Vector3(0, 0.1, 1.0)
+		await _frames(3)
+		Input.action_press("move_up")
+		for i in 240:
+			await physics_frame
+			if current_scene != below:
+				break
+		Input.action_release("move_up")
+		await _frames(5)
+		_check(current_scene.scene_file_path.ends_with("/%s_alta.tscn" % room), "the stairs of %s go up" % room)
+		if not current_scene.scene_file_path.ends_with("_alta.tscn"):
+			continue
+		var above := current_scene
+		var down: Area3D = above.get_node("Bajada")
+		_check((above.get_node("Player") as Node3D).global_position.distance_to(down.global_position) > 1.0,
+				"upstairs the hero arrives beside the stairwell, not in it")
+		(above.get_node("Player") as Node3D).global_position = down.global_position + Vector3(0, 0.1, -1.4)
+		Input.action_press("move_down")
+		for i in 240:
+			await physics_frame
+			if current_scene != above:
+				break
+		Input.action_release("move_down")
+		await _frames(5)
+		_check(current_scene.scene_file_path.ends_with("/%s.tscn" % room), "the stairwell of %s goes back down" % room)
 	print("interior checks: %s" % ("all passed" if _failures == 0 else "%d FAILED" % _failures))
 	quit(1 if _failures else 0)
 

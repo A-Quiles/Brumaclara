@@ -163,20 +163,26 @@ INTERIORS = {
                ("mesa_redonda", -3.4, 4.6), ("silla", -4.6, 4.5), ("silla", -2.2, 4.5), ("silla", -3.4, 3.8),
                ("mesa_redonda", 0.4, 4.4), ("silla", -0.8, 4.3), ("silla", 1.6, 4.3),
                ("mesa_larga", 3.4, 6.0), ("silla", 1.8, 5.9), ("silla", 5.0, 5.9), ("cajas_mercancia", 5.4, 3.6),
-               ("planta", -5.4, 0.6), ("planta", 5.4, 7.6), ("farol_poste", -5.3, 7.3)],
+               ("planta", 5.4, 7.6), ("farol_poste", -5.3, 7.3)],
         people=[("lio", -2.2, 5.9, ["¡Eh, tú! Lio, guía de la ruta oriental. Si vas hacia Puentegris, conozco atajos que no salen en ningún mapa.",
                                    "Mi hermana Sella dice que soy un imprudente. Yo digo que llegar tarde también es un riesgo.",
                                    "Desde que se abrió la grieta, el puente oriental cruje de una forma que no me gusta nada."]),
                 ("sella", -0.6, 6.2, ["Sella. Llevo las cuentas de Puentegris. Alguien tiene que hacerlo mientras mi hermano busca atajos.",
                                       "Cada caravana que no llega es un mes más difícil para nosotros.",
                                       "Si de verdad vas a ayudar, apúntalo. Las promesas sin apuntar se las lleva el viento."])],
+        stairs=-5.2,
+        upstairs=dict(title="Posada del Cruce, planta alta", props=[
+            ("cama", -2.6, 0.9), ("arcon", -2.6, 2.3), ("cama", 0.4, 0.9), ("arcon", 0.4, 2.3), ("cama", 3.4, 0.9),
+            ("arcon", 3.4, 2.3), ("armario", 5.2, 0.45), ("candelabro", -1.1, 0.8), ("candelabro", 1.9, 0.8),
+            ("mesa_redonda", 2.0, 5.4), ("silla", 0.9, 5.3), ("silla", 3.1, 5.3), ("alfombrilla", -1.0, 4.6),
+            ("planta", -5.3, 7.3), ("planta", 5.3, 7.3), ("escritorio", -3.4, 6.4), ("silla", -3.4, 7.2)]),
     ),
     "sede_faro": dict(
         title="Sede del Faro", building="SedeDelFaro", floor="floor_flagstone", size=(11.0, 8.0), ambient=0.8,
         props=[("mostrador_registro", 0.0, 1.8), ("tablon_contratos", -3.0, 0.4), ("estante_pergaminos", 3.0, 0.4),
                ("estandarte_gremio", -1.6, 0.6), ("estandarte_gremio", 1.6, 0.6), ("estanteria", 0.0, 0.4),
-               ("lampara_cristal", -4.6, 0.6), ("lampara_cristal", 4.6, 0.6), ("mesa_mapas", 3.4, 4.6),
-               ("silla", 2.4, 4.5), ("silla", 4.4, 4.5), ("candelabro", 2.2, 3.6), ("armero", -4.4, 3.2),
+               ("lampara_cristal", -4.6, 0.6), ("mesa_mapas", 3.0, 4.8),
+               ("silla", 2.0, 4.7), ("silla", 4.0, 4.7), ("candelabro", 1.9, 3.6), ("armero", -4.4, 3.2),
                ("cofre_tesoro", -4.4, 5.4), ("arcon", -3.2, 5.6), ("alfombrilla", 0.0, 4.6)],
         people=[("iven", -2.6, 2.6, ["¿Tú también vienes por contratos? Llegas tarde: los buenos ya los he cogido yo.",
                                      "Un contrato bueno te da dinero. Uno difícil te da un nombre.",
@@ -184,19 +190,36 @@ INTERIORS = {
                 ("caldus", 2.0, 2.6, ["Ser Caldus Renn, del Faro. Mientras yo dirija esta sede, nadie sale sin saber a qué se enfrenta.",
                                       "La verdad hay que contarla cuando existan medios para gestionar lo que provoque.",
                                       "Las afueras no son lugar para valientes sin preparación. Habla con Mara antes de salir."])],
+        stairs=4.6,
+        upstairs=dict(title="Sede del Faro, archivo", props=[
+            ("estante_pergaminos", -3.4, 0.4), ("estante_pergaminos", -1.9, 0.4), ("estanteria", -0.4, 0.4),
+            ("estanteria", 1.1, 0.4), ("estandarte_gremio", 2.5, 0.6), ("mesa_mapas", -1.2, 3.6), ("silla", -2.2, 3.5),
+            ("silla", -0.2, 3.5), ("escritorio", 2.0, 5.2), ("silla", 2.0, 6.0), ("cofre_tesoro", -4.3, 5.8),
+            ("lampara_cristal", -4.6, 0.6), ("alfombrilla", -1.2, 5.6), ("candelabro", 3.2, 4.6)]),
     ),
     "tienda_nara": dict(
         title="Tienda de Nara", building="TiendaDeNara", floor="floor_planks", size=(9.5, 7.0), ambient=0.9,
         props=[("vitrina_pociones", 0.0, 2.0), ("estante_pociones", -1.6, 0.4), ("estante_botellas", 1.6, 0.4),
-               ("estanteria", 3.3, 0.4), ("armario", -3.4, 0.45), ("cajas_mercancia", -3.6, 1.9), ("sacos_harina", -3.6, 3.2),
-               ("barril_grifo", 3.8, 2.6), ("candelabro", 1.7, 1.8), ("planta", -3.9, 5.8), ("alfombrilla", 0.0, 3.4)],
+               ("armario", -3.4, 0.45), ("cajas_mercancia", -3.6, 1.9), ("sacos_harina", -3.6, 3.2),
+               ("barril_grifo", 3.7, 4.4), ("candelabro", 1.7, 1.8), ("planta", -3.9, 5.8), ("alfombrilla", 0.0, 3.4)],
+        stairs=4.05,
+        upstairs=dict(title="Tienda de Nara, vivienda", props=[
+            ("cama", -2.8, 0.9), ("arcon", -2.8, 2.3), ("armario", -1.2, 0.45), ("estanteria", 0.4, 0.4),
+            ("escritorio", 2.0, 0.9), ("silla", 2.0, 1.7), ("cajas_mercancia", -3.7, 5.3), ("sacos_harina", -2.4, 5.6),
+            ("mesa_redonda", 0.6, 4.4), ("silla", -0.5, 4.3), ("silla", 1.7, 4.3), ("planta", 3.9, 5.8),
+            ("alfombrilla", 0.6, 3.0)]),
     ),
     "taller_elia": dict(
         title="Taller de Elia", building="CasaDeElia", floor="floor_planks", size=(9.5, 7.0), ambient=0.85,
         props=[("banco_trabajo", -2.0, 0.9), ("estanteria", -0.2, 0.4), ("maniqui_cota", 1.4, 0.8), ("fogon", 3.0, 0.45),
-               ("armero", -3.6, 0.6), ("yunque", 0.4, 2.4), ("cama", 3.6, 3.8), ("arcon", 3.6, 5.6),
+               ("armero", -3.6, 0.6), ("yunque", 0.4, 2.4), ("cajas_mercancia", 3.7, 4.6),
                ("escritorio", -3.4, 3.8), ("silla", -3.4, 4.7), ("lampara_cristal", -1.0, 3.6),
                ("alfombrilla", 0.8, 3.5), ("planta", -3.9, 5.8)],
+        stairs=4.05,
+        upstairs=dict(title="Taller de Elia, vivienda", props=[
+            ("cama", -2.8, 0.9), ("arcon", -2.8, 2.3), ("armario", -1.2, 0.45), ("estanteria", 0.4, 0.4),
+            ("mesa_redonda", 0.8, 4.4), ("silla", -0.3, 4.3), ("silla", 1.9, 4.3), ("lampara_cristal", 2.2, 0.6),
+            ("maniqui_cota", -3.8, 4.8), ("planta", 3.9, 5.8), ("alfombrilla", -1.6, 3.4)]),
     ),
 }
 
@@ -216,8 +239,33 @@ def building_door(name):
     return origin, step
 
 
-def write_room(key, spec):
+STEPS = 8  # the staircase: 8 steps of 0.3 x 0.26, rising toward the back wall from z = 3.2 to z = 0.8
+STEP_RUN, STEP_RISE, STAIR_W, STAIR_TOP, STAIR_FOOT = 0.3, 0.26, 1.4, 0.8, 3.2
+
+
+def stairs(sx, upper):
+    """Blocks of the staircase at x = sx along the back wall: (name, pos, size, collide). On the ground
+    floor the steps climb toward the back; upstairs the same steps go down into a hole in the floor."""
+    out = []
+    for i in range(STEPS):
+        z = STAIR_FOOT - (i + 0.5) * STEP_RUN
+        if upper:  # seen from above: step i is i + 1 rises below the floor, the deepest at the front
+            z = STAIR_TOP + (i + 0.5) * STEP_RUN
+            top = -(i + 1) * STEP_RISE
+            out.append((f"Step{i}", (sx, top - 2.4, z), (STAIR_W, 2.4, STEP_RUN), False))
+        else:
+            out.append((f"Step{i}", (sx, 0, z), (STAIR_W, (i + 1) * STEP_RISE, STEP_RUN), False))
+    if upper:  # an invisible floor over the hole, so the hero walks into the stairwell instead of falling
+        out.append(("StairwellFloor", (sx, -1.0, (STAIR_TOP + STAIR_FOOT) / 2), (STAIR_W, 1.0, STAIR_FOOT - STAIR_TOP), "hidden"))
+    else:  # the steps' bulk, so the hero only reaches them from the front
+        out.append(("StairBulk", (sx, 0, (STAIR_TOP + STAIR_FOOT - 0.6) / 2), (STAIR_W, 2.2, STAIR_FOOT - 0.6 - STAIR_TOP), "hidden"))
+    return out
+
+
+def write_room(key, spec, upper=False):
     w, d = spec["size"]
+    sx = spec["stairs"]
+    plan = spec["upstairs"] if upper else spec
     sc = Scene()
     shader_floor = sc.res("Material", f"res://materials/interior/{spec['floor']}.tres")
     shader_wall = sc.res("Material", "res://materials/interior/wall_plaster.tres")
@@ -225,58 +273,90 @@ def write_room(key, spec):
     env = sc.subres("Environment", background_mode=1, background_color="Color(0.02, 0.015, 0.02, 1)",
                     ambient_light_source=2, ambient_light_color=colour("ffe6c8"),
                     ambient_light_energy=spec.get("ambient", 0.85))
-    sc.node(spec["title"].replace(" ", ""), "Node3D")
+    sc.node(plan["title"].replace(" ", "").replace(",", ""), "Node3D")
     sc.node("WorldEnvironment", "WorldEnvironment", ".", environment=f'SubResource("{env}")')
     sc.node("Sun", "DirectionalLight3D", ".", transform="Transform3D(0.8433914, 0.40550515, -0.35250026, 0, 0.656059, "
             "0.75470954, 0.53729963, -0.63651556, 0.55331457, 0, 0, 0)", light_energy=0.05, shadow_enabled="true")
     # the room: a floor and walls built from blocks, open toward the camera but for a low front wall
     sc.node("Buildings", "Node3D", ".")
-    blocks = [("Floor", shader_floor, (0, -1.0, (d + WALL_T) / 2), (w + 2 * WALL_T, 1.0, d + WALL_T)),
-              ("Threshold", shader_floor, (0, -1.0, d + WALL_T + 1.0), (DOOR_W, 1.0, 2.0))]
-    blocks.append(("BackWall", shader_wall, (0, 0, -WALL_T / 2), (w + 2 * WALL_T, WALL_H, WALL_T)))
-    for side, sx in (("WestWall", -1), ("EastWall", 1)):
-        blocks.append((side, shader_wall, (sx * (w / 2 + WALL_T / 2), 0, d / 2), (WALL_T, WALL_H, d + WALL_T)))
-    seg = (w - DOOR_W) / 2 + WALL_T
-    for side, sx in (("FrontWest", -1), ("FrontEast", 1)):
-        blocks.append((side, shader_wall, (sx * (DOOR_W / 2 + seg / 2), 0, d + WALL_T / 2), (seg, FRONT_H, WALL_T)))
-    for name, mat, (x, y, z), (bw, bh, bd) in blocks:
-        shape = sc.subres("BoxShape3D", size=f"Vector3({bw}, {bh}, {bd})")
+    full_w = w + 2 * WALL_T
+    if upper:  # the floor round the stairwell: west and east of it, and behind and in front of the hole
+        west, east = (-full_w / 2, sx - STAIR_W / 2), (sx + STAIR_W / 2, full_w / 2)
+        blocks = [(f"Floor{n}", shader_floor, ((a + b) / 2, -1.0, (d + WALL_T) / 2), (b - a, 1.0, d + WALL_T))
+                  for n, (a, b) in (("W", west), ("E", east)) if b - a > 0.01]
+        blocks += [("FloorBack", shader_floor, (sx, -1.0, STAIR_TOP / 2), (STAIR_W, 1.0, STAIR_TOP)),
+                   ("FloorFront", shader_floor, (sx, -1.0, (STAIR_FOOT + d + WALL_T) / 2), (STAIR_W, 1.0, d + WALL_T - STAIR_FOOT))]
+    else:
+        blocks = [("Floor", shader_floor, (0, -1.0, (d + WALL_T) / 2), (full_w, 1.0, d + WALL_T)),
+                  ("Threshold", shader_floor, (0, -1.0, d + WALL_T + 1.0), (DOOR_W, 1.0, 2.0))]
+    blocks.append(("BackWall", shader_wall, (0, 0, -WALL_T / 2), (full_w, WALL_H, WALL_T)))
+    for side, sgn in (("WestWall", -1), ("EastWall", 1)):
+        blocks.append((side, shader_wall, (sgn * (w / 2 + WALL_T / 2), 0, d / 2), (WALL_T, WALL_H, d + WALL_T)))
+    if upper:  # no door upstairs: the low front wall runs across
+        blocks.append(("Front", shader_wall, (0, 0, d + WALL_T / 2), (full_w, FRONT_H, WALL_T)))
+    else:
+        seg = (w - DOOR_W) / 2 + WALL_T
+        for side, sgn in (("FrontWest", -1), ("FrontEast", 1)):
+            blocks.append((side, shader_wall, (sgn * (DOOR_W / 2 + seg / 2), 0, d + WALL_T / 2), (seg, FRONT_H, WALL_T)))
+    blocks += [(name, shader_floor, pos, size, collide) for name, pos, size, collide in stairs(sx, upper)]
+    for name, mat, (x, y, z), (bw, bh, bd), *flag in blocks:
+        collide = flag[0] if flag else True
         sc.node(name, "StaticBody3D", "Buildings", transform=xform(x, y, z))
-        sc.node("Mesh", "MeshInstance3D", f"Buildings/{name}", transform=xform(0, bh / 2, 0, bw, bh, bd),
-                material_override=f'ExtResource("{mat}")', mesh=f'ExtResource("{box}")')
-        sc.node("Collision", "CollisionShape3D", f"Buildings/{name}", transform=xform(0, bh / 2, 0),
-                shape=f'SubResource("{shape}")')
+        if collide != "hidden":
+            sc.node("Mesh", "MeshInstance3D", f"Buildings/{name}", transform=xform(0, bh / 2, 0, bw, bh, bd),
+                    material_override=f'ExtResource("{mat}")', mesh=f'ExtResource("{box}")')
+        if collide:
+            shape = sc.subres("BoxShape3D", size=f"Vector3({bw}, {bh}, {bd})")
+            sc.node("Collision", "CollisionShape3D", f"Buildings/{name}", transform=xform(0, bh / 2, 0),
+                    shape=f'SubResource("{shape}")')
     # furniture
     sc.node("Props", "Node3D", ".")
     counts = {}
-    for prop, x, z in spec["props"]:
+    for prop, x, z in plan["props"]:
         rid = sc.res("PackedScene", f"res://scenes/environment/props/interior/{prop}.tscn")
         counts[prop] = counts.get(prop, 0) + 1
         sc.node(f"{prop}{counts[prop]}", None, "Props", instance=rid, transform=xform(x, 0, z))
     sc.node("People", "Node3D", ".")
-    for who, x, z, lines in spec.get("people", []):
+    for who, x, z, lines in plan.get("people", []):
         rid = sc.res("PackedScene", f"res://scenes/characters/townsfolk/{who}.tscn")
         folk = sc.res("Script", "res://scripts/characters/townsfolk.gd")
         said = ", ".join('"' + line.replace('"', '\\"') + '"' for line in lines)
         sc.node(who.capitalize(), "CharacterBody3D", "People", instance=rid, transform=xform(x, 0.1, z),
                 script=f'ExtResource("{folk}")', lines=f"PackedStringArray({said})")
-    # the way out: back to the town, in front of the building's door
     origin, step = building_door(spec["building"])
-    out = (origin[0] + step[0], origin[1] + 0.6, origin[2] + step[2] + 1.8)
     exit_script = sc.res("Script", "res://scripts/systems/exit.gd")
-    exit_shape = sc.subres("BoxShape3D", size=f"Vector3({DOOR_W}, 3, 1.2)")
-    sc.node("Exit", "Area3D", ".", transform=xform(0, 0, d + WALL_T + 1.2), collision_layer=0, collision_mask=2,
-            script=f'ExtResource("{exit_script}")', target_scene='"res://scenes/levels/brumaclara.tscn"',
-            arrival=f"Vector3({out[0]:.2f}, {out[1]:.2f}, {out[2]:.2f})")
-    sc.node("Collision", "CollisionShape3D", "Exit", transform=xform(y=1.5), shape=f'SubResource("{exit_shape}")')
-    rug = sc.res("PackedScene", "res://scenes/environment/props/interior/alfombrilla.tscn")
-    sc.node("Doormat", None, "Props", instance=rug, transform=xform(0, 0, d - 0.7))
+    toward = -1.0 if sx > 0 else 1.0  # from the stairs toward the middle of the room
+    up_arrival = (sx + toward * 1.4, 0.1, 1.3)
+    down_arrival = (sx, 0.1, STAIR_FOOT + 0.8)
+    if upper:  # down: walking into the stairwell
+        hole = sc.subres("BoxShape3D", size=f"Vector3({STAIR_W - 0.2}, 2, {STAIR_FOOT - STAIR_TOP - 0.8})")
+        sc.node("Bajada", "Area3D", ".", transform=xform(sx, 0, (STAIR_TOP + STAIR_FOOT) / 2 + 0.4), collision_layer=0,
+                collision_mask=2, script=f'ExtResource("{exit_script}")',
+                target_scene=f'"res://scenes/levels/interiors/{key}.tscn"', arrival="Vector3(%.2f, %.2f, %.2f)" % down_arrival)
+        sc.node("Collision", "CollisionShape3D", "Bajada", transform=xform(y=1.0), shape=f'SubResource("{hole}")')
+    else:
+        # the way out: back to the town, in front of the building's door
+        out = (origin[0] + step[0], origin[1] + 0.6, origin[2] + step[2] + 1.8)
+        exit_shape = sc.subres("BoxShape3D", size=f"Vector3({DOOR_W}, 3, 1.2)")
+        sc.node("Exit", "Area3D", ".", transform=xform(0, 0, d + WALL_T + 1.2), collision_layer=0, collision_mask=2,
+                script=f'ExtResource("{exit_script}")', target_scene='"res://scenes/levels/brumaclara.tscn"',
+                arrival=f"Vector3({out[0]:.2f}, {out[1]:.2f}, {out[2]:.2f})")
+        sc.node("Collision", "CollisionShape3D", "Exit", transform=xform(y=1.5), shape=f'SubResource("{exit_shape}")')
+        rug = sc.res("PackedScene", "res://scenes/environment/props/interior/alfombrilla.tscn")
+        sc.node("Doormat", None, "Props", instance=rug, transform=xform(0, 0, d - 0.7))
+        # up: walking into the foot of the stairs
+        foot = sc.subres("BoxShape3D", size=f"Vector3({STAIR_W}, 2.4, 1.0)")
+        sc.node("Subida", "Area3D", ".", transform=xform(sx, 0, STAIR_FOOT - 0.3), collision_layer=0, collision_mask=2,
+                script=f'ExtResource("{exit_script}")', target_scene=f'"res://scenes/levels/interiors/{key}_alta.tscn"',
+                arrival="Vector3(%.2f, %.2f, %.2f)" % up_arrival, push="Vector3(0, 0, -1)")
+        sc.node("Collision", "CollisionShape3D", "Subida", transform=xform(y=1.2), shape=f'SubResource("{foot}")')
     # the hero and the screen
     player = sc.res("PackedScene", "res://scenes/characters/player.tscn")
     player_script = sc.res("Script", "res://scripts/characters/player.gd")
     dust = sc.res("PackedScene", "res://scenes/effects/dust.tscn")
     text = sc.res("PackedScene", "res://scenes/effects/floating_text.tscn")
-    sc.node("Player", "CharacterBody3D", ".", instance=player, transform=xform(0, 0.1, d - 1.6), collision_layer=2,
+    start = up_arrival if upper else (0, 0.1, d - 1.6)
+    sc.node("Player", "CharacterBody3D", ".", instance=player, transform=xform(*start), collision_layer=2,
             collision_mask=5, floor_max_angle=0.87266463, floor_snap_length=0.4,
             script=f'ExtResource("{player_script}")', dust_scene=f'ExtResource("{dust}")',
             text_scene=f'ExtResource("{text}")')
@@ -290,7 +370,7 @@ def write_room(key, spec):
     edits = sc.res("Script", "res://scripts/systems/level_edits.gd")
     sc.node("LevelEdits", "Node", ".", script=f'ExtResource("{edits}")')
     ROOMS.mkdir(parents=True, exist_ok=True)
-    (ROOMS / f"{key}.tscn").write_text(sc.text())
+    (ROOMS / f"{key}_alta.tscn" if upper else ROOMS / f"{key}.tscn").write_text(sc.text())
     return origin, step, d
 
 
@@ -326,5 +406,7 @@ if __name__ == "__main__":
     write_props()
     write_materials()
     rooms = {key: write_room(key, spec) for key, spec in INTERIORS.items()}
+    for key, spec in INTERIORS.items():  # every one of these buildings has a floor above its ground floor
+        write_room(key, spec, upper=True)
     write_doors(rooms)
     print("interiors:", ", ".join(rooms))
